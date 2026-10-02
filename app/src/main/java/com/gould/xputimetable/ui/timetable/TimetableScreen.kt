@@ -39,6 +39,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.gould.xputimetable.domain.model.SessionWithCourse
 import com.gould.xputimetable.ui.theme.LightPageBackground
 import com.gould.xputimetable.ui.timetable.components.WeekPager
 import com.gould.xputimetable.ui.timetable.components.WeekSelector
@@ -63,6 +64,23 @@ fun TimetableScreen(
     val (today, nowMinute) = rememberMinuteTick()
     // M11：「显示老师姓名」（设置页开关）→ 课表页 → WeekGrid → 课程卡
     val showTeacher by viewModel.showTeacher.collectAsState()
+    // M11-第三批：课程详情弹层（点课程卡弹出，不再是直接跳编辑页）
+    val detailNote by viewModel.detailNote.collectAsState()
+
+    // 弹层目标 + 备注可见范围：与选中项同生命周期，故放在屏幕层而不是弹层内部
+    var detailItem by remember { mutableStateOf<SessionWithCourse?>(null) }
+    var noteThisWeekOnly by remember { mutableStateOf(false) }
+    // 稳定引用：WeekPager/WeekGrid 靠它跳过重组（内联 lambda 每次重组都换实例）
+    val onCourseClick = remember {
+        { item: SessionWithCourse ->
+            noteThisWeekOnly = item.session.startWeek == item.session.endWeek
+            detailItem = item
+        }
+    }
+    LaunchedEffect(detailItem) {
+        val courseId = detailItem?.session?.courseId
+        if (courseId == null) viewModel.clearDetailNote() else viewModel.loadDetailNote(courseId)
+    }
 
     // 一次性错误提示（如创建学期失败）：展示后清除，避免旋转屏幕重复弹出
     LaunchedEffect(state.lastError) {
@@ -113,11 +131,39 @@ fun TimetableScreen(
                         showTeacher = showTeacher,
                         onAddCourse = onAddCourse,
                         onOpenImport = onOpenImport,
-                        onEditCourse = onEditCourse,
+                        onCourseClick = onCourseClick,
                     )
                 }
             }
         }
+    }
+
+    // ---------- 课程详情弹层 ----------
+    // 独立成块、不进 Scaffold 的 content：它是覆盖在整页之上的面板，不属于内容区。
+    val active = detailItem
+    if (active != null) {
+        CourseDetailSheet(
+            item = active,
+            note = detailNote,
+            noteThisWeekOnly = noteThisWeekOnly,
+            timeSlots = state.timeSlots,
+            onToggleNoteScope = {
+                noteThisWeekOnly = !noteThisWeekOnly
+            },
+            onEdit = {
+                onEditCourse(active.session.courseId, active.session.id)
+                detailItem = null
+            },
+            onDuplicate = {
+                viewModel.duplicateCourse(active)
+                detailItem = null
+            },
+            onDeleteRequest = {
+                viewModel.removeCourse(active)
+                detailItem = null
+            },
+            onDismiss = { detailItem = null },
+        )
     }
 }
 

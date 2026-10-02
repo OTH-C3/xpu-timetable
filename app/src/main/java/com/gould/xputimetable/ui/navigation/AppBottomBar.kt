@@ -41,8 +41,12 @@ private const val LABEL_PROFILE = "我的"
 /** M5 需求 3 的底栏高度（保持 40dp，不因去图标而改动既定尺寸）。 */
 private val BarHeight = 40.dp
 
-/** M6-fix：无图标后文字是唯一元素，10sp 偏小 → 12sp；M10 产品要求再加大一号 → 13sp。 */
-private val LabelFontSize = 13.sp
+/**
+ * M6-fix：无图标后文字是唯一元素，10sp 偏小 → 12sp；M10 产品要求再加大一号 → 13sp；
+ * M11-第三批：老大要求"主页最下面的文字加大一个字好" → 14sp。
+ * 只动字号，高度仍是 BarHeight(40dp)：加大后靠 Box 居中，不会挤压触摸目标宽度。
+ */
+private val LabelFontSize = 14.sp
 
 @Composable
 internal fun AppBottomBar(

@@ -34,6 +34,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
@@ -41,6 +42,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.util.UUID
 
 data class TimetableUiState(
     val loading: Boolean = true,
@@ -185,6 +187,61 @@ class TimetableViewModel(
     /** 错误消息已展示，清除它（避免旋转屏幕后重复弹出）。 */
     fun consumeError() {
         transientError.value = null
+    }
+
+    /**
+     * M11-第三批：课程详情弹层的「复制」——把整门课连着它名下**所有**节次复制成一份新的。
+     *
+     * 为什么必须重新取整门课的资料、不能拿 UI 行上的 [SessionWithCourse] 直接开干：
+     * `SessionWithCourse` 是周视图 JOIN 出来的窄行（只带 课名/颜色/教师），
+     * code / note / source / termId 这些都在 `courses` 表里 —— 凭那三列造不出一个能落库的 Course，
+     * 存进去会变成一条残缺课程。所以这里回查一次 `getCourseById` 再整条复制。
+     *
+     * 复制出的新 id 用 UUID（与 CourseEditViewModel 同一套生成方式），
+     * 旧 id 不复用：复用会让 `course_sessions.course_id` 的外键指向既老又脏的一行。
+     */
+    fun duplicateCourse(item: SessionWithCourse) {
+        viewModelScope.launch {
+            val source = repository.getCourseById(item.session.courseId) ?: return@launch
+            val sessions = repository.getSessionsByCourseId(source.id)
+            val newId = UUID.randomUUID().toString()
+            val now = System.currentTimeMillis()
+            repository.upsertCourse(
+                course = source.copy(id = newId, createdAt = now, updatedAt = now),
+                // 每个节次都换新主键（Room 的 @Insert 把 id=0 当"新行"），并改挂到新课上
+                sessions = sessions.map { it.copy(id = 0L, courseId = newId) },
+            )
+        }
+    }
+
+    /**
+     * M11-第三批：课程详情弹层要显示备注，但周视图 JOIN 出来的 [SessionWithCourse]
+     * 只带 课名/颜色/教师，没有 `courses.note` —— 不回查一次就得放弃备注这一行。
+     *
+     * 用 StateFlow 而非常规 suspend：弹层里每帧都要读，若走 suspend 只能在
+     * LaunchedEffect 里取一次快照，用户翻课表时备注会停在打开那一刻的旧值。
+     */
+    private val _detailNote = MutableStateFlow<String?>(null)
+    val detailNote: StateFlow<String?> = _detailNote.asStateFlow()
+
+    fun loadDetailNote(courseId: String) {
+        viewModelScope.launch {
+            _detailNote.value = repository.getCourseById(courseId)?.note?.takeIf { it.isNotBlank() }
+        }
+    }
+
+    fun clearDetailNote() {
+        _detailNote.value = null
+    }
+
+    /**
+     * M11-第三批：课程详情弹层的「删除」——删整门课。
+     *
+     * 只按 courseId 删、`sessions` 不手动清：库里 `course_sessions.course_id` 是
+     * `ON DELETE CASCADE`，删掉 courses 行后子表由 SQLite 级联带走（见已知的 P2 脆弱点备注）。
+     */
+    fun removeCourse(item: SessionWithCourse) {
+        viewModelScope.launch { repository.deleteCourse(item.session.courseId) }
     }
 }
 

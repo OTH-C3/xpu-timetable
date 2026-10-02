@@ -47,8 +47,13 @@ import com.gould.xputimetable.ui.theme.ListRow
  * 分组卡片（M11）：把同类设置项装进一个圆角容器，组内条目用横线分隔。
  *
  * 参照产品负责人给的两张设置页截图（系统设置 / QQ 设置）的版式：
- * 组标题在卡片**外面**（灰小字），卡片本身 = 圆角 + 极淡底色 + 发丝边框。
- * 之所以加容器而不是只留横线：相邻两组的边界此前只能靠间距区分，视觉上是平的一片。
+ * 组标题在卡片**外面**（灰小字），卡片本身 = 圆角 + **与页面同色的白面** + 发丝描边。
+ *
+ * 为什么是"白面 + 描边"而不是"淡灰底 + 淡描边"（M11-第三批按参考图回改）：
+ * 淡灰底在浅色主题下会和页面底色糊在一起，卡片边界要先看清底色差才看得见，
+ * 于是"同组"这件事被弱化成一片灰。参考截图里页面是浅灰底、卡片是白面，
+ * 边界完全靠**描边**成立 —— 这也和后面"可自定义背景"的方向一致：
+ * 卡片不引入第三种底色，换背景时它只会跟着 surface 走，不会压出一条色带。
  */
 @Composable
 internal fun SettingsGroupCard(
@@ -60,10 +65,12 @@ internal fun SettingsGroupCard(
         modifier = modifier
             .fillMaxWidth()
             .clip(shape)
-            .background(MaterialTheme.colorScheme.surfaceContainerLow)
+            // 白面（= colorScheme.surface）而非 surfaceContainerLow：与页面只差"是否被描边框住"这一件事。
+            .background(MaterialTheme.colorScheme.surface)
             .border(
                 width = 1.dp,
-                color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = ListRow.DividerAlpha),
+                color = MaterialTheme.colorScheme.outlineVariant
+                    .copy(alpha = ListRow.CardBorderAlpha),
                 shape = shape,
             )
             .padding(horizontal = ListRow.CardPadding, vertical = ListRow.CardPaddingV),

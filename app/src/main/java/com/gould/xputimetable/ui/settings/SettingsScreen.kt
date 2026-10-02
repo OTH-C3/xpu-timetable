@@ -41,15 +41,18 @@ private const val TITLE = "我的"
 private const val GROUP_TERM = "学期"
 private const val ROW_TERM = "学期设置"
 private const val TERM_NONE = "还没有学期，点此设置"
-private const val GROUP_PERMISSIONS = "权限"
+// M11-第三批：把原来的「权限」+「显示」合成一个多条目组、「数据」改叫「隐私」。
+// 原因：原先 5 个组里 4 个组只有 1 条，组内横线永远只有一个"最后一条不画线"的空转，
+// 老大道的"几种相同的设置用一个边框框起来、里面的几条用横线分开"根本看不出分组。
+// 合成 4 组（其中 2 组是多条）后，"卡片 = 一组、横线 = 组内切分"这套版式才立得住；
+// 组名也学参考截图那样取短词（功能 / 隐私），不再用"权限/数据/显示"这种功能自述。
+private const val GROUP_FUNCTION = "功能"
 private const val ROW_PERMISSION = "精确闹钟授权"
 private const val PERMISSION_OK = "已授权"
 private const val PERMISSION_MISSING = "未授权：桌面小组件刷新可能不精准"
-// M11：展示类开关（第 4 组，排在「权限」之后、「数据」之前）
-private const val GROUP_DISPLAY = "显示"
 private const val ROW_SHOW_TEACHER = "显示老师姓名"
 private const val SHOW_TEACHER_SUBTITLE = "在课程卡上显示任课教师"
-private const val GROUP_DATA = "数据"
+private const val GROUP_PRIVACY = "隐私"
 private const val GROUP_ABOUT = "关于"
 private const val ROW_ABOUT = "关于与隐私"
 private const val ABOUT_SUBTITLE = "非官方校园工具 · 数据仅存本机"
@@ -102,8 +105,16 @@ fun SettingsScreen(
                 )
             }
 
-            SettingsGroupHeader(GROUP_PERMISSIONS)
+            // M11-第三批：开关与权限合并进同一个卡片 —— 中间那条横线是这一组的分界线
+            SettingsGroupHeader(GROUP_FUNCTION)
             SettingsGroupCard {
+                SettingsSwitchRow(
+                    title = ROW_SHOW_TEACHER,
+                    subtitle = SHOW_TEACHER_SUBTITLE,
+                    checked = showTeacher,
+                    onCheckedChange = viewModel::toggleShowTeacher,
+                    showDivider = true, // 与下面的「精确闹钟授权」之间画线（组内有 2 条）
+                )
                 SettingsNavRow(
                     title = ROW_PERMISSION,
                     subtitle = if (state.exactAlarmAllowed) PERMISSION_OK else PERMISSION_MISSING,
@@ -112,18 +123,7 @@ fun SettingsScreen(
                 )
             }
 
-            SettingsGroupHeader(GROUP_DISPLAY)
-            SettingsGroupCard {
-                SettingsSwitchRow(
-                    title = ROW_SHOW_TEACHER,
-                    subtitle = SHOW_TEACHER_SUBTITLE,
-                    checked = showTeacher,
-                    onCheckedChange = viewModel::toggleShowTeacher,
-                    showDivider = false,
-                )
-            }
-
-            SettingsGroupHeader(GROUP_DATA)
+            SettingsGroupHeader(GROUP_PRIVACY)
             SettingsGroupCard {
                 ExportSection(
                     repository = repository,

@@ -5,10 +5,17 @@
  * 装配型「大 when」，每加一个目的地就长十几行，很快顶到单文件 300 行上限；
  * 转场方向和具体装配无关，单独成文件后一眼能看懂动画是怎么来的。
  *
- * 方向约定（M10 老大需求）：
- *   - 前进 navForward=true  ：自下而上 +height/8 → 有"进入下一层"的方向感
- *   - 返回 navForward=false ：自上而下 -height/8 → 与前进相反，方向本身就是"返回"的提示
- * 入场/出场共用同一套缓动（Motion.EaseOutStandard），避免"有的快有的慢"的观感。
+ * 方向约定（M10 老大需求 + M11-第三批改订）：
+ *   - 前进 navForward=true  ：自下而上 +height/10 → 有"进入下一层"的方向感
+ *   - 返回 navForward=false ：自上而下 -height/10 → 与前进相反，方向本身就是"返回"的提示，
+ *     且**只用这一套**：任何页面返回都走从上往下淡入，不再出现"有的页面从下往上"的情形。
+ *
+ * 为什么把缓动从 EaseOutStandard 换成 FastOutSlowIn、时长从 450 改成 350（都是老大的观感反馈"快 + 回弹"）：
+ *   EaseOutStandard(0.16,1,0.3,1) 是强前倾曲线，t=0.25 就已经走完 86% 位移，
+ *   位移在头 100ms 内砸完、剩下时间定住，看起来像"先冲一下再回住"；
+ *   而 exit 只有 200ms（FastMillis），旧页面先消失、新页面才慢慢挪进来，两段接不上。
+ *   FastOutSlowIn(0.4,0,0.2,1) 两头慢、中段快，配合 enter/exit 同长（Motion.PageMillis），
+ *   进出场会同时收尾 —— 位移是"落下"而不是"弹入"。
  */
 package com.gould.xputimetable.ui.navigation
 
@@ -18,6 +25,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.togetherWith
+import androidx.compose.ui.unit.IntOffset
 import com.gould.xputimetable.ui.theme.Motion
 
 /**
@@ -30,14 +38,19 @@ internal fun screenTransition(
     navForward: Boolean,
     animated: Boolean = true,
 ): ContentTransform {
-    val enterDur = if (animated) Motion.BaseMillis else 0
-    val exitDur = if (animated) Motion.FastMillis else 0
+    val dur = if (animated) Motion.PageMillis else 0
+    // 进出场同长同缓动：旧页淡出的最后一帧与新页落位的最后一帧是同一时刻，
+    // 不会出现"旧页先没、新页后被拽上来"的割裂感。
+    // 两个 spec 必须分开写：fadeIn/fadeOut 吃 FiniteAnimationSpec<Float>，
+    // slideInVertically 吃 FiniteAnimationSpec<IntOffset>，同一个 tween 实例类型对不上。
+    // 时长与缓动仍然同源，观感上仍然是一条曲线。
+    val alphaSpec = tween<Float>(dur, easing = Motion.EasePage)
+    val slideSpec = tween<IntOffset>(dur, easing = Motion.EasePage)
     val enterOffset: (Int) -> Int = if (navForward) {
-        { fullHeight -> fullHeight / 8 }
+        { fullHeight -> fullHeight / 10 }
     } else {
-        { fullHeight -> -fullHeight / 8 }
+        { fullHeight -> -fullHeight / 10 }
     }
-    return (fadeIn(tween(enterDur, easing = Motion.EaseOutStandard)) +
-        slideInVertically(tween(enterDur, easing = Motion.EaseOutStandard), enterOffset))
-        .togetherWith(fadeOut(tween(exitDur, easing = Motion.EaseOutStandard)))
+    return (fadeIn(alphaSpec) + slideInVertically(slideSpec, enterOffset))
+        .togetherWith(fadeOut(alphaSpec))
 }

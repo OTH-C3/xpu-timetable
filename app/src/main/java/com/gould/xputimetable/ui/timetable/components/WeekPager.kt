@@ -53,16 +53,17 @@ internal fun WeekPager(
     showTeacher: Boolean = true,
     onAddCourse: () -> Unit,
     onOpenImport: () -> Unit,
-    onEditCourse: (courseId: String, sessionId: Long) -> Unit,
+    /**
+     * M11-第三批：点课程卡 —— 交出整行 [SessionWithCourse]（不再只报两个 id）。
+     * 原来这里直奔 `onEditCourse(courseId, sessionId)` 进编辑页；
+     * 改交整行是因为详情弹层要画色条/教室/备注，光有 id 不够，
+     * 而"进编辑页"这件事已上移到调用方（TimetableScreen 收到行后再决定弹层还是跳转）。
+     */
+    onCourseClick: (SessionWithCourse) -> Unit,
 ) {
     // 竖直滚动位置提升到 pager 层：切周后保持（规格 §4 R5）
     val scrollState = rememberScrollState()
     val pagerState = rememberPagerState(initialPage = state.week - 1, pageCount = { state.totalWeeks })
-
-    // M7 ③：稳定化回调引用——避免内联 lambda 每次重组都换实例，让 WeekGrid 能跳过重组
-    val onCourseClick: (SessionWithCourse) -> Unit = remember(onEditCourse) {
-        { item -> onEditCourse(item.session.courseId, item.session.id) }
-    }
 
     // 双向同步（防抖）：手势/落定 → VM；外部变化（双击回本周）→ 程序化动画，
     // 动画期间的 currentPage 变化不回写（否则会把覆盖周写死、与回本周互抢）

@@ -11,6 +11,7 @@
 package com.gould.xputimetable.ui.theme
 
 import androidx.compose.animation.core.CubicBezierEasing
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
@@ -20,6 +21,15 @@ object Motion {
     const val BaseMillis = 450           // 切周、页面切换
     const val SceneMillis = 800          // 首屏编排（仅首次进入）
     val EaseOutStandard = CubicBezierEasing(0.16f, 1f, 0.3f, 1f)
+
+    // M11-第三批：页面转场专用档。
+    // 原先用 BaseMillis(450) 配 EaseOutStandard(0.16,1,0.3,1) —— 这条是**强前倾**曲线，
+    // t=0.25 时位移已经走完 ~86%，于是头 100ms 内容"唰"地弹到位、后面 350ms 几乎不动，
+    // 观感就是老大说的「很快而且还有回弹」；而 exit 只有 200ms，旧页先消失，
+    // 新页像被硬拽上来一样接不上。
+    // 改用 350ms + FastOutSlowIn（两头慢中间快、无 overshoot）：位移分布均匀，进出场同时收尾。
+    const val PageMillis = 350
+    val EasePage = FastOutSlowInEasing
 }
 
 /** 圆角与尺寸令牌。 */
@@ -90,8 +100,12 @@ object ListRow {
     val IconGap = 8.dp           // 标题与副标题、文本与箭头的间距
 
     // M11：分组卡片（参照系统设置页 / QQ 设置：同类项装进一个圆角容器，组内用横线分隔）
-    val CardCorner = 12.dp       // 卡片圆角
+    val CardCorner = 10.dp       // 卡片圆角（M11-第三批：12→10，更贴近参考截图的设置页圆角）
     val CardPadding = 12.dp      // 卡片内边距（横向；竖向取小的 4dp，避免行显得飘）
     val CardPaddingV = 4.dp
-    val DividerInset = 4.dp      // 组内横线的左右缩进（与行文本左缘对齐，横线不满宽）
+    // M11-第三批：横线原来只有 4dp 缩进（几乎满宽）且 alpha 0.12 太淡 → 数据组那条组内线根本看不出来，
+    // 老大提的"一个边框里面的几条用横线分开"就等于没做。改成与文本左缘严格对齐（CardPadding+行内边距）
+    // 并提到 0.18：不满宽 → 有"同组"暗示；够清晰 → 一眼能数出这一组有几条。
+    val DividerInset = 16.dp     // 组内横线的左右缩进（= CardPadding 12 + 行内边距 4，与文本左缘同线）
+    val CardBorderAlpha = 0.2f   // 卡片描边（比组内横线略重，让边界先被看见，再看组内分层）
 }
