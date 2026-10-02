@@ -5,6 +5,8 @@
  * 这些控件本身与"课程编辑"业务无关，只是受主题约束的通用输入控件，独立后可被后续的
  * 导入确认页、设置页复用。
  *
+ * 颜色选择单独在 ColorField.kt（要同时吃"色板索引"和"自取色 ARGB"两套语义，本身就近 90 行）。
+ *
  * 性能约定（2026-09-17）：控件只接收自己需要的**稳定类型**参数（String / Int / 枚举 /
  * Boolean / 方法引用），选项文案用文件级常量而不是每次重组新建 List——
  * List 在 Compose 里属不稳定类型，会让整个控件无法跳过重组，是标签动画掉帧的常见原因之一。
@@ -16,12 +18,14 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -35,7 +39,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.gould.xputimetable.domain.model.WeekType
-import com.gould.xputimetable.ui.theme.CoursePalette
+import com.gould.xputimetable.ui.components.GroupCard
+import com.gould.xputimetable.ui.components.GroupHeader
+import com.gould.xputimetable.ui.theme.ListRow
 
 /** 星期文案（文件级常量，避免每次重组新建 List）。 */
 private val dayLabels = listOf("一", "二", "三", "四", "五", "六", "日")
@@ -43,14 +49,32 @@ private val dayLabels = listOf("一", "二", "三", "四", "五", "六", "日")
 /** 单双周文案。 */
 private val weekTypeLabels = listOf("全部", "单周", "双周")
 
-/** 小节标题：表单分组用。 */
+/**
+ * 表单分组卡片（M11-第三批「美化添加课程页」）：与「我的」页用同一套卡片语言——
+ * 卡片本体下沉在 `ui.components.CardGroup`，这里只做转发，避免两处各画一遍圆角/描边。
+ */
 @Composable
-internal fun SectionTitle(text: String) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.bodySmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        modifier = Modifier.padding(top = 16.dp, bottom = 6.dp),
+internal fun FormCard(content: @Composable ColumnScope.() -> Unit) = GroupCard(content = content)
+
+/** 分组标题：小号灰字，位置在卡片**外面**（与设置页一致）。 */
+@Composable
+internal fun FormGroupHeader(text: String) = GroupHeader(text)
+
+/**
+ * 卡片内横线：左右内缩到与行文本左缘对齐（不满宽），这是卡片内分隔线的通行做法；
+ * 满宽线在窄卡片里会把条目视觉上切成两半，看不出"还是同一组"。
+ */
+@Composable
+internal fun FormDivider() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = ListRow.DividerInset)
+            .height(1.dp)
+            .background(
+                MaterialTheme.colorScheme.outlineVariant
+                    .copy(alpha = ListRow.DividerAlpha),
+            ),
     )
 }
 
@@ -186,43 +210,6 @@ private fun Stepper(
         )
         IconButton(onClick = { if (value < range.last) onValueChange(value + 1) }, enabled = value < range.last) {
             Text("+")
-        }
-    }
-}
-
-/** 12 色课程色板选择行（颜色 = 课程身份，固定色不可随主题漂移）。 */
-@Composable
-internal fun CourseColorRow(selected: Int, onSelect: (Int) -> Unit) {
-    // 12 色分两行：每项触摸目标 44dp（可访问性下限）且 12×44dp 在手机宽度内放不下，
-    // 故 6 个一行；色点本身仍是 28dp 视觉尺寸，四周留白参与触摸。
-    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-        val rowCount = 2
-        val perRow = CoursePalette.size / rowCount
-        repeat(rowCount) { row ->
-            Row {
-                repeat(perRow) { col ->
-                    val index = row * perRow + col
-                    val isSelected = index == selected
-                    Box(
-                        modifier = Modifier
-                            .size(44.dp)
-                            .clickable { onSelect(index) },
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .size(28.dp)
-                                .clip(CircleShape)
-                                .background(CoursePalette.base(index))
-                                .border(
-                                    width = if (isSelected) 2.5.dp else 0.dp,
-                                    color = if (isSelected) MaterialTheme.colorScheme.onSurface else Color.Transparent,
-                                    shape = CircleShape,
-                                ),
-                        )
-                    }
-                }
-            }
         }
     }
 }

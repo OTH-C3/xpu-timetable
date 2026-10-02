@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gould.xputimetable.domain.model.Course
 import com.gould.xputimetable.domain.model.CourseSession
+import com.gould.xputimetable.domain.model.isValidColorTag
 import com.gould.xputimetable.domain.model.CourseSource
 import com.gould.xputimetable.domain.model.WeekType
 import com.gould.xputimetable.domain.model.markEdited
@@ -120,7 +121,10 @@ class CourseEditViewModel(
     fun setWeekType(type: WeekType) = _draft.update { it.copy(weekType = type) }
 
     fun setColorTag(tag: Int) {
-        if (tag < 0) return
+        // ⚠️ 不能写 `if (tag < 0) return`：满不透明的 ARGB（0xFFRRGGBB）在 Int 里是**负数**，
+        // 这行守卫会把取色器自取的每一个颜色都静默丢掉——面板关了、颜色没变、表单还停在旧色
+        // （2026-10-02 模拟器实测复现）。色板索引和 ARGB 都是合法值，只拦两者都不是的脏数据。
+        if (!isValidColorTag(tag)) return
         _draft.update { it.copy(colorTag = tag) }
     }
 

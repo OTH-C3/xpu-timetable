@@ -14,7 +14,7 @@
  *
  * 状态放在调用方（TimetableScreen）而不是这里：弹层的内容随屏幕持有的
  * "当前选中项"变化，记住"备注看本周还是所有周"这类过滤态与选中态同生命周期最自然，
- * 拆进弹层会因为弹层卸载而丢。本文件只负责画。
+ * 拆进弹层会因为弹层卸载而丢。本文件只负责画；两行小件沉到同包 CourseDetailRows.kt。
  *
  * 实现约束（复用项目既有纪律）：
  *   - 色值只走 colorScheme / CoursePalette；尺寸走 Tokens；
@@ -248,54 +248,3 @@ private fun CourseDetailBody(
         Spacer(Modifier.height(12.dp))
     }
 }
-
-/** 一行「标签 —— 值」；值缺省时整行不画，避免在面板上留一条空线。 */
-@Composable
-private fun DetailRow(label: String, value: String) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(min = ListRow.MinHeight)
-            .padding(vertical = ListRow.VerticalPadding),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            text = label,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.width(56.dp),
-        )
-        Text(
-            text = value,
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurface,
-        )
-    }
-}
-
-/** 底部动作文字按钮（触摸目标靠整块 Box，96dp 宽 × 52dp 高）。 */
-@Composable
-private fun DetailAction(text: String, onClick: () -> Unit, danger: Boolean = false) {
-    Box(
-        modifier = Modifier
-            .width(96.dp)
-            .height(ListRow.MinHeight)
-            .clickable(onClick = onClick),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.labelLarge,
-            fontWeight = FontWeight.Medium,
-            color = if (danger) MaterialTheme.colorScheme.error
-            else MaterialTheme.colorScheme.onSurface,
-        )
-    }
-}
-
-// 节次/周次/钟点的换算在同包 CourseDetailFormat.kt（纯函数，另有单测覆盖）。
-
-/** 发丝分隔线（与设置页同一口径）。 */
-@Composable
-private fun outlineDivider(): Color =
-    MaterialTheme.colorScheme.outlineVariant.copy(alpha = ListRow.DividerAlpha)

@@ -2,10 +2,10 @@
  * CourseEditScreen.kt —— 手动添加 / 编辑课程表单（页面装配层）
  *
  * 设计取舍：
- *   - 字段按「基本信息 / 时间 / 地点」排列，每组不超过 4 项（降低工作记忆负担）；
+ *   - 字段按「基本信息 / 时间 / 周次 / 颜色」四组卡片排列，每组一张卡片、组内横线分隔（M11-第三批）；
  *   - 节次与周次用「- 值 +」步进器而不是自由输入，从源头避免非法输入（Spec AC-07）；
- *   - 颜色给 12 个固定色点，与课程色板一致（颜色 = 课程身份）。
- *   - 可复用控件在 components/FormControls.kt（拆分原因见该文件头注释）。
+ *   - 颜色 = 课程身份：12 个固定色点 + 一个"自取色"入口，后者打开自绘 HSV 面板（components/ColorPickerDialog）。
+ *   - 表单主体在 CourseEditForm.kt（拆分原因见该文件头注释），本文件只管顶栏、取色面板与删除确认。
  *
  * 修复记录（2026-09-17）：
  *   ① **状态栏不再遮挡按钮**：应用是 edge-to-edge（MainActivity 调了 enableEdgeToEdge），
@@ -52,13 +52,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.toArgb
+import com.gould.xputimetable.domain.model.isArgbColorTag
 import com.gould.xputimetable.ui.components.AppIcons
-import com.gould.xputimetable.ui.courseedit.components.CourseColorRow
-import com.gould.xputimetable.ui.courseedit.components.DayOfWeekRow
-import com.gould.xputimetable.ui.courseedit.components.LabeledField
-import com.gould.xputimetable.ui.courseedit.components.RangeRow
-import com.gould.xputimetable.ui.courseedit.components.SectionTitle
-import com.gould.xputimetable.ui.courseedit.components.WeekTypeRow
+import com.gould.xputimetable.ui.courseedit.components.ColorPickerDialog
+import com.gould.xputimetable.ui.theme.CoursePalette
 import com.gould.xputimetable.ui.theme.IconSize
 
 @Composable
@@ -70,6 +68,7 @@ fun CourseEditScreen(
 ) {
     val draft by viewModel.draft.collectAsState()
     var showDeleteConfirm by remember { mutableStateOf(false) }
+    var showColorPicker by remember { mutableStateOf(false) }
 
     LaunchedEffect(draft.saved) {
         if (draft.saved) onBack()
@@ -95,65 +94,21 @@ fun CourseEditScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 16.dp, vertical = 8.dp),
         ) {
-            BasicInfoFields(
-                name = draft.name,
-                teacher = draft.teacher,
-                classroom = draft.classroom,
-                errorField = draft.errorField,
+            EditFormBody(
+                draft = draft,
                 onNameChange = viewModel::setName,
                 onTeacherChange = viewModel::setTeacher,
                 onClassroomChange = viewModel::setClassroom,
+                onDayOfWeekChange = viewModel::setDayOfWeek,
+                onStartSectionChange = viewModel::setStartSection,
+                onEndSectionChange = viewModel::setEndSection,
+                onStartWeekChange = viewModel::setStartWeek,
+                onEndWeekChange = viewModel::setEndWeek,
+                onWeekTypeChange = viewModel::setWeekType,
+                onColorTagChange = viewModel::setColorTag,
+                onOpenPicker = { showColorPicker = true },
             )
 
-            SectionTitle("星期")
-            DayOfWeekRow(selected = draft.dayOfWeek, onSelect = viewModel::setDayOfWeek)
-
-            SectionTitle("节次")
-            RangeRow(
-                startLabel = "开始",
-                endLabel = "结束",
-                start = draft.startSection,
-                end = draft.endSection,
-                range = CourseEditViewModel.SECTION_RANGE,
-                onStartChange = viewModel::setStartSection,
-                onEndChange = viewModel::setEndSection,
-            )
-
-            SectionTitle("周次")
-            if (draft.hasExactWeeks) {
-                Text(
-                    text = "该课周次由教务给出精确列表，手动修改后将改为区段设置",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(bottom = 8.dp),
-                )
-            }
-            RangeRow(
-                startLabel = "起始周",
-                endLabel = "结束周",
-                start = draft.startWeek,
-                end = draft.endWeek,
-                range = CourseEditViewModel.WEEK_RANGE,
-                onStartChange = viewModel::setStartWeek,
-                onEndChange = viewModel::setEndWeek,
-            )
-
-            SectionTitle("单双周")
-            WeekTypeRow(selected = draft.weekType, onSelect = viewModel::setWeekType)
-
-            SectionTitle("课程颜色")
-            CourseColorRow(selected = draft.colorTag, onSelect = viewModel::setColorTag)
-
-            draft.error?.let { message ->
-                Text(
-                    text = message,
-                    color = MaterialTheme.colorScheme.error,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(top = 12.dp),
-                )
-            }
-
-            Spacer(Modifier.height(24.dp))
             if (draft.courseId != null) {
                 Button(onClick = { showDeleteConfirm = true }, modifier = Modifier.fillMaxWidth()) {
                     Text("删除这门课")
@@ -161,6 +116,19 @@ fun CourseEditScreen(
             }
             Spacer(Modifier.height(24.dp))
         }
+    }
+
+    // 自绘 HSV 取色面板：打开时回填课程当前色（色板索引要先转成那个索引对应的 ARGB，
+    // 否则回填出来的是"索引当色值"的近黑色，一打开盘面就跳成黑的）。
+    if (showColorPicker) {
+        ColorPickerDialog(
+            initialArgb = currentColorArgb(draft.colorTag),
+            onDismiss = { showColorPicker = false },
+            onConfirm = { argb ->
+                viewModel.setColorTag(argb)
+                showColorPicker = false
+            },
+        )
     }
 
     if (showDeleteConfirm) {
@@ -175,6 +143,15 @@ fun CourseEditScreen(
         )
     }
 }
+
+/**
+ * 打开取色面板时回填的初始色。
+ *
+ * color_tag 这一列两种语义：色板索引（0..11）与取色器 ARGB。直接把索引塞进 initialArgb
+ * 会被当成"索引号当色值"的近黑色（0..11 当 ARGB 就是几乎全黑），一打开盘面颜色就跳了。
+ */
+private fun currentColorArgb(colorTag: Int): Int =
+    if (isArgbColorTag(colorTag)) colorTag else CoursePalette.base(colorTag).toArgb()
 
 /** 顶栏：取消（关闭）/ 标题 / 保存。 */
 @Composable
@@ -207,38 +184,4 @@ private fun EditTopBar(
             )
         }
     }
-}
-
-/** 基本信息区：三个输入框各自独立接收参数，互不牵连重组。 */
-@Composable
-private fun BasicInfoFields(
-    name: String,
-    teacher: String,
-    classroom: String,
-    errorField: DraftField?,
-    onNameChange: (String) -> Unit,
-    onTeacherChange: (String) -> Unit,
-    onClassroomChange: (String) -> Unit,
-) {
-    LabeledField(
-        value = name,
-        label = "课程名",
-        isError = errorField == DraftField.NAME,
-        onValueChange = onNameChange,
-        modifier = Modifier.fillMaxWidth(),
-    )
-    LabeledField(
-        value = teacher,
-        label = "教师（可选）",
-        isError = errorField == DraftField.TEACHER,
-        onValueChange = onTeacherChange,
-        modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-    )
-    LabeledField(
-        value = classroom,
-        label = "教室（可选）",
-        isError = errorField == DraftField.CLASSROOM,
-        onValueChange = onClassroomChange,
-        modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-    )
 }

@@ -12,6 +12,8 @@ package com.gould.xputimetable.ui.theme
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
+import com.gould.xputimetable.domain.model.COLOR_TAG_ARG_THRESHOLD
+import com.gould.xputimetable.domain.model.isArgbColorTag
 
 object CoursePalette {
 
@@ -36,16 +38,34 @@ object CoursePalette {
     /** 色板大小（越界索引自动取模，防御脏数据）。 */
     val size: Int get() = bases.size
 
+    /**
+     * `courses.color_tag` 这一列同时装两种历史值：**< 阈值 = 老数据的色板索引（0..11）**，
+     * **>= 阈值 = 新用户自取色的 ARGB int**。这样取色器存出来的真彩色能直接落进同一列，
+     * 老库不用迁移、老课程的固定色也不会变。
+     *
+     * 阈值本体在 `domain.model.ColorTag`（与数据层共用同一判据，避免两处阈值漂移）；
+     * ⚠️ 判 ARGB 必须看成无符号 32 位：满不透明的 0xFFRRGGBB 写成 Int 是**负数**，
+     * 直接 `>= 阈值` 会把所有自取色判成索引 → 课程全变 0 号蓝（2026-10-02 实踩）。
+     */
+    const val ARGB_THRESHOLD: Int = COLOR_TAG_ARG_THRESHOLD
+
+    /** 这个存储值是离散色板索引还是 ARGB 真彩色？（委托 domain，保证数据层与 UI 层判据一致） */
+    fun isArgbTag(colorTag: Int): Boolean = isArgbColorTag(colorTag)
+
+    /** 把存储值还原成本课程身份用的纯色。 */
+    fun resolve(colorTag: Int): Color =
+        if (isArgbTag(colorTag)) Color(colorTag) else bases[wrapIndex(colorTag, bases.size)]
+
     /** 基础色（课程身份色）。 */
-    fun base(colorTag: Int): Color = bases[wrapIndex(colorTag, bases.size)]
+    fun base(colorTag: Int): Color = resolve(colorTag)
 
     /** 卡片背景：浅色主题低透明度、深色主题较高透明度。 */
     fun container(colorTag: Int, dark: Boolean): Color =
-        base(colorTag).copy(alpha = if (dark) 0.32f else 0.16f)
+        resolve(colorTag).copy(alpha = if (dark) 0.32f else 0.16f)
 
     /** 卡片内文字色：浅色用基础色本身，深色提亮保证对比度。 */
     fun onContainer(colorTag: Int, dark: Boolean): Color =
-        if (dark) lerp(base(colorTag), Color.White, 0.45f) else base(colorTag)
+        if (dark) lerp(resolve(colorTag), Color.White, 0.45f) else resolve(colorTag)
 
     /** 索引取模（兼容负数：脏数据或未来字段回退时不会越界崩溃）。 */
     private fun wrapIndex(index: Int, size: Int): Int = ((index % size) + size) % size

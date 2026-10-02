@@ -41,53 +41,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.gould.xputimetable.ui.components.AppIcons
+import com.gould.xputimetable.ui.components.GroupCard
+import com.gould.xputimetable.ui.components.GroupHeader
 import com.gould.xputimetable.ui.theme.ListRow
 
 /**
- * 分组卡片（M11）：把同类设置项装进一个圆角容器，组内条目用横线分隔。
- *
- * 参照产品负责人给的两张设置页截图（系统设置 / QQ 设置）的版式：
- * 组标题在卡片**外面**（灰小字），卡片本身 = 圆角 + **与页面同色的白面** + 发丝描边。
- *
- * 为什么是"白面 + 描边"而不是"淡灰底 + 淡描边"（M11-第三批按参考图回改）：
- * 淡灰底在浅色主题下会和页面底色糊在一起，卡片边界要先看清底色差才看得见，
- * 于是"同组"这件事被弱化成一片灰。参考截图里页面是浅灰底、卡片是白面，
- * 边界完全靠**描边**成立 —— 这也和后面"可自定义背景"的方向一致：
- * 卡片不引入第三种底色，换背景时它只会跟着 surface 走，不会压出一条色带。
+ * 分组卡片（M11）：卡片本体已下沉到 `ui.components.CardGroup`（GroupCard/GroupHeader），
+ * 与「添加课程」页共用同一套实现。这里保留旧名做转发，避免改动整个 settings 包的调用点。
  */
 @Composable
 internal fun SettingsGroupCard(
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit,
-) {
-    val shape = RoundedCornerShape(ListRow.CardCorner)
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(shape)
-            // 白面（= colorScheme.surface）而非 surfaceContainerLow：与页面只差"是否被描边框住"这一件事。
-            .background(MaterialTheme.colorScheme.surface)
-            .border(
-                width = 1.dp,
-                color = MaterialTheme.colorScheme.outlineVariant
-                    .copy(alpha = ListRow.CardBorderAlpha),
-                shape = shape,
-            )
-            .padding(horizontal = ListRow.CardPadding, vertical = ListRow.CardPaddingV),
-        content = content,
-    )
-}
+) = GroupCard(modifier = modifier, content = content)
 
-/** 分组标题（小号灰字，靠上留出与上一组的间距）。 */
+/** 分组标题：转发到共享实现。 */
 @Composable
-internal fun SettingsGroupHeader(text: String) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.labelLarge,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        modifier = Modifier.padding(top = ListRow.GroupSpacing, bottom = 4.dp),
-    )
-}
+internal fun SettingsGroupHeader(text: String) = GroupHeader(text)
 
 /** 可进二级页的条目：右侧「>」（与系统设置页一致）。 */
 @Composable

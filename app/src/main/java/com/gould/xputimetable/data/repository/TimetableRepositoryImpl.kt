@@ -22,6 +22,7 @@ import com.gould.xputimetable.data.db.dao.TimeSlotDao
 import com.gould.xputimetable.data.transfer.ScheduleCodec
 import com.gould.xputimetable.data.transfer.ScheduleSnapshotDto
 import com.gould.xputimetable.domain.WeekCalc
+import com.gould.xputimetable.domain.model.isValidColorTag
 import com.gould.xputimetable.domain.model.Course
 import com.gould.xputimetable.domain.model.CourseSession
 import com.gould.xputimetable.domain.model.CourseSource
@@ -92,7 +93,11 @@ class TimetableRepositoryImpl(
         // 而不是写进库里变成"看起来正常但渲染不出来"的脏数据）
         require(course.name.isNotBlank()) { "课程名不能为空" }
         require(course.termId > 0) { "课程必须归属于某个学期（termId 必须大于 0）" }
-        require(course.colorTag >= 0) { "课程颜色索引不能为负数" }
+        // 颜色这一列两种合法值：老数据的离散索引（0..11，**非负**）与取色器自取的 ARGB（满透明时
+        // 写成 Int 是**负数**）。原来这里只判 >= 0，自取色的课会在数据层直接抛异常、根本存不进去。
+        require(isValidColorTag(course.colorTag)) {
+            "课程颜色值非法：${course.colorTag}（既不是色板索引也不是 ARGB）"
+        }
         sessions.forEach { session ->
             require(session.courseId == course.id) {
                 "上课安排的 courseId（${session.courseId}）与课程 id（${course.id}）不一致"

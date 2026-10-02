@@ -95,4 +95,10 @@ object AppIcons {
     /** 失败后重试 */
     @DrawableRes
     val refresh: Int = R.drawable.lucide_ic_refresh_cw
+
+    // ---------- 课程颜色（M11-第三批 取色器）----------
+
+    /** 自取色入口（打开 HSV 取色面板；课程色板之外的"自定义"按钮） */
+    @DrawableRes
+    val palette: Int = R.drawable.lucide_ic_palette
 }
