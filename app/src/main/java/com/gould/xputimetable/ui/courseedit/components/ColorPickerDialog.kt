@@ -13,7 +13,7 @@
  * 两层叠完，(x=w,y=0) 是纯色、(x=0,y=0) 是白、(y=h) 是黑——正好是 HSV 平面该有的样子。
  * 于是 hue 变化时只换一层 brush，平面内拖动时两层都不变，每帧只多画指示圈。
  *
- * 交互：拖动 + 点按都能取色（detectDragGestures 的 onDragStart 在按下时先给一次）。
+ * 交互：拖动 + 点按都能取色（手势见文件尾的 pickGesture，按下先给一次，之后跟手）。
  * 指针换算全部在 px 侧做，并且 clamp 到 0..1——手指落在角上不能算出 -0.2 把整块染黑。
  *
  * 手输 hex：解析失败**静默不改色**（输入框每敲一个字都走一次，抛异常等于敲错一个字就崩）。
@@ -51,6 +51,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -211,6 +212,11 @@ private fun HueCanvas(
     Box(
         modifier = modifier
             .border(1.dp, MaterialTheme.colorScheme.outlineVariant, shape)
+            // ⚠️ clip 必须加：drawRect 铺的是**直角**，而 border 画的是**圆角**，两者形状不齐，
+            // 渐变会从圆角弧外面戳出去，四个角各漏一块黑色/深红的小三角（底下两角最明显）。
+            // clip 之后填充跟着同一个 shape 走，角就干净了。这条孤立地看不出毛病，
+            // 是 2026-10-02 老大问"为什么四个角有三角形"才揪出来的。
+            .clip(shape)
             .pointerInput(Unit) { pickGesture { offset -> pick(offset.x, offset.y) } },
     ) {
         Canvas(modifier = Modifier.matchParentSize()) {
@@ -248,16 +254,20 @@ private fun HueSlider(
     modifier: Modifier = Modifier,
 ) {
     fun pick(y: Float) = onPick((1f - y / heightPx).coerceIn(0f, 1f) * 360f)
-    val bars = remember { (0 until 6).map { Color(ColorPickerMath.hsvToArgb(it * 60f + 30f, 1f, 1f)) } }
+    // 同 HueCanvas：clip 和 border 必须是同一个 shape，否则彩虹细条两头也会漏出同款小三角
+    val shape = RoundedCornerShape(ListRow.CardCorner)
 
     Box(
         modifier = modifier
-            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(ListRow.CardCorner))
+            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, shape)
+            .clip(shape)
             .pointerInput(Unit) { pickGesture { offset -> pick(offset.y) } },
     ) {
         Canvas(modifier = Modifier.matchParentSize()) {
-            val step = size.height / 6f
-            for (i in bars.indices) drawRect(color = bars[i], topLeft = Offset(0f, i * step), size = Size(size.width, step + 1f))
+            // 一条纵向渐变把 7 个停靠点插值开：红→黄→绿→青→蓝→洋红→红，
+            // 段与段之间不再有硬边（之前是 6 段纯色方块，看着就是"只有这几档颜色"）。
+            // ⚠️ 带停靠点的重载是 vararg，调用必须写具名参数 + 展开符，位置传参会匹配到 List<Color> 那个重载上
+            drawRect(brush = Brush.verticalGradient(*HUE_STOPS.toTypedArray(), startY = 0f, endY = size.height))
         }
         Canvas(modifier = Modifier.matchParentSize()) {
             val y = (hue.coerceIn(0f, 360f) / 360f) * size.height
