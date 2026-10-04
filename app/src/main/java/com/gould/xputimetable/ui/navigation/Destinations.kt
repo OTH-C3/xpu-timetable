@@ -18,6 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.gould.xputimetable.data.prefs.BackgroundPrefs
 import com.gould.xputimetable.data.prefs.UiPrefs
 import com.gould.xputimetable.domain.repository.TimetableRepository
 import com.gould.xputimetable.importer.api.ImportResult
@@ -54,6 +55,9 @@ internal sealed interface AppScreen {
     data class ImportPreview(val needsConfirm: ImportResult.NeedsConfirm) : AppScreen
     data object Profile : AppScreen
     data object QrShare : AppScreen
+
+    /** 待办清单页（M12 需求五）：底栏第三项，对应「便签」这一档背景作用域。 */
+    data object Note : AppScreen
 
     /**
      * 学期设置页（M9）：起始日 + 总周数，改完**自动保存**。
@@ -105,6 +109,8 @@ internal fun ProfileDestination(
     onDataChanged: suspend () -> Unit,
     /** M11：界面偏好（「显示老师姓名」）。 */
     uiPrefs: UiPrefs,
+    /** M12：背景偏好（自定义背景入口）。 */
+    backgroundPrefs: BackgroundPrefs,
     onShowHint: (String) -> Unit,
     onOpenTermSetup: () -> Unit,
     onOpenSubPage: (ProfileSubPage) -> Unit,
@@ -113,6 +119,7 @@ internal fun ProfileDestination(
     SettingsScreen(
         viewModel = settingsViewModel(repository, canScheduleExact, onDataChanged, uiPrefs),
         repository = repository,
+        backgroundPrefs = backgroundPrefs,
         onOpenTermSetup = onOpenTermSetup,
         onOpenSubPage = onOpenSubPage,
         onShareQr = onShareQr,
@@ -128,11 +135,17 @@ internal fun ProfileSubDestination(
     canScheduleExact: () -> Boolean,
     onDataChanged: suspend () -> Unit,
     uiPrefs: UiPrefs,
+    backgroundPrefs: BackgroundPrefs,
+    onShowHint: (String) -> Unit,
     onBack: () -> Unit,
 ) {
     ProfileSubScreen(
         page = page,
         viewModel = settingsViewModel(repository, canScheduleExact, onDataChanged, uiPrefs),
+        backgroundPrefs = backgroundPrefs,
+        uiPrefs = uiPrefs,
+        repository = repository,
+        onShowHint = onShowHint,
         onBack = onBack,
     )
 }

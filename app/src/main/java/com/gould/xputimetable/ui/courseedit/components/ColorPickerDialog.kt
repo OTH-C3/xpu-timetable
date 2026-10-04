@@ -1,1 +1,277 @@
-LyoKICogQ29sb3JQaWNrZXJEaWFsb2cua3Qg4oCU4oCUIOivvueoi+minOiJsumAieaLqeWZqO+8iOiHque7mCBIU1bvvIxNMTEt56ys5LiJ5om577yJCiAqCiAqIOS4uuS7gOS5iOiHquW3seeUu++8mui/meexu+W6k+WKqOi+hOWHoOWNg+ihjOi/mOW4puiHquW3seeahOeKtuaAgee6puWumu+8jOiAjOaIkeS7rOimgeeahOWPquaYr+S4gOWdlyBTw5dWIOW5s+mdoiArCiAqIOS4gOadoeiJsuebuOadoSArIOS4gOS4qiBoZXgg5qGG77yM5LiU6aKc6Imy6KaB55u05o6l6JC95YiwIGBjb3Vyc2VzLmNvbG9yX3RhZ2DvvIhJbnQg5YiX77yJ44CC6Ieq5bex55S7IDE4MCDooYzvvIwKICog5b2i54q25a6M5YWo5Y+v5o6n77yM5Lmf5LiN6Lef552A5bqT55qEIEFQSSDmvILnp7vlnY/mjonjgIIKICoKICog5oCn6IO95Y+W6IiN77yaU8OXViDlubPpnaLvvIjmqKrlkJHppbHlkozluqYgLyDnurXlkJHmmI7luqbvvInlpoLmnpzmjInlg4/ntKDmoLzljrvnlLvvvIzopoHkuYjmr4/luKfph43nrpfkuIrnmb7mrKEgSFNW4oaSUkdCCiAqIOWPkeeDq++8jOimgeS5iOW+l+S4gOWdqCBHcmlkQ2VsbCDmlbDmja7lho3liqDnvJPlrZjigJTigJTkuKTmnaHot6/pg73miooi5LiA5Z2X5riQ5Y+Y55uYIuWGmeaIkOS6huWHoOeZvuihjOOAggogKiDov5nph4zmlLnmiJAqKuS4pOWxgiBCcnVzaCDlj6DliqAqKu+8jOaBkuWumuS4pOasoSBkcmF3UmVjdO+8mgogKiAgIOKRoCDmqKrlkJEg55m9IOKGkiDlvZPliY3oibLnm7jnmoTmnIDnuq/oibLvvIjopobnm5bmlbTlnZfvvIzmiorppbHlkozluqbpk7rlvIDvvInvvJsKICogICDikaEg57q15ZCRIOmAj+aYjiDihpIg6buR77yI6KaG55uW5pW05Z2X77yM6LaK5b6A5LiL6LaK6buR77yM5oqK5piO5bqm5Y6L5LiL5p2l77yJ44CCCiAqIOS4pOWxguWPoOWujO+8jCh4PXcseT0wKSDmmK/nuq/oibLjgIEoeD0wLHk9MCkg5piv55m944CBKHk9aCkg5piv6buR4oCU4oCU5q2j5aW95pivIEhTViDlubPpnaLor6XmnInnmoTmoLflrZDjgIIKICog5LqO5pivIGh1ZSDlj5jljJbml7blj6rmjaLkuIDlsYIgYnJ1c2jvvIzlubPpnaLlhoXmi5bliqjml7bkuKTlsYLpg73kuI3lj5jvvIzmr4/luKflj6rlpJrnlLvmjIfnpLrlnIjjgIIKICoKICog5Lqk5LqS77ya5ouW5YqoICsg54K55oyJ6YO96IO95Y+W6Imy77yI5omL5Yq/6KeB5paH5Lu25bC+55qEIHBpY2tHZXN0dXJl77yM5oyJ5LiL5YWI57uZ5LiA5qyh77yM5LmL5ZCO6Lef5omL77yJ44CCCiAqIOaMh+mSiOaNoueul+WFqOmDqOWcqCBweCDkvqflgZrvvIzlubbkuJQgY2xhbXAg5YiwIDAuLjHigJTigJTmiYvmjIfokL3lnKjop5LkuIrkuI3og73nrpflh7ogLTAuMiDmiormlbTlnZfmn5Ppu5HjgIIKICoKICog5omL6L6TIGhleO+8muino+aekOWksei0pSoq6Z2Z6buY5LiN5pS56ImyKirvvIjovpPlhaXmoYbmr4/mlbLkuIDkuKrlrZfpg73otbDkuIDmrKHvvIzmipvlvILluLjnrYnkuo7mlbLplJnkuIDkuKrlrZflsLHltKnvvInjgIIKICovCnBhY2thZ2UgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS5jb3Vyc2VlZGl0LmNvbXBvbmVudHMKCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24uQ2FudmFzCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24uYm9yZGVyCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24uZ2VzdHVyZXMuYXdhaXRFYWNoR2VzdHVyZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmdlc3R1cmVzLmF3YWl0Rmlyc3REb3duCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LkFycmFuZ2VtZW50CmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LkJveAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5Cb3hXaXRoQ29uc3RyYWludHMKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQuQ29sdW1uCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LlJvdwppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5maWxsTWF4V2lkdGgKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQuaGVpZ2h0SW4KaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQucGFkZGluZwppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5zaXplCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LndpZHRoCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24uc2hhcGUuUm91bmRlZENvcm5lclNoYXBlCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5BbGVydERpYWxvZwppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5tYXRlcmlhbDMuTWF0ZXJpYWxUaGVtZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5tYXRlcmlhbDMuT3V0bGluZWRUZXh0RmllbGQKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UubWF0ZXJpYWwzLlRleHQKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UubWF0ZXJpYWwzLlRleHRCdXR0b24KaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuaW5wdXQucG9pbnRlci5Qb2ludGVySW5wdXRTY29wZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS51aS5pbnB1dC5wb2ludGVyLlBvaW50ZXJFdmVudFBhc3MKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkud2luZG93LkRpYWxvZ1Byb3BlcnRpZXMKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UucnVudGltZS5Db21wb3NhYmxlCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnJ1bnRpbWUuZ2V0VmFsdWUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UucnVudGltZS5rZXkKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UucnVudGltZS5tdXRhYmxlU3RhdGVPZgppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5ydW50aW1lLnJlbWVtYmVyCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnJ1bnRpbWUuc2V0VmFsdWUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuQWxpZ25tZW50CmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLk1vZGlmaWVyCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLmRyYXcuY2xpcAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS51aS5nZW9tZXRyeS5PZmZzZXQKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuZ3JhcGhpY3MuQnJ1c2gKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuZ3JhcGhpY3MuQ29sb3IKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuZ3JhcGhpY3MuZHJhd3Njb3BlLkRyYXdTY29wZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS51aS5pbnB1dC5wb2ludGVyLnBvaW50ZXJJbnB1dAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS51aS5wbGF0Zm9ybS5Mb2NhbERlbnNpdHkKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkudW5pdC5kcAppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS5jb3Vyc2VlZGl0LkNvbG9yUGlja2VyTWF0aAppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS50aGVtZS5MaXN0Um93CgovLyAtLS0tLS0tLS0tIOaWh+S7tue6p+W4uOmHjyAtLS0tLS0tLS0tCnByaXZhdGUgY29uc3QgdmFsIEhBTkRMRV9SQURJVVNfUFggPSA5Zgpwcml2YXRlIGNvbnN0IHZhbCBIQU5ETEVfU1RST0tFX1BYID0gM2YKcHJpdmF0ZSB2YWwgSFVFX0JBUl9XSURUSCA9IDI0LmRwICAgICAvLyDlj7PkvqfoibLnm7jmnaHlrr3luqYKcHJpdmF0ZSB2YWwgSFVFX0JBUl9HQVAgPSAxMi5kcCAgICAgICAgLy8g5LiO5bmz6Z2i55qE6Ze06LedCgovKioKICog6Imy55u45p2h55qEIDcg5Liq5YGc6Z2g54K544CCCiAqIOWktOWwvumDveaYryAwwrDnuqLvvJroibLnm7jmmK/njq/vvIwzNjDCsCDkuI4gMMKwIOWQjOiJsu+8jOadoeWtkOmmluWwvuaJjeaOpeW+l+S4iuOAgeS4jemcsuWHuuaOpee8neOAggogKi8KcHJpdmF0ZSB2YWwgSFVFX1NUT1BTOiBMaXN0PFBhaXI8RmxvYXQsIENvbG9yPj4gPSBsaXN0T2YoCiAgICAwZiwgNjBmLCAxMjBmLCAxODBmLCAyNDBmLCAzMDBmLCAzNjBmLAopLm1hcCB7IGggLT4gKGggLyAzNjBmKSB0byBDb2xvcihDb2xvclBpY2tlck1hdGguaHN2VG9BcmdiKGgsIDFmLCAxZikpIH0KCi8qKgogKiDlj5boibLpnaLmnb/jgIIKICoKICogQHBhcmFtIGluaXRpYWxBcmdiIOaJk+W8gOaXtuWbnuWhq+eahOminOiJsu+8iOivvueoi+W9k+WJjeiJsu+8iQogKiBAcGFyYW0gb25EaXNtaXNzICAg5Y+W5raIIC8g54K55aSW6YOo5YWz6ZetCiAqIEBwYXJhbSBvbkNvbmZpcm0gICDnoa7lrprvvIzlm57kvKDkuI3pgI/mmI4gQVJHQiBpbnTvvIjlj6/nm7TmjqXlhpnov5sgY29sb3JfdGFn77yJCiAqLwpAQ29tcG9zYWJsZQppbnRlcm5hbCBmdW4gQ29sb3JQaWNrZXJEaWFsb2coCiAgICBpbml0aWFsQXJnYjogSW50LAogICAgb25EaXNtaXNzOiAoKSAtPiBVbml0LAogICAgb25Db25maXJtOiAoSW50KSAtPiBVbml0LAogICAgbW9kaWZpZXI6IE1vZGlmaWVyID0gTW9kaWZpZXIsCikgewogICAgdmFsIGluaXRpYWwgPSBDb2xvclBpY2tlck1hdGguYXJnYlRvSHN2KGluaXRpYWxBcmdiKQogICAgdmFyIGh1ZSBieSByZW1lbWJlciB7IG11dGFibGVTdGF0ZU9mKGluaXRpYWxbMF0pIH0KICAgIHZhciBzYXQgYnkgcmVtZW1iZXIgeyBtdXRhYmxlU3RhdGVPZihpbml0aWFsWzFdKSB9CiAgICB2YXIgdmFsdWUgYnkgcmVtZW1iZXIgeyBtdXRhYmxlU3RhdGVPZihpbml0aWFsWzJdKSB9CiAgICAvLyBoZXgg5paH5pys5qGG77ya5omL6L6T5pe25a6D5pivIua6kCLvvIzlhbbkvZnml7blgJnmmK8i5pi+56S6Iu+8jOS4pOi+ueS6kuS4uumVnOWDjwogICAgdmFyIGhleFRleHQgYnkgcmVtZW1iZXIgeyBtdXRhYmxlU3RhdGVPZihDb2xvclBpY2tlck1hdGguZm9ybWF0SGV4KGluaXRpYWxBcmdiKSkgfQoKICAgIGZ1biBhcHBseUhzdihoOiBGbG9hdCwgczogRmxvYXQsIHY6IEZsb2F0KSB7CiAgICAgICAgaHVlID0gaAogICAgICAgIHNhdCA9IHMKICAgICAgICB2YWx1ZSA9IHYKICAgICAgICBoZXhUZXh0ID0gQ29sb3JQaWNrZXJNYXRoLmZvcm1hdEhleChDb2xvclBpY2tlck1hdGguaHN2VG9BcmdiKGgsIHMsIHYpKQogICAgfQoKICAgIEFsZXJ0RGlhbG9nKAogICAgICAgIG9uRGlzbWlzc1JlcXVlc3QgPSBvbkRpc21pc3MsCiAgICAgICAgLy8g4pqg77iPIOW/hemhu+WFs+aOiSLngrnlpJbpnaLlsLHlhbMi77ya5Y+W6Imy55uY5pys6Lqr5bCx5piv5LiA5aSn54mH5Y+v54K55Yy65Z+f77yM55So5oi35q+P5qyh54K555uY5a2Q5Y+W6ImyCiAgICAgICAgLy8g6YO95Lya6KKr5b2T5oiQIueCueWklumDqCLmiorpnaLmnb/lhbPmjonvvIzlj5boibLlmajnrYnkuo7msqHms5XnlKjvvIgyMDI2LTEwLTAyIOecn+acui/mqKHmi5/lmajlrp7mtYvlpI3njrDvvInjgIIKICAgICAgICAvLyDlj6rmnInjgIzlj5bmtojjgI3jgIzkv53lrZjjgI3kuKTkuKrmjInpkq7og73lhbPpnaLmnb/vvIzkuK3pgJTngrnnqbrlpITkuI3or6XkuKLov5vluqbjgIIKICAgICAgICAvLyDimqDvuI8g5pys54mI5pysIG1hdGVyaWFsMyDnmoQgQWxlcnREaWFsb2cg5rKh5pyJIGRpc21pc3NPbkNsaWNrT3V0c2lkZSAvIGRpc21pc3NPbkJhY2tQcmVzcwogICAgICAgIC8vIOi/meS4pOS4quWFt+WQjeWPguaVsO+8jOS4pOS4quW8gOWFs+mDveaMguWcqCBEaWFsb2dQcm9wZXJ0aWVzIOS4iu+8iOWGmeaIkOWFt+WQjeWPguaVsOS8muaVtOeJh+e8luivkeWksei0pe+8ieOAggogICAgICAgIHByb3BlcnRpZXMgPSBEaWFsb2dQcm9wZXJ0aWVzKGRpc21pc3NPbkJhY2tQcmVzcyA9IGZhbHNlLCBkaXNtaXNzT25DbGlja091dHNpZGUgPSBmYWxzZSksCiAgICAgICAgdGl0bGUgPSB7IFRleHQoIuivvueoi+minOiJsiIpIH0sCiAgICAgICAgdGV4dCA9IHsKICAgICAgICAgICAgQm94V2l0aENvbnN0cmFpbnRzKG1vZGlmaWVyID0gbW9kaWZpZXIuZmlsbE1heFdpZHRoKCkpIHsKICAgICAgICAgICAgICAgIHZhbCBzaWRlID0gKG1heFdpZHRoIC0gSFVFX0JBUl9XSURUSCAtIEhVRV9CQVJfR0FQKS5jb2VyY2VBdExlYXN0KDIwMC5kcCkKICAgICAgICAgICAgICAgIC8vIOebtOaOpeS5mCBkZW5zaXR577yadG9QeCDmianlsZXlnKjmnKzniYjmnKzop6PmnpDkuI3liLDvvIzkuI3lgLzlvpfkuLrkuIDkuKrkuZjms5XlvJXkvp3otZYKICAgICAgICAgICAgICAgIHZhbCBzaWRlUHggPSBzaWRlLnZhbHVlICogTG9jYWxEZW5zaXR5LmN1cnJlbnQuZGVuc2l0eQogICAgICAgICAgICAgICAgQ29sdW1uIHsKICAgICAgICAgICAgICAgICAgICBSb3coCiAgICAgICAgICAgICAgICAgICAgICAgIG1vZGlmaWVyID0gTW9kaWZpZXIuZmlsbE1heFdpZHRoKCksCiAgICAgICAgICAgICAgICAgICAgICAgIHZlcnRpY2FsQWxpZ25tZW50ID0gQWxpZ25tZW50LkNlbnRlclZlcnRpY2FsbHksCiAgICAgICAgICAgICAgICAgICAgICAgIGhvcml6b250YWxBcnJhbmdlbWVudCA9IEFycmFuZ2VtZW50LnNwYWNlZEJ5KEhVRV9CQVJfR0FQKSwKICAgICAgICAgICAgICAgICAgICApIHsKICAgICAgICAgICAgICAgICAgICAgICAgSHVlQ2FudmFzKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgaHVlID0gaHVlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2F0dXJhdGlvbiA9IHNhdCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZhbHVlID0gdmFsdWUsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBvblBpY2sgPSB7IHMsIHYgLT4gYXBwbHlIc3YoaHVlLCBzLCB2KSB9LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2lkZVB4ID0gc2lkZVB4LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgbW9kaWZpZXIgPSBNb2RpZmllci5zaXplKHNpZGUpLAogICAgICAgICAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICAgICAgICAgIEh1ZVNsaWRlcigKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGh1ZSA9IGh1ZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uUGljayA9IHsgaCAtPiBhcHBseUhzdihoLCBzYXQsIHZhbHVlKSB9LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVpZ2h0UHggPSBzaWRlUHgsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBtb2RpZmllciA9IE1vZGlmaWVyLnNpemUoSFVFX0JBUl9XSURUSCwgc2lkZSksCiAgICAgICAgICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgICAgIE91dGxpbmVkVGV4dEZpZWxkKAogICAgICAgICAgICAgICAgICAgICAgICB2YWx1ZSA9IGhleFRleHQsCiAgICAgICAgICAgICAgICAgICAgICAgIG9uVmFsdWVDaGFuZ2UgPSB7IHRleHQgLT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhleFRleHQgPSB0ZXh0CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAvLyDop6PmnpDkuI3lh7rmnaXlsLHkv53mjIHnjrDnirbvvJrkuI3lm57mu5rovpPlhaXmoYbvvIjnlKjmiLfov5jlnKjmiZPvvInvvIzkuZ/kuI3mlLnoibIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIENvbG9yUGlja2VyTWF0aC5wYXJzZUhleCh0ZXh0KT8ubGV0IHsgcGlja2VkIC0+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFsIGhzdiA9IENvbG9yUGlja2VyTWF0aC5hcmdiVG9Ic3YocGlja2VkKQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGh1ZSA9IGhzdlswXQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNhdCA9IGhzdlsxXQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZhbHVlID0gaHN2WzJdCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIHNpbmdsZUxpbmUgPSB0cnVlLAogICAgICAgICAgICAgICAgICAgICAgICBsYWJlbCA9IHsgVGV4dCgiI1JSR0dCQiIpIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIG1vZGlmaWVyID0gTW9kaWZpZXIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5maWxsTWF4V2lkdGgoKQogICAgICAgICAgICAgICAgICAgICAgICAgICAgLnBhZGRpbmcodG9wID0gMTIuZHApCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAuaGVpZ2h0SW4obWluID0gTGlzdFJvdy5NaW5IZWlnaHQpLAogICAgICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgY29uZmlybUJ1dHRvbiA9IHsKICAgICAgICAgICAgVGV4dEJ1dHRvbihvbkNsaWNrID0geyBvbkNvbmZpcm0oQ29sb3JQaWNrZXJNYXRoLmhzdlRvQXJnYihodWUsIHNhdCwgdmFsdWUpKSB9KSB7IFRleHQoIuS/neWtmCIpIH0KICAgICAgICB9LAogICAgICAgIGRpc21pc3NCdXR0b24gPSB7IFRleHRCdXR0b24ob25DbGljayA9IG9uRGlzbWlzcykgeyBUZXh0KCLlj5bmtogiKSB9IH0sCiAgICApCn0KCi8qKgogKiDjgIzmjInkuIvlsLHlj5boibIgKyDot5/nnYDmiYvmjIfotbDjgI3nmoTmiYvlir/vvIwqKueCueaMieWSjOaLluWKqOmDveeUn+aViCoq44CCCiAqCiAqIOKaoO+4jyDkuI3og73nlKggYGRldGVjdERyYWdHZXN0dXJlc2DvvJrlroPlhoXpg6jopoHnrYnotorov4cgdG91Y2hTbG9wIOaJjei/myBEcmFnZ2luZyDnirbmgIHvvIjmnKzniYjmnKzmmK8KICogQXdhaXREb3duIOKGkiBBd2FpdFRvdWNoU2xvcCDihpIgRHJhZ2dpbmcg54q25oCB5py677yJ77yMKirkuI3liqjmiYvngrnkuIDkuIvmoLnmnKzkuI3kvJrop6blj5Egb25EcmFnU3RhcnQqKuOAggogKiDogIwi54K55LiA5LiL6YCJ5Liq6aKc6ImyIuaBsOaBsOaYr+WPluiJsuWZqOacgOW4uOeUqOeahOaTjeS9nOKAlOKAlDIwMjYtMTAtMDIg5qih5ouf5Zmo5a6e5rWL77ya54K55bmz6Z2iIGhleCDnurnkuJ3kuI3liqjvvIwKICog5b6X5ouW5LiA5LiL5omN5Y+Y77yb5Y+z5L6n6Imy55u45p2h54K56Imy5bim5ZCM5qC35rKh5Y+N5bqU77yI5ZCM5LiA5aSE5q+b55eF77yJ44CCCiAqCiAqIOS6juaYr+iHquW3sei1sOS4gOmBjSBgYXdhaXRFYWNoR2VzdHVyZWDvvJrmjInkuIvljbPlj5bkuIDmrKHoibLvvIjngrnmjInmnInlj43ppojvvInvvIzkuYvlkI7mr4/kuKrkuovku7bpg73ot5/miYvmm7TmlrDvvIwKICog6K+75Yiw5oqs6LW35bCx5pS25bC+44CC5oyH6ZKI56a75byA5bmz6Z2i5pe25Z2Q5qCH54Wn5qC3IGNsYW1wIOi/h++8jOS4jeS8mueul+WHuiAwLjgg6L+Z56eN6LaK55WM5q+U5L6L44CCCiAqLwpwcml2YXRlIHN1c3BlbmQgZnVuIFBvaW50ZXJJbnB1dFNjb3BlLnBpY2tHZXN0dXJlKHBpY2s6IChPZmZzZXQpIC0+IFVuaXQpIHsKICAgIGF3YWl0RWFjaEdlc3R1cmUgewogICAgICAgIHBpY2soYXdhaXRGaXJzdERvd24oKS5wb3NpdGlvbikKICAgICAgICB3aGlsZSAodHJ1ZSkgewogICAgICAgICAgICB2YWwgY2hhbmdlID0gYXdhaXRQb2ludGVyRXZlbnQoUG9pbnRlckV2ZW50UGFzcy5NYWluKS5jaGFuZ2VzLmZpcnN0T3JOdWxsKCkgPzogYnJlYWsKICAgICAgICAgICAgLy8g5pys54mI5pys55qEIFBvaW50ZXJJbnB1dENoYW5nZSDmsqHmnIkgY2hhbmdlZFRvVXAoKe+8jOmdoCBwcmVzc2VkIOeahOWbnuiQveWIpOaKrOi1twogICAgICAgICAgICBpZiAoIWNoYW5nZS5wcmVzc2VkICYmIGNoYW5nZS5wcmV2aW91c1ByZXNzZWQpIGJyZWFrCiAgICAgICAgICAgIHBpY2soY2hhbmdlLnBvc2l0aW9uKQogICAgICAgIH0KICAgIH0KfQoKLyoqCiAqIFPDl1Yg5bmz6Z2i77ya5qiq5ZCR5piv6aWx5ZKM5bqm77yI5bem55m95Y+z57qv6Imy77yJ77yM57q15ZCR5piv5piO5bqm77yI5LiL5Lqu5LiK6buR77yJ44CCCiAqCiAqIEBwYXJhbSBzaWRlUHgg6L656ZW/77yIcHjvvInvvJrmjIfpkojmjaLnrpfopoHnlKjvvIzlsLrlr7jnlLHlpJblsYLph4/lpb3kvKDov5vmnaXvvIznnIHmjokgb25TaXplQ2hhbmdlZCDnmoTml7bluo/liKTmlq0KICovCkBDb21wb3NhYmxlCnByaXZhdGUgZnVuIEh1ZUNhbnZhcygKICAgIGh1ZTogRmxvYXQsCiAgICBzYXR1cmF0aW9uOiBGbG9hdCwKICAgIHZhbHVlOiBGbG9hdCwKICAgIHNpZGVQeDogRmxvYXQsCiAgICBvblBpY2s6IChGbG9hdCwgRmxvYXQpIC0+IFVuaXQsCiAgICBtb2RpZmllcjogTW9kaWZpZXIgPSBNb2RpZmllciwKKSB7CiAgICBmdW4gcGljayh4OiBGbG9hdCwgeTogRmxvYXQpID0gb25QaWNrKCh4IC8gc2lkZVB4KS5jb2VyY2VJbigwZiwgMWYpLCAoMWYgLSB5IC8gc2lkZVB4KS5jb2VyY2VJbigwZiwgMWYpKQogICAgdmFsIHNoYXBlID0gUm91bmRlZENvcm5lclNoYXBlKExpc3RSb3cuQ2FyZENvcm5lcikKCiAgICBCb3goCiAgICAgICAgbW9kaWZpZXIgPSBtb2RpZmllcgogICAgICAgICAgICAuYm9yZGVyKDEuZHAsIE1hdGVyaWFsVGhlbWUuY29sb3JTY2hlbWUub3V0bGluZVZhcmlhbnQsIHNoYXBlKQogICAgICAgICAgICAvLyDimqDvuI8gY2xpcCDlv4XpobvliqDvvJpkcmF3UmVjdCDpk7rnmoTmmK8qKuebtOinkioq77yM6ICMIGJvcmRlciDnlLvnmoTmmK8qKuWchuinkioq77yM5Lik6ICF5b2i54q25LiN6b2Q77yMCiAgICAgICAgICAgIC8vIOa4kOWPmOS8muS7juWchuinkuW8p+WklumdouaIs+WHuuWOu++8jOWbm+S4quinkuWQhOa8j+S4gOWdl+m7keiJsi/mt7HnuqLnmoTlsI/kuInop5LvvIjlupXkuIvkuKTop5LmnIDmmI7mmL7vvInjgIIKICAgICAgICAgICAgLy8gY2xpcCDkuYvlkI7loavlhYXot5/nnYDlkIzkuIDkuKogc2hhcGUg6LWw77yM6KeS5bCx5bmy5YeA5LqG44CC6L+Z5p2h5a2k56uL5Zyw55yL5LiN5Ye65q+b55eF77yMCiAgICAgICAgICAgIC8vIOaYryAyMDI2LTEwLTAyIOiAgeWkp+mXriLkuLrku4DkuYjlm5vkuKrop5LmnInkuInop5LlvaIi5omN5o+q5Ye65p2l55qE44CCCiAgICAgICAgICAgIC5jbGlwKHNoYXBlKQogICAgICAgICAgICAucG9pbnRlcklucHV0KFVuaXQpIHsgcGlja0dlc3R1cmUgeyBvZmZzZXQgLT4gcGljayhvZmZzZXQueCwgb2Zmc2V0LnkpIH0gfSwKICAgICkgewogICAgICAgIENhbnZhcyhtb2RpZmllciA9IE1vZGlmaWVyLm1hdGNoUGFyZW50U2l6ZSgpKSB7CiAgICAgICAgICAgIC8vIOS4pOWxgiBicnVzaCDpk7rmu6HmlbTlnZfvvJoKICAgICAgICAgICAgLy8g4pGgIOaoquWQkSDnmb3ihpLnuq/oibLvvIzmiorppbHlkozluqbku44gMCDpk7rliLAgMTAwJe+8iOW3puerr+awuOi/nOaYr+eZve+8iQogICAgICAgICAgICAvLyDikaEg57q15ZCRIOmAj+aYjuKGkum7ke+8jOaKiuaYjuW6puS7jiAxMDAlIOWOi+WIsCAwJe+8iOS4i+err+awuOi/nOaYr+m7ke+8iQogICAgICAgICAgICAvLyDlj6DliqDnu5PmnpzlsLHmmK/moIflh4YgSFNWIOW5s+mdou+8jOS4lOi3nyBodWUg5oCO5LmI5Y+Y5peg5YWz77yM5Y+q5pyJ5Lik5bGCIGJydXNoIOWcqOaNouOAggogICAgICAgICAgICB2YWwgcHVyZSA9IENvbG9yKENvbG9yUGlja2VyTWF0aC5oc3ZUb0FyZ2IoaHVlLCAxZiwgMWYpKQogICAgICAgICAgICBkcmF3UmVjdChicnVzaCA9IEJydXNoLmhvcml6b250YWxHcmFkaWVudChsaXN0T2YoQ29sb3IuV2hpdGUsIHB1cmUpLCAwZiwgc2l6ZS53aWR0aCkpCiAgICAgICAgICAgIGRyYXdSZWN0KGJydXNoID0gQnJ1c2gudmVydGljYWxHcmFkaWVudChsaXN0T2YoQ29sb3IuVHJhbnNwYXJlbnQsIENvbG9yLkJsYWNrKSwgMGYsIHNpemUuaGVpZ2h0KSkKICAgICAgICB9CiAgICAgICAgQ2FudmFzKG1vZGlmaWVyID0gTW9kaWZpZXIubWF0Y2hQYXJlbnRTaXplKCkpIHsKICAgICAgICAgICAgdmFsIHggPSBzYXR1cmF0aW9uLmNvZXJjZUluKDBmLCAxZikgKiBzaXplLndpZHRoCiAgICAgICAgICAgIHZhbCB5ID0gKDFmIC0gdmFsdWUuY29lcmNlSW4oMGYsIDFmKSkgKiBzaXplLmhlaWdodAogICAgICAgICAgICAvLyDlpJblnIjnmb0gKyDlhoXlnIjnnJ/lrp7oibLvvJrmi5bliLDmtYXoibLljLrkuZ/nnIvlvpfmuIXmuLjmoIflnKjlk6oKICAgICAgICAgICAgZHJhd0hhbmRsZShDb2xvci5XaGl0ZSwgeCwgeSwgSEFORExFX1JBRElVU19QWCArIEhBTkRMRV9TVFJPS0VfUFgpCiAgICAgICAgICAgIGRyYXdIYW5kbGUoQ29sb3IoQ29sb3JQaWNrZXJNYXRoLmhzdlRvQXJnYihodWUsIHNhdHVyYXRpb24sIHZhbHVlKSksIHgsIHksIEhBTkRMRV9SQURJVVNfUFgpCiAgICAgICAgfQogICAgfQp9Cgpwcml2YXRlIGZ1biBEcmF3U2NvcGUuZHJhd0hhbmRsZShmaWxsOiBDb2xvciwgeDogRmxvYXQsIHk6IEZsb2F0LCByOiBGbG9hdCkgewogICAgZHJhd0NpcmNsZShjb2xvciA9IGZpbGwsIHJhZGl1cyA9IHIsIGNlbnRlciA9IE9mZnNldCh4LCB5KSkKfQoKLyoqCiAqIOiJsuebuOerluadoe+8mjDCsCDnuqLlnKjpobbjgIEzNjDCsCDnuqLlm57liLDlupXvvIjoibLnm7jnjq/pl63lkIjvvIzpppblsL7lkIzoibLvvInjgIIKICog5ri45qCH55m95ZyI6buR5o+P6L6577yM6Lef5bmz6Z2i5oyH56S654K55ZCM5LiA5aWX6KeG6KeJ6K+t6KiA44CCCiAqLwpAQ29tcG9zYWJsZQpwcml2YXRlIGZ1biBIdWVTbGlkZXIoCiAgICBodWU6IEZsb2F0LAogICAgaGVpZ2h0UHg6IEZsb2F0LAogICAgb25QaWNrOiAoRmxvYXQpIC0+IFVuaXQsCiAgICBtb2RpZmllcjogTW9kaWZpZXIgPSBNb2RpZmllciwKKSB7CiAgICBmdW4gcGljayh5OiBGbG9hdCkgPSBvblBpY2soKDFmIC0geSAvIGhlaWdodFB4KS5jb2VyY2VJbigwZiwgMWYpICogMzYwZikKICAgIC8vIOWQjCBIdWVDYW52YXPvvJpjbGlwIOWSjCBib3JkZXIg5b+F6aG75piv5ZCM5LiA5LiqIHNoYXBl77yM5ZCm5YiZ5b2p6Jm557uG5p2h5Lik5aS05Lmf5Lya5ryP5Ye65ZCM5qy+5bCP5LiJ6KeSCiAgICB2YWwgc2hhcGUgPSBSb3VuZGVkQ29ybmVyU2hhcGUoTGlzdFJvdy5DYXJkQ29ybmVyKQoKICAgIEJveCgKICAgICAgICBtb2RpZmllciA9IG1vZGlmaWVyCiAgICAgICAgICAgIC5ib3JkZXIoMS5kcCwgTWF0ZXJpYWxUaGVtZS5jb2xvclNjaGVtZS5vdXRsaW5lVmFyaWFudCwgc2hhcGUpCiAgICAgICAgICAgIC5jbGlwKHNoYXBlKQogICAgICAgICAgICAucG9pbnRlcklucHV0KFVuaXQpIHsgcGlja0dlc3R1cmUgeyBvZmZzZXQgLT4gcGljayhvZmZzZXQueSkgfSB9LAogICAgKSB7CiAgICAgICAgQ2FudmFzKG1vZGlmaWVyID0gTW9kaWZpZXIubWF0Y2hQYXJlbnRTaXplKCkpIHsKICAgICAgICAgICAgLy8g5LiA5p2h57q15ZCR5riQ5Y+Y5oqKIDcg5Liq5YGc6Z2g54K55o+S5YC85byA77ya57qi4oaS6buE4oaS57u/4oaS6Z2S4oaS6JOd4oaS5rSL57qi4oaS57qi77yMCiAgICAgICAgICAgIC8vIOauteS4juauteS5i+mXtOS4jeWGjeacieehrOi+ue+8iOS5i+WJjeaYryA2IOautee6r+iJsuaWueWdl++8jOeci+edgOWwseaYryLlj6rmnInov5nlh6DmoaPpopzoibIi77yJ44CCCiAgICAgICAgICAgIC8vIOKaoO+4jyDluKblgZzpnaDngrnnmoTph43ovb3mmK8gdmFyYXJn77yM6LCD55So5b+F6aG75YaZ5YW35ZCN5Y+C5pWwICsg5bGV5byA56ym77yM5L2N572u5Lyg5Y+C5Lya5Yy56YWN5YiwIExpc3Q8Q29sb3I+IOmCo+S4qumHjei9veS4igogICAgICAgICAgICBkcmF3UmVjdChicnVzaCA9IEJydXNoLnZlcnRpY2FsR3JhZGllbnQoKkhVRV9TVE9QUy50b1R5cGVkQXJyYXkoKSwgc3RhcnRZID0gMGYsIGVuZFkgPSBzaXplLmhlaWdodCkpCiAgICAgICAgfQogICAgICAgIENhbnZhcyhtb2RpZmllciA9IE1vZGlmaWVyLm1hdGNoUGFyZW50U2l6ZSgpKSB7CiAgICAgICAgICAgIHZhbCB5ID0gKGh1ZS5jb2VyY2VJbigwZiwgMzYwZikgLyAzNjBmKSAqIHNpemUuaGVpZ2h0CiAgICAgICAgICAgIGRyYXdIYW5kbGUoQ29sb3IuV2hpdGUsIHNpemUud2lkdGggLyAyZiwgeSwgSEFORExFX1JBRElVU19QWCArIEhBTkRMRV9TVFJPS0VfUFgpCiAgICAgICAgfQogICAgfQp9Cg==
+/*
+ * ColorPickerDialog.kt —— 课程颜色选择器（自绘 HSV，M11-第三批）
+ *
+ * 为什么自己画：这类库动辄几千行还带自己的状态约定，而我们要的只是一块 S×V 平面 +
+ * 一条色相条 + 一个 hex 框，且颜色要直接落到 `courses.color_tag`（Int 列）。自己画 180 行，
+ * 形状完全可控，也不跟着库的 API 漂移坏掉。
+ *
+ * 性能取舍：S×V 平面（横向饱和度 / 纵向明度）如果按像素格去画，要么每帧重算上百次 HSV→RGB
+ * 发烫，要么得一坨 GridCell 数据再加缓存——两条路都把"一块渐变盘"写成了几百行。
+ * 这里改成**两层 Brush 叠加**，恒定两次 drawRect：
+ *   ① 横向 白 → 当前色相的最纯色（覆盖整块，把饱和度铺开）；
+ *   ② 纵向 透明 → 黑（覆盖整块，越往下越黑，把明度压下来）。
+ * 两层叠完，(x=w,y=0) 是纯色、(x=0,y=0) 是白、(y=h) 是黑——正好是 HSV 平面该有的样子。
+ * 于是 hue 变化时只换一层 brush，平面内拖动时两层都不变，每帧只多画指示圈。
+ *
+ * 交互：拖动 + 点按都能取色（手势见文件尾的 pickGesture，按下先给一次，之后跟手）。
+ * 指针换算全部在 px 侧做，并且 clamp 到 0..1——手指落在角上不能算出 -0.2 把整块染黑。
+ *
+ * 手输 hex：解析失败**静默不改色**（输入框每敲一个字都走一次，抛异常等于敲错一个字就崩）。
+ */
+package com.gould.xputimetable.ui.courseedit.components
+
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.ui.input.pointer.PointerInputScope
+import androidx.compose.ui.input.pointer.PointerEventPass
+import androidx.compose.ui.window.DialogProperties
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
+import com.gould.xputimetable.ui.courseedit.ColorPickerMath
+import com.gould.xputimetable.ui.theme.ListRow
+
+// ---------- 文件级常量 ----------
+private const val HANDLE_RADIUS_PX = 9f
+private const val HANDLE_STROKE_PX = 3f
+private val HUE_BAR_WIDTH = 24.dp     // 右侧色相条宽度
+private val HUE_BAR_GAP = 12.dp        // 与平面的间距
+
+/**
+ * 色相条的 7 个停靠点。
+ * 头尾都是 0°红：色相是环，360° 与 0° 同色，条子首尾才接得上、不露出接缝。
+ */
+private val HUE_STOPS: List<Pair<Float, Color>> = listOf(
+    0f, 60f, 120f, 180f, 240f, 300f, 360f,
+).map { h -> (h / 360f) to Color(ColorPickerMath.hsvToArgb(h, 1f, 1f)) }
+
+/**
+ * 取色面板。
+ *
+ * @param initialArgb 打开时回填的颜色（课程当前色）
+ * @param onDismiss   取消 / 点外部关闭
+ * @param onConfirm   确定，回传不透明 ARGB int（可直接写进 color_tag）
+ */
+@Composable
+internal fun ColorPickerDialog(
+    initialArgb: Int,
+    onDismiss: () -> Unit,
+    onConfirm: (Int) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val initial = ColorPickerMath.argbToHsv(initialArgb)
+    var hue by remember { mutableStateOf(initial[0]) }
+    var sat by remember { mutableStateOf(initial[1]) }
+    var value by remember { mutableStateOf(initial[2]) }
+    // hex 文本框：手输时它是"源"，其余时候是"显示"，两边互为镜像
+    var hexText by remember { mutableStateOf(ColorPickerMath.formatHex(initialArgb)) }
+
+    fun applyHsv(h: Float, s: Float, v: Float) {
+        hue = h
+        sat = s
+        value = v
+        hexText = ColorPickerMath.formatHex(ColorPickerMath.hsvToArgb(h, s, v))
+    }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        // ⚠️ 必须关掉"点外面就关"：取色盘本身就是一大片可点区域，用户每次点盘子取色
+        // 都会被当成"点外部"把面板关掉，取色器等于没法用（2026-10-02 真机/模拟器实测复现）。
+        // 只有「取消」「保存」两个按钮能关面板，中途点空处不该丢进度。
+        // ⚠️ 本版本 material3 的 AlertDialog 没有 dismissOnClickOutside / dismissOnBackPress
+        // 这两个具名参数，两个开关都挂在 DialogProperties 上（写成具名参数会整片编译失败）。
+        properties = DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false),
+        title = { Text("课程颜色") },
+        text = {
+            BoxWithConstraints(modifier = modifier.fillMaxWidth()) {
+                val side = (maxWidth - HUE_BAR_WIDTH - HUE_BAR_GAP).coerceAtLeast(200.dp)
+                // 直接乘 density：toPx 扩展在本版本解析不到，不值得为一个乘法引依赖
+                val sidePx = side.value * LocalDensity.current.density
+                Column {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(HUE_BAR_GAP),
+                    ) {
+                        HueCanvas(
+                            hue = hue,
+                            saturation = sat,
+                            value = value,
+                            onPick = { s, v -> applyHsv(hue, s, v) },
+                            sidePx = sidePx,
+                            modifier = Modifier.size(side),
+                        )
+                        HueSlider(
+                            hue = hue,
+                            onPick = { h -> applyHsv(h, sat, value) },
+                            heightPx = sidePx,
+                            modifier = Modifier.size(HUE_BAR_WIDTH, side),
+                        )
+                    }
+
+                    OutlinedTextField(
+                        value = hexText,
+                        onValueChange = { text ->
+                            hexText = text
+                            // 解析不出来就保持现状：不回滚输入框（用户还在打），也不改色
+                            ColorPickerMath.parseHex(text)?.let { picked ->
+                                val hsv = ColorPickerMath.argbToHsv(picked)
+                                hue = hsv[0]
+                                sat = hsv[1]
+                                value = hsv[2]
+                            }
+                        },
+                        singleLine = true,
+                        label = { Text("#RRGGBB") },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 12.dp)
+                            .heightIn(min = ListRow.MinHeight),
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = { onConfirm(ColorPickerMath.hsvToArgb(hue, sat, value)) }) { Text("保存") }
+        },
+        dismissButton = { TextButton(onClick = onDismiss) { Text("取消") } },
+    )
+}
+
+/**
+ * 「按下就取色 + 跟着手指走」的手势，**点按和拖动都生效**。
+ *
+ * ⚠️ 不能用 `detectDragGestures`：它内部要等越过 touchSlop 才进 Dragging 状态（本版本是
+ * AwaitDown → AwaitTouchSlop → Dragging 状态机），**不动手点一下根本不会触发 onDragStart**。
+ * 而"点一下选个颜色"恰恰是取色器最常用的操作——2026-10-02 模拟器实测：点平面 hex 纹丝不动，
+ * 得拖一下才变；右侧色相条点色带同样没反应（同一处毛病）。
+ *
+ * 于是自己走一遍 `awaitEachGesture`：按下即取一次色（点按有反馈），之后每个事件都跟手更新，
+ * 读到抬起就收尾。指针离开平面时坐标照样 clamp 过，不会算出 0.8 这种越界比例。
+ */
+private suspend fun PointerInputScope.pickGesture(pick: (Offset) -> Unit) {
+    awaitEachGesture {
+        pick(awaitFirstDown().position)
+        while (true) {
+            val change = awaitPointerEvent(PointerEventPass.Main).changes.firstOrNull() ?: break
+            // 本版本的 PointerInputChange 没有 changedToUp()，靠 pressed 的回落判抬起
+            if (!change.pressed && change.previousPressed) break
+            pick(change.position)
+        }
+    }
+}
+
+/**
+ * S×V 平面：横向是饱和度（左白右纯色），纵向是明度（下亮上黑）。
+ *
+ * @param sidePx 边长（px）：指针换算要用，尺寸由外层量好传进来，省掉 onSizeChanged 的时序判断
+ */
+@Composable
+private fun HueCanvas(
+    hue: Float,
+    saturation: Float,
+    value: Float,
+    sidePx: Float,
+    onPick: (Float, Float) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    fun pick(x: Float, y: Float) = onPick((x / sidePx).coerceIn(0f, 1f), (1f - y / sidePx).coerceIn(0f, 1f))
+    val shape = RoundedCornerShape(ListRow.CardCorner)
+
+    Box(
+        modifier = modifier
+            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, shape)
+            // ⚠️ clip 必须加：drawRect 铺的是**直角**，而 border 画的是**圆角**，两者形状不齐，
+            // 渐变会从圆角弧外面戳出去，四个角各漏一块黑色/深红的小三角（底下两角最明显）。
+            // clip 之后填充跟着同一个 shape 走，角就干净了。这条孤立地看不出毛病，
+            // 是 2026-10-02 老大问"为什么四个角有三角形"才揪出来的。
+            .clip(shape)
+            .pointerInput(Unit) { pickGesture { offset -> pick(offset.x, offset.y) } },
+    ) {
+        Canvas(modifier = Modifier.matchParentSize()) {
+            // 两层 brush 铺满整块：
+            // ① 横向 白→纯色，把饱和度从 0 铺到 100%（左端永远是白）
+            // ② 纵向 透明→黑，把明度从 100% 压到 0%（下端永远是黑）
+            // 叠加结果就是标准 HSV 平面，且跟 hue 怎么变无关，只有两层 brush 在换。
+            val pure = Color(ColorPickerMath.hsvToArgb(hue, 1f, 1f))
+            drawRect(brush = Brush.horizontalGradient(listOf(Color.White, pure), 0f, size.width))
+            drawRect(brush = Brush.verticalGradient(listOf(Color.Transparent, Color.Black), 0f, size.height))
+        }
+        Canvas(modifier = Modifier.matchParentSize()) {
+            val x = saturation.coerceIn(0f, 1f) * size.width
+            val y = (1f - value.coerceIn(0f, 1f)) * size.height
+            // 外圈白 + 内圈真实色：拖到浅色区也看得清游标在哪
+            drawHandle(Color.White, x, y, HANDLE_RADIUS_PX + HANDLE_STROKE_PX)
+            drawHandle(Color(ColorPickerMath.hsvToArgb(hue, saturation, value)), x, y, HANDLE_RADIUS_PX)
+        }
+    }
+}
+
+private fun DrawScope.drawHandle(fill: Color, x: Float, y: Float, r: Float) {
+    drawCircle(color = fill, radius = r, center = Offset(x, y))
+}
+
+/**
+ * 色相竖条：0° 红在顶、360° 红回到底（色相环闭合，首尾同色）。
+ * 游标白圈黑描边，跟平面指示点同一套视觉语言。
+ */
+@Composable
+private fun HueSlider(
+    hue: Float,
+    heightPx: Float,
+    onPick: (Float) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    fun pick(y: Float) = onPick((1f - y / heightPx).coerceIn(0f, 1f) * 360f)
+    // 同 HueCanvas：clip 和 border 必须是同一个 shape，否则彩虹细条两头也会漏出同款小三角
+    val shape = RoundedCornerShape(ListRow.CardCorner)
+
+    Box(
+        modifier = modifier
+            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, shape)
+            .clip(shape)
+            .pointerInput(Unit) { pickGesture { offset -> pick(offset.y) } },
+    ) {
+        Canvas(modifier = Modifier.matchParentSize()) {
+            // 一条纵向渐变把 7 个停靠点插值开：红→黄→绿→青→蓝→洋红→红，
+            // 段与段之间不再有硬边（之前是 6 段纯色方块，看着就是"只有这几档颜色"）。
+            // ⚠️ 带停靠点的重载是 vararg，调用必须写具名参数 + 展开符，位置传参会匹配到 List<Color> 那个重载上
+            drawRect(brush = Brush.verticalGradient(*HUE_STOPS.toTypedArray(), startY = 0f, endY = size.height))
+        }
+        Canvas(modifier = Modifier.matchParentSize()) {
+            val y = (hue.coerceIn(0f, 360f) / 360f) * size.height
+            drawHandle(Color.White, size.width / 2f, y, HANDLE_RADIUS_PX + HANDLE_STROKE_PX)
+        }
+    }
+}

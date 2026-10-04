@@ -32,8 +32,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.gould.xputimetable.data.prefs.BackgroundPrefs
+import com.gould.xputimetable.data.prefs.DEFAULT_BACKGROUND_SETTINGS
 import com.gould.xputimetable.domain.repository.TimetableRepository
+import com.gould.xputimetable.ui.background.label
 import com.gould.xputimetable.ui.transfer.ExportSection
 
 // ---------- 文件级文案常量 ----------
@@ -46,7 +51,10 @@ private const val TERM_NONE = "还没有学期，点此设置"
 // 老大道的"几种相同的设置用一个边框框起来、里面的几条用横线分开"根本看不出分组。
 // 合成 4 组（其中 2 组是多条）后，"卡片 = 一组、横线 = 组内切分"这套版式才立得住；
 // 组名也学参考截图那样取短词（功能 / 隐私），不再用"权限/数据/显示"这种功能自述。
-private const val GROUP_FUNCTION = "功能"
+private const val GROUP_APPEARANCE = "外观"
+private const val ROW_BACKGROUND = "自定义背景"
+private const val BG_NONE = "使用默认底色"
+private const val BG_SET = "已设置 · 作用范围：%s"
 private const val ROW_PERMISSION = "精确闹钟授权"
 private const val PERMISSION_OK = "已授权"
 private const val PERMISSION_MISSING = "未授权：桌面小组件刷新可能不精准"
@@ -65,6 +73,8 @@ fun SettingsScreen(
     viewModel: SettingsViewModel,
     /** 导出课表文件需要仓库读取激活学期快照。 */
     repository: TimetableRepository,
+    /** M12 需求二：背景设置页与根页摘要行都要读它。 */
+    backgroundPrefs: BackgroundPrefs,
     /** 进「学期设置」二级页。 */
     onOpenTermSetup: () -> Unit,
     /** 进其他二级页（权限 / 关于）。 */
@@ -78,8 +88,20 @@ fun SettingsScreen(
     val state by viewModel.state.collectAsState()
     // M11：「显示老师姓名」开关（课程卡据此增减教师行）
     val showTeacher by viewModel.showTeacher.collectAsState()
+    // M12 需求二：背景设置摘要（根页这一行要显示"设了没、作用在哪"）
+    val background by backgroundPrefs.settings
+        .collectAsStateWithLifecycle(initialValue = DEFAULT_BACKGROUND_SETTINGS)
+    val backgroundSummary = if (background.imageUri.isNullOrBlank()) {
+        BG_NONE
+    } else {
+        BG_SET.format(background.scope.label)
+    }
 
-    Scaffold(modifier = modifier.fillMaxSize()) { padding ->
+    Scaffold(
+        // M12 需求一.2：底色与背景图由导航根的 PageBackground 统一提供，这里必须透明
+        containerColor = Color.Transparent,
+        modifier = modifier.fillMaxSize(),
+    ) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -106,8 +128,14 @@ fun SettingsScreen(
             }
 
             // M11-第三批：开关与权限合并进同一个卡片 —— 中间那条横线是这一组的分界线
-            SettingsGroupHeader(GROUP_FUNCTION)
+            SettingsGroupHeader(GROUP_APPEARANCE)
             SettingsGroupCard {
+                SettingsNavRow(
+                    title = ROW_BACKGROUND,
+                    subtitle = backgroundSummary,
+                    onClick = { onOpenSubPage(ProfileSubPage.BACKGROUND) },
+                    showDivider = true,
+                )
                 SettingsSwitchRow(
                     title = ROW_SHOW_TEACHER,
                     subtitle = SHOW_TEACHER_SUBTITLE,

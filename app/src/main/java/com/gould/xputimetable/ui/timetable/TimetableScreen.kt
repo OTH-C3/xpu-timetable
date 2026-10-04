@@ -12,7 +12,6 @@
 package com.gould.xputimetable.ui.timetable
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,10 +36,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.gould.xputimetable.domain.model.SessionWithCourse
-import com.gould.xputimetable.ui.theme.LightPageBackground
 import com.gould.xputimetable.ui.timetable.components.WeekPager
 import com.gould.xputimetable.ui.timetable.components.WeekSelector
 import kotlinx.coroutines.delay
@@ -93,9 +92,10 @@ fun TimetableScreen(
     // 是肉眼可见的掉帧来源，收益只是视觉点缀。系统"减少动画"分支也随之不再需要。
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
-        // M5 需求 2：主页背景亮色固定产品色 LightPageBackground；深色保持现状
-        containerColor = if (isSystemInDarkTheme()) MaterialTheme.colorScheme.surface
-        else LightPageBackground,
+        // M12 需求一.2：原先这里显式给 LightPageBackground，而「我的」页没给 → 两页底色不同。
+        // 现在底色与背景图统一由导航根的 PageBackground 提供（见 ui/background/PageBackground.kt），
+        // 所有页面一律透明；pageBaseColor() 是底色的唯一来源。
+        containerColor = Color.Transparent,
     ) { padding ->
         Column(modifier = modifier.fillMaxSize().padding(padding)) {
             if (state.term != null) {

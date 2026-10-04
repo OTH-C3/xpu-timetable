@@ -47,6 +47,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -92,6 +93,8 @@ fun CourseCaptureScreen(
     val onNetworkError = remember { viewModel::onNetworkError }
 
     Scaffold(
+        // M12 需求一.2：底色与背景图由导航根的 PageBackground 统一提供，这里必须透明
+        containerColor = Color.Transparent,
         modifier = modifier.fillMaxSize(),
         topBar = {
             Row(

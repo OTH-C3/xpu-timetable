@@ -1,1 +1,106 @@
-IyBNMy1maXgg5Lu75Yqh6KeE5qC877ya5bCP57uE5Lu25Yqg6L295aSx6LSl77yI6aKc6Imy6KKr5b2T5L2c6LWE5rqQIElE77yJKyDosIPoibLmnb/ph43lpI3kuJTlt7LkuI3kuIDoh7QKCj4g55eH54q277yI55yf5py65a6e5rWL77yJ77ya5qGM6Z2i5re75Yqg5bCP57uE5Lu25ZCO5pi+56S6ICoq44CM6L295YWl56qX5Y+j5Ye6546w6Zeu6aKY44CNKirvvIhNSVVJ77yJ77ybQU9TUCDorr7lpIfkuIrlr7nlupTmlofmoYjmmK8gIlByb2JsZW0gbG9hZGluZyB3aWRnZXQi44CCCj4g5b2x5ZON77yaKipQMCDigJTigJQg5bCP57uE5Lu25a6M5YWo5LiN5Y+v55SoKirvvIhBQy0xNy8xOC8xOSDlhajpg6jml6Dms5Xovr7miJDvvInjgIIKPiDov5nkuKTkuKrnvLrpmbfpg73kuI3mlLnooajnu5PmnoTjgIHkuI3liqDkvp3otZbvvIzmlLnliqjph4/mnoHlsI/jgIIKCi0tLQoKIyMgMS4g5qC55Zug77yI5byC5bi45qCI5Y6f5paH77yM6Z2e5o6o5rWL77yJCgpgVG9kYXlXaWRnZXRDb250ZW50Lmt0OjE2MmDvvJoKCmBgYGtvdGxpbgouYmFja2dyb3VuZChDb2xvclByb3ZpZGVyKENPVVJTRV9DT0xPUlNbaXRlbS5jb2xvclRhZy5jb2VyY2VJbihDT1VSU0VfQ09MT1JTLmluZGljZXMpXS50b0FyZ2IoKSkpLApgYGAKCioqR2xhbmNlIOeahCBgQ29sb3JQcm92aWRlcmAg5pyJ5Lik5Liq6YeN6L29KirvvIjmiJHku44gYGdsYW5jZS0xLjIuMC5hYXJgIOmHjCBgamF2YXBgIOWHuuadpeeahOecn+WunuetvuWQje+8ie+8mgoKYGBgamF2YQovLyBhbmRyb2lkeC5nbGFuY2UudW5pdC5Db2xvclByb3ZpZGVyS3QKcHVibGljIHN0YXRpYyBmaW5hbCBDb2xvclByb3ZpZGVyIENvbG9yUHJvdmlkZXItOF84MWxsQShsb25nKTsgICAvLyDlj4LmlbDmmK8gYW5kcm9pZHguY29tcG9zZS51aS5ncmFwaGljcy5Db2xvcu+8iGlubGluZSBjbGFzcyDihpIgbG9uZ++8iQpwdWJsaWMgc3RhdGljIGZpbmFsIENvbG9yUHJvdmlkZXIgQ29sb3JQcm92aWRlcihpbnQpOyAgICAgICAgICAgIC8vIOWPguaVsOaYryBAQ29sb3JSZXMgSW50IOKGkiDlvZPkvZzjgIzpopzoibLotYTmupAgSUTjgI0KYGBgCgpgLnRvQXJnYigpYCDov5Tlm54gYEludGDvvIzkuo7mmK8qKue8luivkeacn+ino+aekOWIsOS6huOAjOi1hOa6kCBJROOAjemHjei9vSoq77yM55Sf5oiQ55qEIFJlbW90ZVZpZXdzIOWKqOS9nOaYryoq6LWE5rqQ5Z6LKirnmoQK77yIYFJlbW90ZVZpZXdzJFJlc291cmNlUmVmbGVjdGlvbkFjdGlvbmAg4oaSIGBDb250ZXh0LmdldENvbG9yKHJlc0lkKWDvvInvvIzmioogQVJHQiDlrZfpnaLlgLzlvZPotYTmupAgSUQg5Y675p+lIOKGkiDlv4XnhLbmn6XkuI3liLDjgIIKCkxhdW5jaGVyIOS+p+W8guW4uO+8iGBsb2djYXRgIOWOn+aWh++8jOi/m+eoiyBgY29tLm1pdWkuaG9tZWDvvInvvJoKCmBgYApXIEFwcFdpZGdldEhvc3RWaWV3OiBFcnJvciBpbmZsYXRpbmcgUmVtb3RlVmlld3MKICAgYW5kcm9pZC53aWRnZXQuUmVtb3RlVmlld3MkQWN0aW9uRXhjZXB0aW9uOiBhbmRyb2lkLmNvbnRlbnQucmVzLlJlc291cmNlcyROb3RGb3VuZEV4Y2VwdGlvbjogUmVzb3VyY2UgSUQgIzB4ZmZkODFiNjAKICAgICBhdCBhbmRyb2lkLndpZGdldC5SZW1vdGVWaWV3cyRSZXNvdXJjZVJlZmxlY3Rpb25BY3Rpb24uZ2V0UGFyYW1ldGVyVmFsdWUoUmVtb3RlVmlld3MuamF2YTozMzMwKQogICBDYXVzZWQgYnk6IGFuZHJvaWQuY29udGVudC5yZXMuUmVzb3VyY2VzJE5vdEZvdW5kRXhjZXB0aW9uOiBSZXNvdXJjZSBJRCAjMHhmZmQ4MWI2MAogICAgIGF0IGFuZHJvaWQuY29udGVudC5yZXMuUmVzb3VyY2VzLmdldENvbG9yKFJlc291cmNlcy5qYXZhOjEyMzMpCiAgICAgYXQgYW5kcm9pZC5jb250ZW50LkNvbnRleHQuZ2V0Q29sb3IoQ29udGV4dC5qYXZhOjEwNDkpCiAgICAgYXQgYW5kcm9pZC53aWRnZXQuUmVtb3RlVmlld3MkUmVzb3VyY2VSZWZsZWN0aW9uQWN0aW9uLmdldFBhcmFtZXRlclZhbHVlKFJlbW90ZVZpZXdzLmphdmE6MzMwNCkKYGBgCgpgMHhmZmQ4MWI2MGAg55qE5L2OIDI0IOS9jSBgZDgxYjYwYCA9IOiwg+iJsuadv+esrCA4IOmhueOAjOeOq+e6ouOAjWBDb2xvcigweEZGRDgxQjYwKS50b0FyZ2IoKWAg4pyTIOS4juS7o+eggemAkOWtl+WvueW6lOOAggoK6KGl5YWF6K+B5o2u77yI6K+05piO5LiN5pivIuayoei3kei1t+adpSLvvInvvJpHbGFuY2Ug55qE5Lya6K+d5Lu75Yqh5YW25a6eKirmiJDlip8qKuS6huKAlOKAlApgV00tV29ya2VyV3JhcHBlcjogV29ya2VyIHJlc3VsdCBTVUNDRVNTIGZvciBXb3JrIFsgdGFncz17IGFuZHJvaWR4LmdsYW5jZS5zZXNzaW9uLlNlc3Npb25Xb3JrZXIgfSBdYO+8mwrlpLHotKXlj5HnlJ/lnKgqKkxhdW5jaGVyIOW6lOeUqCBSZW1vdGVWaWV3cyDnmoTpgqPkuIDliLsqKuOAggoKIyMgMi4g5L+u5aSN77yI5Lik5aSE77yM6YO95ZyoIGB3aWRnZXQvVG9kYXlXaWRnZXRDb250ZW50Lmt0YO+8iQoKIyMjIDIuMe+8iFAw77yJ5pS555SoIGBDb2xvcmAg6YeN6L2977yM5LiN6KaB5LygIGBJbnRgCgpgYGBrb3RsaW4KLy8g4pyXIOeOsOeKtu+8mi50b0FyZ2IoKSDmmK8gSW50IOKGkiDotbDjgIzotYTmupAgSUTjgI3ph43ovb0g4oaSIOi/kOihjOaXtiBSZXNvdXJjZXMkTm90Rm91bmRFeGNlcHRpb24KLmJhY2tncm91bmQoQ29sb3JQcm92aWRlcihDT1VSU0VfQ09MT1JTW2l0ZW0uY29sb3JUYWcuY29lcmNlSW4oQ09VUlNFX0NPTE9SUy5pbmRpY2VzKV0udG9BcmdiKCkpKQoKLy8g4pyTIOS/ruWkje+8muebtOaOpeS8oCBDb2xvcu+8iOino+aekOWIsCBsb25nKENvbG9yKSDph43ovb3vvIkKLmJhY2tncm91bmQoQ29sb3JQcm92aWRlcihDb3Vyc2VQYWxldHRlLmJhc2UoaXRlbS5jb2xvclRhZykpKQpgYGAKCioq5YWo6aG555uu5omr5o+P57uT5p6cKirvvJpgQ29sb3JQcm92aWRlcihgIOS4jiBgLnRvQXJnYigpYCDlkITlj6rlkb3kuK3ov5nkuIDlpIQg4pyTIOS/ruWujOWNs+aXoOWQjOexu+mXrumimOOAggrvvIjopoHmsYLkv67lrozlkI7nlKggZ3JlcCDoh6ror4HvvJpgYXBwL3NyYy9tYWluYCDkuIvkuI3lho3lh7rnjrAgYENvbG9yUHJvdmlkZXIoYCDluKYgYEludGAvYHRvQXJnYigpYCDnmoTosIPnlKjjgILvvIkKCiMjIyAyLjLvvIhQMe+8ieWIoOaOieWwj+e7hOS7tuWGheW1jOeahOmHjeWkjeiwg+iJsuadv++8jOaUueeUqCBgQ291cnNlUGFsZXR0ZWDvvIjljZXkuIDkuovlrp7mupDvvIkKCueOsOeKtu+8mmBUb2RheVdpZGdldENvbnRlbnQua3Q6NjMtNjZgIOiHquW3seWkjeWItuS6huS4gOS7vSAxMiDoibLosIPoibLmnb8gYENPVVJTRV9DT0xPUlNg77yM6ICMKirlroPlt7Lnu4/lkoznnJ/mraPnmoTosIPoibLmnb/kuI3kuIDoh7TkuoYqKu+8mgoKfCDntKLlvJUgfCDlsI/nu4Tku7blhoXltYwgfCBgQ291cnNlUGFsZXR0ZS5iYXNlc2AgfAp8LS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLS0tLS0tLS0tLS18CnwgNyB8IGAweEZGQUZCNDJCYCB8ICoqYDB4RkZDMENBMzNgKiogfAoK5ZCO5p6c77yaYGNvbG9yVGFnID0gN2Ag55qE6K++56iL5ZyoKirlsI/nu4Tku7bph4zkuI4gQXBwIOmHjOminOiJsuS4jeWQjCoq77yI5pys5ZGo6KeG5Zu+55SoIGBDb3Vyc2VQYWxldHRlYO+8jOWwj+e7hOS7tueUqOWJr+acrO+8ieOAggropoHmsYLvvJrliKDpmaQgYENPVVJTRV9DT0xPUlNg77yM57uf5LiA6LCD55SoIGBDb3Vyc2VQYWxldHRlLmJhc2UoY29sb3JUYWcpYO+8iGB1aS90aGVtZS9Db3Vyc2VQYWxldHRlLmt0OjQwYO+8ie+8jArms6jmhI8gYGNvbG9yVGFnYCDlj6/og73otornlYwg4oaSIGBDb3Vyc2VQYWxldHRlLmJhc2UoKWAg5YaF6YOo5bey5YGaIGB3cmFwSW5kZXhgIOWPluaooe+8jOaXoOmcgOWGjSBgY29lcmNlSW5g44CCCgo+IOiLpeWwj+e7hOS7tuehruWunumcgOimgeOAjOWNiumAj+aYjuW6leiJsuOAjeaViOaenO+8jOeUqCBgQ291cnNlUGFsZXR0ZS5jb250YWluZXIoY29sb3JUYWcsIGRhcmspYO+8iGBDb3Vyc2VQYWxldHRlLmt0OjQzYO+8ie+8jCoq5LiN6KaBKirlho3oh6rlt7EgYGNvcHkoYWxwaGE9KWDjgIIKCiMjIDMuIOS6pOS7mOe6quW+iwoKLSDlj6rmlLkgYHdpZGdldC9Ub2RheVdpZGdldENvbnRlbnQua3Rg77yI5aaC56Gu6ZyA77yM5Y+v5YqoIGB3aWRnZXQvYCDljIXlhoXlhbbku5bmlofku7bvvInvvJsqKuS4jeWKqCoq5pWw5o2u5bGCL+aPkOmGki/lr7zoiKoKLSDljZXmlofku7Yg4omkIDMwMCDooYzvvJvml6AgZW1vamnvvJvkuI3liqDkvp3otZbvvJvkuI3mlLnooajnu5PmnoTvvIhgQXBwRGF0YWJhc2UudmVyc2lvbmAg5L+d5oyBIDLvvIkKLSDmspnnrrHlhoXml6AgZ2l077yM5LiN6KaBIGNvbW1pdO+8myoq5LiN6KaB56KwIGFkYiAvIOS4jeimgeijheacuioq77yI55yf5py65aSN6aqM55Sx5oiR5pa55omn6KGM77yJCgojIyA0LiDmnoTlu7rkuI7oh6rmtYsKCmBgYApleHBvcnQgSkFWQV9IT01FPS9ob21lL290aGMzL29wdC9qZGstMjFiCmNkIC9ob21lL290aGMzL1dvcmtCdWRkeS/lronljZPova/ku7blvIDlj5EKL2hvbWUvb3RoYzMvb3B0L2dyYWRsZS05LjcuMS9iaW4vZ3JhZGxlIGFzc2VtYmxlRGVidWcgdGVzdERlYnVnVW5pdFRlc3QgLS1jb25zb2xlPXBsYWluID4gL3RtcC9tM2ZpeC5sb2cgMj4mMQplY2hvICJFWElUPSQ/IiA+PiAvdG1wL20zZml4LmxvZwpncmVwIC1FICJeRVhJVD18QlVJTEQgKFNVQ0NFU1NGVUx8RkFJTEVEKSIgL3RtcC9tM2ZpeC5sb2cgfCBoZWFkIC0zCmBgYArvvIgqKuemgeatoioq566h6YGT6LCD55SoIEdyYWRsZeOAgu+8ieeUqOS+i+Wfuue6vyAqKjIwNSoq77yM5LiN5b6X5YeP5bCR44CCCgojIyA1LiDlm57kvKDmoLzlvI8KCjEuIOS4pOadoeWRveS7pOeahCBFWElUIOeggeS4jiBCVUlMRCDnu5PmnpzvvJvnlKjkvovmgLvmlbDkuI7lpLHotKXmlbAKMi4gYFRvZGF5V2lkZ2V0Q29udGVudC5rdGAg5pS55Yqo5YmN5ZCO55qE6YKjIDF+MiDooYzvvIjljp/moLfotLTlh7rvvIkrIOaWh+S7tuihjOaVsAozLiAqKuiHquivgSBncmVwKirvvJpgZ3JlcCAtcm4gIkNvbG9yUHJvdmlkZXIoIiBhcHAvc3JjL21haW5gIOS4jiBgZ3JlcCAtcm4gInRvQXJnYigpIiBhcHAvc3JjL21haW5gIOeahOi+k+WHuu+8iOW6lOS4uuepuuaIluW3suaUueS4uiBgQ29sb3JgIOW9ouW8j++8iQo0LiDosIPoibLmnb/kuIDoh7TmgKfoh6ror4HvvJror7TmmI4gYENPVVJTRV9DT0xPUlNgIOW3suWIoOmZpOOAgeminOiJsue7n+S4gOWPluiHqiBgQ291cnNlUGFsZXR0ZWAKNS4g5pyq6aqM6K+B6aG55aaC5a6e5YiX5Ye677yI55yf5py66aqM6K+B77ya5bCP57uE5Lu26IO95q2j5bi45riy5p+T44CB6auY5Lqu6Imy5q2j56Gu44CB5LiO5ZGo6KeG5Zu+5ZCM6Imy77yJCgojIyA2LiDmiJHmlrnnnJ/mnLrlpI3pqozmlrnms5XvvIjkuqTku5jlkI7miafooYzvvIkKCjEuIOijheacuiDihpIg5qGM6Z2i6YeN5paw5re75Yqg44CM5LuK5pel6K++56iL44CN5bCP57uE5Lu277yI5YWl5Y+j77ya6ZW/5oyJ5qGM6Z2iIOKGkiDlsI/pg6jku7Yg4oaSIOWFqOmDqOW6lOeUqCDihpIgKirlronljZPlsI/pg6jku7YqKiDmoI/vvIkKMi4g5pyf5pyb77yaKirkuI3lho3lh7rnjrDjgIzovb3lhaXnqpflj6Plh7rnjrDpl67popjjgI0qKu+8jOato+W4uOaYvuekuuS7iuaXpeivvueoi+WIl+ihqCArIOS4i+S4gOiKgumrmOS6rgozLiBgbG9nY2F0YCDlpI3moLjvvJrkuI3lho3lh7rnjrAgYEVycm9yIGluZmxhdGluZyBSZW1vdGVWaWV3c2AgLyBgUmVzb3VyY2VzJE5vdEZvdW5kRXhjZXB0aW9uYAo0LiDkuI7lkajop4blm77lr7nnhafvvJrlkIzkuIDpl6jor77nmoTpopzoibLlnKjlsI/nu4Tku7bkuI7lkajop4blm74qKuS4gOiHtCoq77yI6aqM6K+BIDIuMu+8iQo1LiDnu6fnu60gQUMtMTcvMTgvMTkg55qE5a6M5pW06aqM5pS277yI5pS56K++5ZCO5LiN6YeN5ZCv5Y2z5Yi35paw44CB5peg6K++5aSp56m65oCB77yJCg==
+# M3-fix 任务规格：小组件加载失败（颜色被当作资源 ID）+ 调色板重复且已不一致
+
+> 症状（真机实测）：桌面添加小组件后显示 **「载入窗口出现问题」**（MIUI）；AOSP 设备上对应文案是 "Problem loading widget"。
+> 影响：**P0 —— 小组件完全不可用**（AC-17/18/19 全部无法达成）。
+> 这两个缺陷都不改表结构、不加依赖，改动量极小。
+
+---
+
+## 1. 根因（异常栈原文，非推测）
+
+`TodayWidgetContent.kt:162`：
+
+```kotlin
+.background(ColorProvider(COURSE_COLORS[item.colorTag.coerceIn(COURSE_COLORS.indices)].toArgb())),
+```
+
+**Glance 的 `ColorProvider` 有两个重载**（我从 `glance-1.2.0.aar` 里 `javap` 出来的真实签名）：
+
+```java
+// androidx.glance.unit.ColorProviderKt
+public static final ColorProvider ColorProvider-8_81llA(long);   // 参数是 androidx.compose.ui.graphics.Color（inline class → long）
+public static final ColorProvider ColorProvider(int);            // 参数是 @ColorRes Int → 当作「颜色资源 ID」
+```
+
+`.toArgb()` 返回 `Int`，于是**编译期解析到了「资源 ID」重载**，生成的 RemoteViews 动作是**资源型**的
+（`RemoteViews$ResourceReflectionAction` → `Context.getColor(resId)`），把 ARGB 字面值当资源 ID 去查 → 必然查不到。
+
+Launcher 侧异常（`logcat` 原文，进程 `com.miui.home`）：
+
+```
+W AppWidgetHostView: Error inflating RemoteViews
+   android.widget.RemoteViews$ActionException: android.content.res.Resources$NotFoundException: Resource ID #0xffd81b60
+     at android.widget.RemoteViews$ResourceReflectionAction.getParameterValue(RemoteViews.java:3330)
+   Caused by: android.content.res.Resources$NotFoundException: Resource ID #0xffd81b60
+     at android.content.res.Resources.getColor(Resources.java:1233)
+     at android.content.Context.getColor(Context.java:1049)
+     at android.widget.RemoteViews$ResourceReflectionAction.getParameterValue(RemoteViews.java:3304)
+```
+
+`0xffd81b60` 的低 24 位 `d81b60` = 调色板第 8 项「玫红」`Color(0xFFD81B60).toArgb()` ✓ 与代码逐字对应。
+
+补充证据（说明不是"没跑起来"）：Glance 的会话任务其实**成功**了——
+`WM-WorkerWrapper: Worker result SUCCESS for Work [ tags={ androidx.glance.session.SessionWorker } ]`；
+失败发生在**Launcher 应用 RemoteViews 的那一刻**。
+
+## 2. 修复（两处，都在 `widget/TodayWidgetContent.kt`）
+
+### 2.1（P0）改用 `Color` 重载，不要传 `Int`
+
+```kotlin
+// ✗ 现状：.toArgb() 是 Int → 走「资源 ID」重载 → 运行时 Resources$NotFoundException
+.background(ColorProvider(COURSE_COLORS[item.colorTag.coerceIn(COURSE_COLORS.indices)].toArgb()))
+
+// ✓ 修复：直接传 Color（解析到 long(Color) 重载）
+.background(ColorProvider(CoursePalette.base(item.colorTag)))
+```
+
+**全项目扫描结果**：`ColorProvider(` 与 `.toArgb()` 各只命中这一处 ✓ 修完即无同类问题。
+（要求修完后用 grep 自证：`app/src/main` 下不再出现 `ColorProvider(` 带 `Int`/`toArgb()` 的调用。）
+
+### 2.2（P1）删掉小组件内嵌的重复调色板，改用 `CoursePalette`（单一事实源）
+
+现状：`TodayWidgetContent.kt:63-66` 自己复制了一份 12 色调色板 `COURSE_COLORS`，而**它已经和真正的调色板不一致了**：
+
+| 索引 | 小组件内嵌 | `CoursePalette.bases` |
+|------|-----------|----------------------|
+| 7 | `0xFFAFB42B` | **`0xFFC0CA33`** |
+
+后果：`colorTag = 7` 的课程在**小组件里与 App 里颜色不同**（本周视图用 `CoursePalette`，小组件用副本）。
+要求：删除 `COURSE_COLORS`，统一调用 `CoursePalette.base(colorTag)`（`ui/theme/CoursePalette.kt:40`），
+注意 `colorTag` 可能越界 → `CoursePalette.base()` 内部已做 `wrapIndex` 取模，无需再 `coerceIn`。
+
+> 若小组件确实需要「半透明底色」效果，用 `CoursePalette.container(colorTag, dark)`（`CoursePalette.kt:43`），**不要**再自己 `copy(alpha=)`。
+
+## 3. 交付纪律
+
+- 只改 `widget/TodayWidgetContent.kt`（如确需，可动 `widget/` 包内其他文件）；**不动**数据层/提醒/导航
+- 单文件 ≤ 300 行；无 emoji；不加依赖；不改表结构（`AppDatabase.version` 保持 2）
+- 沙箱内无 git，不要 commit；**不要碰 adb / 不要装机**（真机复验由我方执行）
+
+## 4. 构建与自测
+
+```
+export JAVA_HOME=/home/othc3/opt/jdk-21b
+cd /home/othc3/WorkBuddy/安卓软件开发
+/home/othc3/opt/gradle-9.7.1/bin/gradle assembleDebug testDebugUnitTest --console=plain > /tmp/m3fix.log 2>&1
+echo "EXIT=$?" >> /tmp/m3fix.log
+grep -E "^EXIT=|BUILD (SUCCESSFUL|FAILED)" /tmp/m3fix.log | head -3
+```
+（**禁止**管道调用 Gradle。）用例基线 **205**，不得减少。
+
+## 5. 回传格式
+
+1. 两条命令的 EXIT 码与 BUILD 结果；用例总数与失败数
+2. `TodayWidgetContent.kt` 改动前后的那 1~2 行（原样贴出）+ 文件行数
+3. **自证 grep**：`grep -rn "ColorProvider(" app/src/main` 与 `grep -rn "toArgb()" app/src/main` 的输出（应为空或已改为 `Color` 形式）
+4. 调色板一致性自证：说明 `COURSE_COLORS` 已删除、颜色统一取自 `CoursePalette`
+5. 未验证项如实列出（真机验证：小组件能正常渲染、高亮色正确、与周视图同色）
+
+## 6. 我方真机复验方法（交付后执行）
+
+1. 装机 → 桌面重新添加「今日课程」小组件（入口：长按桌面 → 小部件 → 全部应用 → **安卓小部件** 栏）
+2. 期望：**不再出现「载入窗口出现问题」**，正常显示今日课程列表 + 下一节高亮
+3. `logcat` 复核：不再出现 `Error inflating RemoteViews` / `Resources$NotFoundException`
+4. 与周视图对照：同一门课的颜色在小组件与周视图**一致**（验证 2.2）
+5. 继续 AC-17/18/19 的完整验收（改课后不重启即刷新、无课天空态）

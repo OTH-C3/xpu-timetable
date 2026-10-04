@@ -1,1 +1,74 @@
-IyBNMTEg56ys5Zub5om56aqM6K+B77ya6Ieq57uYIEhTViDlj5boibLlmaggKyDpl6jnpoHmi4bliIYKCj4g6aqM6K+B5pel5pyf77yaMjAyNi0xMC0wMgo+IOmqjOivgeeOr+Wig++8muWRveS7pOihjOaooeaLn+WZqCBgZW11bGF0b3ItNTU1NGDvvIhBVkQgYHhwdV90ZXN0YO+8jDEwODDDlzI0MDDvvInvvIzlhajnqIvmnKrop6bnorDnnJ/mnLoKPiDpqozor4HmlrnlvI/vvJpgZ3JhZGxlIDphcHA6YXNzZW1ibGVEZWJ1ZyA6YXBwOnRlc3REZWJ1Z1VuaXRUZXN0YCArIOaooeaLn+WZqOecn+WunuS6pOS6kiArIOWNlea1iwo+IOWFs+iBlOaUueWKqO+8mmBkb2NzLzA1LVNwZWMt6KeE5qC85aWR57qmLm1kYCDnrKzkuInoioLvvIjlop7liqDor77nqIvpobXph43lgZogKyBIU1Yg5Y+W6Imy5Zmo77yJCgotLS0KCiMjIOS4gOOAgei/meaJueaUueS6huS7gOS5iAoKfCAjIHwg5paH5Lu2IHwg5pS55YqoIHwg5oCn6LSoIHwKfC0tLXwtLS0tLS18LS0tLS0tfC0tLS0tLXwKfCAxIHwgYHVpL2NvdXJzZWVkaXQvY29tcG9uZW50cy9Db2xvclBpY2tlckRpYWxvZy5rdGAgfCDjgIzngrnlpJbpnaLlsLHlhbPjgI3mlLnmiJAgYERpYWxvZ1Byb3BlcnRpZXMoZGlzbWlzc09uQmFja1ByZXNzLyBkaXNtaXNzT25DbGlja091dHNpZGUgPSBmYWxzZSlgIHwgYnVnIOS/ruWkjSB8CnwgMiB8IOWQjOS4iiB8IOiHquWGmSBgcGlja0dlc3R1cmVg77yIYGF3YWl0RWFjaEdlc3R1cmVgICsgYGF3YWl0Rmlyc3REb3duYO+8ieabv+aOiSBgZGV0ZWN0RHJhZ0dlc3R1cmVzYCB8IGJ1ZyDkv67lpI0gfAp8IDMgfCBgdWkvY291cnNlZWRpdC9Db3Vyc2VFZGl0Vmlld01vZGVsLmt0YCB8IGBzZXRDb2xvclRhZ2Ag55qEIGB0YWcgPCAwYCDlrojljavmjaLmiJAgYGlzVmFsaWRDb2xvclRhZ2AgfCBidWcg5L+u5aSNIHwKfCA0IHwgYGRvbWFpbi9tb2RlbC9Db2xvclRhZy5rdGAgfCDmlrDlop4gYGlzVmFsaWRDb2xvclRhZ2DvvIjoibLmnb/ntKLlvJUg4oiqIEFSR0Ig55qE5Y2V5LiA5Yik5o2u77yJIHwg5paw5aKeIHwKfCA1IHwgYGRhdGEvcmVwb3NpdG9yeS9UaW1ldGFibGVSZXBvc2l0b3J5SW1wbC5rdGAgfCDmoKHpqoznu5/kuIDotbAgYGlzVmFsaWRDb2xvclRhZ2AgfCDlr7npvZAgfAp8IDYgfCBgdWkvY291cnNlZWRpdC9jb21wb25lbnRzL0NvbG9yRmllbGQua3RgIHwg5LuOIGBGb3JtQ29udHJvbHNgIOaLhuWHuu+8iOminOiJsuaOp+S7tuWQg+S4pOWll+ivreS5ie+8jOiHquW3seWwsei/kSA5MCDooYzvvIkgfCDpl6jnpoEgfAp8IDcgfCBgdWkvdGltZXRhYmxlL0NvdXJzZURldGFpbFJvd3Mua3RgIHwg5LuOIGBDb3Vyc2VEZXRhaWxTaGVldGAg5ouG5Ye677yIYERldGFpbFJvd2AvYERldGFpbEFjdGlvbmAvYG91dGxpbmVEaXZpZGVyYO+8iSB8IOmXqOemgSB8CgotLS0KCiMjIOS6jOOAgemqjOivgea4heWNle+8iOaooeaLn+WZqOWunua1i++8iQoKfCDpobkgfCDmk43kvZwgfCDnu5PmnpwgfAp8LS0tLXwtLS0tLS18LS0tLS0tfAp8IOWGt+WQr+WKqCArIOivvuihqOmhtSB8IGBhbSBzdGFydGAg5ZCO5oiq5Zu+IHwg56ysIDEg5ZGo44CBMTEvMTIg6IqCIDIxOjAwLzIyOjAwIOaXtumXtOi9tOato+W4uCB8Cnwg6K++56iL6K+m5oOF5by55bGCIHwg54K544CM55CG6K665Yqb5a2m44CN5Y2hIHwg6Imy56uW5p2hICsg6K++5ZCNICsg5ZGo5qyhICsg6IqC5qyhL+aXtumXtC/lnLDngrkv5aSH5rOoICsg57yW6L6RL+WkjeWIti/liKDpmaTpvZDlhajvvIjmi4bmlofku7blkI7oo4XphY3mraPluLjvvIkgfAp8IOi/m+e8lui+kemhtSB8IOeCueW8ueWxguOAjOe8lui+keOAjSB8IOWbm+e7hOihqOWNlem9kOWFqO+8iOWfuuacrOS/oeaBry/ml7bpl7Qv5ZGo5qyhL+ivvueoi+minOiJsu+8iSB8Cnwg5byA5Y+W6Imy6Z2i5p2/IHwg54K544CM6Ieq5Y+W6aKc6Imy44CNIHwgU8OXViDlubPpnaIgKyDlj7PkvqfoibLnm7jmnaEgKyBgI1JSR0dCQmAg5qGGICsg5Y+W5raIL+S/neWtmCB8CnwgKirngrnmjInlj5boibIqKu+8iOS/ruWkjemhue+8iSB8IOeCueW5s+mdoiAoMjUwLDg1MCkgfCBoZXggYCNGNDUxMUVgIOKGkiBgI0RCQzlDM2DvvIzpnaLmnb/mnKrlhbMgfAp8IOeCueiJsuebuOadoSB8IOeCueiJsuebuOadoSB8IGhleCDpmo/kuYvlj5jljJYgfAp8IOaJi+i+kyBoZXggfCDovpPlhaUgYDAwQzg1M2AgfCDlubPpnaLlj5jnu7/vvIjkuIrkuIDmibnlt7LpqozvvIzmnKzmibnmnKrlm57lvZLvvIkgfAp8IOS/neWtmOWbnuS8oO+8iOS/ruWkjemhue+8iSB8IOeCueOAjOS/neWtmOOAjSB8IOmdouadv+WFs+mXreOAgeWbnuWIsOe8lui+kemhte+8jCoq6Ieq5Y+W6Imy5ZyG5ZyI5Y+Y5rex6Imy6YCJ5Lit546v44CBMTIg5Liq6Imy54K55YWo5LiN6YCJ5LitKirvvIjotJ/mlbAgQVJHQiDlm57kvKDmiJDlip/vvIkgfAp8IOaVsOaNruacquaxoeafkyB8IGBydW4tYXNgIOWvvOWHuiBgLXdhbGAg5p+lIGDnkIborrrlipvlraZgIOihjCB8IGBjb2xvcl90YWdgIOS7jeaYryBgMDJg77yI5Y6f5aeL6Imy5p2/57Si5byV77yJ77yM5rWL6K+V6Imy5rKh5pyJ6JC95bqTIHwKCi0tLQoKIyMg5LiJ44CB6Lip5Yiw55qE5Z2R77yI5pys5om55LiJ5Liq55yfIGJ1ZyDnmoTmoLnlm6DvvIkKCiMjIyBCdWcgMe+8mueCuemdouadv+S7u+aEj+S9jee9rumDveS8muaKiumdouadv+WFs+aOiQptYXRlcmlhbDMg55qEIGBBbGVydERpYWxvZ2Ag6buY6K6kIGBkaXNtaXNzT25DbGlja091dHNpZGUgPSB0cnVlYOOAguWPluiJsuebmOacrOi6q+WwseaYr+S4gOWkp+eJh+WPr+eCueWMuuWfn++8jArnlKjmiLfmr4/ngrnkuIDkuIvlj5boibLnm5ggPSDngrnlpJbpg6gg4oaSIOmdouadv+WFs+aOieOAgei/m+W6puWFqOS4ouOAggrimqDvuI8g5pys54mI5pysICoq5rKh5pyJKiogYGRpc21pc3NPbkNsaWNrT3V0c2lkZWAgLyBgZGlzbWlzc09uQmFja1ByZXNzYCDov5nkuKTkuKrlhbflkI3lj4LmlbDvvIwK5Lik5Liq5byA5YWz6YO95oyC5ZyoIGBhbmRyb2lkeC5jb21wb3NlLnVpLndpbmRvdy5EaWFsb2dQcm9wZXJ0aWVzYCDkuIrvvIzlhpnmiJDlhbflkI3lj4LmlbDkvJrmlbTniYfnvJbor5HlpLHotKXjgIIKCiMjIyBCdWcgMu+8mueCueS4gOS4i+S4jeWPluiJsu+8jOWPquacieaLluWKqOaJjeWPlgpgZGV0ZWN0RHJhZ0dlc3R1cmVzYCDlhoXpg6jnirbmgIHmnLrmmK8gYEF3YWl0RG93biDihpIgQXdhaXRUb3VjaFNsb3Ag4oaSIERyYWdnaW5nYO+8jAoqKuS4jei2iui/hyB0b3VjaCBzbG9wIOeahOe6r+eCueaMieWOi+agueS4jeinpuWPkSBgb25EcmFnU3RhcnRgKirjgIIK6ICM44CM54K55LiA5LiL6YCJ5Liq6aKc6Imy44CN5oGw5oGw5piv5Y+W6Imy5Zmo5pyA5bi455So55qE5pON5L2c44CCCuaUueeUqCBgYXdhaXRFYWNoR2VzdHVyZWAgKyBgYXdhaXRGaXJzdERvd24oKWAg5oyJ5LiL5Y2z5Y+W5LiA5qyh6Imy77yM5YaN5b6q546v6Lef5omL77ybCuacrOeJiOeahCBgUG9pbnRlcklucHV0Q2hhbmdlYCDmsqHmnIkgYGNoYW5nZWRUb1VwKClg77yM6Z2gIGAhcHJlc3NlZCAmJiBwcmV2aW91c1ByZXNzZWRgIOWIpOaKrOi1t+OAggoKIyMjIEJ1ZyAz77ya6LSf5pWwIEFSR0Ig6KKr5a6I5Y2r6Z2Z6buY5Lii5byDCua7oeS4jemAj+aYjueahCBBUkdC77yIYDB4RkZSUkdHQkJg77yJ5YaZ5oiQIEludCDmmK8qKui0n+aVsCoq77yIYDB4RkZDM0Q4REJgID0gLTEwNTg5NDk1MDXvvInjgIIKYHNldENvbG9yVGFnYCDph4znmoQgYGlmICh0YWcgPCAwKSByZXR1cm5gIOaKiuWPluiJsuWZqOiHquWPlueahOavj+S4gOS4quminOiJsumDveaMoeaOieS6hu+8mgrpnaLmnb/lhbPkuobjgIHpopzoibLmsqHlj5jjgIHooajljZXov5jlgZzlnKjml6foibLjgILmlLnnlKggYGlzVmFsaWRDb2xvclRhZ2DvvIjntKLlvJUg4oiqIOaXoOespuWPtyBBUkdC77yJ44CCCgotLS0KCiMjIOWbm+OAgemXqOemgeS4jua1i+ivlQoKLSDljZXmtYvvvJoqKjIzOCDnlKjkvosgLyAwIOWksei0pSAvIDAg6ZSZ6K+vKirvvIgzMSDkuKogWE1M77yM56Gu6K6kIGA+IFRhc2sgOmFwcDp0ZXN0RGVidWdVbml0VGVzdGAg5pegIFVQLVRPLURBVEXvvIkKLSDooYzmlbDpl6jnpoHvvJpgZmluZCAqLmt0YCDlpI3mn6UqKuaXoCA+MzAwIOihjCoq5paH5Lu2CiAg77yIYENvbG9yUGlja2VyRGlhbG9nYCAyODLjgIFgQ291cnNlRGV0YWlsU2hlZXRgIDI1MOOAgWBGb3JtQ29udHJvbHNgIDIxNeOAgWBDb2xvckZpZWxkYCAxMTnjgIFgQ291cnNlRGV0YWlsUm93c2AgNjnvvIkKLSDmnoTlu7rvvJpgQlVJTEQgU1VDQ0VTU0ZVTGDvvIxBUEsgMjIsMzY4LDYxMCDlrZfoioIKCi0tLQoKIyMg5LqU44CB5pS25bC+CgotIOa1i+ivleaVsOaNruOAjOiHquWPluminOiJsuOAjeWPquWBnOWcqOiNieeov+aAge+8jCoq5pyq54K557yW6L6R6aG15Y+z5LiK6KeSIOKckyoq77yM5bqT6YeMIGBjb2xvcl90YWdgIOS7jeaYryBgMDJg77yM5Y6f5aeL5pWw5o2u5pyq5rGh5p+TCi0g5YWo56iL5Y+q55So5qih5ouf5ZmoIGBlbXVsYXRvci01NTU0YO+8iC1zIOaYvuW8j+aMh+WumiBzZXJpYWzvvInvvIzmnKrop6bnorDnnJ/mnLoK
+# M11 第四批验证：自绘 HSV 取色器 + 门禁拆分
+
+> 验证日期：2026-10-02
+> 验证环境：命令行模拟器 `emulator-5554`（AVD `xpu_test`，1080×2400），全程未触碰真机
+> 验证方式：`gradle :app:assembleDebug :app:testDebugUnitTest` + 模拟器真实交互 + 单测
+> 关联改动：`docs/05-Spec-规格契约.md` 第三节（增加课程页重做 + HSV 取色器）
+
+---
+
+## 一、这批改了什么
+
+| # | 文件 | 改动 | 性质 |
+|---|------|------|------|
+| 1 | `ui/courseedit/components/ColorPickerDialog.kt` | 「点外面就关」改成 `DialogProperties(dismissOnBackPress/ dismissOnClickOutside = false)` | bug 修复 |
+| 2 | 同上 | 自写 `pickGesture`（`awaitEachGesture` + `awaitFirstDown`）替掉 `detectDragGestures` | bug 修复 |
+| 3 | `ui/courseedit/CourseEditViewModel.kt` | `setColorTag` 的 `tag < 0` 守卫换成 `isValidColorTag` | bug 修复 |
+| 4 | `domain/model/ColorTag.kt` | 新增 `isValidColorTag`（色板索引 ∪ ARGB 的单一判据） | 新增 |
+| 5 | `data/repository/TimetableRepositoryImpl.kt` | 校验统一走 `isValidColorTag` | 对齐 |
+| 6 | `ui/courseedit/components/ColorField.kt` | 从 `FormControls` 拆出（颜色控件吃两套语义，自己就近 90 行） | 门禁 |
+| 7 | `ui/timetable/CourseDetailRows.kt` | 从 `CourseDetailSheet` 拆出（`DetailRow`/`DetailAction`/`outlineDivider`） | 门禁 |
+
+---
+
+## 二、验证清单（模拟器实测）
+
+| 项 | 操作 | 结果 |
+|----|------|------|
+| 冷启动 + 课表页 | `am start` 后截图 | 第 1 周、11/12 节 21:00/22:00 时间轴正常 |
+| 课程详情弹层 | 点「理论力学」卡 | 色竖条 + 课名 + 周次 + 节次/时间/地点/备注 + 编辑/复制/删除齐全（拆文件后装配正常） |
+| 进编辑页 | 点弹层「编辑」 | 四组表单齐全（基本信息/时间/周次/课程颜色） |
+| 开取色面板 | 点「自取颜色」 | S×V 平面 + 右侧色相条 + `#RRGGBB` 框 + 取消/保存 |
+| **点按取色**（修复项） | 点平面 (250,850) | hex `#F4511E` → `#DBC9C3`，面板未关 |
+| 点色相条 | 点色相条 | hex 随之变化 |
+| 手输 hex | 输入 `00C853` | 平面变绿（上一批已验，本批未回归） |
+| 保存回传（修复项） | 点「保存」 | 面板关闭、回到编辑页，**自取色圆圈变深色选中环、12 个色点全不选中**（负数 ARGB 回传成功） |
+| 数据未污染 | `run-as` 导出 `-wal` 查 `理论力学` 行 | `color_tag` 仍是 `02`（原始色板索引），测试色没有落库 |
+
+---
+
+## 三、踩到的坑（本批三个真 bug 的根因）
+
+### Bug 1：点面板任意位置都会把面板关掉
+material3 的 `AlertDialog` 默认 `dismissOnClickOutside = true`。取色盘本身就是一大片可点区域，
+用户每点一下取色盘 = 点外部 → 面板关掉、进度全丢。
+⚠️ 本版本 **没有** `dismissOnClickOutside` / `dismissOnBackPress` 这两个具名参数，
+两个开关都挂在 `androidx.compose.ui.window.DialogProperties` 上，写成具名参数会整片编译失败。
+
+### Bug 2：点一下不取色，只有拖动才取
+`detectDragGestures` 内部状态机是 `AwaitDown → AwaitTouchSlop → Dragging`，
+**不越过 touch slop 的纯点按压根不触发 `onDragStart`**。
+而「点一下选个颜色」恰恰是取色器最常用的操作。
+改用 `awaitEachGesture` + `awaitFirstDown()` 按下即取一次色，再循环跟手；
+本版的 `PointerInputChange` 没有 `changedToUp()`，靠 `!pressed && previousPressed` 判抬起。
+
+### Bug 3：负数 ARGB 被守卫静默丢弃
+满不透明的 ARGB（`0xFFRRGGBB`）写成 Int 是**负数**（`0xFFC3D8DB` = -1058949505）。
+`setColorTag` 里的 `if (tag < 0) return` 把取色器自取的每一个颜色都挡掉了：
+面板关了、颜色没变、表单还停在旧色。改用 `isValidColorTag`（索引 ∪ 无符号 ARGB）。
+
+---
+
+## 四、门禁与测试
+
+- 单测：**238 用例 / 0 失败 / 0 错误**（31 个 XML，确认 `> Task :app:testDebugUnitTest` 无 UP-TO-DATE）
+- 行数门禁：`find *.kt` 复查**无 >300 行**文件
+  （`ColorPickerDialog` 282、`CourseDetailSheet` 250、`FormControls` 215、`ColorField` 119、`CourseDetailRows` 69）
+- 构建：`BUILD SUCCESSFUL`，APK 22,368,610 字节
+
+---
+
+## 五、收尾
+
+- 测试数据「自取颜色」只停在草稿态，**未点编辑页右上角 ✓**，库里 `color_tag` 仍是 `02`，原始数据未污染
+- 全程只用模拟器 `emulator-5554`（-s 显式指定 serial），未触碰真机

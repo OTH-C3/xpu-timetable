@@ -1,1 +1,159 @@
-IyBNMi1ELWZpeCDku7vliqHop4TmoLzvvJrmj5DphpLlu7bov5/mlofmoYjkuI7nsr7noa7pl7npkp/mjojmnYPnlJ/mlYjvvIhBQy0yNe+8iQoKPiDmnaXmupDvvJpNMi1EIOS6pOS7mOWQjueahCoq55yf5py65a6e5rWLICsg5rqQ56CB5qC45p+lKirvvIgyMDI2LTA5LTE377yM5a6J5Y2T55yf5py6ICsgSHlwZXJPU++8ieOAggo+ICoq5LiN5paw5aKe5L6d6LWW44CB5LiN5pS56KGo57uT5p6E44CB5LiN5Yqo5bey6aqM5pS255qE5o6S56iL566X5rOV77yIYFJlbWluZGVyUGxhbm5lci5wbGFuYCAvIGBzaG91bGROb3RpZnlg77yJ5LiOIFhQVSDnq6/ngrnjgIIqKgo+Cj4g4pqg77iPIOacrOinhOagvOesrCAyIOeJiCoq5pu05q2j5LqG56ysIDEg54mI55qE5LiA5aSE6ZSZ6K+v57uT6K66KirvvIjljp/mlofnp7DjgIzmjojmnYPov5Tlm57lkI7nirbmgIHkuI3liLfmlrDjgI3ihpIg5rqQ56CB5qC45p+l5Li6Kirlt7Llrp7njrAqKu+8ieOAggo+IOeOsOe7k+iuuuWFqOmDqOmZhOS7o+eggeS9jee9ruaIliBgZHVtcHN5c2Ag5Y6f5paH77yM5Y+v55u05o6l5qC45a+544CCCgotLS0KCiMjIDEuIOecn+acuuWunua1i+WPluWIsOeahOivgeaNru+8iGBkdW1wc3lzYCDljp/mlofvvIzpnZ7mjqjmtYvvvIkKCiMjIyAxLjEg5o6S56iL6ZO+6Lev5Zyo55yf5py65LiK55Sf5pWIIOKckwoKYGBgCnRhZz0qd2FsYXJtKjpjb20uZ291bGQueHB1dGltZXRhYmxlLy5yZW1pbmRlci5SZW1pbmRlclJlY2VpdmVyCnR5cGU9UlRDX1dBS0VVUCBvcmlnV2hlbj0yMDI2LTA5LTE4IDA3OjQ1OjAwLjAwMCB3aW5kb3c9KzFoMG0wczBtcyByZXBlYXRJbnRlcnZhbD0wIGNvdW50PTAgZmxhZ3M9MHgyMAp3aGVuRWxhcHNlZD0rMTNoMzhtMjJzMTFtcyBtYXhXaGVuRWxhcHNlZD0rMTRoMzhtMjJzMTFtcwpgYGAKCuinpuWPkeaXtuWIuyA9ICoq5ZGo5LqUIDA3OjQ1KiogPSDlkajkupTnrKwgMSDoioIgMDg6MDAg4oiSIOaPkOWJjSAxNSDliIbpkp8g4pyT77yI5LiOIGB0aW1lX3Nsb3RzYOOAgeWRqOinhuWbvuS4gOiHtO+8ieOAggoKIyMjIDEuMiDotbDnmoTmmK/pmY3nuqfot6/lvoTvvIzmnIDlnY/lu7bov58gKioxIOWwj+aXtioqCgp8IOmXuemSnyB8IGB3aW5kb3dgIHwg5oCn6LSoIHwKfC0tLS0tLXwtLS0tLS0tLS0tfC0tLS0tLXwKfCDmnKwgQXBwIOeahOaPkOmGkumXuemSnyB8IGArMWgwbTBzMG1zYCB8IOmdnueyvuehru+8iGBzZXRBbmRBbGxvd1doaWxlSWRsZWDvvIkgfAp8IOezu+e7ny/lhbbku5blupTnlKjnmoTpl7npkp8gfCBgMGAgKyBgZXhhY3RBbGxvd1JlYXNvbj0uLi5gIHwg57K+56GuIHwKCi0g5ZCM5LiA5Lu9IGR1bXAg6YeM5bmz5Y+w57uZ5LqG5bi46YePIGBhbGxvd193aGlsZV9pZGxlX3dpbmRvdz0rMWgwbTBzMG1zYO+8jOS4juaIkeS7rOeahOeql+WPoyoq5a6M5YWo5LiA6Ie0Kiog4oaSIOehruiupOi1sOeahOaYryBgUmVtaW5kZXJTY2hlZHVsZXIua3Q6NDBgIOeahCBgZWxzZWAg5YiG5pSv44CCCi0gYHdoZW5FbGFwc2VkYCDkuI4gYG1heFdoZW5FbGFwc2VkYCDnm7jlt67mraPlpb0gMSDlsI/ml7Yg4oaSIOaKlemAkuWMuumXtCAqKlswNzo0NSwgMDg6NDVdKirvvIzmnIDlnY/lj6/og73liLDor77lkI7miY3mj5DphpLjgIIKLSDmoLnlm6DvvJpgU0NIRURVTEVfRVhBQ1RfQUxBUk1gIOacrOacuum7mOiupOacquaOiOadg++8iGBjbWQgYXBwb3BzIGdldCAuLi4gU0NIRURVTEVfRVhBQ1RfQUxBUk1gIOKGkiBgRGVmYXVsdCBtb2RlOiBkZWZhdWx0YO+8m3RhcmdldFNkayAzNiDlnKggQW5kcm9pZCAxNCsg6buY6K6k5ouS57ud77yJ44CCCgojIyMgMS4zIOiuvue9rumhteaWh+ahiOS4juWunua1i+W3ruS4gOS4quaVsOmHj+e6p++8iCoq57y66Zm3IDEqKu+8iQoKYGBga290bGluCi8vIHVpL3NldHRpbmdzL1NldHRpbmdzU2NyZWVuLmt0OjY5CnByaXZhdGUgY29uc3QgdmFsIEhJTlRfRVhBQ1RfQUxBUk0gPSAi5pyq6I6357K+56Gu6Ze56ZKf5o6I5p2D77ya5o+Q6YaS5Y+v6IO95bu25ZCO5Yeg5YiG6ZKf77yM5Yqf6IO95LiN5Y+X5b2x5ZONIgpgYGAKCuOAjOWHoOWIhumSn+OAjXZzIOWunua1iyAqKjEg5bCP5pe2Kiog56qX5Y+jIOKGkiDnlKjmiLfkvJrliKTmlq3jgIzml6DmiYDosJPvvIzkuI3mjojmnYPjgI3vvIzogIzor77liY3mj5DphpLmmK/moLjlv4Plip/og73jgIIKCiMjIyAxLjQg5o6I5p2D5ZCOKirkuI3kvJrph43mjpIqKu+8iCoq57y66Zm3IDIqKu+8jOa6kOeggeaguOafpee7k+iuuu+8iQoK5YWo6aG555uuIGByZXNjaGVkdWxlKClgIOiwg+eUqOeCueW3sumAkOS4quaguOWvue+8iGBUaW1ldGFibGVBcHAua3Q6MzBgIOWQr+WKqOOAgWBDb3Vyc2VFZGl0Vmlld01vZGVsOjIzNi8yNTFg44CBYEltcG9ydFByZXZpZXdWaWV3TW9kZWw6MTE3YOOAgWBDbGVhbnVwVmlld01vZGVsOjk4YOOAgWBTZXR0aW5nc1ZpZXdNb2RlbDoxMjIvMTM1LzE0NGDjgIFgU3lzdGVtRXZlbnRSZWNlaXZlcjoyNGDvvInvvIwqKuayoeacieS7u+S9leS4gOS4qioq5Y+R55Sf5Zyo44CM55So5oi35LuO57O757uf6aG15o6I5p2D57K+56Gu6Ze56ZKf5Zue5p2l44CN6L+Z5LiA5Yi777yaCgotIGBTZXR0aW5nc1NjcmVlbi5rdDoxMDEtMTAzYCDnmoQgYERpc3Bvc2FibGVFZmZlY3RgICsgYE9OX1JFU1VNRSDihpIgdmlld01vZGVsLnJlZnJlc2hQZXJtaXNzaW9uU3RhdGUoKWAgKirlj6rliLfmlrAgVUkg54q25oCBKirvvIhgU2V0dGluZ3NWaWV3TW9kZWwua3Q6ODMtOTBg77yM5LuF5YaZIGBleGFjdEFsYXJtQWxsb3dlZGDvvInvvIwqKuS4jemHjeaOkioq77ybCi0gYFN5c3RlbUV2ZW50UmVjZWl2ZXIua3Q6MzItMzZgIOeahCBgQUNUSU9OU2Ag5Y+q5pyJIGBCT09UX0NPTVBMRVRFRCAvIFRJTUVfU0VUIC8gVElNRVpPTkVfQ0hBTkdFRGDvvIwqKuacquWkhOeQhioqIEFuZHJvaWQg5a6Y5pa55Li65q2k5Zy65pmv5o+Q5L6b55qE5bm/5pKtCiAgYEFsYXJtTWFuYWdlci5BQ1RJT05fU0NIRURVTEVfRVhBQ1RfQUxBUk1fUEVSTUlTU0lPTl9TVEFURV9DSEFOR0VEYOOAggoK5ZCO5p6c77ya55So5oi35o6I5p2D5bm26L+U5Zue5ZCO77yM55WM6Z2i5pi+56S644CM5bey5o6I5p2D44CN77yM5L2GKirlt7LmjILnmoTpgqPmnaHku43mmK/pnZ7nsr7noa7pl7npkp8qKu+8iGB3aW5kb3c9KzFoYO+8ie+8jOimgeetieWIsOS4i+asoeiHqueEtumHjeaOku+8iOmHjeWQryBBcHAgLyDmlLnorr7nva4gLyDnvJbovpHor77nqIsgLyDph43lkK/orr7lpIfvvInmiY3lj5jnsr7noa4g4oCU4oCUIOeUqOaIt+S7peS4uuW3sueUn+aViO+8jOWunumZheayoeacieOAggoKIyMjIDEuNSDlt7LmoLjlrp4qKuS4jeaYryoq57y66Zm355qE5Lik6aG577yI6YG/5YWN6K+v5pS577yJCgotICoqYE9OX1JFU1VNRWAg54q25oCB5Yi35paw5bey5a6e546wKirvvIhgU2V0dGluZ3NTY3JlZW4ua3Q6MTAxLTEwM2DvvInihpIg5pys6L2u5Y+q6ZyA5Zue5b2S56Gu6K6k77yM5LiN6KaB6YeN5YaZ44CCCi0gYEhJTlRfTk9USUZJQ0FUSU9OU2DvvIjjgIzpgJrnn6XmnYPpmZDmnKrlvIDlkK/vvJrmlLbkuI3liLDmj5DphpLvvIzor77ooajlip/og73kuI3lj5flvbHlk43jgI3vvInooajov7AqKuWHhuehrioq77yM5L+d5oyB5LiN5Y+Y44CCCgotLS0KCiMjIDIuIOS7u+WKoSAx77yIUDHvvIzlv4XlgZrvvInvvJrmlofmoYjlpoLlrp7vvIjlr7nlupQgMS4z77yJCgpgdWkvc2V0dGluZ3MvU2V0dGluZ3NTY3JlZW4ua3Q6NjlgIOaUueS4uuWmguWunuihqOi/sO+8jOmHj+e6p+S4jeW+l+S9juS6juezu+e7n+eql+WPo+OAguW7uuiuru+8mgoKYGBgCuacquiOt+eyvuehrumXuemSn+aOiOadg++8muaPkOmGkuacgOmVv+WPr+iDveW7tuWQjue6piAxIOWwj+aXtu+8iOezu+e7n+ecgeeUteetlueVpe+8ie+8jOS8muW9seWTjeivvuWJjeaPkOmGkueahOWHhuaXtuaApwpgYGAKCi0g5paH5qGI5L+d5oyB5paH5Lu257qn5bi46YeP5YaZ5rOV77yI6aG555uu5pei5pyJ6YeN57uE57qq5b6L77yaKirnpoEqKuWcqOe7hOWQiOacn+aWsOW7uiBgTGlzdGAv5ou85o6l5a2X56ym5Liy77yJ44CCCi0gYEFDVElPTl9SRVFVRVNUX0VYQUNUYO+8iOOAjOWOu+aOiOadg+OAje+8ieS/neaMgeS4jeWPmO+8jOS9hioq5Zue5b2S56Gu6K6kKirlroPor7fmsYLnmoTmmK8gYEFDVElPTl9SRVFVRVNUX1NDSEVEVUxFX0VYQUNUX0FMQVJNYO+8iOebtOi+vuOAjOmXuemSn+S4juaPkOmGkuOAjeezu+e7n+mhte+8jOiAjOmdniBBcHAg6K+m5oOF6aG177yJ44CCCgojIyAzLiDku7vliqEgMu+8iFAx77yM5b+F5YGa77yJ77ya5o6I5p2D5ZCO6YeN5o6S77yM6K6p5p2D6ZmQ55yf5q2j55Sf5pWI77yI5a+55bqUIDEuNO+8iQoK5ZyoIGBTeXN0ZW1FdmVudFJlY2VpdmVyYCDlop7liqDlr7nns7vnu5/lub/mkq3nmoTlpITnkIbvvIjkuI7njrDmnIkgYFRJTUVfU0VUYCDlkIzmupDvvIzlpI3nlKjlkIzkuIDmnaEgYHJlc2NoZWR1bGUoKWAg6Lev5b6E77yJ77yaCgoxLiBgQUNUSU9OU2Ag6ZuG5ZCI5Yqg5YWlIGBBbGFybU1hbmFnZXIuQUNUSU9OX1NDSEVEVUxFX0VYQUNUX0FMQVJNX1BFUk1JU1NJT05fU1RBVEVfQ0hBTkdFRGAKICAg77yI5bi46YeP5YC8IGBhbmRyb2lkLmFwcC5hY3Rpb24uU0NIRURVTEVfRVhBQ1RfQUxBUk1fUEVSTUlTU0lPTl9TVEFURV9DSEFOR0VEYO+8jGBBbGFybU1hbmFnZXJgIOiHqiBBUEkgMzEg5o+Q5L6b6K+l5bi46YeP77yJ44CCCjIuIGBBbmRyb2lkTWFuaWZlc3QueG1sYCDnmoQgYFN5c3RlbUV2ZW50UmVjZWl2ZXJgIOeahCBgPGludGVudC1maWx0ZXI+YCDliqDlhaXlkIzlkI0gYDxhY3Rpb24+YO+8mwogICAqKuadg+mZkOWjsOaYjuS4juS7o+eggeWQjOaJuSoq77yI6aG555uu5bey5Zug5ryPIGBJTlRFUk5FVGAg6Lip6L+H5LiA5qyh77yJ44CCCjMuIGBTZXR0aW5nc1NjcmVlbmAg55qEIGBPTl9SRVNVTUVgIOWIt+aWsOi3r+W+hOS4re+8muW9kyBgZXhhY3RBbGFybUFsbG93ZWRgIOeUsSAqKmZhbHNlIOKGkiB0cnVlKiog5pe277yM6Zmk5Yi35pawIFVJIOWklioq5b+F6aG7Kirop6blj5HkuIDmrKHph43mjpLjgIIKICAgLSDop6blj5HmlrnlvI/msr/nlKjnjrDmnInms6jlhaXnmoTlm57osIPvvIhgQXBwTmF2YCDph4wgYHJlbWluZGVyTWFuYWdlci5yZXNjaGVkdWxlKClg77yJ77yMKirkuI3opoEqKuWcqCBVSSDlsYLnm7TmjqXnorAgYEFsYXJtTWFuYWdlcmDjgIIKICAgLSDms6jmhI/ljrvph43vvJrlub/mkq3kuI4gT05fUkVTVU1FIOWPr+iDveWHoOS5juWQjOaXtuWPkeeUnyDihpIg6YeN5o6S5piv5bmC562J55qE77yI5Zu65a6aIGByZXF1ZXN0Q29kZWAg6KaG55uW77yJ77yM5L2G5LuN6KaB5rGCKirkuI3lvpcqKuWboOatpOS6p+eUn+S4pOadoemXuemSn+OAggo0LiBgcmVzY2hlZHVsZSgpYCDlhoXpg6jml6DpnIDmlLnliqjvvIhgcGxhbmAg5Lya5o2uIGBjYW5TY2hlZHVsZUV4YWN0KClgIOiHquWKqOmAieeyvuehri/pmY3nuqfliIbmlK/vvInjgIIKCj4g6K+05piO77ya5pys5Lu75Yqh5LiO44CM5Lu75YqhIDEg5paH5qGI44CN5LqS6KGlIOKAlOKAlCDmlofmoYjorqnnlKjmiLfnn6XpgZPor6XmjojmnYPvvIzku7vliqEgMiDorqnmjojmnYMqKuecn+atoyoq55Sf5pWI44CCCgojIyAzLjUg5Lu75YqhIDPvvIhQMe+8jOW/heWBmu+8ie+8mueCueWHu+aPkOmGkumAmuefpeW/hemhu+WRiOeOsOWRqOinhuWbvu+8iEFDLTI577yJCgoqKuecn+acuuWunua1i+WPkeeOsOeahOS/neecn+e8uuWPo++8iDIwMjYtMDktMTfvvIkqKu+8mueCueWHu+ivvuWJjeaPkOmGkumAmuefpeiDveaKiiBBcHAg5ouJ5Zue5YmN5Y+w77yM5L2GKirlkYjnjrDnmoTmmK/nprvlvIDml7bnmoTpobXpnaIqKuKAlOKAlOWunua1i+W9k+aXtuWBnOWcqOiuvue9rumhte+8jOeCuemAmuefpeWQjuS7jeaYvuekuuiuvue9rumhte+8jOS4jeaYr+ivvuihqOOAggoK5qC55Zug77yaYE1haW5BY3Rpdml0eWAg5pivIGBzdGFuZGFyZGAg5ZCv5Yqo5qih5byP5LiUIGBQZW5kaW5nSW50ZW50YCDnm67moIfmmK/lkIzkuIDkuKogYE1haW5BY3Rpdml0eWDvvJvku7vliqHlt7LlnKjlkI7lj7Dml7bns7vnu58qKuWkjeeUqOaXouaciSBBY3Rpdml0eSDlrp7kvosqKu+8jOWvvOiIquagiO+8iEFwcE5hdiDnmoQgYGJhY2tTdGFja2DvvInku43lgZzlnKjljp/pobXpnaLjgIIKCuWunueOsOimgeaxgu+8iOS4jeW8leWFpeS+nei1lu+8ie+8mgoKMS4gYEFuZHJvaWRNYW5pZmVzdC54bWxgIOeahCBgTWFpbkFjdGl2aXR5YCDliqAgYGFuZHJvaWQ6bGF1bmNoTW9kZT0ic2luZ2xlVG9wImDvvIjpgb/lhY3ph43lpI3lrp7kvovvvJvpobrluKbpgb/lhY3ngrnpgJrnn6XkuqfnlJ/lpJrkuKogQWN0aXZpdHnvvInjgIIKMi4g6YCa55+l55qEIGBQZW5kaW5nSW50ZW50YCBJbnRlbnQg5YqgIGBJbnRlbnQuRkxBR19BQ1RJVklUWV9DTEVBUl9UT1Bg77yI5Y+v6YCJ5L2G5o6o6I2Q77yM6K+t5LmJ5pu05piO56Gu77yJ44CCCjMuIGBNYWluQWN0aXZpdHkub3ZlcnJpZGUgZnVuIG9uTmV3SW50ZW50KGludGVudDogSW50ZW50KWDvvJrosIPnlKggYHN1cGVyYCDlkI7vvIzlkJHlupTnlKjlrrnlmajlj5HluIPkuIDmrKEi5Zue5Yiw6K++6KGoIuS6i+S7tgogICDvvIjmsr/nlKjnjrDmnInlrrnlmajmqKHlvI/vvIzlpoIgYEFwcENvbnRhaW5lcmAg5YaF5YqgIGB2YWwgbmF2UmVxdWVzdHMgPSBNdXRhYmxlU3RhdGVGbG93KDApYCDmiJYgYE11dGFibGVTaGFyZWRGbG93PFVuaXQ+YO+8jGB0cnlFbWl0YCDljbPlj6/vvIwqKuS4jeimgSoq5byV5YWl5paw5L6d6LWW77yJ44CCCjQuIGBBcHBOYXZgIOinguWvn+ivpeS6i+S7tiDihpIg5omn6KGMKirlt7LmnInnmoQqKiBgcG9wVG9Sb290KClg77yI6L+U5Zue5qCI5Zue5qCI5bqV5ZGo6KeG5Zu+77yJ44CC5LiN5b6X5ZyoIFVJIOWxguebtOaOpeaUuSBgQWxhcm1NYW5hZ2VyYCDmiJbnu5Xov4fov5Tlm57moIjlj6blvIDpobXpnaLjgIIKCumqjOaUtuWIpOaNru+8iOecn+acuu+8jOmAkOadoe+8ie+8mgoKfCAjIHwg5Zy65pmvIHwg5pyf5pybIHwKfC0tLXwtLS0tLS18LS0tLS0tfAp8IEEgfCBBcHAg5Zyo5ZCO5Y+w5LiUKirlgZzlnKjorr7nva7pobUqKiDihpIg54K55o+Q6YaS6YCa55+lIHwg5ZGI546wKirlkajop4blm74qKu+8iFVJIOagkeWQq+OAjOesrCBOIOWRqOOAje+8ie+8jOS4jeaYr+iuvue9rumhtSB8CnwgQiB8IEFwcCDlrozlhajmnKrov5DooYwg4oaSIOeCueaPkOmGkumAmuefpSB8IOebtOaOpei/m+WFpeWRqOinhuWbviB8CnwgQyB8IOi/nue7reeCuemAmuefpSAyIOasoSB8IGBkdW1wc3lzIGFjdGl2aXR5IGFjdGl2aXRpZXMgXHwgZ3JlcCAtYyBNYWluQWN0aXZpdHlgIOS4jeWinumVv++8iOaXoOmHjeWkjeWunuS+i++8ieOAgeS4jeW0qea6gyB8CnwgRCB8IOS7jue8lui+kemhte+8iOacieacquS/neWtmOi+k+WFpe+8ieiiq+mAmuefpeaLiei1tyB8IOWRiOeOsOWRqOinhuWbvu+8m+e8lui+keihqOWNleWGheWuueS4ouW8g++8iOS4juaXouaciSLov5Tlm57ljbPkuKLlvIMi6KGM5Li65LiA6Ie077yM5pys5qyh5LiN5paw5aKe56Gu6K6k77yJIHwKCiMjIDQuIOWGs+etlumhue+8iCoq5pys5qyh5LiN5a6e546wKirvvIznrYnogIHlpKfmi43mnb/vvIkKCkFuZHJvaWQgMTMrIOWPpuaciSBgVVNFX0VYQUNUX0FMQVJNYO+8iCoq6buY6K6k5o6I5LqIKirvvIzml6DpnIDnlKjmiLfmk43kvZzljbPlj6/nlKjnsr7noa7pl7npkp/vvInvvJoKCnwg5pa55qGIIHwg5aW95aSEIHwg5Luj5Lu3IC8g6aOO6ZmpIHwKfC0tLS0tLXwtLS0tLS18LS0tLS0tLS0tLS0tLXwKfCBBLiDnu7TmjIEgYFNDSEVEVUxFX0VYQUNUX0FMQVJNYO+8iOW9k+WJjeWunueOsCArIOacrOinhOagvOS/ruihpe+8iSB8IOS7u+S9leWIhuWPkea4oOmBk+mDveWQiOinhCB8IOeUqOaIt+mhu+aJi+WKqOaOiOadg++8m+S4jeaOiOadg+WImeacgOmVv+W7tui/nyAxIOWwj+aXtu+8iOW3suWmguWunuWRiuefpe+8iSB8CnwgQi4g5YqgIGBVU0VfRVhBQ1RfQUxBUk1g77yI5Y+v5LiOIEEg5bm25a2Y77yJIHwg5o+Q6YaS5b+F54S25YeG5pe277yM55So5oi36Zu25pON5L2cIHwg5bGe5Y+X6ZmQ5p2D6ZmQ77yM5a6Y5pa55Y+j5b6E5LuF6ZmQ44CM5qC45b+D5Yqf6IO95Li66Ze56ZKfL+aXpeWOhuOAjeeahOW6lOeUqO+8m+ivvuihqOaPkOmGkioq5Y+v6KKr6K6k5a6a5Li65pel5Y6G57G7KirvvIzkvYbpnIDoh6rooYzmib/mi4Xop6Pph4rotKPku7vvvJvlsIbmnaXkuIrluILlnLrpnIDph43mlrDoh6rmn6UgfAoKKirpu5jorqTlu7rorq7vvJrlhYjlgZogQe+8iOacrOinhOagvO+8ie+8jEIg55Sx6ICB5aSn5Yaz5a6a44CC5pys6KeE5qC85Lit5LiN6KaB5a6e546wIELjgIIqKgoKLS0tCgojIyA1LiDnnJ/mnLrpqozmlLbliKTmja7vvIjlj6/mnLrmorDmoLjlr7nvvIkKCnwgIyB8IOatpemqpCB8IOacn+acmyB8CnwtLS18LS0tLS0tfC0tLS0tLXwKfCAxIHwg5pyq5o6I5p2D5pe26L+b6K6+572u6aG1IHwg5paH5qGI5ZCr44CMMSDlsI/ml7bjgI3ph4/nuqfvvJvmnInjgIzljrvmjojmnYPjgI3lhaXlj6MgfAp8IDIgfCDngrnjgIzljrvmjojmnYPjgI0gfCDnm7Tovr7jgIzpl7npkp/kuI7mj5DphpLjgI3ns7vnu5/pobXvvIjpnZ4gQXBwIOivpuaDhemhte+8iSB8CnwgMyB8IOezu+e7n+mhteaOiOadgyDihpIg6L+U5Zue6K6+572u6aG1IHwg5pi+56S65bey5o6I5p2D77yIYE9OX1JFU1VNRWAg5Yi35paw77yM5Zue5b2S56Gu6K6k77yJIHwKfCA0IHwg6L+U5Zue5ZCOKirkuI3lgZrku7vkvZXlhbbku5bmk43kvZwqKu+8jOeri+WIu+afpSBgZHVtcHN5cyBhbGFybWAgfCDmiJHku6zpgqPmnaHpl7npkp8gYHdpbmRvdz0wYO+8iOeyvuehru+8ie+8jOS4lCBgb3JpZ1doZW5gIOS7jSA9IOOAjOS4i+S4gOiKguivviDiiJIg5o+Q5YmN5YiG6ZKf44CNIHwKfCA1IHwg5ZCM5LiA5p2h6Ze56ZKf5Y+q5Ye6546w5LiA5qyhIHwg5LiN6YeN5aSN77yI5bm/5pKtICsgT05fUkVTVU1FIOWPjOinpuWPkeS4i+eahOW5guetieaAp++8iSB8CnwgNiB8IOaLkue7nemAmuefpeadg+mZkO+8iGBjbWQgYXBwb3BzIHNldCA8cGtnPiBQT1NUX05PVElGSUNBVElPTiBpZ25vcmVg77yJ4oaSIOmHjeWQryBBcHAgfCDor77ooajmraPluLjmuLLmn5PjgIHml6DltKnmuoPvvIhBQy0xNiDlm57lvZLvvIkgfAp8IDcgfCDmgaLlpI3mnYPpmZDjgIHmj5DliY3liIbpkp/mlLnlm54gMTUgfCDpl7npkp/lm57liLDjgIzkuIvkuIDoioLor74g4oiSIDE1IOWIhumSn+OAjSB8Cgo+ICoq55yf5py65p2D6ZmQ5Z2R77yI5Yqh5b+F54Wn5YGa77yM5ZCm5YiZ5Lya6K+v5Yik77yJKirvvJpIeXBlck9TIOS4iuWNlei3kQo+IGBhZGIgc2hlbGwgcG0gZ3JhbnQgPHBrZz4gYW5kcm9pZC5wZXJtaXNzaW9uLlBPU1RfTk9USUZJQ0FUSU9OU2Ag5LmL5ZCO77yMYGR1bXBzeXMgcGFja2FnZWAg5LuN5Y+v6IO95pivIGBncmFudGVkPWZhbHNlYO+8mwo+IOW/hemhuyoq5ZCM5pe2KirmiafooYwgYGFkYiBzaGVsbCBjbWQgYXBwb3BzIHNldCA8cGtnPiBQT1NUX05PVElGSUNBVElPTiBhbGxvd2DvvIzlho3lpI3moLggYGdyYW50ZWQ9dHJ1ZWDjgIIKPiDnsr7noa7pl7npkp/lr7nlupQgYGFkYiBzaGVsbCBjbWQgYXBwb3BzIHNldCA8cGtnPiBTQ0hFRFVMRV9FWEFDVF9BTEFSTSBhbGxvd2DjgIIKCi0tLQoKIyMgNi4g5Lqk5LuY57qq5b6LCgotIOaWh+S7tiDiiaQgMzAwIOihjO+8m+aXoCBlbW9qae+8myoq5LiN5paw5aKe5L6d6LWWKioKLSAqKuS4jeaUueihqOe7k+aehCoq77yI6Iul56Gu6ZyA77yM5b+F6aG75ZCM5pe25Y2HIGBBcHBEYXRhYmFzZS52ZXJzaW9uYCDlubbooaUgYE1pZ3JhdGlvbnMua3RgIOKAlOKAlCDlt7Llm6DmvI/lgZrltKnov4fkuIDmrKHvvIkKLSDkuI3lvpfmlLnliqjlt7LpqozmlLbnmoQgYFJlbWluZGVyUGxhbm5lci5wbGFuYCAvIGBzaG91bGROb3RpZnlgIOivreS5ieOAgVhQVSDnq6/ngrnkuI7mi6bmiKrmraPliJkKLSDlm57kvKDmoLzlvI/vvJrmnoTlu7ogRVhJVCDnoIEgKyDnlKjkvovmlbDvvIjlvZPliY3ln7rnur8gKioxODEqKu+8jOiLpeaWsOWinue6r+WHveaVsOa1i+ivleivt+aKpeWRiuWinumHj++8iSsg5paH5Lu26KGM5pWwICsg6YCQ5p2h6Ieq6K+EICoqQUMtMjUqKiArIOS4iuihqCAx4oCTNyDnmoTlrp7mtYvnu5PmnpzvvIjnrKwgNC81IOadoeW/hemhu+e7mSBgZHVtcHN5c2Ag6YeMIGB3aW5kb3c9YCDkuI7pl7npkp/mnaHmlbDnmoTljp/mlofvvIkrIOacqumqjOivgemhueWmguWunuWIl+WHugoKLS0tCgojIyA3LiDpmYTvvJpNMi1EIOWJqeS9meecn+acuueUqOS+i++8iOeUseaIkeaWueaJp+ihjO+8jOS4juacrOS/ruWkjeWPr+W5tuihjO+8iQoKLSAqKkFDLTE0KirvvJrliqDkuIDpl6jku4rlpKnnmoTor74gKyDmj5DliY0gNjAg5YiG6ZKfIOKGkiDlupQqKueri+WNsyoq5pS25Yiw6YCa55+l77yI5qCH6aKY44CMTiDliIbpkp/lkI7kuIror77jgI0vIOato+aWh+OAjOivvuWQjSDCtyBISDptbS1ISDptbSDCtyDmlZnlrqTjgI3vvInvvJvngrnpgJrnn6UqKuebtOi+vuivvuihqCoqCi0gKipBQy0xNSoq77ya5Yqg5LiA6Zeo5LuK5aSpKirlt7Lnu5PmnZ8qKueahOivviDihpIg6YeN5o6S5ZCOKirkuI3lvpcqKuihpeWPkemAmuefpe+8jOmXuemSn+aMh+WQkeS4i+S4gOasoQogIO+8iOe7k+aehOaAp+S+neaNru+8mmBmaW5kTmV4dENsYXNzYCDnu48gYFdlZWtDYWxjLm5leHRTZXNzaW9uVGltZWAg5Y+q6L+U5Zue44CM6L+Y5rKh57uT5p2f44CN55qE6YKj5qyh5a6J5o6S77yM5bey57uT5p2f55qE6K++5LiN5Lya6KKr6YCJ5Lit77ybYHNob3VsZE5vdGlmeWAg5Li65LqM5qyh6Ziy57q/77yJCi0gKipBQy0xNioq77ya5ouS57ud6YCa55+l5p2D6ZmQICsg6YeN5ZCvIOKGkiDor77ooajkuI3lj5flvbHlk40KLSAqKumHjeWQr+aBouWkjSoq77yaYEJPT1RfQ09NUExFVEVEYCDlkI7pl7npkp/ph43mlrDmjILkuIoKCj4g5oiR5pa55omn6KGM5pe255SoIEFwcCDoh6rouqvnmoTliqDor77mtYHnqIvpgKDmtYvor5Xor77vvIzpqozor4HlrowqKueri+WNs+WIoOmZpCoq77yM5bm25qC45a+55pWw5o2u5bqT5Zue5YiwIGBNQU5VQUwgMe+8iOmrmOaVsO+8iSsgV0VCIDlg44CB5peg5q6L55WZ5rWL6K+V5pWw5o2u44CCCj4g55yf5py66Ieq5Yqo5YyW57qq5b6L77yaKirnpoHnlKjns7vnu5/ov5Tlm57plK4qKuWvvOiIqu+8iOS8mumAgOWHuiBBcHAg5oiW6JC95Yiw56ys5LiJ5pa55bqU55So77yJ77yb5oiq5bGP5YmN5YWI5qC45a+55YmN5Y+w5YyF5ZCN44CCCg==
+# M2-D-fix 任务规格：提醒延迟文案与精确闹钟授权生效（AC-25）
+
+> 来源：M2-D 交付后的**真机实测 + 源码核查**（2026-09-17，安卓真机 + HyperOS）。
+> **不新增依赖、不改表结构、不动已验收的排程算法（`ReminderPlanner.plan` / `shouldNotify`）与 XPU 端点。**
+>
+> ⚠️ 本规格第 2 版**更正了第 1 版的一处错误结论**（原文称「授权返回后状态不刷新」→ 源码核查为**已实现**）。
+> 现结论全部附代码位置或 `dumpsys` 原文，可直接核对。
+
+---
+
+## 1. 真机实测取到的证据（`dumpsys` 原文，非推测）
+
+### 1.1 排程链路在真机上生效 ✓
+
+```
+tag=*walarm*:com.gould.xputimetable/.reminder.ReminderReceiver
+type=RTC_WAKEUP origWhen=2026-09-18 07:45:00.000 window=+1h0m0s0ms repeatInterval=0 count=0 flags=0x20
+whenElapsed=+13h38m22s11ms maxWhenElapsed=+14h38m22s11ms
+```
+
+触发时刻 = **周五 07:45** = 周五第 1 节 08:00 − 提前 15 分钟 ✓（与 `time_slots`、周视图一致）。
+
+### 1.2 走的是降级路径，最坏延迟 **1 小时**
+
+| 闹钟 | `window` | 性质 |
+|------|----------|------|
+| 本 App 的提醒闹钟 | `+1h0m0s0ms` | 非精确（`setAndAllowWhileIdle`） |
+| 系统/其他应用的闹钟 | `0` + `exactAllowReason=...` | 精确 |
+
+- 同一份 dump 里平台给了常量 `allow_while_idle_window=+1h0m0s0ms`，与我们的窗口**完全一致** → 确认走的是 `ReminderScheduler.kt:40` 的 `else` 分支。
+- `whenElapsed` 与 `maxWhenElapsed` 相差正好 1 小时 → 投递区间 **[07:45, 08:45]**，最坏可能到课后才提醒。
+- 根因：`SCHEDULE_EXACT_ALARM` 本机默认未授权（`cmd appops get ... SCHEDULE_EXACT_ALARM` → `Default mode: default`；targetSdk 36 在 Android 14+ 默认拒绝）。
+
+### 1.3 设置页文案与实测差一个数量级（**缺陷 1**）
+
+```kotlin
+// ui/settings/SettingsScreen.kt:69
+private const val HINT_EXACT_ALARM = "未获精确闹钟授权：提醒可能延后几分钟，功能不受影响"
+```
+
+「几分钟」vs 实测 **1 小时** 窗口 → 用户会判断「无所谓，不授权」，而课前提醒是核心功能。
+
+### 1.4 授权后**不会重排**（**缺陷 2**，源码核查结论）
+
+全项目 `reschedule()` 调用点已逐个核对（`TimetableApp.kt:30` 启动、`CourseEditViewModel:236/251`、`ImportPreviewViewModel:117`、`CleanupViewModel:98`、`SettingsViewModel:122/135/144`、`SystemEventReceiver:24`），**没有任何一个**发生在「用户从系统页授权精确闹钟回来」这一刻：
+
+- `SettingsScreen.kt:101-103` 的 `DisposableEffect` + `ON_RESUME → viewModel.refreshPermissionState()` **只刷新 UI 状态**（`SettingsViewModel.kt:83-90`，仅写 `exactAlarmAllowed`），**不重排**；
+- `SystemEventReceiver.kt:32-36` 的 `ACTIONS` 只有 `BOOT_COMPLETED / TIME_SET / TIMEZONE_CHANGED`，**未处理** Android 官方为此场景提供的广播
+  `AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED`。
+
+后果：用户授权并返回后，界面显示「已授权」，但**已挂的那条仍是非精确闹钟**（`window=+1h`），要等到下次自然重排（重启 App / 改设置 / 编辑课程 / 重启设备）才变精确 —— 用户以为已生效，实际没有。
+
+### 1.5 已核实**不是**缺陷的两项（避免误改）
+
+- **`ON_RESUME` 状态刷新已实现**（`SettingsScreen.kt:101-103`）→ 本轮只需回归确认，不要重写。
+- `HINT_NOTIFICATIONS`（「通知权限未开启：收不到提醒，课表功能不受影响」）表述**准确**，保持不变。
+
+---
+
+## 2. 任务 1（P1，必做）：文案如实（对应 1.3）
+
+`ui/settings/SettingsScreen.kt:69` 改为如实表述，量级不得低于系统窗口。建议：
+
+```
+未获精确闹钟授权：提醒最长可能延后约 1 小时（系统省电策略），会影响课前提醒的准时性
+```
+
+- 文案保持文件级常量写法（项目既有重组纪律：**禁**在组合期新建 `List`/拼接字符串）。
+- `ACTION_REQUEST_EXACT`（「去授权」）保持不变，但**回归确认**它请求的是 `ACTION_REQUEST_SCHEDULE_EXACT_ALARM`（直达「闹钟与提醒」系统页，而非 App 详情页）。
+
+## 3. 任务 2（P1，必做）：授权后重排，让权限真正生效（对应 1.4）
+
+在 `SystemEventReceiver` 增加对系统广播的处理（与现有 `TIME_SET` 同源，复用同一条 `reschedule()` 路径）：
+
+1. `ACTIONS` 集合加入 `AlarmManager.ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED`
+   （常量值 `android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED`，`AlarmManager` 自 API 31 提供该常量）。
+2. `AndroidManifest.xml` 的 `SystemEventReceiver` 的 `<intent-filter>` 加入同名 `<action>`；
+   **权限声明与代码同批**（项目已因漏 `INTERNET` 踩过一次）。
+3. `SettingsScreen` 的 `ON_RESUME` 刷新路径中：当 `exactAlarmAllowed` 由 **false → true** 时，除刷新 UI 外**必须**触发一次重排。
+   - 触发方式沿用现有注入的回调（`AppNav` 里 `reminderManager.reschedule()`），**不要**在 UI 层直接碰 `AlarmManager`。
+   - 注意去重：广播与 ON_RESUME 可能几乎同时发生 → 重排是幂等的（固定 `requestCode` 覆盖），但仍要求**不得**因此产生两条闹钟。
+4. `reschedule()` 内部无需改动（`plan` 会据 `canScheduleExact()` 自动选精确/降级分支）。
+
+> 说明：本任务与「任务 1 文案」互补 —— 文案让用户知道该授权，任务 2 让授权**真正**生效。
+
+## 3.5 任务 3（P1，必做）：点击提醒通知必须呈现周视图（AC-29）
+
+**真机实测发现的保真缺口（2026-09-17）**：点击课前提醒通知能把 App 拉回前台，但**呈现的是离开时的页面**——实测当时停在设置页，点通知后仍显示设置页，不是课表。
+
+根因：`MainActivity` 是 `standard` 启动模式且 `PendingIntent` 目标是同一个 `MainActivity`；任务已在后台时系统**复用既有 Activity 实例**，导航栈（AppNav 的 `backStack`）仍停在原页面。
+
+实现要求（不引入依赖）：
+
+1. `AndroidManifest.xml` 的 `MainActivity` 加 `android:launchMode="singleTop"`（避免重复实例；顺带避免点通知产生多个 Activity）。
+2. 通知的 `PendingIntent` Intent 加 `Intent.FLAG_ACTIVITY_CLEAR_TOP`（可选但推荐，语义更明确）。
+3. `MainActivity.override fun onNewIntent(intent: Intent)`：调用 `super` 后，向应用容器发布一次"回到课表"事件
+   （沿用现有容器模式，如 `AppContainer` 内加 `val navRequests = MutableStateFlow(0)` 或 `MutableSharedFlow<Unit>`，`tryEmit` 即可，**不要**引入新依赖）。
+4. `AppNav` 观察该事件 → 执行**已有的** `popToRoot()`（返回栈回栈底周视图）。不得在 UI 层直接改 `AlarmManager` 或绕过返回栈另开页面。
+
+验收判据（真机，逐条）：
+
+| # | 场景 | 期望 |
+|---|------|------|
+| A | App 在后台且**停在设置页** → 点提醒通知 | 呈现**周视图**（UI 树含「第 N 周」），不是设置页 |
+| B | App 完全未运行 → 点提醒通知 | 直接进入周视图 |
+| C | 连续点通知 2 次 | `dumpsys activity activities \| grep -c MainActivity` 不增长（无重复实例）、不崩溃 |
+| D | 从编辑页（有未保存输入）被通知拉起 | 呈现周视图；编辑表单内容丢弃（与既有"返回即丢弃"行为一致，本次不新增确认） |
+
+## 4. 决策项（**本次不实现**，等老大拍板）
+
+Android 13+ 另有 `USE_EXACT_ALARM`（**默认授予**，无需用户操作即可用精确闹钟）：
+
+| 方案 | 好处 | 代价 / 风险 |
+|------|------|-------------|
+| A. 维持 `SCHEDULE_EXACT_ALARM`（当前实现 + 本规格修补） | 任何分发渠道都合规 | 用户须手动授权；不授权则最长延迟 1 小时（已如实告知） |
+| B. 加 `USE_EXACT_ALARM`（可与 A 并存） | 提醒必然准时，用户零操作 | 属受限权限，官方口径仅限「核心功能为闹钟/日历」的应用；课表提醒**可被认定为日历类**，但需自行承担解释责任；将来上市场需重新自查 |
+
+**默认建议：先做 A（本规格），B 由老大决定。本规格中不要实现 B。**
+
+---
+
+## 5. 真机验收判据（可机械核对）
+
+| # | 步骤 | 期望 |
+|---|------|------|
+| 1 | 未授权时进设置页 | 文案含「1 小时」量级；有「去授权」入口 |
+| 2 | 点「去授权」 | 直达「闹钟与提醒」系统页（非 App 详情页） |
+| 3 | 系统页授权 → 返回设置页 | 显示已授权（`ON_RESUME` 刷新，回归确认） |
+| 4 | 返回后**不做任何其他操作**，立刻查 `dumpsys alarm` | 我们那条闹钟 `window=0`（精确），且 `origWhen` 仍 = 「下一节课 − 提前分钟」 |
+| 5 | 同一条闹钟只出现一次 | 不重复（广播 + ON_RESUME 双触发下的幂等性） |
+| 6 | 拒绝通知权限（`cmd appops set <pkg> POST_NOTIFICATION ignore`）→ 重启 App | 课表正常渲染、无崩溃（AC-16 回归） |
+| 7 | 恢复权限、提前分钟改回 15 | 闹钟回到「下一节课 − 15 分钟」 |
+
+> **真机权限坑（务必照做，否则会误判）**：HyperOS 上单跑
+> `adb shell pm grant <pkg> android.permission.POST_NOTIFICATIONS` 之后，`dumpsys package` 仍可能是 `granted=false`；
+> 必须**同时**执行 `adb shell cmd appops set <pkg> POST_NOTIFICATION allow`，再复核 `granted=true`。
+> 精确闹钟对应 `adb shell cmd appops set <pkg> SCHEDULE_EXACT_ALARM allow`。
+
+---
+
+## 6. 交付纪律
+
+- 文件 ≤ 300 行；无 emoji；**不新增依赖**
+- **不改表结构**（若确需，必须同时升 `AppDatabase.version` 并补 `Migrations.kt` —— 已因漏做崩过一次）
+- 不得改动已验收的 `ReminderPlanner.plan` / `shouldNotify` 语义、XPU 端点与拦截正则
+- 回传格式：构建 EXIT 码 + 用例数（当前基线 **181**，若新增纯函数测试请报告增量）+ 文件行数 + 逐条自评 **AC-25** + 上表 1–7 的实测结果（第 4/5 条必须给 `dumpsys` 里 `window=` 与闹钟条数的原文）+ 未验证项如实列出
+
+---
+
+## 7. 附：M2-D 剩余真机用例（由我方执行，与本修复可并行）
+
+- **AC-14**：加一门今天的课 + 提前 60 分钟 → 应**立即**收到通知（标题「N 分钟后上课」/ 正文「课名 · HH:mm-HH:mm · 教室」）；点通知**直达课表**
+- **AC-15**：加一门今天**已结束**的课 → 重排后**不得**补发通知，闹钟指向下一次
+  （结构性依据：`findNextClass` 经 `WeekCalc.nextSessionTime` 只返回「还没结束」的那次安排，已结束的课不会被选中；`shouldNotify` 为二次防线）
+- **AC-16**：拒绝通知权限 + 重启 → 课表不受影响
+- **重启恢复**：`BOOT_COMPLETED` 后闹钟重新挂上
+
+> 我方执行时用 App 自身的加课流程造测试课，验证完**立即删除**，并核对数据库回到 `MANUAL 1（高数）+ WEB 9`、无残留测试数据。
+> 真机自动化纪律：**禁用系统返回键**导航（会退出 App 或落到第三方应用）；截屏前先核对前台包名。

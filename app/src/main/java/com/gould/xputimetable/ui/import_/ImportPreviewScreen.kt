@@ -1,1 +1,173 @@
-LyoKICogSW1wb3J0UHJldmlld1NjcmVlbi5rdCDigJTigJQg5a+85YWl6aKE6KeI56Gu6K6k6aG177yIQUMtMTAvMTMvMjEg55qE6JC95Zyw55WM6Z2i77yJCiAqCiAqIOmTgeW+i++8muehruiupOWJjeWPquivu++8iOiuoeaVsC/opobnm5bojIPlm7Qv5byC5bi4L+eWkeS8vOmHjeWkjeWFqOmDqOadpeiHqiBWaWV3TW9kZWwg54q25oCB77yJ77yMCiAqIOWUr+S4gOWGmeWFpeWPo+aYr+OAjOehruiupOWvvOWFpeOAjeaMiemSriDihpIgdmlld01vZGVsLmNvbmZpcm0oKeOAguWFpeW6k+aIkOWKn+iHquWKqOi/lOWbnuWRqOinhuWbvuOAggogKiDnlYzpnaLpk4HlvovvvJpTY2FmZm9sZCArIOiHque7mOmhtuagjyBzdGF0dXNCYXJzUGFkZGluZygp77yb5bqV6YOo5Zu65a6a5qCPIG5hdmlnYXRpb25CYXJzUGFkZGluZygp77ybCiAqICAg5ZCr6L6T5YWl5qGG55qE6aG16Z2iIGltZVBhZGRpbmcoKe+8m+Wbnuiwg+aWueazleW8leeUqOOAggogKi8KcGFja2FnZSBjb20uZ291bGQueHB1dGltZXRhYmxlLnVpLmltcG9ydF8KCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LkFycmFuZ2VtZW50CmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LkNvbHVtbgppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5Sb3cKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQuU3BhY2VyCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LmZpbGxNYXhTaXplCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LmZpbGxNYXhXaWR0aAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5oZWlnaHQKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQubmF2aWdhdGlvbkJhcnNQYWRkaW5nCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LnBhZGRpbmcKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQuc2l6ZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5zdGF0dXNCYXJzUGFkZGluZwppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLnJlbWVtYmVyU2Nyb2xsU3RhdGUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi52ZXJ0aWNhbFNjcm9sbAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5tYXRlcmlhbDMuQnV0dG9uCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5DaXJjdWxhclByb2dyZXNzSW5kaWNhdG9yCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5JY29uCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5JY29uQnV0dG9uCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5NYXRlcmlhbFRoZW1lCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5TY2FmZm9sZAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5tYXRlcmlhbDMuVGV4dAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5tYXRlcmlhbDMuVGV4dEJ1dHRvbgppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5ydW50aW1lLkNvbXBvc2FibGUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UucnVudGltZS5MYXVuY2hlZEVmZmVjdAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5ydW50aW1lLmNvbGxlY3RBc1N0YXRlCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnJ1bnRpbWUuZ2V0VmFsdWUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuQWxpZ25tZW50CmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLk1vZGlmaWVyCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLnJlcy5wYWludGVyUmVzb3VyY2UKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkudW5pdC5kcAppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS5jb21wb25lbnRzLkFwcEljb25zCmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLnVpLmltcG9ydF8uY29tcG9uZW50cy5Bbm9tYWx5Q2FyZAppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS5pbXBvcnRfLmNvbXBvbmVudHMuQ292ZXJhZ2VDYXJkCmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLnVpLmltcG9ydF8uY29tcG9uZW50cy5EdXBsaWNhdGVDYXJkCmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLnVpLmltcG9ydF8uY29tcG9uZW50cy5JbXBvcnRNb2RlU2VsZWN0b3IKaW1wb3J0IGNvbS5nb3VsZC54cHV0aW1ldGFibGUudWkuaW1wb3J0Xy5jb21wb25lbnRzLlByZXZpZXdTdGF0Um93CmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLnVpLnRoZW1lLkljb25TaXplCgovLyAtLS0tLS0tLS0tIOaWh+S7tue6p+aWh+ahiOW4uOmHjyAtLS0tLS0tLS0tCgpwcml2YXRlIGNvbnN0IHZhbCBQUkVWSUVXX1RJVExFID0gIuehruiupOWvvOWFpSIKcHJpdmF0ZSBjb25zdCB2YWwgUFJFVklFV19MT0FESU5HID0gIuato+WcqOivu+WPluW9k+WJjeivvuihqOKApiIKcHJpdmF0ZSBjb25zdCB2YWwgTk9fVEVSTV9NRVNTQUdFID0gIui/mOayoeacieWtpuacn++8jOaXoOazleWvvOWFpeOAguivt+WFiOWbnuWIsOWRqOinhuWbvuWIm+W7uuacrOWtpuacn+OAgiIKcHJpdmF0ZSBjb25zdCB2YWwgQUNUSU9OX0NBTkNFTCA9ICLlj5bmtogiCnByaXZhdGUgY29uc3QgdmFsIEFDVElPTl9DT05GSVJNID0gIuehruiupOWvvOWFpSIKcHJpdmF0ZSBjb25zdCB2YWwgQUNUSU9OX0JBQ0sgPSAi6L+U5ZueIgoKQENvbXBvc2FibGUKZnVuIEltcG9ydFByZXZpZXdTY3JlZW4oCiAgICB2aWV3TW9kZWw6IEltcG9ydFByZXZpZXdWaWV3TW9kZWwsCiAgICBvbkJhY2s6ICgpIC0+IFVuaXQsCiAgICBvbkRvbmU6ICgpIC0+IFVuaXQsCiAgICBtb2RpZmllcjogTW9kaWZpZXIgPSBNb2RpZmllciwKKSB7CiAgICB2YWwgc3RhdGUgYnkgdmlld01vZGVsLnN0YXRlLmNvbGxlY3RBc1N0YXRlKCkKCiAgICAvLyDlhaXlupPmiJDlip8g4oaSIOWbnuWRqOinhuWbvu+8iOa2iOi0ueWcqOWvvOiIquWxgu+8jOacrOmhteS4jeWGjemHjeWkjeinpuWPke+8iQogICAgTGF1bmNoZWRFZmZlY3Qoc3RhdGUuY29tbWl0dGVkKSB7CiAgICAgICAgaWYgKHN0YXRlLmNvbW1pdHRlZCkgb25Eb25lKCkKICAgIH0KCiAgICBTY2FmZm9sZCgKICAgICAgICBtb2RpZmllciA9IG1vZGlmaWVyLmZpbGxNYXhTaXplKCksCiAgICAgICAgdG9wQmFyID0gewogICAgICAgICAgICBSb3coCiAgICAgICAgICAgICAgICBtb2RpZmllciA9IE1vZGlmaWVyCiAgICAgICAgICAgICAgICAgICAgLmZpbGxNYXhXaWR0aCgpCiAgICAgICAgICAgICAgICAgICAgLnN0YXR1c0JhcnNQYWRkaW5nKCkKICAgICAgICAgICAgICAgICAgICAucGFkZGluZyhob3Jpem9udGFsID0gNC5kcCwgdmVydGljYWwgPSA0LmRwKSwKICAgICAgICAgICAgICAgIHZlcnRpY2FsQWxpZ25tZW50ID0gQWxpZ25tZW50LkNlbnRlclZlcnRpY2FsbHksCiAgICAgICAgICAgICkgewogICAgICAgICAgICAgICAgSWNvbkJ1dHRvbihvbkNsaWNrID0gb25CYWNrKSB7CiAgICAgICAgICAgICAgICAgICAgSWNvbigKICAgICAgICAgICAgICAgICAgICAgICAgcGFpbnRlciA9IHBhaW50ZXJSZXNvdXJjZShBcHBJY29ucy5jaGV2cm9uTGVmdCksCiAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRlbnREZXNjcmlwdGlvbiA9IEFDVElPTl9CQUNLLAogICAgICAgICAgICAgICAgICAgICAgICBtb2RpZmllciA9IE1vZGlmaWVyLnNpemUoSWNvblNpemUuTWVkaXVtKSwKICAgICAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBUZXh0KHRleHQgPSBQUkVWSUVXX1RJVExFLCBzdHlsZSA9IE1hdGVyaWFsVGhlbWUudHlwb2dyYXBoeS50aXRsZUxhcmdlKQogICAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICBib3R0b21CYXIgPSB7CiAgICAgICAgICAgIFJvdygKICAgICAgICAgICAgICAgIG1vZGlmaWVyID0gTW9kaWZpZXIKICAgICAgICAgICAgICAgICAgICAuZmlsbE1heFdpZHRoKCkKICAgICAgICAgICAgICAgICAgICAvLyBNNi1maXjvvJpNMyDnmoQgU2NhZmZvbGQg5LiN5Lya57uZIGJvdHRvbUJhciDmp73liqDnqpflj6MgaW5zZXRz77yM5b+F6aG76Ieq5bex6YG/6K6p57O757uf5a+86Iiq5qCPCiAgICAgICAgICAgICAgICAgICAgLy8g6aG65bqP6KaB5rGC77yabmF2aWdhdGlvbkJhcnNQYWRkaW5nIOWcqOaZrumAmiBwYWRkaW5nICoq5LmL5YmNKirvvIjlpJblsYLvvInvvIwKICAgICAgICAgICAgICAgICAgICAvLyDlkKbliJnlupXpg6ggaW5zZXRzIOS8muaMpOi/m+aZrumAmiBwYWRkaW5nIOeahOepuumXtAogICAgICAgICAgICAgICAgICAgIC5uYXZpZ2F0aW9uQmFyc1BhZGRpbmcoKQogICAgICAgICAgICAgICAgICAgIC5wYWRkaW5nKGhvcml6b250YWwgPSAxNi5kcCwgdmVydGljYWwgPSAxMi5kcCksCiAgICAgICAgICAgICAgICBob3Jpem9udGFsQXJyYW5nZW1lbnQgPSBBcnJhbmdlbWVudC5zcGFjZWRCeSgxMi5kcCksCiAgICAgICAgICAgICAgICB2ZXJ0aWNhbEFsaWdubWVudCA9IEFsaWdubWVudC5DZW50ZXJWZXJ0aWNhbGx5LAogICAgICAgICAgICApIHsKICAgICAgICAgICAgICAgIFRleHRCdXR0b24ob25DbGljayA9IG9uQmFjaywgbW9kaWZpZXIgPSBNb2RpZmllci53ZWlnaHQoMWYpKSB7CiAgICAgICAgICAgICAgICAgICAgVGV4dCh0ZXh0ID0gQUNUSU9OX0NBTkNFTCkKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIEJ1dHRvbigKICAgICAgICAgICAgICAgICAgICBvbkNsaWNrID0gdmlld01vZGVsOjpjb25maXJtLAogICAgICAgICAgICAgICAgICAgIGVuYWJsZWQgPSBzdGF0ZS5sb2FkaW5nLm5vdCgpICYmIHN0YXRlLm5vVGVybS5ub3QoKSAmJiBzdGF0ZS5jb21taXR0aW5nLm5vdCgpLAogICAgICAgICAgICAgICAgICAgIG1vZGlmaWVyID0gTW9kaWZpZXIud2VpZ2h0KDJmKSwKICAgICAgICAgICAgICAgICkgewogICAgICAgICAgICAgICAgICAgIGlmIChzdGF0ZS5jb21taXR0aW5nKSB7CiAgICAgICAgICAgICAgICAgICAgICAgIENpcmN1bGFyUHJvZ3Jlc3NJbmRpY2F0b3IobW9kaWZpZXIgPSBNb2RpZmllci5zaXplKEljb25TaXplLk1lZGl1bSkpCiAgICAgICAgICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgICAgICAgICAgVGV4dCh0ZXh0ID0gQUNUSU9OX0NPTkZJUk0pCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgfSwKICAgICkgeyBwYWRkaW5nIC0+CiAgICAgICAgQ29sdW1uKAogICAgICAgICAgICBtb2RpZmllciA9IE1vZGlmaWVyCiAgICAgICAgICAgICAgICAuZmlsbE1heFNpemUoKQogICAgICAgICAgICAgICAgLnBhZGRpbmcocGFkZGluZykKICAgICAgICAgICAgICAgIC52ZXJ0aWNhbFNjcm9sbChyZW1lbWJlclNjcm9sbFN0YXRlKCkpCiAgICAgICAgICAgICAgICAucGFkZGluZyhob3Jpem9udGFsID0gMTYuZHApLAogICAgICAgICAgICB2ZXJ0aWNhbEFycmFuZ2VtZW50ID0gQXJyYW5nZW1lbnQuc3BhY2VkQnkoMTIuZHApLAogICAgICAgICkgewogICAgICAgICAgICBTcGFjZXIoTW9kaWZpZXIuaGVpZ2h0KDQuZHApKQogICAgICAgICAgICB3aGVuIHsKICAgICAgICAgICAgICAgIHN0YXRlLmxvYWRpbmcgLT4gewogICAgICAgICAgICAgICAgICAgIFJvdyh2ZXJ0aWNhbEFsaWdubWVudCA9IEFsaWdubWVudC5DZW50ZXJWZXJ0aWNhbGx5KSB7CiAgICAgICAgICAgICAgICAgICAgICAgIENpcmN1bGFyUHJvZ3Jlc3NJbmRpY2F0b3IobW9kaWZpZXIgPSBNb2RpZmllci5zaXplKEljb25TaXplLkxhcmdlKSkKICAgICAgICAgICAgICAgICAgICAgICAgU3BhY2VyKE1vZGlmaWVyLnNpemUoMTIuZHApKQogICAgICAgICAgICAgICAgICAgICAgICBUZXh0KHRleHQgPSBQUkVWSUVXX0xPQURJTkcsIHN0eWxlID0gTWF0ZXJpYWxUaGVtZS50eXBvZ3JhcGh5LmJvZHlNZWRpdW0pCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgc3RhdGUubm9UZXJtIC0+IHsKICAgICAgICAgICAgICAgICAgICBUZXh0KAogICAgICAgICAgICAgICAgICAgICAgICB0ZXh0ID0gTk9fVEVSTV9NRVNTQUdFLAogICAgICAgICAgICAgICAgICAgICAgICBzdHlsZSA9IE1hdGVyaWFsVGhlbWUudHlwb2dyYXBoeS5ib2R5TWVkaXVtLAogICAgICAgICAgICAgICAgICAgICAgICBjb2xvciA9IE1hdGVyaWFsVGhlbWUuY29sb3JTY2hlbWUuZXJyb3IsCiAgICAgICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgZWxzZSAtPiB7CiAgICAgICAgICAgICAgICAgICAgUHJldmlld1N0YXRSb3coCiAgICAgICAgICAgICAgICAgICAgICAgIGNvdXJzZUNvdW50ID0gc3RhdGUuY291cnNlQ291bnQsCiAgICAgICAgICAgICAgICAgICAgICAgIHNlc3Npb25Db3VudCA9IHN0YXRlLnNlc3Npb25Db3VudCwKICAgICAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICAgICAgLy8gTTcg6ZyA5rGCIDHvvJrlhaXlupPmlrnlvI/kuozpgInkuIDvvIzpgInmi6nnu5Pmnpzpmo8gQ292ZXJhZ2VDYXJkIOaWh+ahiOWQjOatpeWPjeaYoAogICAgICAgICAgICAgICAgICAgIEltcG9ydE1vZGVTZWxlY3Rvcihtb2RlID0gc3RhdGUubW9kZSwgb25Nb2RlQ2hhbmdlID0gdmlld01vZGVsOjpzZXRNb2RlKQogICAgICAgICAgICAgICAgICAgIENvdmVyYWdlQ2FyZCgKICAgICAgICAgICAgICAgICAgICAgICAgZXhpc3RpbmdDb3VudCA9IHN0YXRlLmV4aXN0aW5nQ291bnQsCiAgICAgICAgICAgICAgICAgICAgICAgIHNvdXJjZUxhYmVsID0gc3RhdGUuc291cmNlTGFiZWwsCiAgICAgICAgICAgICAgICAgICAgICAgIG1vZGUgPSBzdGF0ZS5tb2RlLAogICAgICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgICAgICBEdXBsaWNhdGVDYXJkKGR1cGxpY2F0ZU5hbWVzID0gc3RhdGUuc3VzcGVjdGVkRHVwbGljYXRlcykKICAgICAgICAgICAgICAgICAgICBBbm9tYWx5Q2FyZChhbm9tYWxpZXMgPSBzdGF0ZS5hbm9tYWxpZXMpCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICAgICAgc3RhdGUuZXJyb3I/LmxldCB7IG1lc3NhZ2UgLT4KICAgICAgICAgICAgICAgIFRleHQoCiAgICAgICAgICAgICAgICAgICAgdGV4dCA9IG1lc3NhZ2UsCiAgICAgICAgICAgICAgICAgICAgc3R5bGUgPSBNYXRlcmlhbFRoZW1lLnR5cG9ncmFwaHkuYm9keVNtYWxsLAogICAgICAgICAgICAgICAgICAgIGNvbG9yID0gTWF0ZXJpYWxUaGVtZS5jb2xvclNjaGVtZS5lcnJvciwKICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgfQogICAgICAgICAgICBTcGFjZXIoTW9kaWZpZXIuaGVpZ2h0KDguZHApKQogICAgICAgIH0KICAgIH0KfQo=
+/*
+ * ImportPreviewScreen.kt —— 导入预览确认页（AC-10/13/21 的落地界面）
+ *
+ * 铁律：确认前只读（计数/覆盖范围/异常/疑似重复全部来自 ViewModel 状态），
+ * 唯一写入口是「确认导入」按钮 → viewModel.confirm()。入库成功自动返回周视图。
+ * 界面铁律：Scaffold + 自绘顶栏 statusBarsPadding()；底部固定栏 navigationBarsPadding()；
+ *   含输入框的页面 imePadding()；回调方法引用。
+ */
+package com.gould.xputimetable.ui.import_
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.gould.xputimetable.ui.components.AppIcons
+import com.gould.xputimetable.ui.import_.components.AnomalyCard
+import com.gould.xputimetable.ui.import_.components.CoverageCard
+import com.gould.xputimetable.ui.import_.components.DuplicateCard
+import com.gould.xputimetable.ui.import_.components.ImportModeSelector
+import com.gould.xputimetable.ui.import_.components.PreviewStatRow
+import com.gould.xputimetable.ui.theme.IconSize
+
+// ---------- 文件级文案常量 ----------
+
+private const val PREVIEW_TITLE = "确认导入"
+private const val PREVIEW_LOADING = "正在读取当前课表…"
+private const val NO_TERM_MESSAGE = "还没有学期，无法导入。请先回到周视图创建本学期。"
+private const val ACTION_CANCEL = "取消"
+private const val ACTION_CONFIRM = "确认导入"
+private const val ACTION_BACK = "返回"
+
+@Composable
+fun ImportPreviewScreen(
+    viewModel: ImportPreviewViewModel,
+    onBack: () -> Unit,
+    onDone: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val state by viewModel.state.collectAsState()
+
+    // 入库成功 → 回周视图（消费在导航层，本页不再重复触发）
+    LaunchedEffect(state.committed) {
+        if (state.committed) onDone()
+    }
+
+    Scaffold(
+        // M12 需求一.2：底色与背景图由导航根的 PageBackground 统一提供，这里必须透明
+        containerColor = Color.Transparent,
+        modifier = modifier.fillMaxSize(),
+        topBar = {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .statusBarsPadding()
+                    .padding(horizontal = 4.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                IconButton(onClick = onBack) {
+                    Icon(
+                        painter = painterResource(AppIcons.chevronLeft),
+                        contentDescription = ACTION_BACK,
+                        modifier = Modifier.size(IconSize.Medium),
+                    )
+                }
+                Text(text = PREVIEW_TITLE, style = MaterialTheme.typography.titleLarge)
+            }
+        },
+        bottomBar = {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    // M6-fix：M3 的 Scaffold 不会给 bottomBar 槽加窗口 insets，必须自己避让系统导航栏
+                    // 顺序要求：navigationBarsPadding 在普通 padding **之前**（外层），
+                    // 否则底部 insets 会挤进普通 padding 的空间
+                    .navigationBarsPadding()
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                TextButton(onClick = onBack, modifier = Modifier.weight(1f)) {
+                    Text(text = ACTION_CANCEL)
+                }
+                Button(
+                    onClick = viewModel::confirm,
+                    enabled = state.loading.not() && state.noTerm.not() && state.committing.not(),
+                    modifier = Modifier.weight(2f),
+                ) {
+                    if (state.committing) {
+                        CircularProgressIndicator(modifier = Modifier.size(IconSize.Medium))
+                    } else {
+                        Text(text = ACTION_CONFIRM)
+                    }
+                }
+            }
+        },
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Spacer(Modifier.height(4.dp))
+            when {
+                state.loading -> {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        CircularProgressIndicator(modifier = Modifier.size(IconSize.Large))
+                        Spacer(Modifier.size(12.dp))
+                        Text(text = PREVIEW_LOADING, style = MaterialTheme.typography.bodyMedium)
+                    }
+                }
+                state.noTerm -> {
+                    Text(
+                        text = NO_TERM_MESSAGE,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.error,
+                    )
+                }
+                else -> {
+                    PreviewStatRow(
+                        courseCount = state.courseCount,
+                        sessionCount = state.sessionCount,
+                    )
+                    // M7 需求 1：入库方式二选一，选择结果随 CoverageCard 文案同步反映
+                    ImportModeSelector(mode = state.mode, onModeChange = viewModel::setMode)
+                    CoverageCard(
+                        existingCount = state.existingCount,
+                        sourceLabel = state.sourceLabel,
+                        mode = state.mode,
+                    )
+                    DuplicateCard(duplicateNames = state.suspectedDuplicates)
+                    AnomalyCard(anomalies = state.anomalies)
+                }
+            }
+            state.error?.let { message ->
+                Text(
+                    text = message,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                )
+            }
+            Spacer(Modifier.height(8.dp))
+        }
+    }
+}

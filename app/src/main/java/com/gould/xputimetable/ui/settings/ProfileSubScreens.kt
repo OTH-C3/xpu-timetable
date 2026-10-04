@@ -38,17 +38,21 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.gould.xputimetable.data.prefs.BackgroundPrefs
+import com.gould.xputimetable.data.prefs.UiPrefs
+import com.gould.xputimetable.domain.repository.TimetableRepository
 import com.gould.xputimetable.ui.components.AppIcons
 import com.gould.xputimetable.ui.theme.IconSize
 
-/** 「我的」页的二级页（M9）。 */
-enum class ProfileSubPage { PERMISSIONS, ABOUT }
+/** 「我的」页的二级页（M9；M12 增 BACKGROUND）。 */
+enum class ProfileSubPage { PERMISSIONS, ABOUT, BACKGROUND }
 
 // ---------- 文件级文案常量 ----------
 private const val TITLE_PERMISSIONS = "精确闹钟授权"
@@ -68,14 +72,18 @@ private const val A_LINE_1 = "本应用为非官方的校园工具，与学校�
 private const val A_LINE_2 = "不读取、不存储、不上传任何教务凭据；登录只发生在你自己的设备上。"
 private const val A_LINE_3 = "开源协议 GPL-3.0。"
 
-/** 两个二级页的共用壳：返回箭头 + 标题 + 可滚动内容。 */
+/** 两个二级页的共用壳：返回箭头 + 标题 + 可滚动内容。M12 起对同包的新页面也开放。 */
 @Composable
-private fun ProfileSubScaffold(
+internal fun ProfileSubScaffold(
     title: String,
     onBack: () -> Unit,
     content: @Composable () -> Unit,
 ) {
-    Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
+    Scaffold(
+        // M12 需求一.2：底色与背景图由导航根的 PageBackground 统一提供，这里必须透明
+        containerColor = Color.Transparent,
+        modifier = Modifier.fillMaxSize(),
+    ) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -107,11 +115,27 @@ private fun ProfileSubScaffold(
 internal fun ProfileSubScreen(
     page: ProfileSubPage,
     viewModel: SettingsViewModel,
+    /** M12 需求二：背景设置页要读写它（其余二级页不用，故为可空）。 */
+    backgroundPrefs: BackgroundPrefs?,
+    uiPrefs: UiPrefs,
+    repository: TimetableRepository,
+    onShowHint: (String) -> Unit,
     onBack: () -> Unit,
 ) {
     when (page) {
         ProfileSubPage.PERMISSIONS -> PermissionsSubScreen(viewModel = viewModel, onBack = onBack)
         ProfileSubPage.ABOUT -> AboutSubScreen(onBack = onBack)
+        // 依赖缺失时安静降级为空白页：理论上导航层总会传（见 ProfileSubDestination），
+        // 但让一个二级页把整个应用搞崩没有意义
+        ProfileSubPage.BACKGROUND -> if (backgroundPrefs != null) {
+            BackgroundScreen(
+                backgroundPrefs = backgroundPrefs,
+                uiPrefs = uiPrefs,
+                repository = repository,
+                onBack = onBack,
+                onShowHint = onShowHint,
+            )
+        }
     }
 }
 

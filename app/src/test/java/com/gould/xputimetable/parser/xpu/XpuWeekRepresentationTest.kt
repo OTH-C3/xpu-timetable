@@ -1,1 +1,136 @@
-LyoKICogWHB1V2Vla1JlcHJlc2VudGF0aW9uVGVzdC5rdCDigJTigJQg5ZGo5qyh6KGo56S66KeE5YiZ57qv5Ye95pWw55qE5Y2V5rWL77yIU3BlYyBNMi1CIMKnNu+8iQogKgogKiDopobnm5bkuInnsbvliKTlrprvvIjljLrpl7QgLyDljZXlj4zlkaggLyDmmL7lvI/liJfooajvvInvvIzph43ngrnvvJoKICogICAtIOS5seW6jyB3ZWVrSW5kZXhlc++8iOWunua1i+i4qeWdke+8muecn+WunuWTjeW6lOWPr+iDveaYryBbMTYsMTcsMTgsMTEsLi4uXe+8ie+8mwogKiAgIC0g6YeN5aSN5ZGo5qyh77yb56m65YiX6KGoIC8g5YWo6Z2e5q2j77ybCiAqICAgLSDjgIznuq/lgbbkvYbmr4/pmpQgNCDlkajjgI3vvIgyLDYsMTAsMTTvvInlv4XpobvotbDmmL7lvI/liJfooajogIzpnZ4gRVZFTu+8iOS8muWkmuaYvuekuiA0LzgvMTIg5ZGo77yJ44CCCiAqIOWQjOaXtuimhuebliBXZWVrQ2FsYy5pc1Nlc3Npb25BY3RpdmUod2Vla3MsIC4uLikg6YeN6L2977yIUDAtQSDnmoTmlrDliKTlrprlhaXlj6PvvInjgIIKICovCnBhY2thZ2UgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS5wYXJzZXIueHB1CgppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS5kb21haW4ubW9kZWwuV2Vla1R5cGUKaW1wb3J0IGNvbS5nb3VsZC54cHV0aW1ldGFibGUuZG9tYWluLldlZWtDYWxjCmltcG9ydCBvcmcuanVuaXQuQXNzZXJ0LmFzc2VydEVxdWFscwppbXBvcnQgb3JnLmp1bml0LkFzc2VydC5hc3NlcnROdWxsCmltcG9ydCBvcmcuanVuaXQuQXNzZXJ0LmFzc2VydEZhbHNlCmltcG9ydCBvcmcuanVuaXQuQXNzZXJ0LmFzc2VydFRydWUKaW1wb3J0IG9yZy5qdW5pdC5UZXN0CgpjbGFzcyBYcHVXZWVrUmVwcmVzZW50YXRpb25UZXN0IHsKCiAgICAvLyAtLS0tLS0tLS0tIOWMuumXtCAvIOWNleWPjOWRqCAvIOaYvuW8j+WIl+ihqOS4ieexu+WIpOWumiAtLS0tLS0tLS0tCgogICAgQFRlc3QKICAgIGZ1biDov57nu63ljLrpl7Rf6KGo56S65Li6QUxM5Yy66Ze0X+aXoOWIl+ihqCgpIHsKICAgICAgICB2YWwgcmVwID0gd2Vla1JlcHJlc2VudGF0aW9uKCg0Li4xOCkudG9MaXN0KCkpCiAgICAgICAgYXNzZXJ0RXF1YWxzKDQsIHJlcD8uc3RhcnRXZWVrKQogICAgICAgIGFzc2VydEVxdWFscygxOCwgcmVwPy5lbmRXZWVrKQogICAgICAgIGFzc2VydEVxdWFscyhXZWVrVHlwZS5BTEwsIHJlcD8ud2Vla1R5cGUpCiAgICAgICAgYXNzZXJ0TnVsbChyZXA/LndlZWtzKQogICAgfQoKICAgIEBUZXN0CiAgICBmdW4g5Y2V5ZGoX+ihqOekuuS4uk9ERCgpIHsKICAgICAgICB2YWwgcmVwID0gd2Vla1JlcHJlc2VudGF0aW9uKGxpc3RPZigxLCAzLCA1LCA3LCA5KSkKICAgICAgICBhc3NlcnRFcXVhbHMoMSwgcmVwPy5zdGFydFdlZWspCiAgICAgICAgYXNzZXJ0RXF1YWxzKDksIHJlcD8uZW5kV2VlaykKICAgICAgICBhc3NlcnRFcXVhbHMoV2Vla1R5cGUuT0RELCByZXA/LndlZWtUeXBlKQogICAgICAgIGFzc2VydE51bGwocmVwPy53ZWVrcykKICAgIH0KCiAgICBAVGVzdAogICAgZnVuIOWPjOWRqF/ooajnpLrkuLpFVkVOKCkgewogICAgICAgIHZhbCByZXAgPSB3ZWVrUmVwcmVzZW50YXRpb24obGlzdE9mKDIsIDQsIDYsIDgpKQogICAgICAgIGFzc2VydEVxdWFscygyLCByZXA/LnN0YXJ0V2VlaykKICAgICAgICBhc3NlcnRFcXVhbHMoOCwgcmVwPy5lbmRXZWVrKQogICAgICAgIGFzc2VydEVxdWFscyhXZWVrVHlwZS5FVkVOLCByZXA/LndlZWtUeXBlKQogICAgICAgIGFzc2VydE51bGwocmVwPy53ZWVrcykKICAgIH0KCiAgICBAVGVzdAogICAgZnVuIOe6r+WBtuS9huavj+malDTlkahf5b+F6aG76LWw5pi+5byP5YiX6KGoKCkgewogICAgICAgIC8vIOmHkeagt+acrOecn+WunuaVsOaNru+8mjIsNiwxMCwxNCDoi6XmjIkgRVZFTisyLi4xNCDkvJrlpJrmmL7npLogNC84LzEyIOWRqO+8iOWPr+ingee8uumZt++8iQogICAgICAgIHZhbCByZXAgPSB3ZWVrUmVwcmVzZW50YXRpb24obGlzdE9mKDIsIDYsIDEwLCAxNCkpCiAgICAgICAgYXNzZXJ0RXF1YWxzKDIsIHJlcD8uc3RhcnRXZWVrKQogICAgICAgIGFzc2VydEVxdWFscygxNCwgcmVwPy5lbmRXZWVrKQogICAgICAgIGFzc2VydEVxdWFscyhXZWVrVHlwZS5BTEwsIHJlcD8ud2Vla1R5cGUpCiAgICAgICAgYXNzZXJ0RXF1YWxzKGxpc3RPZigyLCA2LCAxMCwgMTQpLCByZXA/LndlZWtzKQogICAgfQoKICAgIEBUZXN0CiAgICBmdW4g6Z2e6L+e57ut6Z2e5Y2V5Y+MX+i1sOaYvuW8j+WIl+ihqCgpIHsKICAgICAgICAvLyDph5HmoLfmnKznnJ/lrp7mlbDmja7vvJoxfjMo5Y2VKSw0fjUsN345LDExfjEzLDE1fjE2CiAgICAgICAgdmFsIHdlZWtzID0gbGlzdE9mKDEsIDMsIDQsIDUsIDcsIDgsIDksIDExLCAxMiwgMTMsIDE1LCAxNikKICAgICAgICB2YWwgcmVwID0gd2Vla1JlcHJlc2VudGF0aW9uKHdlZWtzKQogICAgICAgIGFzc2VydEVxdWFscygxLCByZXA/LnN0YXJ0V2VlaykKICAgICAgICBhc3NlcnRFcXVhbHMoMTYsIHJlcD8uZW5kV2VlaykKICAgICAgICBhc3NlcnRFcXVhbHMoV2Vla1R5cGUuQUxMLCByZXA/LndlZWtUeXBlKQogICAgICAgIGFzc2VydEVxdWFscyh3ZWVrcywgcmVwPy53ZWVrcykKICAgIH0KCiAgICAvLyAtLS0tLS0tLS0tIOS5seW6jyAvIOmHjeWkjSAvIOi+ueeVjO+8iOWunua1i+i4qeWdkeW/hemhu+imhueblu+8iSAtLS0tLS0tLS0tCgogICAgQFRlc3QKICAgIGZ1biDkubHluo93ZWVrSW5kZXhlc1/lhYjmjpLluo/ljrvph43lho3liKTlrpooKSB7CiAgICAgICAgLy8g5a6e5rWL55yf5a6e5ZON5bqU5Ye6546w5Lmx5bqP77yI5aaCIFsxNiwxNywxOCwxMSwuLi5d77yJ77yM5pyq5o6S5bqP5Lya6K+v5Yik5oiQ5pi+5byP5YiX6KGoCiAgICAgICAgdmFsIHJlcCA9IHdlZWtSZXByZXNlbnRhdGlvbihsaXN0T2YoMTYsIDE3LCAxOCwgMTEsIDEyLCAxMywgMTQsIDE1KSkKICAgICAgICBhc3NlcnRFcXVhbHMoMTEsIHJlcD8uc3RhcnRXZWVrKQogICAgICAgIGFzc2VydEVxdWFscygxOCwgcmVwPy5lbmRXZWVrKQogICAgICAgIGFzc2VydEVxdWFscyhXZWVrVHlwZS5BTEwsIHJlcD8ud2Vla1R5cGUpCiAgICAgICAgYXNzZXJ0TnVsbChyZXA/LndlZWtzKQogICAgfQoKICAgIEBUZXN0CiAgICBmdW4g5Lmx5bqP5LiU5peg5rOV5Yy66Ze05YyWX+WIl+ihqOWNh+W6jygpIHsKICAgICAgICB2YWwgcmVwID0gd2Vla1JlcHJlc2VudGF0aW9uKGxpc3RPZigxNCwgMiwgMTAsIDYsIDIpKQogICAgICAgIGFzc2VydEVxdWFscyhsaXN0T2YoMiwgNiwgMTAsIDE0KSwgcmVwPy53ZWVrcykKICAgIH0KCiAgICBAVGVzdAogICAgZnVuIOmHjeWkjeWRqOasoV/ljrvph40oKSB7CiAgICAgICAgdmFsIHJlcCA9IHdlZWtSZXByZXNlbnRhdGlvbihsaXN0T2YoMSwgMSwgMiwgMiwgMykpCiAgICAgICAgYXNzZXJ0RXF1YWxzKDEsIHJlcD8uc3RhcnRXZWVrKQogICAgICAgIGFzc2VydEVxdWFscygzLCByZXA/LmVuZFdlZWspCiAgICAgICAgYXNzZXJ0TnVsbChyZXA/LndlZWtzKQogICAgfQoKICAgIEBUZXN0CiAgICBmdW4g56m65YiX6KGoX+i/lOWbnm51bGwoKSB7CiAgICAgICAgYXNzZXJ0TnVsbCh3ZWVrUmVwcmVzZW50YXRpb24oZW1wdHlMaXN0KCkpKQogICAgfQoKICAgIEBUZXN0CiAgICBmdW4g5YWo6Z2e5q2jX+i/lOWbnm51bGwoKSB7CiAgICAgICAgYXNzZXJ0TnVsbCh3ZWVrUmVwcmVzZW50YXRpb24obGlzdE9mKDAsIC0xLCAtMykpKQogICAgfQoKICAgIEBUZXN0CiAgICBmdW4g5Y2V5Liq5ZGo5qyhX+WNleeCueWMuumXtCgpIHsKICAgICAgICB2YWwgcmVwID0gd2Vla1JlcHJlc2VudGF0aW9uKGxpc3RPZig4KSkKICAgICAgICBhc3NlcnRFcXVhbHMoOCwgcmVwPy5zdGFydFdlZWspCiAgICAgICAgYXNzZXJ0RXF1YWxzKDgsIHJlcD8uZW5kV2VlaykKICAgICAgICBhc3NlcnRFcXVhbHMoV2Vla1R5cGUuQUxMLCByZXA/LndlZWtUeXBlKQogICAgICAgIGFzc2VydE51bGwocmVwPy53ZWVrcykKICAgIH0KCiAgICAvLyAtLS0tLS0tLS0tIFdlZWtDYWxjLmlzU2Vzc2lvbkFjdGl2ZSh3ZWVrcywgLi4uKSDph43ovb3vvIhQMC1BIOaWsOWFpeWPo++8iSAtLS0tLS0tLS0tCgogICAgQFRlc3QKICAgIGZ1biDmmL7lvI/liJfooajliKTlrppf5YiX6KGo5LyY5YWI5LqO5Yy66Ze05LiO5Y2V5Y+M5ZGoKCkgewogICAgICAgIHZhbCB3ZWVrcyA9IGxpc3RPZigyLCA2LCAxMCwgMTQpCiAgICAgICAgLy8g5YiX6KGo5YaF55qE5ZGo55Sf5pWICiAgICAgICAgYXNzZXJ0VHJ1ZShXZWVrQ2FsYy5pc1Nlc3Npb25BY3RpdmUod2Vla3MsIFdlZWtUeXBlLkFMTCwgMiwgMTQsIDYpKQogICAgICAgIC8vIOWMuumXtOWGheS9huWIl+ihqOWklu+8muS4jeeUn+aViO+8iOi/meato+aYryB3ZWVrX2xpc3Qg5a2Y5Zyo55qE5oSP5LmJ77yJCiAgICAgICAgYXNzZXJ0RmFsc2UoV2Vla0NhbGMuaXNTZXNzaW9uQWN0aXZlKHdlZWtzLCBXZWVrVHlwZS5BTEwsIDIsIDE0LCA0KSkKICAgICAgICBhc3NlcnRGYWxzZShXZWVrQ2FsYy5pc1Nlc3Npb25BY3RpdmUod2Vla3MsIFdlZWtUeXBlLk9ERCwgMiwgMTQsIDMpKQogICAgfQoKICAgIEBUZXN0CiAgICBmdW4g5YiX6KGo5Li656m6X+WbnuiQveWMuumXtOivreS5iSgpIHsKICAgICAgICBhc3NlcnRUcnVlKFdlZWtDYWxjLmlzU2Vzc2lvbkFjdGl2ZShudWxsLCBXZWVrVHlwZS5BTEwsIDEsIDE2LCA4KSkKICAgICAgICBhc3NlcnRUcnVlKFdlZWtDYWxjLmlzU2Vzc2lvbkFjdGl2ZShudWxsLCBXZWVrVHlwZS5PREQsIDEsIDE2LCAzKSkKICAgICAgICBhc3NlcnRGYWxzZShXZWVrQ2FsYy5pc1Nlc3Npb25BY3RpdmUobnVsbCwgV2Vla1R5cGUuT0RELCAxLCAxNiwgNCkpCiAgICAgICAgYXNzZXJ0RmFsc2UoV2Vla0NhbGMuaXNTZXNzaW9uQWN0aXZlKG51bGwsIFdlZWtUeXBlLkFMTCwgMSwgMTYsIDE3KSkKICAgIH0KfQo=
+/*
+ * XpuWeekRepresentationTest.kt —— 周次表示规则纯函数的单测（Spec M2-B §6）
+ *
+ * 覆盖三类判定（区间 / 单双周 / 显式列表），重点：
+ *   - 乱序 weekIndexes（实测踩坑：真实响应可能是 [16,17,18,11,...]）；
+ *   - 重复周次；空列表 / 全非正；
+ *   - 「纯偶但每隔 4 周」（2,6,10,14）必须走显式列表而非 EVEN（会多显示 4/8/12 周）。
+ * 同时覆盖 WeekCalc.isSessionActive(weeks, ...) 重载（P0-A 的新判定入口）。
+ */
+package com.gould.xputimetable.parser.xpu
+
+import com.gould.xputimetable.domain.model.WeekType
+import com.gould.xputimetable.domain.WeekCalc
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+class XpuWeekRepresentationTest {
+
+    // ---------- 区间 / 单双周 / 显式列表三类判定 ----------
+
+    @Test
+    fun 连续区间_表示为ALL区间_无列表() {
+        val rep = weekRepresentation((4..18).toList())
+        assertEquals(4, rep?.startWeek)
+        assertEquals(18, rep?.endWeek)
+        assertEquals(WeekType.ALL, rep?.weekType)
+        assertNull(rep?.weeks)
+    }
+
+    @Test
+    fun 单周_表示为ODD() {
+        val rep = weekRepresentation(listOf(1, 3, 5, 7, 9))
+        assertEquals(1, rep?.startWeek)
+        assertEquals(9, rep?.endWeek)
+        assertEquals(WeekType.ODD, rep?.weekType)
+        assertNull(rep?.weeks)
+    }
+
+    @Test
+    fun 双周_表示为EVEN() {
+        val rep = weekRepresentation(listOf(2, 4, 6, 8))
+        assertEquals(2, rep?.startWeek)
+        assertEquals(8, rep?.endWeek)
+        assertEquals(WeekType.EVEN, rep?.weekType)
+        assertNull(rep?.weeks)
+    }
+
+    @Test
+    fun 纯偶但每隔4周_必须走显式列表() {
+        // 金样本真实数据：2,6,10,14 若按 EVEN+2..14 会多显示 4/8/12 周（可见缺陷）
+        val rep = weekRepresentation(listOf(2, 6, 10, 14))
+        assertEquals(2, rep?.startWeek)
+        assertEquals(14, rep?.endWeek)
+        assertEquals(WeekType.ALL, rep?.weekType)
+        assertEquals(listOf(2, 6, 10, 14), rep?.weeks)
+    }
+
+    @Test
+    fun 非连续非单双_走显式列表() {
+        // 金样本真实数据：1~3(单),4~5,7~9,11~13,15~16
+        val weeks = listOf(1, 3, 4, 5, 7, 8, 9, 11, 12, 13, 15, 16)
+        val rep = weekRepresentation(weeks)
+        assertEquals(1, rep?.startWeek)
+        assertEquals(16, rep?.endWeek)
+        assertEquals(WeekType.ALL, rep?.weekType)
+        assertEquals(weeks, rep?.weeks)
+    }
+
+    // ---------- 乱序 / 重复 / 边界（实测踩坑必须覆盖） ----------
+
+    @Test
+    fun 乱序weekIndexes_先排序去重再判定() {
+        // 实测真实响应出现乱序（如 [16,17,18,11,...]），未排序会误判成显式列表
+        val rep = weekRepresentation(listOf(16, 17, 18, 11, 12, 13, 14, 15))
+        assertEquals(11, rep?.startWeek)
+        assertEquals(18, rep?.endWeek)
+        assertEquals(WeekType.ALL, rep?.weekType)
+        assertNull(rep?.weeks)
+    }
+
+    @Test
+    fun 乱序且无法区间化_列表升序() {
+        val rep = weekRepresentation(listOf(14, 2, 10, 6, 2))
+        assertEquals(listOf(2, 6, 10, 14), rep?.weeks)
+    }
+
+    @Test
+    fun 重复周次_去重() {
+        val rep = weekRepresentation(listOf(1, 1, 2, 2, 3))
+        assertEquals(1, rep?.startWeek)
+        assertEquals(3, rep?.endWeek)
+        assertNull(rep?.weeks)
+    }
+
+    @Test
+    fun 空列表_返回null() {
+        assertNull(weekRepresentation(emptyList()))
+    }
+
+    @Test
+    fun 全非正_返回null() {
+        assertNull(weekRepresentation(listOf(0, -1, -3)))
+    }
+
+    @Test
+    fun 单个周次_单点区间() {
+        val rep = weekRepresentation(listOf(8))
+        assertEquals(8, rep?.startWeek)
+        assertEquals(8, rep?.endWeek)
+        assertEquals(WeekType.ALL, rep?.weekType)
+        assertNull(rep?.weeks)
+    }
+
+    // ---------- WeekCalc.isSessionActive(weeks, ...) 重载（P0-A 新入口） ----------
+
+    @Test
+    fun 显式列表判定_列表优先于区间与单双周() {
+        val weeks = listOf(2, 6, 10, 14)
+        // 列表内的周生效
+        assertTrue(WeekCalc.isSessionActive(weeks, WeekType.ALL, 2, 14, 6))
+        // 区间内但列表外：不生效（这正是 week_list 存在的意义）
+        assertFalse(WeekCalc.isSessionActive(weeks, WeekType.ALL, 2, 14, 4))
+        assertFalse(WeekCalc.isSessionActive(weeks, WeekType.ODD, 2, 14, 3))
+    }
+
+    @Test
+    fun 列表为空_回落区间语义() {
+        assertTrue(WeekCalc.isSessionActive(null, WeekType.ALL, 1, 16, 8))
+        assertTrue(WeekCalc.isSessionActive(null, WeekType.ODD, 1, 16, 3))
+        assertFalse(WeekCalc.isSessionActive(null, WeekType.ODD, 1, 16, 4))
+        assertFalse(WeekCalc.isSessionActive(null, WeekType.ALL, 1, 16, 17))
+    }
+}

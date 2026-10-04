@@ -1,28 +1,23 @@
 /*
  * AppNav.kt —— 应用内状态导航（M2-A：状态栈，不引入 Navigation 3）
  *
- * 决策依据（OPEN-DECISIONS.md 2026-09-17「M2 导航」）：navigation3 1.2.0 仍为 RC，
+ * 决策依据（OPEN-DECISIONS.md 2026-09-17「M2 导航」）：navigation3 1.2.1 仍为 RC，
  * 沿用 MainActivity 的 sealed 状态导航模式并扩展（目标类型与 simpleFactory / ProfileDestination
  * 已拆至同包 Destinations.kt，M6 为守 300 行门禁）。
- * M6：新增 QrShare 目的地；ImportHub 挂两条新通道（JSON 文件 / 二维码截图），SAF launcher
- *   在本文件装配，读取/解图在 UI 层完成后以普通文本载荷走 vm.submitJson（importer 不感知二维码）；
- *   ImportPreview 的 commit 分派改三分支（FILE_JSON → jsonFileImporter，消除隐式耦合）。
- * 本文件只做装配（状态切换 + ViewModel 创建），不含业务逻辑。
- * M7：二次返回退出的提示由"周视图 Scaffold 的 Snackbar"改为**导航根层的顶部浮层**
- *   （ui/components/TopHint.kt）——原方案随页面切换重挂会重放提示，且位置在底栏上方；
- *   现在宿主在导航层，切换页面不影响，且全局置顶。
+ *
+ * M12（本轮）：内容区整体外移到同包 AppContent.kt。本文件现在只做三件事——
+ *   1. 维护返回栈与转场方向；
+ *   2. 持有跨页的全局提示通道（M7/M9 建立的 BottomHint 宿主）与系统返回键接线；
+ *   3. 把「当前屏 + 依赖」交给 AppContent 渲染。
+ * 这样拆的触发点是门禁：加了待办页（第三个底栏项）与背景层后，本文件会顶破 300 行，
+ * 而"内容长什么样"与"栈怎么出栈"本就是两件事。
+ *
  * 解析结果（NeedsConfirm）经导航状态传递给预览页；进程死亡会回到周视图，
  * 与既有状态导航的行为一致（未用 rememberSaveable 持久化）。
  */
 package com.gould.xputimetable.ui.navigation
 
 import android.provider.Settings
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -31,18 +26,13 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.viewmodel.compose.viewModel
+import com.gould.xputimetable.data.prefs.BackgroundPrefs
 import com.gould.xputimetable.data.prefs.UiPrefs
 import com.gould.xputimetable.domain.repository.TimetableRepository
+import com.gould.xputimetable.domain.repository.TodoRepository
 import com.gould.xputimetable.importer.api.ScheduleImporter
-import com.gould.xputimetable.ui.components.BottomHint
 import com.gould.xputimetable.ui.theme.Hint
-import com.gould.xputimetable.ui.timetable.TimetableScreen
-import com.gould.xputimetable.ui.timetable.TimetableViewModel
-import com.gould.xputimetable.ui.transfer.QrShareScreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 
@@ -52,20 +42,22 @@ private const val EXIT_HINT = "再按一次退出应用"
 @Composable
 internal fun AppNav(
     repository: TimetableRepository,
+    todoRepository: TodoRepository,
     jsonFileImporter: ScheduleImporter,
     xpuImporter: ScheduleImporter,
     canScheduleExact: () -> Boolean,
     /** M11：界面偏好（「显示老师姓名」）。课表页与设置页共用同一个实例。 */
     uiPrefs: UiPrefs,
+    /** M12：背景偏好（图片 URI / 透明度 / 作用范围）。导航根读它来铺背景层。 */
+    backgroundPrefs: BackgroundPrefs,
     /** M3：数据变更（编辑/导入/清理/学期）→ 重排提醒 + 立即刷新小组件（AC-18）。 */
     onDataChanged: suspend () -> Unit,
 ) {
     // 最小返回栈：栈底是首页；进入新页 push，返回 pop，导入完成回栈底（顺带修掉"导入中心→手动添加"的返回去向 bug）
     val backStack = remember { mutableStateListOf<AppScreen>(AppScreen.Timetable) }
 
-    // M10：转场方向（产品要求"返回的动画统一为从上往下淡入"）。
-    // 前进 = 从下往上（新页从下方推入，有"进入下一层"的方向感）
-    // 返回 = 从上往下（新页从上方落下）—— 与前进相反，方向本身即是"返回"的提示。
+    // M12：转场方向保留为显式状态（转场规格本身已在 ScreenTransition 里统一为纯淡入淡出，
+    // 但保留方向意图，将来若要对某一向单独加效果，这里是唯一的接入点）。
     var navForward by remember { mutableStateOf(true) }
 
     fun navigateTo(next: AppScreen) {
@@ -86,13 +78,8 @@ internal fun AppNav(
     }
     val screen: AppScreen = backStack.last()
 
-    // 点击提醒通知 / singleTop 复用：MainActivity 发布"回到课表"事件 → 回到返回栈栈底（周视图）。
-
     // 导航层持有的跨页提示（M2-C：清理完成后送回导入中心的 Snackbar）
     var hubNotice by remember { mutableStateOf<String?>(null) }
-
-    // 首页二次返回退出：退出窗口由 BackPolicy 独立管理；提示走下面的全局提示通道。
-    val snackbarHostState = remember { SnackbarHostState() }
 
     // M9：**全局瞬时提示通道** —— 任何页面都能发一条底部提示
     // （退出提示 / 学期自动保存失败 / 学期已创建…）。宿主在导航层而非页面 Scaffold，
@@ -116,102 +103,31 @@ internal fun AppNav(
         onShowExitHint = { showHint(EXIT_HINT) },
     )
 
-    // M4-UI R7：内容区 + 底部导航（仅两个根页显示，二级页保持沉浸）
-    val showBottomBar = screen == AppScreen.Timetable || screen == AppScreen.Profile
-    Column(modifier = Modifier.fillMaxSize()) {
-        Box(modifier = Modifier.weight(1f)) {
-            // M5 §3.2.4/§3.2.8：页面切换淡入 450ms + 1/8 高度上移、淡出 200ms；系统「减少动画」时直切
-            val resolver = LocalContext.current.contentResolver
-            val animated = remember(resolver) {
-                Settings.Global.getFloat(resolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) != 0f
-            }
-            AnimatedContent(
-                targetState = screen,
-                // M11：转场规格（方向 + 时长）拆到 ScreenTransition.kt，这里只剩一行
-                transitionSpec = { screenTransition(navForward, animated) },
-                label = "screenTransition",
-            ) { current: AppScreen ->
-                when (current) {
-                    AppScreen.Timetable -> {
-                        val vm: TimetableViewModel = viewModel(
-                            factory = simpleFactory { TimetableViewModel(repository, uiPrefs.showTeacher) },
-                        )
-                        val state = vm.uiState.value
-                        TimetableScreen(
-                            viewModel = vm,
-                            snackbarHostState = snackbarHostState,
-                            onAddCourse = { navigateTo(AppScreen.CourseEdit(EditTarget.New(state.term?.id, state.week, state.totalWeeks))) },
-                            onEditCourse = { courseId, sessionId ->
-                                navigateTo(AppScreen.CourseEdit(EditTarget.Edit(courseId, sessionId)))
-                            },
-                            onOpenImport = { navigateTo(AppScreen.ImportHub) },
-                            // M9：空态「创建本学期」进学期设置页，由用户选起始日（不再写死本周一）
-                            onCreateTerm = { navigateTo(AppScreen.TermSetup(fromEmptyState = true)) },
-                        )
-                    }
-
-                    // M11：编辑/导入这一组的装配拆到 ImportFlowDestination.kt（与「我的」支线同理：
-                    // 只补依赖，不持有返回栈、不参与返回判定）
-                    is AppScreen.CourseEdit, is AppScreen.ImportHub, is AppScreen.Cleanup,
-                    is AppScreen.CourseCapture, is AppScreen.ImportPreview ->
-                        ImportFlowDestination(
-                            screen = current,
-                            repository = repository,
-                            jsonFileImporter = jsonFileImporter,
-                            xpuImporter = xpuImporter,
-                            onDataChanged = onDataChanged,
-                            hubNotice = hubNotice,
-                            onHubNoticeShown = { hubNotice = null },
-                            onNotice = { hubNotice = it },
-                            navigateTo = { next -> navigateTo(next) },
-                            onBack = ::goBack,
-                            onDone = ::popToRoot,
-                        )
-
-                    AppScreen.QrShare -> {
-                        QrShareScreen(
-                            repository = repository,
-                            onBack = ::goBack,
-                        )
-                    }
-
-                    // M11：这一组（我的 / 学期设置 / 二级页）的装配拆到 ProfileFlowDestination.kt
-                    is AppScreen.TermSetup, is AppScreen.ProfileSub, AppScreen.Profile ->
-                        ProfileFlowDestination(
-                            screen = current,
-                            repository = repository,
-                            canScheduleExact = canScheduleExact,
-                            onDataChanged = onDataChanged,
-                            uiPrefs = uiPrefs,
-                            showHint = showHint,
-                            navigateTo = { next -> navigateTo(next) },
-                            onBack = ::goBack,
-                            onDone = ::popToRoot,
-                        )
-                }
-            }
-
-            // 底部提示浮层（M7 建立 / M9 改为底部 + 黑灰）：挂在导航层这个 Box 上
-            // （**页面 Scaffold 之外**）→ ① 切页不重建宿主，提示不会被重放；
-            // ② 作为 Box 最后一个子项绘制，盖在页面内容之上；③ 位于内容区底部，
-            // 有底部导航栏时浮在导航栏**上方**，不挡两个 tab。
-            BottomHint(
-                visible = hintText != null,
-                text = hintText.orEmpty(),
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    // 二级页不显示底部导航栏，内容区直抵屏幕底 → 需自行避让系统导航栏
-                    .then(if (showBottomBar) Modifier else Modifier.navigationBarsPadding()),
-            )
-        }
-
-        // 底部导航（R7）：仅在两个根页显示；点击复用现有返回栈，不引入新导航机制
-        if (showBottomBar) {
-            AppBottomBar(
-                current = screen,
-                onOpenTimetable = { popToRoot() },
-                onOpenProfile = { if (screen != AppScreen.Profile) navigateTo(AppScreen.Profile) },
-            )
-        }
+    // 系统「减少动画」时直切（转场时长归零，读一次即可）
+    val resolver = LocalContext.current.contentResolver
+    val animated = remember(resolver) {
+        Settings.Global.getFloat(resolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) != 0f
     }
+
+    AppContent(
+        screen = screen,
+        navForward = navForward,
+        animated = animated,
+        repository = repository,
+        todoRepository = todoRepository,
+        jsonFileImporter = jsonFileImporter,
+        xpuImporter = xpuImporter,
+        canScheduleExact = canScheduleExact,
+        uiPrefs = uiPrefs,
+        backgroundPrefs = backgroundPrefs,
+        onDataChanged = onDataChanged,
+        hubNotice = hubNotice,
+        onHubNoticeShown = { hubNotice = null },
+        onNotice = { hubNotice = it },
+        hintText = hintText,
+        showHint = showHint,
+        navigateTo = { next -> navigateTo(next) },
+        goBack = ::goBack,
+        popToRoot = ::popToRoot,
+    )
 }

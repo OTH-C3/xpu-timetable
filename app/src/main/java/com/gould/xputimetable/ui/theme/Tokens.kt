@@ -109,3 +109,50 @@ object ListRow {
     val DividerInset = 16.dp     // 组内横线的左右缩进（= CardPadding 12 + 行内边距 4，与文本左缘同线）
     val CardBorderAlpha = 0.2f   // 卡片描边（比组内横线略重，让边界先被看见，再看组内分层）
 }
+
+/**
+ * 待办清单页（M12 需求五）的尺寸令牌。
+ *
+ * 单独一个 object 而不是并进 ListRow：这一页的版式（勾选方框、划线、折叠箭头）
+ * 是独立的一套语言，将来调整不必牵动「我的」页的分组列表。
+ */
+object Note {
+    /** 勾选方框的视觉边长。 */
+    val CheckBoxSize = 20.dp
+    /** 勾选方框的圆角（参考图是略带圆角的小方框，不是正方）。 */
+    val CheckBoxCorner = 5.dp
+    /** 勾中方框里的对勾边长。 */
+    val CheckIcon = 14.dp
+    /** 勾选方框的触摸目标（≥44dp 是项目硬性要求，故触摸区比视觉大一圈）。 */
+    val CheckBoxTouch = 44.dp
+    /** 条目行最小高度：比 ListRow.MinHeight 略矮，让一屏能多放一条（对齐参考图的紧凑排布）。 */
+    val RowMinHeight = 44.dp
+    /** 划线粗细。 */
+    val StrikeWidth = 1.5.dp
+    /** 条目行左边距：比头部勾选框再缩进一级，形成层级（参考图里条目是内缩的）。 */
+    val ItemIndent = 28.dp
+    /** 元素间距。 */
+    val Gap = 10.dp
+    /** 元素之间的小间距。 */
+    val GapSmall = 6.dp
+    /** 折叠箭头的视觉边长。 */
+    val ExpandIcon = 18.dp
+    /** 折叠箭头的触摸目标。 */
+    val ExpandTouchTarget = 40.dp
+    /** 折叠箭头的内缩：让 18dp 的图标落在 40dp 热区正中。 */
+    val ExpandIconInset = 11.dp
+
+    /**
+     * 勾选划线的动画时长。
+     *
+     * 取 300ms 而非通用微交互 200ms：划线要"看得见从左往右走完"，
+     * 太快等于没有动画（老大的原话是要"以横线从左到右的动画划掉"），太慢则连续勾选时拖沓。
+     */
+    const val StrikeMillis = 300
+
+    /** 清单区折叠/展开的动画时长。 */
+    const val CollapseMillis = 250
+
+    /** 空态图标边长。 */
+    val EmptyIconSize = 40.dp
+}

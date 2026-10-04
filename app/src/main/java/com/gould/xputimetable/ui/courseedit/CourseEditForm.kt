@@ -50,6 +50,7 @@ internal fun EditFormBody(
     onNameChange: (String) -> Unit,
     onTeacherChange: (String) -> Unit,
     onClassroomChange: (String) -> Unit,
+    onNoteChange: (String) -> Unit,
     onDayOfWeekChange: (Int) -> Unit,
     onStartSectionChange: (Int) -> Unit,
     onEndSectionChange: (Int) -> Unit,
@@ -65,10 +66,12 @@ internal fun EditFormBody(
             name = draft.name,
             teacher = draft.teacher,
             classroom = draft.classroom,
+            note = draft.note,
             errorField = draft.errorField,
             onNameChange = onNameChange,
             onTeacherChange = onTeacherChange,
             onClassroomChange = onClassroomChange,
+            onNoteChange = onNoteChange,
         )
 
         FormGroupHeader("时间")
@@ -134,16 +137,18 @@ internal fun EditFormBody(
     }
 }
 
-/** 基本信息组：课程名 / 教师 / 教室，纵向排布、条目之间一条横线。 */
+/** 基本信息组：课程名 / 教师 / 教室 / 备注，纵向排布、条目之间一条横线。 */
 @Composable
 private fun BasicInfoGroup(
     name: String,
     teacher: String,
     classroom: String,
+    note: String,
     errorField: DraftField?,
     onNameChange: (String) -> Unit,
     onTeacherChange: (String) -> Unit,
     onClassroomChange: (String) -> Unit,
+    onNoteChange: (String) -> Unit,
 ) {
     FormGroupHeader("基本信息")
     FormCard {
@@ -169,6 +174,16 @@ private fun BasicInfoGroup(
                 label = "教室（可选）",
                 isError = errorField == DraftField.CLASSROOM,
                 onValueChange = onClassroomChange,
+                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+            )
+            // M12 需求三：备注。放在基本信息组末尾而不是另起一张卡——
+            // 它和"教师/教室"是同一类自由文本，拆出去会让卡片语言碎掉。
+            FormDivider()
+            LabeledField(
+                value = note,
+                label = "备注（可选）",
+                isError = errorField == DraftField.NOTE,
+                onValueChange = onNoteChange,
                 modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
             )
         }

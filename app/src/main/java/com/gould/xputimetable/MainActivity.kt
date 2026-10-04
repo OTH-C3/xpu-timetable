@@ -32,10 +32,12 @@ class MainActivity : ComponentActivity() {
             XpuTimetableTheme {
                 AppNav(
                     repository = container.repository,
+                    todoRepository = container.todoRepository,
                     jsonFileImporter = container.jsonFileImporter,
                     xpuImporter = container.xpuWebImporter,
                     canScheduleExact = container::canScheduleExactAlarms,
                     uiPrefs = container.uiPrefs,
+                    backgroundPrefs = container.backgroundPrefs,
                     onDataChanged = container.onDataChanged,
                 )
             }

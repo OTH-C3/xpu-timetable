@@ -11,6 +11,7 @@
 package com.gould.xputimetable.ui.navigation
 
 import androidx.compose.runtime.Composable
+import com.gould.xputimetable.data.prefs.BackgroundPrefs
 import com.gould.xputimetable.data.prefs.UiPrefs
 import com.gould.xputimetable.domain.repository.TimetableRepository
 
@@ -28,6 +29,8 @@ internal fun ProfileFlowDestination(
     canScheduleExact: () -> Boolean,
     onDataChanged: suspend () -> Unit,
     uiPrefs: UiPrefs,
+    /** M12：背景偏好（「我的」页的自定义背景入口要读写它）。 */
+    backgroundPrefs: BackgroundPrefs,
     showHint: (String) -> Unit,
     navigateTo: (AppScreen) -> Unit,
     onBack: () -> Unit,
@@ -39,6 +42,7 @@ internal fun ProfileFlowDestination(
             canScheduleExact = canScheduleExact,
             onDataChanged = onDataChanged,
             uiPrefs = uiPrefs,
+            backgroundPrefs = backgroundPrefs,
             onShowHint = showHint,
             onOpenTermSetup = { navigateTo(AppScreen.TermSetup(fromEmptyState = false)) },
             onOpenSubPage = { page -> navigateTo(AppScreen.ProfileSub(page)) },
@@ -62,6 +66,8 @@ internal fun ProfileFlowDestination(
             canScheduleExact = canScheduleExact,
             onDataChanged = onDataChanged,
             uiPrefs = uiPrefs,
+            backgroundPrefs = backgroundPrefs,
+            onShowHint = showHint,
             onBack = onBack,
         )
 

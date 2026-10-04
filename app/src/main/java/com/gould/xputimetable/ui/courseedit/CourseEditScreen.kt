@@ -50,6 +50,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.toArgb
@@ -75,6 +76,8 @@ fun CourseEditScreen(
     }
 
     Scaffold(
+        // M12 需求一.2：底色与背景图由导航根的 PageBackground 统一提供，这里必须透明
+        containerColor = Color.Transparent,
         modifier = modifier.fillMaxSize(),
         topBar = {
             // statusBarsPadding：edge-to-edge 下顶栏必须自己吃状态栏内边距，否则按钮被状态栏压住
@@ -99,6 +102,7 @@ fun CourseEditScreen(
                 onNameChange = viewModel::setName,
                 onTeacherChange = viewModel::setTeacher,
                 onClassroomChange = viewModel::setClassroom,
+                onNoteChange = viewModel::setNote, // M12 需求三：备注输入
                 onDayOfWeekChange = viewModel::setDayOfWeek,
                 onStartSectionChange = viewModel::setStartSection,
                 onEndSectionChange = viewModel::setEndSection,

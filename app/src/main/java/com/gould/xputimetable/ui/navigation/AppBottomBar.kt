@@ -1,16 +1,17 @@
 /*
  * AppBottomBar.kt —— 底部导航（M4-UI R7 + M5 需求 3 + M6-fix）
  *
- * 只有两项，不做日视图或其它 tab（规格 §5 明确不做）。
+ * 三个根页（课表 / 待办 / 我的），不做日视图或其它 tab（规格 §5 明确不做日视图）。
+ * M12 需求五从两项增到三项。
  * M5 需求 3：高度 40dp、背景 = 主页背景 50% 透明、tonalElevation 0、文字 10sp。
  * M6-fix ①：去掉图标，只保留文字 → NavigationBar 的条目项 icon 为必填且布局固定为
  *   「icon 上 / label 下」，无法只留 label，故改为自定义 Row + 可点 Text。
  * M6-fix ②：底部必须 navigationBarsPadding() 避让系统导航栏。
  *   原实现用 NavigationBar + 外层 .height(40.dp)，会把 NavigationBar 自带的
  *   windowInsets 压扁（底部 insets 48dp > 高度 40dp → 内容区被压到 0 → 底栏消失）；
- *   且本底栏直接放在 AppNav 的 Column 末尾，不在 Scaffold 内、拿不到 innerPadding。
+ *   且本底栏直接放在 AppContent 的 Column 末尾，不在 Scaffold 内、拿不到 innerPadding。
  *   三按钮导航下被系统导航栏完全覆盖（实测点击会落到导航栏）。详见 docs/verify/M6/。
- * 显隐由 AppNav 控制：仅在两个根页（课表 / 我的）显示；二级页保持沉浸。
+ * 显隐由 AppContent 控制：仅在三个根页显示；二级页保持沉浸。
  */
 package com.gould.xputimetable.ui.navigation
 
@@ -36,6 +37,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 private const val LABEL_TIMETABLE = "课表"
+/** M12 需求五：待办（对应「便签」那一档背景作用域）。 */
+private const val LABEL_NOTE = "待办"
 private const val LABEL_PROFILE = "我的"
 
 /** M5 需求 3 的底栏高度（保持 40dp，不因去图标而改动既定尺寸）。 */
@@ -52,12 +55,13 @@ private val LabelFontSize = 14.sp
 internal fun AppBottomBar(
     current: AppScreen,
     onOpenTimetable: () -> Unit,
+    onOpenNote: () -> Unit,
     onOpenProfile: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     // M10：**不再给底栏单独画背景**（原先是不透明底色的 50% 叠加，与页面底色并不完全一致）。
     // 不画背景 → 底栏自然透出页面背景，两者严格同色；
-    // 也是"以后可自定义背景"的前置条件：换背景图/换底色时底栏不会再压出一条色带。
+    // 也是 M12 需求二"自定义背景"能铺满全屏的前提：换背景图时底栏不会压出一条色带。
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -67,18 +71,28 @@ internal fun AppBottomBar(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        BottomBarLabel(
-            label = LABEL_TIMETABLE,
-            isSelected = current == AppScreen.Timetable,
-            onClick = onOpenTimetable,
-            modifier = Modifier.weight(1f),
-        )
-        BottomBarLabel(
-            label = LABEL_PROFILE,
-            isSelected = current == AppScreen.Profile,
-            onClick = onOpenProfile,
-            modifier = Modifier.weight(1f),
-        )
+    // 顺序：**待办 / 课表 / 我的**（M12 老大定稿）。
+    // 课表放中间是这条产品线的惯例：它是使用频率最高的一页，落在拇指最容易够到的中位；
+    // 两个低频页分列两侧。最初排的是「课表 / 待办 / 我的」（课表在左），
+    // 老大看过实机后要求把课表挪到中间。
+    BottomBarLabel(
+        label = LABEL_NOTE,
+        isSelected = current == AppScreen.Note,
+        onClick = onOpenNote,
+        modifier = Modifier.weight(1f),
+    )
+    BottomBarLabel(
+        label = LABEL_TIMETABLE,
+        isSelected = current == AppScreen.Timetable,
+        onClick = onOpenTimetable,
+        modifier = Modifier.weight(1f),
+    )
+    BottomBarLabel(
+        label = LABEL_PROFILE,
+        isSelected = current == AppScreen.Profile,
+        onClick = onOpenProfile,
+        modifier = Modifier.weight(1f),
+    )
     }
 }
 

@@ -14,6 +14,9 @@
  *
  * 健壮性约定：所有仓库调用都包在 runCatching 里，失败转成可读中文错误写入 draft.error，
  * 绝不让异常冒泡到 viewModelScope（那会直接崩溃）。校验在 save() 里集中做，失败给出明确原因。
+ *
+ * M12：CourseDraft / DraftField / 校验 / 长度上限已拆到同包 CourseEditDraft.kt
+ * （本文件原为 297 行，加备注字段必然破 300 行门禁）。
  */
 package com.gould.xputimetable.ui.courseedit
 
@@ -21,9 +24,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gould.xputimetable.domain.model.Course
 import com.gould.xputimetable.domain.model.CourseSession
-import com.gould.xputimetable.domain.model.isValidColorTag
 import com.gould.xputimetable.domain.model.CourseSource
 import com.gould.xputimetable.domain.model.WeekType
+import com.gould.xputimetable.domain.model.isValidColorTag
 import com.gould.xputimetable.domain.model.markEdited
 import com.gould.xputimetable.domain.repository.TimetableRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,38 +36,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.UUID
-
-/** 出错的字段（用于精确高亮，避免用字符串 contains 判断）。 */
-enum class DraftField {
-    NAME,
-    TEACHER,
-    CLASSROOM,
-    SECTION_RANGE,
-    WEEK_RANGE,
-    OTHER,
-}
-
-data class CourseDraft(
-    val courseId: String? = null,
-    val sessionId: Long = 0L,
-    val name: String = "",
-    val teacher: String = "",
-    val classroom: String = "",
-    val dayOfWeek: Int = 1,
-    val startSection: Int = 1,
-    val endSection: Int = 2,
-    val startWeek: Int = 1,
-    val endWeek: Int = 16,
-    val weekType: WeekType = WeekType.ALL,
-    /** 载入的安排带显式周次列表（教务精确周次）：编辑页显示提示，保存时清空回到区间语义。 */
-    val hasExactWeeks: Boolean = false,
-    val colorTag: Int = 0,
-    val termId: Long? = null,
-    val loading: Boolean = false,
-    val saved: Boolean = false,
-    val error: String? = null,
-    val errorField: DraftField? = null,
-)
 
 class CourseEditViewModel(
     private val repository: TimetableRepository,
@@ -79,14 +50,9 @@ class CourseEditViewModel(
     private var originalCourse: Course? = null
 
     companion object {
-        /** 字段长度上限（防止误输入超长文本把界面撑坏；保存时校验并给出明确提示）。 */
-        const val MAX_NAME_LENGTH = 40
-        const val MAX_TEACHER_LENGTH = 20
-        const val MAX_CLASSROOM_LENGTH = 20
-
-        /** 节次/周次的合法范围（与界面步进器保持一致）。 */
-        val SECTION_RANGE = 1..12
-        val WEEK_RANGE = 1..30
+        // 保留既有调用点（表单里的 RangeRow 引用 CourseEditViewModel.SECTION_RANGE）
+        val SECTION_RANGE = DraftLimits.SECTION_RANGE
+        val WEEK_RANGE = DraftLimits.WEEK_RANGE
     }
 
     // ---------- 字段 setter（界面用方法引用传入，保证可跳过重组）----------
@@ -96,6 +62,9 @@ class CourseEditViewModel(
     fun setTeacher(value: String) = _draft.update { it.copy(teacher = value, error = null, errorField = null) }
 
     fun setClassroom(value: String) = _draft.update { it.copy(classroom = value, error = null, errorField = null) }
+
+    /** M12 需求三：备注输入。 */
+    fun setNote(value: String) = _draft.update { it.copy(note = value, error = null, errorField = null) }
 
     fun setDayOfWeek(day: Int) {
         if (day !in 1..7) return
@@ -174,6 +143,8 @@ class CourseEditViewModel(
                         name = course.name,
                         teacher = course.teacher.orEmpty(),
                         classroom = target?.classroom.orEmpty(),
+                        // M12 需求三：备注回填（courses.note 早就存在，只是此前没有输入入口）
+                        note = course.note.orEmpty(),
                         dayOfWeek = (target?.dayOfWeek ?: 1).coerceIn(1, 7),
                         startSection = (target?.startSection ?: 1).coerceIn(SECTION_RANGE.first, SECTION_RANGE.last),
                         endSection = (target?.endSection ?: 2).coerceIn(SECTION_RANGE.first, SECTION_RANGE.last),
@@ -196,7 +167,7 @@ class CourseEditViewModel(
     fun save() {
         viewModelScope.launch {
             val d = _draft.value
-            validate(d)?.let { (message, field) ->
+            validateDraft(d)?.let { (message, field) ->
                 _draft.update { it.copy(error = message, errorField = field) }
                 return@launch
             }
@@ -219,11 +190,14 @@ class CourseEditViewModel(
                 weeks = null, // 手动改动周次 → 回到区间语义（Spec P0-A §2.6），精确列表不保留
                 classroom = d.classroom.trim().takeIf { it.isNotEmpty() },
             )
+            // 备注：空串存 null（与"没填"同义，详情面板据此显示「无备注」）
+            val note = d.note.trim().takeIf { it.isNotEmpty() }
             val base = originalCourse
             val course = if (base != null) {
                 base.copy(
                     name = d.name.trim(),
                     teacher = d.teacher.trim().takeIf { it.isNotEmpty() },
+                    note = note,
                     colorTag = d.colorTag,
                     termId = termId,
                     updatedAt = now,
@@ -234,7 +208,7 @@ class CourseEditViewModel(
                     name = d.name.trim(),
                     code = null,
                     teacher = d.teacher.trim().takeIf { it.isNotEmpty() },
-                    note = null,
+                    note = note,
                     colorTag = d.colorTag,
                     source = CourseSource.MANUAL,
                     createdAt = now,
@@ -267,23 +241,6 @@ class CourseEditViewModel(
                     _draft.update { it.copy(error = e.toUserMessage("删除课程"), errorField = DraftField.OTHER) }
                 }
         }
-    }
-
-    /**
-     * 保存前校验（纯逻辑，便于单测）。
-     * 返回 null 表示通过；否则返回（给用户看的中文原因, 出错字段）。
-     */
-    private fun validate(d: CourseDraft): Pair<String, DraftField>? = when {
-        d.name.isBlank() -> "课程名不能为空" to DraftField.NAME
-        d.name.trim().length > MAX_NAME_LENGTH -> "课程名最多 $MAX_NAME_LENGTH 个字" to DraftField.NAME
-        d.teacher.trim().length > MAX_TEACHER_LENGTH -> "教师名最多 $MAX_TEACHER_LENGTH 个字" to DraftField.TEACHER
-        d.classroom.trim().length > MAX_CLASSROOM_LENGTH -> "教室最多 $MAX_CLASSROOM_LENGTH 个字" to DraftField.CLASSROOM
-        d.dayOfWeek !in 1..7 -> "星期必须在周一到周日之间" to DraftField.OTHER
-        d.startSection !in SECTION_RANGE || d.endSection !in SECTION_RANGE -> "节次必须在 ${SECTION_RANGE.first}-${SECTION_RANGE.last} 之间" to DraftField.SECTION_RANGE
-        d.startSection > d.endSection -> "开始节次不能晚于结束节次" to DraftField.SECTION_RANGE
-        d.startWeek !in WEEK_RANGE || d.endWeek !in WEEK_RANGE -> "周次必须在 ${WEEK_RANGE.first}-${WEEK_RANGE.last} 之间" to DraftField.WEEK_RANGE
-        d.startWeek > d.endWeek -> "起始周不能晚于结束周" to DraftField.WEEK_RANGE
-        else -> null
     }
 }
 

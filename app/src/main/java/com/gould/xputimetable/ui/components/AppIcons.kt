@@ -101,4 +101,28 @@ object AppIcons {
     /** 自取色入口（打开 HSV 取色面板；课程色板之外的"自定义"按钮） */
     @DrawableRes
     val palette: Int = R.drawable.lucide_ic_palette
+
+    // ---------- 待办清单（M12 需求五）----------
+
+    /** 展开（清单头部折叠箭头，展开时指向上） */
+    @DrawableRes
+    val chevronUp: Int = R.drawable.lucide_ic_chevron_up
+
+    /** 折叠（清单头部折叠箭头，收起时指向下） */
+    @DrawableRes
+    val chevronDown: Int = R.drawable.lucide_ic_chevron_down
+
+    /** 待办（底栏第三项 + 空态图标） */
+    @DrawableRes
+    val listTodo: Int = R.drawable.lucide_ic_list_todo
+
+    // ---------- 自定义背景（M12 需求二）----------
+
+    /** 选择背景图（设置页「选择图片」按钮） */
+    @DrawableRes
+    val image: Int = R.drawable.lucide_ic_image
+
+    /** 移除背景（清除已选的图） */
+    @DrawableRes
+    val imageOff: Int = R.drawable.lucide_ic_image_off
 }

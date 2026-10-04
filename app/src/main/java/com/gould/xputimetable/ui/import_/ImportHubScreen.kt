@@ -1,1 +1,244 @@
-LyoKICogSW1wb3J0SHViU2NyZWVuLmt0IOKAlOKAlCDlr7zlhaXkuK3lv4PpobXvvIhNMi1B77yJCiAqCiAqIOmAmumBk++8muaVmeWKoeebtOi/nu+8iOWGhee9riBXZWJWaWV3IOeZu+W9leW5tuiHquWKqOivhuWIq+ivvuihqO+8iS8g5LuO5paH5Lu25a+85YWl77yI5pysIEFwcCDlr7zlh7rnmoQgLmpzb27vvIkvCiAqIOaJq+S6jOe7tOeggeWvvOWFpSAvIOaJi+WKqOa3u+WKoOOAguaWh+S7tumAieaLqeeUqCBBY3Rpdml0eVJlc3VsdENvbnRyYWN0cy5PcGVuRG9jdW1lbnTvvIhTQUbvvIzml6DpnIDlrZjlgqjmnYPpmZDvvInjgIIKICog6Kej5p6Q5aSx6LSl5Zyo5Y6f5Zyw5bGV56S677yIQUMtMTHvvInvvIzmiJDlip/liJnlr7zoiKrliLDpooTop4jpobXnoa7orqTvvIhBQy0xMO+8ieOAggogKgogKiBNOe+8mioqV2FrZVVwIENTViDpgJrpgZPlt7LliKDpmaQqKu+8iOS6p+WTgei0n+i0o+S6uuimgeaxgu+8ieKAlOKAlOaWh+S7tuexu+WvvOWFpeWPquWJqeacrCBBcHAg5a+85Ye655qEIEpTT04KICog5LiO5LqM57u056CB5oiq5Zu+5Lik5p2h77yI5ZCO6ICF5Zyo5a+86Iiq5bGC6Kej5Ye65paH5pys5ZCO6LWw5ZCM5LiA5YWl5Y+j77yJ44CCCiAqCiAqIOeVjOmdoumTgeW+i++8iFNwZWMgwqcxMO+8ie+8mlNjYWZmb2xkICsg6Ieq57uY6aG25qCPIHN0YXR1c0JhcnNQYWRkaW5n77yb5paH5qGI5YWo6YOo5paH5Lu257qn5bi46YeP77ybCiAqIOWbnuiwg+eUqOaWueazleW8leeUqO+8m+Wbvuagh+WPque7jyBBcHBJY29uc++8m+acrOmhteaXoOaWh+acrOi+k+WFpeaVheaXoOmcgCBpbWVQYWRkaW5n44CCCiAqLwpwYWNrYWdlIGNvbS5nb3VsZC54cHV0aW1ldGFibGUudWkuaW1wb3J0XwoKaW1wb3J0IGFuZHJvaWQuY29udGVudC5Db250ZXh0CmltcG9ydCBhbmRyb2lkLm5ldC5VcmkKaW1wb3J0IGFuZHJvaWQucHJvdmlkZXIuT3BlbmFibGVDb2x1bW5zCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LkFycmFuZ2VtZW50CmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LkNvbHVtbgppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5Sb3cKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQuU3BhY2VyCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LmZpbGxNYXhTaXplCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LmZpbGxNYXhXaWR0aAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5oZWlnaHQKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQucGFkZGluZwppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5zaXplCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LnN0YXR1c0JhcnNQYWRkaW5nCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ucmVtZW1iZXJTY3JvbGxTdGF0ZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLnZlcnRpY2FsU2Nyb2xsCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5DaXJjdWxhclByb2dyZXNzSW5kaWNhdG9yCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5JY29uCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5JY29uQnV0dG9uCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5MaW5lYXJQcm9ncmVzc0luZGljYXRvcgppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5tYXRlcmlhbDMuTWF0ZXJpYWxUaGVtZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5tYXRlcmlhbDMuU2NhZmZvbGQKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UubWF0ZXJpYWwzLlNuYWNrYmFySG9zdAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5tYXRlcmlhbDMuU25hY2tiYXJIb3N0U3RhdGUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UubWF0ZXJpYWwzLlRleHQKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UubWF0ZXJpYWwzLlRleHRCdXR0b24KaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UucnVudGltZS5Db21wb3NhYmxlCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnJ1bnRpbWUuTGF1bmNoZWRFZmZlY3QKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UucnVudGltZS5jb2xsZWN0QXNTdGF0ZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5ydW50aW1lLmdldFZhbHVlCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnJ1bnRpbWUucmVtZW1iZXIKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuQWxpZ25tZW50CmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLk1vZGlmaWVyCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLnBsYXRmb3JtLkxvY2FsQ29udGV4dAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS51aS5yZXMucGFpbnRlclJlc291cmNlCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLnVuaXQuZHAKaW1wb3J0IGNvbS5nb3VsZC54cHV0aW1ldGFibGUuaW1wb3J0ZXIuYXBpLkltcG9ydFBheWxvYWQKaW1wb3J0IGNvbS5nb3VsZC54cHV0aW1ldGFibGUuaW1wb3J0ZXIuYXBpLkltcG9ydFJlc3VsdAppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS5jb21wb25lbnRzLkFwcEljb25zCmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLnVpLmltcG9ydF8uY29tcG9uZW50cy5JbXBvcnRDaGFubmVsQ2FyZAppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS5pbXBvcnRfLmNvbXBvbmVudHMuUGFyc2VGYWlsdXJlQ2FyZAppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS50aGVtZS5JY29uU2l6ZQppbXBvcnQga290bGlueC5jb3JvdXRpbmVzLkRpc3BhdGNoZXJzCmltcG9ydCBrb3RsaW54LmNvcm91dGluZXMud2l0aENvbnRleHQKCi8vIC0tLS0tLS0tLS0g5paH5Lu257qn5paH5qGI5bi46YeP77yIU3BlYyDCpzEwIOmTgeW+iyAy77ya56aB5q2i57uE5ZCI5pyf5paw5bu66YCJ6aG56ZuG5ZCI77yJLS0tLS0tLS0tLQoKcHJpdmF0ZSBjb25zdCB2YWwgSFVCX1RJVExFID0gIuWvvOWFpeivvuihqCIKcHJpdmF0ZSBjb25zdCB2YWwgSFVCX1NVQlRJVExFID0gIuS7juS7peS4i+mAmumBk+WvvOWFpeS9oOeahOivvuihqO+8m+aWh+S7tuWvvOWFpeS4jeiBlOe9keS5n+iDveeUqCIKcHJpdmF0ZSBjb25zdCB2YWwgQ0hBTk5FTF9XRUJfVElUTEUgPSAi5pWZ5Yqh55u06L+eIgpwcml2YXRlIGNvbnN0IHZhbCBDSEFOTkVMX1dFQl9TVUJUSVRMRSA9ICLlnKjlrabmoKHmlZnliqHns7vnu5/pobXlrozmiJDnmbvlvZXvvIzoh6rliqjor4bliKvor77ooagiCnByaXZhdGUgY29uc3QgdmFsIENIQU5ORUxfSlNPTl9USVRMRSA9ICLku47mlofku7blr7zlhaXor77ooagiCnByaXZhdGUgY29uc3QgdmFsIENIQU5ORUxfSlNPTl9TVUJUSVRMRSA9ICLpgInmi6nmnKwgQXBwIOWvvOWHuueahCAuanNvbiDmlofku7YiCnByaXZhdGUgY29uc3QgdmFsIENIQU5ORUxfUVJfVElUTEUgPSAi5omr5LqM57u056CB5a+85YWlIgpwcml2YXRlIGNvbnN0IHZhbCBDSEFOTkVMX1FSX1NVQlRJVExFID0gIumAieaLqeebuOWGjOmHjOeahOS6jOe7tOeggeaIquWbviIKcHJpdmF0ZSBjb25zdCB2YWwgQ0hBTk5FTF9NQU5VQUxfVElUTEUgPSAi5omL5Yqo5re75YqgIgpwcml2YXRlIGNvbnN0IHZhbCBDSEFOTkVMX01BTlVBTF9TVUJUSVRMRSA9ICLkuIDpl6jkuIDpl6jlvZXlhaXvvIzpgILlkIjlj6rooaXlh6Dpl6jor74iCnByaXZhdGUgY29uc3QgdmFsIENMRUFOVVBfRU5UUlkgPSAi5riF55CG5a+85YWl55qE6K++56iLIgpwcml2YXRlIGNvbnN0IHZhbCBQQVJTSU5HX0hJTlQgPSAi5q2j5Zyo6Kej5p6Q5paH5Lu24oCmIgoKQENvbXBvc2FibGUKZnVuIEltcG9ydEh1YlNjcmVlbigKICAgIHZpZXdNb2RlbDogSW1wb3J0SHViVmlld01vZGVsLAogICAgb25CYWNrOiAoKSAtPiBVbml0LAogICAgb25PcGVuV2ViOiAoKSAtPiBVbml0LAogICAgb25PcGVuQ2xlYW51cDogKCkgLT4gVW5pdCwKICAgIG9uTWFudWFsQWRkOiAodGVybUlkOiBMb25nPywgdG90YWxXZWVrczogSW50KSAtPiBVbml0LAogICAgLyoqIE02IOmcgOaxgiA2LUHvvJpTQUYg6YCJ5oup5pysIEFwcCDlr7zlh7rnmoQgLmpzb24g5paH5Lu277yIbGF1bmNoZXIg5Zyo5a+86Iiq5bGC6KOF6YWN77yJ44CCICovCiAgICBvblBpY2tKc29uRmlsZTogKCkgLT4gVW5pdCwKICAgIC8qKiBNNiDpnIDmsYIgNi1C77yaU0FGIOmAieaLqeebuOWGjOmHjOeahOS6jOe7tOeggeaIquWbvu+8iGxhdW5jaGVyIOWcqOWvvOiIquWxguijhemFje+8ieOAgiAqLwogICAgb25QaWNrUXJJbWFnZTogKCkgLT4gVW5pdCwKICAgIG9uUGFyc2VkOiAoSW1wb3J0UmVzdWx0Lk5lZWRzQ29uZmlybSkgLT4gVW5pdCwKICAgIG1vZGlmaWVyOiBNb2RpZmllciA9IE1vZGlmaWVyLAogICAgbm90aWNlOiBTdHJpbmc/ID0gbnVsbCwKICAgIG9uTm90aWNlU2hvd246ICgpIC0+IFVuaXQgPSB7fSwKKSB7CiAgICB2YWwgc3RhdGUgYnkgdmlld01vZGVsLnN0YXRlLmNvbGxlY3RBc1N0YXRlKCkKICAgIHZhbCBzbmFja2Jhckhvc3RTdGF0ZSA9IHJlbWVtYmVyIHsgU25hY2tiYXJIb3N0U3RhdGUoKSB9CgogICAgLy8g5a+86Iiq5bGC6YCB5p2l55qE5o+Q56S677yI5aaC44CM5bey5riF55CGIE4g6Zeo44CN77yJ77ya5bGV56S65LiA5qyh5Y2z5Zue5oql5raI6LS5CiAgICBMYXVuY2hlZEVmZmVjdChub3RpY2UpIHsKICAgICAgICBub3RpY2U/LmxldCB7CiAgICAgICAgICAgIHNuYWNrYmFySG9zdFN0YXRlLnNob3dTbmFja2JhcihpdCkKICAgICAgICAgICAgb25Ob3RpY2VTaG93bigpCiAgICAgICAgfQogICAgfQoKICAgIC8vIOaJi+WKqOa3u+WKoO+8muWbnuiwgyBob2lzdCDmiJDnqLPlrprlvJXnlKjvvIhTcGVjIMKnMTAg6ZOB5b6LIDLvvIzpgb/lhY3lhoXogZQgbGFtYmRhIOegtOWdj+i3s+i/h++8iQogICAgdmFsIHRlcm1JZCA9IHN0YXRlLnRlcm0/LmlkCiAgICB2YWwgdG90YWxXZWVrcyA9IHN0YXRlLnRlcm0/LnRvdGFsV2Vla3MgPzogREVGQVVMVF9UT1RBTF9XRUVLUwogICAgdmFsIG9uTWFudWFsQWRkQ2xpY2s6ICgpIC0+IFVuaXQgPSByZW1lbWJlcih0ZXJtSWQsIHRvdGFsV2Vla3MsIG9uTWFudWFsQWRkKSB7CiAgICAgICAgeyBvbk1hbnVhbEFkZCh0ZXJtSWQsIHRvdGFsV2Vla3MpIH0KICAgIH0KCiAgICAvLyDop6PmnpDmiJDlip8g4oaSIOWvvOiIquWIsOmihOiniOmhte+8iOa2iOi0ueWQjua4hemZpO+8jOmBv+WFjeaXi+i9rOWxj+mHjeWkjeinpuWPke+8iQogICAgTGF1bmNoZWRFZmZlY3Qoc3RhdGUucGVuZGluZykgewogICAgICAgIHN0YXRlLnBlbmRpbmc/LmxldCB7CiAgICAgICAgICAgIG9uUGFyc2VkKGl0KQogICAgICAgICAgICB2aWV3TW9kZWwuY29uc3VtZVBlbmRpbmcoKQogICAgICAgIH0KICAgIH0KCiAgICBTY2FmZm9sZCgKICAgICAgICBtb2RpZmllciA9IG1vZGlmaWVyLmZpbGxNYXhTaXplKCksCiAgICAgICAgdG9wQmFyID0gewogICAgICAgICAgICBIdWJUb3BCYXIob25CYWNrID0gb25CYWNrLCBtb2RpZmllciA9IE1vZGlmaWVyLnN0YXR1c0JhcnNQYWRkaW5nKCkpCiAgICAgICAgfSwKICAgICAgICBzbmFja2Jhckhvc3QgPSB7IFNuYWNrYmFySG9zdChzbmFja2Jhckhvc3RTdGF0ZSkgfSwKICAgICkgeyBwYWRkaW5nIC0+CiAgICAgICAgQ29sdW1uKAogICAgICAgICAgICBtb2RpZmllciA9IE1vZGlmaWVyCiAgICAgICAgICAgICAgICAuZmlsbE1heFNpemUoKQogICAgICAgICAgICAgICAgLnBhZGRpbmcocGFkZGluZykKICAgICAgICAgICAgICAgIC52ZXJ0aWNhbFNjcm9sbChyZW1lbWJlclNjcm9sbFN0YXRlKCkpCiAgICAgICAgICAgICAgICAucGFkZGluZyhob3Jpem9udGFsID0gMTYuZHApLAogICAgICAgICAgICB2ZXJ0aWNhbEFycmFuZ2VtZW50ID0gQXJyYW5nZW1lbnQuc3BhY2VkQnkoMTIuZHApLAogICAgICAgICkgewogICAgICAgICAgICBTcGFjZXIoTW9kaWZpZXIuaGVpZ2h0KDQuZHApKQogICAgICAgICAgICBUZXh0KHRleHQgPSBIVUJfU1VCVElUTEUsIHN0eWxlID0gTWF0ZXJpYWxUaGVtZS50eXBvZ3JhcGh5LmJvZHlNZWRpdW0sCiAgICAgICAgICAgICAgICBjb2xvciA9IE1hdGVyaWFsVGhlbWUuY29sb3JTY2hlbWUub25TdXJmYWNlVmFyaWFudCkKICAgICAgICAgICAgSW1wb3J0Q2hhbm5lbENhcmQoCiAgICAgICAgICAgICAgICB0aXRsZSA9IENIQU5ORUxfV0VCX1RJVExFLAogICAgICAgICAgICAgICAgc3VidGl0bGUgPSBDSEFOTkVMX1dFQl9TVUJUSVRMRSwKICAgICAgICAgICAgICAgIGljb25SZXMgPSBBcHBJY29ucy5nbG9iZSwKICAgICAgICAgICAgICAgIGVuYWJsZWQgPSB0cnVlLAogICAgICAgICAgICAgICAgb25DbGljayA9IG9uT3BlbldlYiwKICAgICAgICAgICAgKQogICAgICAgICAgICAvLyBNNiDpnIDmsYIgNi1B77ya5pysIEFwcCDlr7zlh7rnmoQgSlNPTiDmlofku7bpgJrpgZPvvIjkuI4gQ1NWIOWQhOiHqueLrOeriyBpbXBvcnRlcu+8jOmBv+WFjeS4suWRs++8iQogICAgICAgICAgICBJbXBvcnRDaGFubmVsQ2FyZCgKICAgICAgICAgICAgICAgIHRpdGxlID0gQ0hBTk5FTF9KU09OX1RJVExFLAogICAgICAgICAgICAgICAgc3VidGl0bGUgPSBDSEFOTkVMX0pTT05fU1VCVElUTEUsCiAgICAgICAgICAgICAgICBpY29uUmVzID0gQXBwSWNvbnMuZmlsZVRleHQsCiAgICAgICAgICAgICAgICBlbmFibGVkID0gdHJ1ZSwKICAgICAgICAgICAgICAgIG9uQ2xpY2sgPSBvblBpY2tKc29uRmlsZSwKICAgICAgICAgICAgKQogICAgICAgICAgICAvLyBNNiDpnIDmsYIgNi1C77ya5LqM57u056CB5oiq5Zu+5a+85YWl77yI5peg55u45py65omr56CB77yb6YCJ5Zu+6Kej56CB5ZyoIFVJIOWxgu+8jOmbtuaWsOadg+mZkO+8iQogICAgICAgICAgICBJbXBvcnRDaGFubmVsQ2FyZCgKICAgICAgICAgICAgICAgIHRpdGxlID0gQ0hBTk5FTF9RUl9USVRMRSwKICAgICAgICAgICAgICAgIHN1YnRpdGxlID0gQ0hBTk5FTF9RUl9TVUJUSVRMRSwKICAgICAgICAgICAgICAgIGljb25SZXMgPSBBcHBJY29ucy5yZWZyZXNoLAogICAgICAgICAgICAgICAgZW5hYmxlZCA9IHRydWUsCiAgICAgICAgICAgICAgICBvbkNsaWNrID0gb25QaWNrUXJJbWFnZSwKICAgICAgICAgICAgKQogICAgICAgICAgICBJbXBvcnRDaGFubmVsQ2FyZCgKICAgICAgICAgICAgICAgIHRpdGxlID0gQ0hBTk5FTF9NQU5VQUxfVElUTEUsCiAgICAgICAgICAgICAgICBzdWJ0aXRsZSA9IENIQU5ORUxfTUFOVUFMX1NVQlRJVExFLAogICAgICAgICAgICAgICAgaWNvblJlcyA9IEFwcEljb25zLnBlbmNpbCwKICAgICAgICAgICAgICAgIGVuYWJsZWQgPSB0cnVlLAogICAgICAgICAgICAgICAgb25DbGljayA9IG9uTWFudWFsQWRkQ2xpY2ssCiAgICAgICAgICAgICkKICAgICAgICAgICAgLy8g5qyh6KaB5YWl5Y+j77ya5oyJ5p2l5rqQ5riF55CG77yITTItQ++8jEFDLTI077yJCiAgICAgICAgICAgIFRleHRCdXR0b24oCiAgICAgICAgICAgICAgICBvbkNsaWNrID0gb25PcGVuQ2xlYW51cCwKICAgICAgICAgICAgICAgIG1vZGlmaWVyID0gTW9kaWZpZXIuYWxpZ24oQWxpZ25tZW50LkNlbnRlckhvcml6b250YWxseSksCiAgICAgICAgICAgICkgewogICAgICAgICAgICAgICAgVGV4dCh0ZXh0ID0gQ0xFQU5VUF9FTlRSWSkKICAgICAgICAgICAgfQogICAgICAgICAgICBpZiAoc3RhdGUucGFyc2luZykgewogICAgICAgICAgICAgICAgQ29sdW1uIHsKICAgICAgICAgICAgICAgICAgICBSb3codmVydGljYWxBbGlnbm1lbnQgPSBBbGlnbm1lbnQuQ2VudGVyVmVydGljYWxseSkgewogICAgICAgICAgICAgICAgICAgICAgICBDaXJjdWxhclByb2dyZXNzSW5kaWNhdG9yKG1vZGlmaWVyID0gTW9kaWZpZXIuc2l6ZShJY29uU2l6ZS5MYXJnZSkpCiAgICAgICAgICAgICAgICAgICAgICAgIFNwYWNlcihNb2RpZmllci5zaXplKDEyLmRwKSkKICAgICAgICAgICAgICAgICAgICAgICAgVGV4dCh0ZXh0ID0gUEFSU0lOR19ISU5ULCBzdHlsZSA9IE1hdGVyaWFsVGhlbWUudHlwb2dyYXBoeS5ib2R5TWVkaXVtKQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICBMaW5lYXJQcm9ncmVzc0luZGljYXRvcihtb2RpZmllciA9IE1vZGlmaWVyLmZpbGxNYXhXaWR0aCgpLnBhZGRpbmcodG9wID0gOC5kcCkpCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICAgICAgc3RhdGUuZmFpbHVyZT8ubGV0IHsgZmFpbHVyZSAtPgogICAgICAgICAgICAgICAgUGFyc2VGYWlsdXJlQ2FyZCgKICAgICAgICAgICAgICAgICAgICByZWFzb24gPSBmYWlsdXJlLnJlYXNvbiwKICAgICAgICAgICAgICAgICAgICBmaWxlTmFtZSA9IGZhaWx1cmUuZmlsZU5hbWUsCiAgICAgICAgICAgICAgICAgICAgY2FuUmV0cnkgPSBmYWlsdXJlLmNhblJldHJ5LAogICAgICAgICAgICAgICAgICAgIG9uUmV0cnkgPSB2aWV3TW9kZWw6OnJldHJ5LAogICAgICAgICAgICAgICAgICAgIG9uUGlja0Fub3RoZXIgPSBvblBpY2tKc29uRmlsZSwKICAgICAgICAgICAgICAgICAgICBvbk1hbnVhbEFkZCA9IG9uTWFudWFsQWRkQ2xpY2ssCiAgICAgICAgICAgICAgICApCiAgICAgICAgICAgIH0KICAgICAgICAgICAgU3BhY2VyKE1vZGlmaWVyLmhlaWdodCgxNi5kcCkpCiAgICAgICAgfQogICAgfQp9CgovKiog6aG25qCP77ya6L+U5ZueICsg5qCH6aKY77yI6Ieq57uY77yM6aG76Ieq5ZCD54q25oCB5qCP5YaF6L656Led77yJ44CCICovCkBDb21wb3NhYmxlCnByaXZhdGUgZnVuIEh1YlRvcEJhcihvbkJhY2s6ICgpIC0+IFVuaXQsIG1vZGlmaWVyOiBNb2RpZmllciA9IE1vZGlmaWVyKSB7CiAgICBSb3coCiAgICAgICAgbW9kaWZpZXIgPSBtb2RpZmllci5maWxsTWF4V2lkdGgoKS5wYWRkaW5nKGhvcml6b250YWwgPSA0LmRwLCB2ZXJ0aWNhbCA9IDQuZHApLAogICAgICAgIHZlcnRpY2FsQWxpZ25tZW50ID0gQWxpZ25tZW50LkNlbnRlclZlcnRpY2FsbHksCiAgICApIHsKICAgICAgICBJY29uQnV0dG9uKG9uQ2xpY2sgPSBvbkJhY2spIHsKICAgICAgICAgICAgSWNvbigKICAgICAgICAgICAgICAgIHBhaW50ZXIgPSBwYWludGVyUmVzb3VyY2UoQXBwSWNvbnMuY2hldnJvbkxlZnQpLAogICAgICAgICAgICAgICAgY29udGVudERlc2NyaXB0aW9uID0gIui/lOWbniIsCiAgICAgICAgICAgICAgICBtb2RpZmllciA9IE1vZGlmaWVyLnNpemUoSWNvblNpemUuTWVkaXVtKSwKICAgICAgICAgICAgKQogICAgICAgIH0KICAgICAgICBUZXh0KHRleHQgPSBIVUJfVElUTEUsIHN0eWxlID0gTWF0ZXJpYWxUaGVtZS50eXBvZ3JhcGh5LnRpdGxlTGFyZ2UpCiAgICB9Cn0KCnByaXZhdGUgY29uc3QgdmFsIERFRkFVTFRfVE9UQUxfV0VFS1MgPSAxOAoKLyoqCiAqIOivu+mAieS4reaWh+S7tiDihpIgSW1wb3J0UGF5bG9hZO+8iFVJIOWxguijhemFje+8jElPIOWcqCBEaXNwYXRjaGVycy5JT++8ieOAggogKiDnvJbnoIHlrrnplJnvvJrlhYjmjIkgVVRGLTgg6Kej56CB77yb6Iul5Ye6546w5pu/5o2i56ym77yI6Z2e5rOVIFVURi04IOWtl+iKgu+8ie+8jOaUueaMiSBHQjE4MDMwIOmHjeinowogKiDvvIhXYWtlVXAg5pep5pyf5a+85Ye65a2Y5ZyoIEdCSyDnvJbnoIHvvIzor7vplJnnvJbnoIHml7booajlpLTljLnphY3lv4XnhLblpLHotKXvvIzov5nkuIDmraXog73mlZHlm57mnaXvvInjgIIKICog5Lu75L2V5aSx6LSl6L+U5ZueIG51bGzvvIjnlLEgVmlld01vZGVsIOi9rOS4uuWPr+ivu+eahOWksei0peaPkOekuu+8jOS4jeW0qea6g++8ieOAggogKiBpbnRlcm5hbO+8mk02IOi1t+WvvOiIquWxgu+8iEFwcE5hdu+8ieeahCBKU09OIOaWh+S7tumAmumBk+WkjeeUqOacrOWHveaVsOOAggogKi8KaW50ZXJuYWwgc3VzcGVuZCBmdW4gcmVhZEltcG9ydFBheWxvYWQoY29udGV4dDogQ29udGV4dCwgdXJpOiBVcmkpOiBJbXBvcnRQYXlsb2FkPyA9CiAgICB3aXRoQ29udGV4dChEaXNwYXRjaGVycy5JTykgewogICAgICAgIHJ1bkNhdGNoaW5nIHsKICAgICAgICAgICAgdmFsIGJ5dGVzID0gY29udGV4dC5jb250ZW50UmVzb2x2ZXIub3BlbklucHV0U3RyZWFtKHVyaSk/LnVzZSB7IGl0LnJlYWRCeXRlcygpIH0KICAgICAgICAgICAgICAgID86IHJldHVybkBydW5DYXRjaGluZyBudWxsCiAgICAgICAgICAgIHZhciB0ZXh0ID0gU3RyaW5nKGJ5dGVzLCBDaGFyc2V0cy5VVEZfOCkKICAgICAgICAgICAgaWYgKHRleHQuY29udGFpbnMoJ1x1RkZGRCcpKSB7CiAgICAgICAgICAgICAgICB2YWwgZ2IgPSBTdHJpbmcoYnl0ZXMsIGNoYXJzZXQoIkdCMTgwMzAiKSkKICAgICAgICAgICAgICAgIGlmIChnYi5jb250YWlucygnXHVGRkZEJykubm90KCkpIHRleHQgPSBnYgogICAgICAgICAgICB9CiAgICAgICAgICAgIEltcG9ydFBheWxvYWQodGV4dCA9IHRleHQsIHVyaSA9IHVyaS50b1N0cmluZygpLCBkaXNwbGF5TmFtZSA9IHF1ZXJ5RGlzcGxheU5hbWUoY29udGV4dCwgdXJpKSkKICAgICAgICB9LmdldE9yTnVsbCgpCiAgICB9Cgpwcml2YXRlIGZ1biBxdWVyeURpc3BsYXlOYW1lKGNvbnRleHQ6IENvbnRleHQsIHVyaTogVXJpKTogU3RyaW5nPyA9IHJ1bkNhdGNoaW5nIHsKICAgIGNvbnRleHQuY29udGVudFJlc29sdmVyLnF1ZXJ5KHVyaSwgYXJyYXlPZihPcGVuYWJsZUNvbHVtbnMuRElTUExBWV9OQU1FKSwgbnVsbCwgbnVsbCwgbnVsbCkKICAgICAgICA/LnVzZSB7IGN1cnNvciAtPiBpZiAoY3Vyc29yLm1vdmVUb0ZpcnN0KCkpIGN1cnNvci5nZXRTdHJpbmcoMCkgZWxzZSBudWxsIH0KfS5nZXRPck51bGwoKQo=
+/*
+ * ImportHubScreen.kt —— 导入中心页（M2-A）
+ *
+ * 通道：教务直连（内置 WebView 登录并自动识别课表）/ 从文件导入（本 App 导出的 .json）/
+ * 扫二维码导入 / 手动添加。文件选择用 ActivityResultContracts.OpenDocument（SAF，无需存储权限）。
+ * 解析失败在原地展示（AC-11），成功则导航到预览页确认（AC-10）。
+ *
+ * M9：**WakeUp CSV 通道已删除**（产品负责人要求）——文件类导入只剩本 App 导出的 JSON
+ * 与二维码截图两条（后者在导航层解出文本后走同一入口）。
+ *
+ * 界面铁律（Spec §10）：Scaffold + 自绘顶栏 statusBarsPadding；文案全部文件级常量；
+ * 回调用方法引用；图标只经 AppIcons；本页无文本输入故无需 imePadding。
+ */
+package com.gould.xputimetable.ui.import_
+
+import android.content.Context
+import android.net.Uri
+import android.provider.OpenableColumns
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.gould.xputimetable.importer.api.ImportPayload
+import com.gould.xputimetable.importer.api.ImportResult
+import com.gould.xputimetable.ui.components.AppIcons
+import com.gould.xputimetable.ui.import_.components.ImportChannelCard
+import com.gould.xputimetable.ui.import_.components.ParseFailureCard
+import com.gould.xputimetable.ui.theme.IconSize
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
+// ---------- 文件级文案常量（Spec §10 铁律 2：禁止组合期新建选项集合）----------
+
+private const val HUB_TITLE = "导入课表"
+private const val HUB_SUBTITLE = "从以下通道导入你的课表；文件导入不联网也能用"
+private const val CHANNEL_WEB_TITLE = "教务直连"
+private const val CHANNEL_WEB_SUBTITLE = "在学校教务系统页完成登录，自动识别课表"
+private const val CHANNEL_JSON_TITLE = "从文件导入课表"
+private const val CHANNEL_JSON_SUBTITLE = "选择本 App 导出的 .json 文件"
+private const val CHANNEL_QR_TITLE = "扫二维码导入"
+private const val CHANNEL_QR_SUBTITLE = "选择相册里的二维码截图"
+private const val CHANNEL_MANUAL_TITLE = "手动添加"
+private const val CHANNEL_MANUAL_SUBTITLE = "一门一门录入，适合只补几门课"
+private const val CLEANUP_ENTRY = "清理导入的课程"
+private const val PARSING_HINT = "正在解析文件…"
+
+@Composable
+fun ImportHubScreen(
+    viewModel: ImportHubViewModel,
+    onBack: () -> Unit,
+    onOpenWeb: () -> Unit,
+    onOpenCleanup: () -> Unit,
+    onManualAdd: (termId: Long?, totalWeeks: Int) -> Unit,
+    /** M6 需求 6-A：SAF 选择本 App 导出的 .json 文件（launcher 在导航层装配）。 */
+    onPickJsonFile: () -> Unit,
+    /** M6 需求 6-B：SAF 选择相册里的二维码截图（launcher 在导航层装配）。 */
+    onPickQrImage: () -> Unit,
+    onParsed: (ImportResult.NeedsConfirm) -> Unit,
+    modifier: Modifier = Modifier,
+    notice: String? = null,
+    onNoticeShown: () -> Unit = {},
+) {
+    val state by viewModel.state.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+
+    // 导航层送来的提示（如「已清理 N 门」）：展示一次即回报消费
+    LaunchedEffect(notice) {
+        notice?.let {
+            snackbarHostState.showSnackbar(it)
+            onNoticeShown()
+        }
+    }
+
+    // 手动添加：回调 hoist 成稳定引用（Spec §10 铁律 2，避免内联 lambda 破坏跳过）
+    val termId = state.term?.id
+    val totalWeeks = state.term?.totalWeeks ?: DEFAULT_TOTAL_WEEKS
+    val onManualAddClick: () -> Unit = remember(termId, totalWeeks, onManualAdd) {
+        { onManualAdd(termId, totalWeeks) }
+    }
+
+    // 解析成功 → 导航到预览页（消费后清除，避免旋转屏重复触发）
+    LaunchedEffect(state.pending) {
+        state.pending?.let {
+            onParsed(it)
+            viewModel.consumePending()
+        }
+    }
+
+    Scaffold(
+        // M12 需求一.2：底色与背景图由导航根的 PageBackground 统一提供，这里必须透明
+        containerColor = Color.Transparent,
+        modifier = modifier.fillMaxSize(),
+        topBar = {
+            HubTopBar(onBack = onBack, modifier = Modifier.statusBarsPadding())
+        },
+        snackbarHost = { SnackbarHost(snackbarHostState) },
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Spacer(Modifier.height(4.dp))
+            Text(text = HUB_SUBTITLE, style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            ImportChannelCard(
+                title = CHANNEL_WEB_TITLE,
+                subtitle = CHANNEL_WEB_SUBTITLE,
+                iconRes = AppIcons.globe,
+                enabled = true,
+                onClick = onOpenWeb,
+            )
+            // M6 需求 6-A：本 App 导出的 JSON 文件通道（与 CSV 各自独立 importer，避免串味）
+            ImportChannelCard(
+                title = CHANNEL_JSON_TITLE,
+                subtitle = CHANNEL_JSON_SUBTITLE,
+                iconRes = AppIcons.fileText,
+                enabled = true,
+                onClick = onPickJsonFile,
+            )
+            // M6 需求 6-B：二维码截图导入（无相机扫码；选图解码在 UI 层，零新权限）
+            ImportChannelCard(
+                title = CHANNEL_QR_TITLE,
+                subtitle = CHANNEL_QR_SUBTITLE,
+                iconRes = AppIcons.refresh,
+                enabled = true,
+                onClick = onPickQrImage,
+            )
+            ImportChannelCard(
+                title = CHANNEL_MANUAL_TITLE,
+                subtitle = CHANNEL_MANUAL_SUBTITLE,
+                iconRes = AppIcons.pencil,
+                enabled = true,
+                onClick = onManualAddClick,
+            )
+            // 次要入口：按来源清理（M2-C，AC-24）
+            TextButton(
+                onClick = onOpenCleanup,
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+            ) {
+                Text(text = CLEANUP_ENTRY)
+            }
+            if (state.parsing) {
+                Column {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        CircularProgressIndicator(modifier = Modifier.size(IconSize.Large))
+                        Spacer(Modifier.size(12.dp))
+                        Text(text = PARSING_HINT, style = MaterialTheme.typography.bodyMedium)
+                    }
+                    LinearProgressIndicator(modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
+                }
+            }
+            state.failure?.let { failure ->
+                ParseFailureCard(
+                    reason = failure.reason,
+                    fileName = failure.fileName,
+                    canRetry = failure.canRetry,
+                    onRetry = viewModel::retry,
+                    onPickAnother = onPickJsonFile,
+                    onManualAdd = onManualAddClick,
+                )
+            }
+            Spacer(Modifier.height(16.dp))
+        }
+    }
+}
+
+/** 顶栏：返回 + 标题（自绘，须自吃状态栏内边距）。 */
+@Composable
+private fun HubTopBar(onBack: () -> Unit, modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        IconButton(onClick = onBack) {
+            Icon(
+                painter = painterResource(AppIcons.chevronLeft),
+                contentDescription = "返回",
+                modifier = Modifier.size(IconSize.Medium),
+            )
+        }
+        Text(text = HUB_TITLE, style = MaterialTheme.typography.titleLarge)
+    }
+}
+
+private const val DEFAULT_TOTAL_WEEKS = 18
+
+/**
+ * 读选中文件 → ImportPayload（UI 层装配，IO 在 Dispatchers.IO）。
+ * 编码容错：先按 UTF-8 解码；若出现替换符（非法 UTF-8 字节），改按 GB18030 重解
+ * （WakeUp 早期导出存在 GBK 编码，读错编码时表头匹配必然失败，这一步能救回来）。
+ * 任何失败返回 null（由 ViewModel 转为可读的失败提示，不崩溃）。
+ * internal：M6 起导航层（AppNav）的 JSON 文件通道复用本函数。
+ */
+internal suspend fun readImportPayload(context: Context, uri: Uri): ImportPayload? =
+    withContext(Dispatchers.IO) {
+        runCatching {
+            val bytes = context.contentResolver.openInputStream(uri)?.use { it.readBytes() }
+                ?: return@runCatching null
+            var text = String(bytes, Charsets.UTF_8)
+            if (text.contains('\uFFFD')) {
+                val gb = String(bytes, charset("GB18030"))
+                if (gb.contains('\uFFFD').not()) text = gb
+            }
+            ImportPayload(text = text, uri = uri.toString(), displayName = queryDisplayName(context, uri))
+        }.getOrNull()
+    }
+
+private fun queryDisplayName(context: Context, uri: Uri): String? = runCatching {
+    context.contentResolver.query(uri, arrayOf(OpenableColumns.DISPLAY_NAME), null, null, null)
+        ?.use { cursor -> if (cursor.moveToFirst()) cursor.getString(0) else null }
+}.getOrNull()

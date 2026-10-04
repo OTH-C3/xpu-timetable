@@ -1,1 +1,146 @@
-LyoKICogVG9kYXlQbGFuLmt0IOKAlOKAlCDmoYzpnaLlsI/nu4Tku7bjgIzku4rml6Xor77nqIvjgI3nmoTliKTlrprnuq/lh73mlbDvvIhNNC1XIOaUueeJiO+8iQogKgogKiDlj6PlvoTvvIhNNC1XIMKnMy4z77yM5Y+W5LujIE0zIOS4ieaAgeivreS5ie+8ie+8mgogKiAgIC0g6L6T5YWlIGRheUl0ZW1zIOeUseiwg+eUqOaWueaMieOAjOS7iuWkqeaYn+acn+WHoOOAjeetm+Wlve+8jOWRqOasoS/ljZXlj4zlkajov4fmu6Tlt7LlnKggU1FMIOWxguWujOaIkO+8jAogKiAgICAg5pys5paH5Lu25LiN5YGa5ZGo5qyh5Yik5a6a77yI6YeN5aSN6L+H5ruk5piv5pys6aG555uu6Lip6L+H55qE5Z2R77yJ77ybCiAqICAgLSDliJfooajlj6roo4XjgIzmnKrnu5PmnZ/jgI3or77nqIvvvIhub3dNaW51dGUgPCBlbmRNaW51dGUg5Lil5qC85bCP5LqO77yMPT0g6KeG5Li65bey57uT5p2f77yJ77yaCiAqICAgICDmr4/kuIrlrozkuIDoioLljbPku47liJfooajmtojlpLHjgIHkuIvkuIDoioLkuIrnp7vvvIjmjqjov5vml7bmnLrnlLEgRW5kT2ZDbGFzc1JlZnJlc2hTY2hlZHVsZXIg5L+d6K+B77yJ77ybCiAqICAgLSDml6Dmv4DmtLvlrabmnJ8g4oaSIE5PX1RFUk3vvIjkvJjlhYjnuqfmnIDpq5jvvInvvJvmnInlrabmnJ/kvYbku4rml6Xml6Dor77miJbor77nqIvlt7Llhajpg6jkuIrlrowKICogICAgIOKGkiBBTExfRE9ORV9PUl9OT05F77yI5Lik57G757uf5LiA6LWw44CM5LuK5aSp5rKh5pyJ6K++5ZWm44CN56m65oCB77yJ44CCCiAqCiAqIOacrOaWh+S7tuWPquWFgeiuuCBLb3RsaW4g5qCH5YeG5bqT77yM5pe26Ze05LiA5b6L55Sx5Y+C5pWw5rOo5YWlIOKAlOKAlCDlkKbliJnml6Dms5XljZXmtYvvvIjop4TmoLwgwqc0LjHvvInjgIIKICovCnBhY2thZ2UgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS53aWRnZXQKCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLnVuaXQuRHAKaW1wb3J0IGNvbS5nb3VsZC54cHV0aW1ldGFibGUudWkudGhlbWUuV2lkZ2V0CgovKiog5LuK5pel5LiA6IqC6K++77yI5bCP57uE5Lu25Y+q6K+76KeG5Zu+5omA6ZyA55qE5pyA5bCP5a2X5q6177yJ44CCICovCmRhdGEgY2xhc3MgVG9kYXlJdGVtKAogICAgdmFsIHN0YXJ0U2VjdGlvbjogSW50LAogICAgdmFsIGVuZFNlY3Rpb246IEludCwKICAgIHZhbCBjb3Vyc2VOYW1lOiBTdHJpbmcsCiAgICB2YWwgY2xhc3Nyb29tOiBTdHJpbmc/LAogICAgdmFsIHN0YXJ0TWludXRlOiBJbnQsCiAgICB2YWwgZW5kTWludXRlOiBJbnQsCiAgICB2YWwgY29sb3JUYWc6IEludCwKKQoKLyoqIOepuuaAgeWOn+WboO+8iE00LVfvvJrmlLbmlZvkuLrkuKTnsbvnqbrmgIHmlofmoYjmnaXmupDvvInjgIIgKi8KZW51bSBjbGFzcyBFbXB0eVJlYXNvbiB7CiAgICAvKiog5LuK5pel5a2Y5Zyo5pyq57uT5p2f6K++56iL44CCICovCiAgICBOT05FLAoKICAgIC8qKiDml6Dmv4DmtLvlrabmnJ/vvJrlvJXlr7znlKjmiLfmiZPlvIAgQXBwIOWvvOWFpeOAguS8mOWFiOe6p+mrmOS6jiBBTExfRE9ORV9PUl9OT05F44CCICovCiAgICBOT19URVJNLAoKICAgIC8qKiDmnInlrabmnJ/kvYbku4rml6Xml6Dor77vvIzmiJbku4rml6Xor77nqIvlt7Llhajpg6jnu5PmnZ/vvJrnu5/kuIDotbDpopzmloflrZfnqbrmgIHjgIIgKi8KICAgIEFMTF9ET05FX09SX05PTkUsCn0KCi8qKgogKiDlsI/nu4Tku7bmuLLmn5PmiYDpnIDnmoTlrozmlbTop4blm77mlbDmja7jgIIKICoKICogQHBhcmFtIHJlbWFpbmluZyAgICAgIOacque7k+adn+ivvueoi++8iG5vd01pbnV0ZSA8IGVuZE1pbnV0Ze+8jOaMieW8gOWni+aXtumXtOWNh+W6j++8jAogKiAgICAgICAgICAgICAgICAgICAgICAg6Iez5aSaIFtUb2RheVBsYW5CdWlsZGVyLk1BWF9JVEVNU10g5p2h77yb6aaW5p2h5Y2zIuato+WcqOS4ii/kuIvkuIDoioIi77yJCiAqIEBwYXJhbSByZW1haW5pbmdUb3RhbCDmnKrnu5PmnZ/or77nqIvmgLvmlbDvvIjjgIzku4rlpKnov5jmnIkgeCDoioLor77jgI3nmoQgeO+8jOWQq+iiq+aKmOWPoOeahO+8iQogKiBAcGFyYW0gb3ZlcmZsb3dDb3VudCAg6LaF5Ye65bGV56S65LiK6ZmQ6KKr5oqY5Y+g55qE6Zeo5pWw77yIcmVtYWluaW5nVG90YWwgLSDlj6/op4HmlbDvvIkKICogQHBhcmFtIGVtcHR5UmVhc29uICAgIOepuuaAgeWOn+WboAogKi8KZGF0YSBjbGFzcyBUb2RheVBsYW4oCiAgICB2YWwgcmVtYWluaW5nOiBMaXN0PFRvZGF5SXRlbT4sCiAgICB2YWwgcmVtYWluaW5nVG90YWw6IEludCwKICAgIHZhbCBvdmVyZmxvd0NvdW50OiBJbnQsCiAgICB2YWwgZW1wdHlSZWFzb246IEVtcHR5UmVhc29uLAopCgovKioKICog5aS06YOo5Y+z5L6n5L+h5oGv55qE6K+m57uG56iL5bqm77yITTEw77yJ77ya5a695bqm5LiN5aSf5pe2KirmjInkvJjlhYjnuqfnoI3lhoXlrrkqKu+8jOiAjOS4jeaYr+e8qeWtl+WPtwogKiDvvIhNNSDpnIDmsYIgNy84IOaYjuehruimgeaxgiLlj7PkuIrkuI7moKHlkI3lkIzlrZflj7ci77yM57yp5a2X5Y+35Lya56C05Z2P6K+l5Yaz5a6a77yJ44CCCiAqIOegjeeahOmhuuW6j++8muWFiOOAjOaXpeacn+OAje+8jOWGjeOAjOesrCBOIOWRqOOAje+8m+OAjOWRqOWHoOOAjeacgOWQjuS/neeVmeOAggogKi8KZW51bSBjbGFzcyBIZWFkZXJEZXRhaWwgewogICAgLyoqIOaXpeacnyArIOesrCBOIOWRqCArIOWRqOWHoOOAgiAqLwogICAgRlVMTCwKCiAgICAvKiog56ysIE4g5ZGoICsg5ZGo5Yeg77yI56CN5pel5pyf77yJ44CCICovCiAgICBOT19EQVRFLAoKICAgIC8qKiDku4Xlkajlh6DjgIIgKi8KICAgIFdFRUtEQVlfT05MWSwKfQoKLyoqIOaMieWPr+eUqOWuveW6puWGs+Wumuivpue7hueoi+W6pu+8iOe6r+WHveaVsO+8jOmYiOWAvOingSB1aS90aGVtZS9Ub2tlbnMua3Qg55qEIFdpZGdldO+8ieOAgiAqLwpmdW4gaGVhZGVyRGV0YWlsRm9yKHdpZHRoOiBEcCk6IEhlYWRlckRldGFpbCA9IHdoZW4gewogICAgd2lkdGggPj0gV2lkZ2V0LkhlYWRlckZ1bGxNaW5XaWR0aCAtPiBIZWFkZXJEZXRhaWwuRlVMTAogICAgd2lkdGggPj0gV2lkZ2V0LkhlYWRlcldlZWtNaW5XaWR0aCAtPiBIZWFkZXJEZXRhaWwuTk9fREFURQogICAgZWxzZSAtPiBIZWFkZXJEZXRhaWwuV0VFS0RBWV9PTkxZCn0KCi8qKgogKiDnu4Too4XlpLTpg6jlj7PkuIrmlofmoYjvvIjnuq/lh73mlbDvvIzkvr/kuo7ljZXmtYvvvInjgIIKICoKICogQHBhcmFtIGRhdGVUZXh0ICAgIOW9ouWmgiAiMTAuMiIKICogQHBhcmFtIHdlZWtOdW1iZXIgIOesrOWHoOWRqO+8m251bGwgPSDlvZPliY3kuI3lnKjlrabmnJ/lkajlhoXvvIjlgYfmnJ/otornlYzvvInihpIg5LiN5pi+56S65ZGo5qyhCiAqIEBwYXJhbSB3ZWVrZGF5VGV4dCDlvaLlpoIgIuWRqOS6lCLvvJtudWxsID0g5peg5a2m5pyfIOKGkiDkuI3mmL7npLrlkajlh6AKICogQHBhcmFtIGRldGFpbCAgICAgIOivpue7hueoi+W6pu+8m251bGwg6aG55LiA5b6L5LiN5pi+56S6CiAqLwpmdW4gaGVhZGVyUmlnaHRUZXh0KAogICAgZGF0ZVRleHQ6IFN0cmluZywKICAgIHdlZWtOdW1iZXI6IEludD8sCiAgICB3ZWVrZGF5VGV4dDogU3RyaW5nPywKICAgIGRldGFpbDogSGVhZGVyRGV0YWlsLAopOiBTdHJpbmcgPSBidWlsZExpc3QgewogICAgaWYgKGRldGFpbCA9PSBIZWFkZXJEZXRhaWwuRlVMTCkgYWRkKGRhdGVUZXh0KQogICAgaWYgKGRldGFpbCAhPSBIZWFkZXJEZXRhaWwuV0VFS0RBWV9PTkxZKSB3ZWVrTnVtYmVyPy5sZXQgeyBhZGQoIuesrCAkaXQg5ZGoIikgfQogICAgd2Vla2RheVRleHQ/LmxldCB7IGFkZChpdCkgfQp9LmpvaW5Ub1N0cmluZygiICAiKQoKb2JqZWN0IFRvZGF5UGxhbkJ1aWxkZXIgewoKICAgIC8qKiDmoYzpnaLljaHniYfmnIDlpJrlrozmlbTliJflh7rnmoTpl6jmlbDvvIhNNSDpnIDmsYIgNe+8mjg4ZHAg6auY5bqm5pS+5LiN5LiLIDQg6KGM77yM5oyJ6KeE5qC8IMKnNS4xIOijgeWGs+mZjeS4uiAz77yJ44CCICovCiAgICBjb25zdCB2YWwgTUFYX0lURU1TID0gMwoKICAgIC8qKgogICAgICog6KOF6YWN5LuK5pel6K6h5YiS77yI57qv5Ye95pWw77yJ44CCCiAgICAgKgogICAgICogQHBhcmFtIGRheUl0ZW1zICDosIPnlKjmlrnlt7LmjInku4rlpKnmmJ/mnJ/lh6DnrZvlpb3nmoTku4rml6Xor77nqIsKICAgICAqIEBwYXJhbSBub3dNaW51dGUg5b2T5YmN5pe26Ze077yI5b2T5aSpIDAg54K56LW355qE5YiG6ZKf5pWw77yJCiAgICAgKiBAcGFyYW0gaGFzVGVybSAgIOaYr+WQpuWtmOWcqOa/gOa0u+Wtpuacn++8m2ZhbHNlIOaXtuebtOaOpei/lOWbniBOT19URVJNIOepuuaAgQogICAgICovCiAgICBmdW4gYnVpbGQoCiAgICAgICAgZGF5SXRlbXM6IExpc3Q8VG9kYXlJdGVtPiwKICAgICAgICBub3dNaW51dGU6IEludCwKICAgICAgICBoYXNUZXJtOiBCb29sZWFuID0gdHJ1ZSwKICAgICk6IFRvZGF5UGxhbiB7CiAgICAgICAgaWYgKCFoYXNUZXJtKSB7CiAgICAgICAgICAgIHJldHVybiBUb2RheVBsYW4oCiAgICAgICAgICAgICAgICByZW1haW5pbmcgPSBlbXB0eUxpc3QoKSwKICAgICAgICAgICAgICAgIHJlbWFpbmluZ1RvdGFsID0gMCwKICAgICAgICAgICAgICAgIG92ZXJmbG93Q291bnQgPSAwLAogICAgICAgICAgICAgICAgZW1wdHlSZWFzb24gPSBFbXB0eVJlYXNvbi5OT19URVJNLAogICAgICAgICAgICApCiAgICAgICAgfQogICAgICAgIHZhbCBzb3J0ZWQgPSBkYXlJdGVtcy5zb3J0ZWRXaXRoKAogICAgICAgICAgICBjb21wYXJlQnk8VG9kYXlJdGVtPiB7IGl0LnN0YXJ0TWludXRlIH0udGhlbkJ5IHsgaXQuc3RhcnRTZWN0aW9uIH0sCiAgICAgICAgKQogICAgICAgIC8vIOWPquS/neeVmeacque7k+adn+ivvueoi++8muW3sue7k+adn+eahOS4jei/m+WIl+ihqO+8iCLkuIrlrozkuIDoioLlsLHmtojlpLHjgIHkuIvkuIDoioLkuIrnp7si77yJCiAgICAgICAgdmFsIHJlbWFpbmluZ0FsbCA9IHNvcnRlZC5maWx0ZXIgeyBub3dNaW51dGUgPCBpdC5lbmRNaW51dGUgfQogICAgICAgIGlmIChyZW1haW5pbmdBbGwuaXNFbXB0eSgpKSB7CiAgICAgICAgICAgIC8vIOS7iuaXpeaXoOivvuS4juWFqOmDqOS4iuWujOe7n+S4gOepuuaAge+8iOS6p+WTgeijgeWGs++8jE00LVcgwqczLjPvvIkKICAgICAgICAgICAgcmV0dXJuIFRvZGF5UGxhbigKICAgICAgICAgICAgICAgIHJlbWFpbmluZyA9IGVtcHR5TGlzdCgpLAogICAgICAgICAgICAgICAgcmVtYWluaW5nVG90YWwgPSAwLAogICAgICAgICAgICAgICAgb3ZlcmZsb3dDb3VudCA9IDAsCiAgICAgICAgICAgICAgICBlbXB0eVJlYXNvbiA9IEVtcHR5UmVhc29uLkFMTF9ET05FX09SX05PTkUsCiAgICAgICAgICAgICkKICAgICAgICB9CiAgICAgICAgcmV0dXJuIFRvZGF5UGxhbigKICAgICAgICAgICAgcmVtYWluaW5nID0gcmVtYWluaW5nQWxsLnRha2UoTUFYX0lURU1TKSwKICAgICAgICAgICAgcmVtYWluaW5nVG90YWwgPSByZW1haW5pbmdBbGwuc2l6ZSwKICAgICAgICAgICAgb3ZlcmZsb3dDb3VudCA9IChyZW1haW5pbmdBbGwuc2l6ZSAtIE1BWF9JVEVNUykuY29lcmNlQXRMZWFzdCgwKSwKICAgICAgICAgICAgZW1wdHlSZWFzb24gPSBFbXB0eVJlYXNvbi5OT05FLAogICAgICAgICkKICAgIH0KfQo=
+/*
+ * TodayPlan.kt —— 桌面小组件「今日课程」的判定纯函数（M4-W 改版）
+ *
+ * 口径（M4-W §3.3，取代 M3 三态语义）：
+ *   - 输入 dayItems 由调用方按「今天星期几」筛好，周次/单双周过滤已在 SQL 层完成，
+ *     本文件不做周次判定（重复过滤是本项目踩过的坑）；
+ *   - 列表只装「未结束」课程（nowMinute < endMinute 严格小于，== 视为已结束）：
+ *     每上完一节即从列表消失、下一节上移（推进时机由 EndOfClassRefreshScheduler 保证）；
+ *   - 无激活学期 → NO_TERM（优先级最高）；有学期但今日无课或课程已全部上完
+ *     → ALL_DONE_OR_NONE（两类统一走「今天没有课啦」空态）。
+ *
+ * 本文件只允许 Kotlin 标准库，时间一律由参数注入 —— 否则无法单测（规格 §4.1）。
+ */
+package com.gould.xputimetable.widget
+
+import androidx.compose.ui.unit.Dp
+import com.gould.xputimetable.ui.theme.Widget
+
+/** 今日一节课（小组件只读视图所需的最小字段）。 */
+data class TodayItem(
+    val startSection: Int,
+    val endSection: Int,
+    val courseName: String,
+    val classroom: String?,
+    val startMinute: Int,
+    val endMinute: Int,
+    val colorTag: Int,
+)
+
+/** 空态原因（M4-W：收敛为两类空态文案来源）。 */
+enum class EmptyReason {
+    /** 今日存在未结束课程。 */
+    NONE,
+
+    /** 无激活学期：引导用户打开 App 导入。优先级高于 ALL_DONE_OR_NONE。 */
+    NO_TERM,
+
+    /** 有学期但今日无课，或今日课程已全部结束：统一走颜文字空态。 */
+    ALL_DONE_OR_NONE,
+}
+
+/**
+ * 小组件渲染所需的完整视图数据。
+ *
+ * @param remaining      未结束课程（nowMinute < endMinute，按开始时间升序，
+ *                       至多 [TodayPlanBuilder.MAX_ITEMS] 条；首条即"正在上/下一节"）
+ * @param remainingTotal 未结束课程总数（「今天还有 x 节课」的 x，含被折叠的）
+ * @param overflowCount  超出展示上限被折叠的门数（remainingTotal - 可见数）
+ * @param emptyReason    空态原因
+ */
+data class TodayPlan(
+    val remaining: List<TodayItem>,
+    val remainingTotal: Int,
+    val overflowCount: Int,
+    val emptyReason: EmptyReason,
+)
+
+/**
+ * 头部右侧信息的详细程度（M10）：宽度不够时**按优先级砍内容**，而不是缩字号
+ * （M5 需求 7/8 明确要求"右上与校名同字号"，缩字号会破坏该决定）。
+ * 砍的顺序：先「日期」，再「第 N 周」；「周几」最后保留。
+ */
+enum class HeaderDetail {
+    /** 日期 + 第 N 周 + 周几。 */
+    FULL,
+
+    /** 第 N 周 + 周几（砍日期）。 */
+    NO_DATE,
+
+    /** 仅周几。 */
+    WEEKDAY_ONLY,
+}
+
+/** 按可用宽度决定详细程度（纯函数，阈值见 ui/theme/Tokens.kt 的 Widget）。 */
+fun headerDetailFor(width: Dp): HeaderDetail = when {
+    width >= Widget.HeaderFullMinWidth -> HeaderDetail.FULL
+    width >= Widget.HeaderWeekMinWidth -> HeaderDetail.NO_DATE
+    else -> HeaderDetail.WEEKDAY_ONLY
+}
+
+/**
+ * 组装头部右上文案（纯函数，便于单测）。
+ *
+ * @param dateText    形如 "10.2"
+ * @param weekNumber  第几周；null = 当前不在学期周内（假期越界）→ 不显示周次
+ * @param weekdayText 形如 "周五"；null = 无学期 → 不显示周几
+ * @param detail      详细程度；null 项一律不显示
+ */
+fun headerRightText(
+    dateText: String,
+    weekNumber: Int?,
+    weekdayText: String?,
+    detail: HeaderDetail,
+): String = buildList {
+    if (detail == HeaderDetail.FULL) add(dateText)
+    if (detail != HeaderDetail.WEEKDAY_ONLY) weekNumber?.let { add("第 $it 周") }
+    weekdayText?.let { add(it) }
+}.joinToString("  ")
+
+object TodayPlanBuilder {
+
+    /** 桌面卡片最多完整列出的门数（M5 需求 5：88dp 高度放不下 4 行，按规格 §5.1 裁决降为 3）。 */
+    const val MAX_ITEMS = 3
+
+    /**
+     * 装配今日计划（纯函数）。
+     *
+     * @param dayItems  调用方已按今天星期几筛好的今日课程
+     * @param nowMinute 当前时间（当天 0 点起的分钟数）
+     * @param hasTerm   是否存在激活学期；false 时直接返回 NO_TERM 空态
+     */
+    fun build(
+        dayItems: List<TodayItem>,
+        nowMinute: Int,
+        hasTerm: Boolean = true,
+    ): TodayPlan {
+        if (!hasTerm) {
+            return TodayPlan(
+                remaining = emptyList(),
+                remainingTotal = 0,
+                overflowCount = 0,
+                emptyReason = EmptyReason.NO_TERM,
+            )
+        }
+        val sorted = dayItems.sortedWith(
+            compareBy<TodayItem> { it.startMinute }.thenBy { it.startSection },
+        )
+        // 只保留未结束课程：已结束的不进列表（"上完一节就消失、下一节上移"）
+        val remainingAll = sorted.filter { nowMinute < it.endMinute }
+        if (remainingAll.isEmpty()) {
+            // 今日无课与全部上完统一空态（产品裁决，M4-W §3.3）
+            return TodayPlan(
+                remaining = emptyList(),
+                remainingTotal = 0,
+                overflowCount = 0,
+                emptyReason = EmptyReason.ALL_DONE_OR_NONE,
+            )
+        }
+        return TodayPlan(
+            remaining = remainingAll.take(MAX_ITEMS),
+            remainingTotal = remainingAll.size,
+            overflowCount = (remainingAll.size - MAX_ITEMS).coerceAtLeast(0),
+            emptyReason = EmptyReason.NONE,
+        )
+    }
+}

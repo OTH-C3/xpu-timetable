@@ -1,1 +1,215 @@
-LyoKICogRm9ybUNvbnRyb2xzLmt0IOKAlOKAlCDnvJbovpHpobXlj6/lpI3nlKjooajljZXmjqfku7bvvIh1aS9jb3Vyc2VlZGl0L2NvbXBvbmVudHMv77yJCiAqCiAqIOS4uuS7gOS5iOaLhuWHuuadpe+8mue8lui+kemhteS4u+S9k+iLpeaKiuaOp+S7tumDveWGmeWcqOS4gOi1t+S8mui2hei/hyAzMDAg6KGM77yI6aG555uu56Gs57qm5p2f77yMU3BlYyDCpzEw77yJ44CCCiAqIOi/meS6m+aOp+S7tuacrOi6q+S4jiLor77nqIvnvJbovpEi5Lia5Yqh5peg5YWz77yM5Y+q5piv5Y+X5Li76aKY57qm5p2f55qE6YCa55So6L6T5YWl5o6n5Lu277yM54us56uL5ZCO5Y+v6KKr5ZCO57ut55qECiAqIOWvvOWFpeehruiupOmhteOAgeiuvue9rumhteWkjeeUqOOAggogKgogKiDpopzoibLpgInmi6nljZXni6zlnKggQ29sb3JGaWVsZC5rdO+8iOimgeWQjOaXtuWQgyLoibLmnb/ntKLlvJUi5ZKMIuiHquWPluiJsiBBUkdCIuS4pOWll+ivreS5ie+8jOacrOi6q+Wwsei/kSA5MCDooYzvvInjgIIKICoKICog5oCn6IO957qm5a6a77yIMjAyNi0wOS0xN++8ie+8muaOp+S7tuWPquaOpeaUtuiHquW3semcgOimgeeahCoq56iz5a6a57G75Z6LKirlj4LmlbDvvIhTdHJpbmcgLyBJbnQgLyDmnprkuL4gLwogKiBCb29sZWFuIC8g5pa55rOV5byV55So77yJ77yM6YCJ6aG55paH5qGI55So5paH5Lu257qn5bi46YeP6ICM5LiN5piv5q+P5qyh6YeN57uE5paw5bu6IExpc3TigJTigJQKICogTGlzdCDlnKggQ29tcG9zZSDph4zlsZ7kuI3nqLPlrprnsbvlnovvvIzkvJrorqnmlbTkuKrmjqfku7bml6Dms5Xot7Pov4fph43nu4TvvIzmmK/moIfnrb7liqjnlLvmjonluKfnmoTluLjop4Hljp/lm6DkuYvkuIDjgIIKICovCnBhY2thZ2UgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS5jb3Vyc2VlZGl0LmNvbXBvbmVudHMKCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24uYmFja2dyb3VuZAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmJvcmRlcgppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmNsaWNrYWJsZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5BcnJhbmdlbWVudAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5Cb3gKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQuQ29sdW1uU2NvcGUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQuZmlsbE1heFdpZHRoCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LkJveAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5Db2x1bW4KaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQuUm93CmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LmhlaWdodAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5wYWRkaW5nCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ubGF5b3V0LnNpemUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5zaGFwZS5Sb3VuZGVkQ29ybmVyU2hhcGUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UubWF0ZXJpYWwzLkljb25CdXR0b24KaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UubWF0ZXJpYWwzLk1hdGVyaWFsVGhlbWUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UubWF0ZXJpYWwzLk91dGxpbmVkVGV4dEZpZWxkCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy5UZXh0CmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnJ1bnRpbWUuQ29tcG9zYWJsZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS51aS5BbGlnbm1lbnQKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuTW9kaWZpZXIKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuZHJhdy5jbGlwCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLmdyYXBoaWNzLkNvbG9yCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLnRleHQuc3R5bGUuVGV4dEFsaWduCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLnVuaXQuZHAKaW1wb3J0IGNvbS5nb3VsZC54cHV0aW1ldGFibGUuZG9tYWluLm1vZGVsLldlZWtUeXBlCmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLnVpLmNvbXBvbmVudHMuR3JvdXBDYXJkCmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLnVpLmNvbXBvbmVudHMuR3JvdXBIZWFkZXIKaW1wb3J0IGNvbS5nb3VsZC54cHV0aW1ldGFibGUudWkudGhlbWUuTGlzdFJvdwoKLyoqIOaYn+acn+aWh+ahiO+8iOaWh+S7tue6p+W4uOmHj++8jOmBv+WFjeavj+asoemHjee7hOaWsOW7uiBMaXN077yJ44CCICovCnByaXZhdGUgdmFsIGRheUxhYmVscyA9IGxpc3RPZigi5LiAIiwgIuS6jCIsICLkuIkiLCAi5ZubIiwgIuS6lCIsICLlha0iLCAi5pelIikKCi8qKiDljZXlj4zlkajmlofmoYjjgIIgKi8KcHJpdmF0ZSB2YWwgd2Vla1R5cGVMYWJlbHMgPSBsaXN0T2YoIuWFqOmDqCIsICLljZXlkagiLCAi5Y+M5ZGoIikKCi8qKgogKiDooajljZXliIbnu4TljaHniYfvvIhNMTEt56ys5LiJ5om544CM576O5YyW5re75Yqg6K++56iL6aG144CN77yJ77ya5LiO44CM5oiR55qE44CN6aG155So5ZCM5LiA5aWX5Y2h54mH6K+t6KiA4oCU4oCUCiAqIOWNoeeJh+acrOS9k+S4i+ayieWcqCBgdWkuY29tcG9uZW50cy5DYXJkR3JvdXBg77yM6L+Z6YeM5Y+q5YGa6L2s5Y+R77yM6YG/5YWN5Lik5aSE5ZCE55S75LiA6YGN5ZyG6KeSL+aPj+i+ueOAggogKi8KQENvbXBvc2FibGUKaW50ZXJuYWwgZnVuIEZvcm1DYXJkKGNvbnRlbnQ6IEBDb21wb3NhYmxlIENvbHVtblNjb3BlLigpIC0+IFVuaXQpID0gR3JvdXBDYXJkKGNvbnRlbnQgPSBjb250ZW50KQoKLyoqIOWIhue7hOagh+mimO+8muWwj+WPt+eBsOWtl++8jOS9jee9ruWcqOWNoeeJhyoq5aSW6Z2iKirvvIjkuI7orr7nva7pobXkuIDoh7TvvInjgIIgKi8KQENvbXBvc2FibGUKaW50ZXJuYWwgZnVuIEZvcm1Hcm91cEhlYWRlcih0ZXh0OiBTdHJpbmcpID0gR3JvdXBIZWFkZXIodGV4dCkKCi8qKgogKiDljaHniYflhoXmqKrnur/vvJrlt6blj7PlhoXnvKnliLDkuI7ooYzmlofmnKzlt6bnvJjlr7npvZDvvIjkuI3mu6Hlrr3vvInvvIzov5nmmK/ljaHniYflhoXliIbpmpTnur/nmoTpgJrooYzlgZrms5XvvJsKICog5ruh5a6957q/5Zyo56qE5Y2h54mH6YeM5Lya5oqK5p2h55uu6KeG6KeJ5LiK5YiH5oiQ5Lik5Y2K77yM55yL5LiN5Ye6Iui/mOaYr+WQjOS4gOe7hCLjgIIKICovCkBDb21wb3NhYmxlCmludGVybmFsIGZ1biBGb3JtRGl2aWRlcigpIHsKICAgIEJveCgKICAgICAgICBtb2RpZmllciA9IE1vZGlmaWVyCiAgICAgICAgICAgIC5maWxsTWF4V2lkdGgoKQogICAgICAgICAgICAucGFkZGluZyhob3Jpem9udGFsID0gTGlzdFJvdy5EaXZpZGVySW5zZXQpCiAgICAgICAgICAgIC5oZWlnaHQoMS5kcCkKICAgICAgICAgICAgLmJhY2tncm91bmQoCiAgICAgICAgICAgICAgICBNYXRlcmlhbFRoZW1lLmNvbG9yU2NoZW1lLm91dGxpbmVWYXJpYW50CiAgICAgICAgICAgICAgICAgICAgLmNvcHkoYWxwaGEgPSBMaXN0Um93LkRpdmlkZXJBbHBoYSksCiAgICAgICAgICAgICksCiAgICApCn0KCi8qKiDljZXooYzmlofmnKzovpPlhaXmoYbvvIjor77nqIvlkI0gLyDmlZnluIggLyDmlZnlrqTlhbHnlKjvvInjgIIgKi8KQENvbXBvc2FibGUKaW50ZXJuYWwgZnVuIExhYmVsZWRGaWVsZCgKICAgIHZhbHVlOiBTdHJpbmcsCiAgICBsYWJlbDogU3RyaW5nLAogICAgaXNFcnJvcjogQm9vbGVhbiwKICAgIG9uVmFsdWVDaGFuZ2U6IChTdHJpbmcpIC0+IFVuaXQsCiAgICBtb2RpZmllcjogTW9kaWZpZXIgPSBNb2RpZmllciwKKSB7CiAgICBPdXRsaW5lZFRleHRGaWVsZCgKICAgICAgICB2YWx1ZSA9IHZhbHVlLAogICAgICAgIG9uVmFsdWVDaGFuZ2UgPSBvblZhbHVlQ2hhbmdlLAogICAgICAgIGxhYmVsID0geyBUZXh0KGxhYmVsKSB9LAogICAgICAgIHNpbmdsZUxpbmUgPSB0cnVlLAogICAgICAgIGlzRXJyb3IgPSBpc0Vycm9yLAogICAgICAgIG1vZGlmaWVyID0gbW9kaWZpZXIsCiAgICApCn0KCi8qKiDmmJ/mnJ/pgInmi6nooYzvvJrlr7nlpJbnlKgi5pif5pyf5Yeg77yIMS4uN++8iSLvvIzntKLlvJXmjaLnrpfmlLbmlZvlnKjmjqfku7blhoXpg6jjgIIgKi8KQENvbXBvc2FibGUKaW50ZXJuYWwgZnVuIERheU9mV2Vla1JvdyhzZWxlY3RlZDogSW50LCBvblNlbGVjdDogKEludCkgLT4gVW5pdCkgewogICAgU2luZ2xlU2VsZWN0Um93KAogICAgICAgIGxhYmVscyA9IGRheUxhYmVscywKICAgICAgICBzZWxlY3RlZEluZGV4ID0gKHNlbGVjdGVkIC0gMSkuY29lcmNlSW4oMCwgZGF5TGFiZWxzLmxhc3RJbmRleCksCiAgICAgICAgb25TZWxlY3RJbmRleCA9IHsgaW5kZXggLT4gb25TZWxlY3QoaW5kZXggKyAxKSB9LAogICAgKQp9CgovKiog5Y2V5Y+M5ZGo6YCJ5oup6KGM44CCICovCkBDb21wb3NhYmxlCmludGVybmFsIGZ1biBXZWVrVHlwZVJvdyhzZWxlY3RlZDogV2Vla1R5cGUsIG9uU2VsZWN0OiAoV2Vla1R5cGUpIC0+IFVuaXQpIHsKICAgIHZhbCBzZWxlY3RlZEluZGV4ID0gd2hlbiAoc2VsZWN0ZWQpIHsKICAgICAgICBXZWVrVHlwZS5BTEwgLT4gMAogICAgICAgIFdlZWtUeXBlLk9ERCAtPiAxCiAgICAgICAgV2Vla1R5cGUuRVZFTiAtPiAyCiAgICB9CiAgICBTaW5nbGVTZWxlY3RSb3coCiAgICAgICAgbGFiZWxzID0gd2Vla1R5cGVMYWJlbHMsCiAgICAgICAgc2VsZWN0ZWRJbmRleCA9IHNlbGVjdGVkSW5kZXgsCiAgICAgICAgb25TZWxlY3RJbmRleCA9IHsgaW5kZXggLT4KICAgICAgICAgICAgb25TZWxlY3QoCiAgICAgICAgICAgICAgICB3aGVuIChpbmRleCkgewogICAgICAgICAgICAgICAgICAgIDEgLT4gV2Vla1R5cGUuT0RECiAgICAgICAgICAgICAgICAgICAgMiAtPiBXZWVrVHlwZS5FVkVOCiAgICAgICAgICAgICAgICAgICAgZWxzZSAtPiBXZWVrVHlwZS5BTEwKICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICkKICAgICAgICB9LAogICAgKQp9CgovKiog6YCa55So5Y2V6YCJ6KGM77yI6IO25ZuK5qC35byP77yJ44CCICovCkBDb21wb3NhYmxlCnByaXZhdGUgZnVuIFNpbmdsZVNlbGVjdFJvdygKICAgIGxhYmVsczogTGlzdDxTdHJpbmc+LAogICAgc2VsZWN0ZWRJbmRleDogSW50LAogICAgb25TZWxlY3RJbmRleDogKEludCkgLT4gVW5pdCwKKSB7CiAgICBSb3coaG9yaXpvbnRhbEFycmFuZ2VtZW50ID0gQXJyYW5nZW1lbnQuc3BhY2VkQnkoNi5kcCkpIHsKICAgICAgICBsYWJlbHMuZm9yRWFjaEluZGV4ZWQgeyBpbmRleCwgbGFiZWwgLT4KICAgICAgICAgICAgdmFsIHNlbGVjdGVkID0gaW5kZXggPT0gc2VsZWN0ZWRJbmRleAogICAgICAgICAgICAvLyDlpJblsYLlj6rotJ/otKMi5aSf5aSn55qE6Kem5pG455uu5qCHIu+8iOKJpTQ4ZHAg6auY77yM5Y+v6K6/6Zeu5oCn6KaB5rGC77yJ77yM5YaF5bGC5L+d5oyBIDMyZHAg6KeG6KeJ5bC65a+4CiAgICAgICAgICAgIEJveCgKICAgICAgICAgICAgICAgIG1vZGlmaWVyID0gTW9kaWZpZXIKICAgICAgICAgICAgICAgICAgICAuaGVpZ2h0KDQ4LmRwKQogICAgICAgICAgICAgICAgICAgIC5jbGlja2FibGUgeyBvblNlbGVjdEluZGV4KGluZGV4KSB9LAogICAgICAgICAgICAgICAgY29udGVudEFsaWdubWVudCA9IEFsaWdubWVudC5DZW50ZXIsCiAgICAgICAgICAgICkgewogICAgICAgICAgICAgICAgQm94KAogICAgICAgICAgICAgICAgICAgIG1vZGlmaWVyID0gTW9kaWZpZXIKICAgICAgICAgICAgICAgICAgICAgICAgLmNsaXAoUm91bmRlZENvcm5lclNoYXBlKDUwKSkKICAgICAgICAgICAgICAgICAgICAgICAgLy8gTTEw77ya6YCJ5Lit5oCB5Y676JOd77yI5Y6fIHByaW1hcnlDb250YWluZXIg5bqVICsgcHJpbWFyeSDovrnmoYbvvInihpIg5Lit5oCn5bqVICsg6buR6L655qGGCiAgICAgICAgICAgICAgICAgICAgICAgIC5iYWNrZ3JvdW5kKGlmIChzZWxlY3RlZCkgTWF0ZXJpYWxUaGVtZS5jb2xvclNjaGVtZS5zdXJmYWNlVmFyaWFudCBlbHNlIENvbG9yLlRyYW5zcGFyZW50KQogICAgICAgICAgICAgICAgICAgICAgICAuYm9yZGVyKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgd2lkdGggPSBpZiAoc2VsZWN0ZWQpIDEuNS5kcCBlbHNlIDEuZHAsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb2xvciA9IGlmIChzZWxlY3RlZCkgTWF0ZXJpYWxUaGVtZS5jb2xvclNjaGVtZS5vblN1cmZhY2UgZWxzZSBNYXRlcmlhbFRoZW1lLmNvbG9yU2NoZW1lLm91dGxpbmVWYXJpYW50LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2hhcGUgPSBSb3VuZGVkQ29ybmVyU2hhcGUoNTApLAogICAgICAgICAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICAgICAgICAgIC5wYWRkaW5nKGhvcml6b250YWwgPSAxMi5kcCwgdmVydGljYWwgPSA2LmRwKSwKICAgICAgICAgICAgICAgICAgICBjb250ZW50QWxpZ25tZW50ID0gQWxpZ25tZW50LkNlbnRlciwKICAgICAgICAgICAgICAgICkgewogICAgICAgICAgICAgICAgICAgIFRleHQoCiAgICAgICAgICAgICAgICAgICAgICAgIHRleHQgPSBsYWJlbCwKICAgICAgICAgICAgICAgICAgICAgICAgc3R5bGUgPSBNYXRlcmlhbFRoZW1lLnR5cG9ncmFwaHkuYm9keVNtYWxsLAogICAgICAgICAgICAgICAgICAgICAgICBjb2xvciA9IE1hdGVyaWFsVGhlbWUuY29sb3JTY2hlbWUub25TdXJmYWNlLAogICAgICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KfQoKLyoqIOOAjC0g5YC8ICvjgI3ljLrpl7TooYzvvIjoioLmrKEgLyDlkajmrKHlhbHnlKjvvInjgIIgKi8KQENvbXBvc2FibGUKaW50ZXJuYWwgZnVuIFJhbmdlUm93KAogICAgc3RhcnRMYWJlbDogU3RyaW5nLAogICAgZW5kTGFiZWw6IFN0cmluZywKICAgIHN0YXJ0OiBJbnQsCiAgICBlbmQ6IEludCwKICAgIHJhbmdlOiBJbnRSYW5nZSwKICAgIG9uU3RhcnRDaGFuZ2U6IChJbnQpIC0+IFVuaXQsCiAgICBvbkVuZENoYW5nZTogKEludCkgLT4gVW5pdCwKKSB7CiAgICBSb3codmVydGljYWxBbGlnbm1lbnQgPSBBbGlnbm1lbnQuQ2VudGVyVmVydGljYWxseSkgewogICAgICAgIFN0ZXBwZXIobGFiZWwgPSBzdGFydExhYmVsLCB2YWx1ZSA9IHN0YXJ0LCByYW5nZSA9IHJhbmdlLCBvblZhbHVlQ2hhbmdlID0gb25TdGFydENoYW5nZSkKICAgICAgICBUZXh0KCItIiwgbW9kaWZpZXIgPSBNb2RpZmllci5wYWRkaW5nKGhvcml6b250YWwgPSAxMi5kcCkpCiAgICAgICAgU3RlcHBlcihsYWJlbCA9IGVuZExhYmVsLCB2YWx1ZSA9IGVuZCwgcmFuZ2UgPSByYW5nZSwgb25WYWx1ZUNoYW5nZSA9IG9uRW5kQ2hhbmdlKQogICAgfQp9CgovKiog5q2l6L+b5Zmo77yI6LaK55WM5pe25oyJ6ZKu6Ieq5Yqo56aB55So77yM5LuO5rqQ5aS06Zi75q2i6Z2e5rOV5YC877yJ44CCICovCkBDb21wb3NhYmxlCnByaXZhdGUgZnVuIFN0ZXBwZXIoCiAgICBsYWJlbDogU3RyaW5nLAogICAgdmFsdWU6IEludCwKICAgIHJhbmdlOiBJbnRSYW5nZSwKICAgIG9uVmFsdWVDaGFuZ2U6IChJbnQpIC0+IFVuaXQsCikgewogICAgUm93KHZlcnRpY2FsQWxpZ25tZW50ID0gQWxpZ25tZW50LkNlbnRlclZlcnRpY2FsbHkpIHsKICAgICAgICBUZXh0KGxhYmVsLCBzdHlsZSA9IE1hdGVyaWFsVGhlbWUudHlwb2dyYXBoeS5ib2R5U21hbGwsIGNvbG9yID0gTWF0ZXJpYWxUaGVtZS5jb2xvclNjaGVtZS5vblN1cmZhY2VWYXJpYW50KQogICAgICAgIEljb25CdXR0b24ob25DbGljayA9IHsgaWYgKHZhbHVlID4gcmFuZ2UuZmlyc3QpIG9uVmFsdWVDaGFuZ2UodmFsdWUgLSAxKSB9LCBlbmFibGVkID0gdmFsdWUgPiByYW5nZS5maXJzdCkgewogICAgICAgICAgICBUZXh0KCItIikKICAgICAgICB9CiAgICAgICAgVGV4dCgKICAgICAgICAgICAgdGV4dCA9IHZhbHVlLnRvU3RyaW5nKCksCiAgICAgICAgICAgIHN0eWxlID0gTWF0ZXJpYWxUaGVtZS50eXBvZ3JhcGh5LmJvZHlNZWRpdW0sCiAgICAgICAgICAgIHRleHRBbGlnbiA9IFRleHRBbGlnbi5DZW50ZXIsCiAgICAgICAgICAgIG1vZGlmaWVyID0gTW9kaWZpZXIucGFkZGluZyhob3Jpem9udGFsID0gNC5kcCksCiAgICAgICAgKQogICAgICAgIEljb25CdXR0b24ob25DbGljayA9IHsgaWYgKHZhbHVlIDwgcmFuZ2UubGFzdCkgb25WYWx1ZUNoYW5nZSh2YWx1ZSArIDEpIH0sIGVuYWJsZWQgPSB2YWx1ZSA8IHJhbmdlLmxhc3QpIHsKICAgICAgICAgICAgVGV4dCgiKyIpCiAgICAgICAgfQogICAgfQp9Cg==
+/*
+ * FormControls.kt —— 编辑页可复用表单控件（ui/courseedit/components/）
+ *
+ * 为什么拆出来：编辑页主体若把控件都写在一起会超过 300 行（项目硬约束，Spec §10）。
+ * 这些控件本身与"课程编辑"业务无关，只是受主题约束的通用输入控件，独立后可被后续的
+ * 导入确认页、设置页复用。
+ *
+ * 颜色选择单独在 ColorField.kt（要同时吃"色板索引"和"自取色 ARGB"两套语义，本身就近 90 行）。
+ *
+ * 性能约定（2026-09-17）：控件只接收自己需要的**稳定类型**参数（String / Int / 枚举 /
+ * Boolean / 方法引用），选项文案用文件级常量而不是每次重组新建 List——
+ * List 在 Compose 里属不稳定类型，会让整个控件无法跳过重组，是标签动画掉帧的常见原因之一。
+ */
+package com.gould.xputimetable.ui.courseedit.components
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import com.gould.xputimetable.domain.model.WeekType
+import com.gould.xputimetable.ui.components.GroupCard
+import com.gould.xputimetable.ui.components.GroupHeader
+import com.gould.xputimetable.ui.theme.ListRow
+
+/** 星期文案（文件级常量，避免每次重组新建 List）。 */
+private val dayLabels = listOf("一", "二", "三", "四", "五", "六", "日")
+
+/** 单双周文案。 */
+private val weekTypeLabels = listOf("全部", "单周", "双周")
+
+/**
+ * 表单分组卡片（M11-第三批「美化添加课程页」）：与「我的」页用同一套卡片语言——
+ * 卡片本体下沉在 `ui.components.CardGroup`，这里只做转发，避免两处各画一遍圆角/描边。
+ */
+@Composable
+internal fun FormCard(content: @Composable ColumnScope.() -> Unit) = GroupCard(content = content)
+
+/** 分组标题：小号灰字，位置在卡片**外面**（与设置页一致）。 */
+@Composable
+internal fun FormGroupHeader(text: String) = GroupHeader(text)
+
+/**
+ * 卡片内横线：左右内缩到与行文本左缘对齐（不满宽），这是卡片内分隔线的通行做法；
+ * 满宽线在窄卡片里会把条目视觉上切成两半，看不出"还是同一组"。
+ */
+@Composable
+internal fun FormDivider() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = ListRow.DividerInset)
+            .height(1.dp)
+            .background(
+                MaterialTheme.colorScheme.outlineVariant
+                    .copy(alpha = ListRow.DividerAlpha),
+            ),
+    )
+}
+
+/** 单行文本输入框（课程名 / 教师 / 教室共用）。 */
+@Composable
+internal fun LabeledField(
+    value: String,
+    label: String,
+    isError: Boolean,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(label) },
+        singleLine = true,
+        isError = isError,
+        modifier = modifier,
+    )
+}
+
+/** 星期选择行：对外用"星期几（1..7）"，索引换算收敛在控件内部。 */
+@Composable
+internal fun DayOfWeekRow(selected: Int, onSelect: (Int) -> Unit) {
+    SingleSelectRow(
+        labels = dayLabels,
+        selectedIndex = (selected - 1).coerceIn(0, dayLabels.lastIndex),
+        onSelectIndex = { index -> onSelect(index + 1) },
+    )
+}
+
+/** 单双周选择行。 */
+@Composable
+internal fun WeekTypeRow(selected: WeekType, onSelect: (WeekType) -> Unit) {
+    val selectedIndex = when (selected) {
+        WeekType.ALL -> 0
+        WeekType.ODD -> 1
+        WeekType.EVEN -> 2
+    }
+    SingleSelectRow(
+        labels = weekTypeLabels,
+        selectedIndex = selectedIndex,
+        onSelectIndex = { index ->
+            onSelect(
+                when (index) {
+                    1 -> WeekType.ODD
+                    2 -> WeekType.EVEN
+                    else -> WeekType.ALL
+                },
+            )
+        },
+    )
+}
+
+/** 通用单选行（胶囊样式）。 */
+@Composable
+private fun SingleSelectRow(
+    labels: List<String>,
+    selectedIndex: Int,
+    onSelectIndex: (Int) -> Unit,
+) {
+    Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        labels.forEachIndexed { index, label ->
+            val selected = index == selectedIndex
+            // 外层只负责"够大的触摸目标"（≥48dp 高，可访问性要求），内层保持 32dp 视觉尺寸
+            Box(
+                modifier = Modifier
+                    .height(48.dp)
+                    .clickable { onSelectIndex(index) },
+                contentAlignment = Alignment.Center,
+            ) {
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(50))
+                        // M10：选中态去蓝（原 primaryContainer 底 + primary 边框）→ 中性底 + 黑边框
+                        .background(if (selected) MaterialTheme.colorScheme.surfaceVariant else Color.Transparent)
+                        .border(
+                            width = if (selected) 1.5.dp else 1.dp,
+                            color = if (selected) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.outlineVariant,
+                            shape = RoundedCornerShape(50),
+                        )
+                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = label,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
+                }
+            }
+        }
+    }
+}
+
+/** 「- 值 +」区间行（节次 / 周次共用）。 */
+@Composable
+internal fun RangeRow(
+    startLabel: String,
+    endLabel: String,
+    start: Int,
+    end: Int,
+    range: IntRange,
+    onStartChange: (Int) -> Unit,
+    onEndChange: (Int) -> Unit,
+) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Stepper(label = startLabel, value = start, range = range, onValueChange = onStartChange)
+        Text("-", modifier = Modifier.padding(horizontal = 12.dp))
+        Stepper(label = endLabel, value = end, range = range, onValueChange = onEndChange)
+    }
+}
+
+/** 步进器（越界时按钮自动禁用，从源头阻止非法值）。 */
+@Composable
+private fun Stepper(
+    label: String,
+    value: Int,
+    range: IntRange,
+    onValueChange: (Int) -> Unit,
+) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        IconButton(onClick = { if (value > range.first) onValueChange(value - 1) }, enabled = value > range.first) {
+            Text("-")
+        }
+        Text(
+            text = value.toString(),
+            style = MaterialTheme.typography.bodyMedium,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(horizontal = 4.dp),
+        )
+        IconButton(onClick = { if (value < range.last) onValueChange(value + 1) }, enabled = value < range.last) {
+            Text("+")
+        }
+    }
+}

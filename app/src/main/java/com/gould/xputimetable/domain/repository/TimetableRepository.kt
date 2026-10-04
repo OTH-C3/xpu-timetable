@@ -1,1 +1,123 @@
-LyoKICogVGltZXRhYmxlUmVwb3NpdG9yeS5rdCDigJTigJQg6K++6KGo5pWw5o2u5LuT5bqT5o6l5Y+j77yI6aKG5Z+f5bGC5aWR57qm77yJCiAqCiAqIOS9nOeUqO+8mui/meaYryBVSSAvIFZpZXdNb2RlbCDkuI7mlbDmja7lsYLkuYvpl7TllK/kuIDnmoQi6Zeo6Z2iIuaOpeWPo+OAguS4iuWxguWPqumAmui/h+Wug+aLv+aVsOaNruOAgQogKiDmlLnmlbDmja7vvIznu53kuI3nm7TmjqXnorAgUm9vbSAvIERBT+OAgui/meagt+aVsOaNruWxgu+8iFJvb23jgIFTUUxpdGXvvInnmoTmm7/mjaLmiJbph43mnoTkuI3kvJoKICog5rOi5Y+K55WM6Z2i5bGC44CCCiAqCiAqIOetvuWQjeadpea6kO+8muS4peagvOWPluiHquaetuaehOaWh+ahoyDCpzguMSAvIFNwZWMgwqc1LjHvvIzmlLnliqjnrYnlkIznoLTlnY/mgKcgQVBJIOWPmOabtO+8jAogKiDlv4XpobvlhYjmlLnmlofmoaPlho3mlLnku6PnoIHvvIjmtLvop4TmoLznuqrlvovvvInjgIIKICoKICog5a6e546w5b2S5bGe77ya5pys5paH5Lu25Y+q5aOw5piO5o6l5Y+j77yM5a6e546w5L2N5LqOIGRhdGEvcmVwb3NpdG9yeS9UaW1ldGFibGVSZXBvc2l0b3J5SW1wbC5rdOOAggogKiDmnKzmjqXlj6PlvJXnlKjnmoQgUGFyc2VkU2NoZWR1bGUgLyBJbXBvcnRTdW1tYXJ5IOingSBkb21haW4vbW9kZWwvSW1wb3J0VHlwZXMua3QKICog55qE5Y2g5L2N5a6a5LmJ77yI5a+85YWl6Zi25q615Lya5LulIHBhcnNlci9hcGkg55qE5q2j5byP5a6a5LmJ5pu/5o2i77yJ44CCCiAqCiAqIOWHoOS4qui/lOWbnuexu+Wei+ivtOaYju+8mgogKiAgIC0g6KeC5a+f57G75pa55rOV6L+U5ZueIEZsb3c8VD7vvJrmlbDmja7mtYHvvIzmlbDmja7lupPlj5jljJbkvJrkuLvliqjmjqjpgIHnu5norqLpmIXogIXvvIzlkajop4blm74v5bCP57uE5Lu25o2u5q2k6Ieq5Yqo5Yi35paw77ybCiAqICAgLSDlhpnmk43kvZzmmK8gc3VzcGVuZO+8muWcqOWNj+eoi+mHjOWQjOatpeetieW+heiQveW6k+WujOaIkOOAggogKi8KcGFja2FnZSBjb20uZ291bGQueHB1dGltZXRhYmxlLmRvbWFpbi5yZXBvc2l0b3J5CgppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS5kb21haW4ubW9kZWwuQ291cnNlCmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLmRvbWFpbi5tb2RlbC5Db3Vyc2VTZXNzaW9uCmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLmRvbWFpbi5tb2RlbC5JbXBvcnRNb2RlCmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLmRvbWFpbi5tb2RlbC5JbXBvcnRTdW1tYXJ5CmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLmRvbWFpbi5tb2RlbC5QYXJzZWRTY2hlZHVsZQppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS5kb21haW4ubW9kZWwuVGVybQppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS5kb21haW4ubW9kZWwuVGltZVNsb3QKaW1wb3J0IGNvbS5nb3VsZC54cHV0aW1ldGFibGUuZG9tYWluLm1vZGVsLldlZWtTY2hlZHVsZQppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS5kYXRhLnRyYW5zZmVyLlNjaGVkdWxlU25hcHNob3REdG8KaW1wb3J0IGtvdGxpbnguY29yb3V0aW5lcy5mbG93LkZsb3cKCi8qKgogKiDor77ooajmlbDmja7orr/pl67nmoTnu5/kuIDlpZHnuqbjgILkuIrlsYLvvIhVSSAvIFZpZXdNb2RlbO+8ieWPquS+nei1luatpOaOpeWPo+OAggogKi8KaW50ZXJmYWNlIFRpbWV0YWJsZVJlcG9zaXRvcnkgewogICAgLyoqIOWRqOinhuWbvuaVsOaNrua6kO+8mue7meWumuWtpuacn+S4juWRqOasoe+8jOinguWvn+ivpeWRqOWFqOmDqOivvueoi+WuieaOkuOAgiAqLwogICAgZnVuIG9ic2VydmVXZWVrKHRlcm1JZDogTG9uZywgd2VlazogSW50KTogRmxvdzxXZWVrU2NoZWR1bGU+CgogICAgLyoqIOW9k+WJjea/gOa0u+Wtpuacn++8iOaXoOWImSBudWxs77yMVUkg5pi+56S65byV5a+86aG177yJ44CCICovCiAgICBmdW4gb2JzZXJ2ZUFjdGl2ZVRlcm0oKTogRmxvdzxUZXJtPz4KCiAgICBmdW4gb2JzZXJ2ZVRpbWVTbG90cygpOiBGbG93PExpc3Q8VGltZVNsb3Q+PgogICAgc3VzcGVuZCBmdW4gdXBkYXRlVGltZVNsb3Qoc2xvdDogVGltZVNsb3QpCgogICAgLyoqCiAgICAgKiDmlrDlop4v5pu05paw5a2m5pyf77yM6L+U5Zue5a2m5pyfIGlk44CCCiAgICAgKgogICAgICog6Zi25q616ZmQ5Yi277yaTVZQIOmHh+eUqCLljZXkuIDmv4DmtLvlrabmnJ8i5qih5Z6L77yM5Zug5q2k5b2T5bqT5LitKirov5jmsqHmnInku7vkvZXmv4DmtLvlrabmnJ8qKuaXtu+8jAogICAgICog5pys5pa55rOV5Lya5oqK5Lyg5YWl5a2m5pyf5by65Yi2572u5Li65r+A5rS777yI5L+d6K+B6aaW5qyh5L2/55So6IO955u05o6l5byA5aeL77yJ77yb5aSa5a2m5pyf566h55CG5bGeIE91dC1vZi1TY29wZQogICAgICog77yI6KeBIFNwZWMgwqcz77yJ77yM5bGK5pe26ZyA5Zyo6K6+572u6aG15o+Q5L6b5pi+5byP55qEIuWIh+aNoi/lgZznlKgi5pON5L2c5bm26KGl5a+55bqU55qEIERBTyDmlrnms5XjgIIKICAgICAqLwogICAgc3VzcGVuZCBmdW4gdXBzZXJ0VGVybSh0ZXJtOiBUZXJtKTogTG9uZwoKICAgIC8qKiDmiYvliqjmt7vliqAv57yW6L6R6K++56iL77yI5ZCr5YW25YWo6YOo5LiK6K++5a6J5o6S77yM5pW05L2T5pu/5o2i77yJ44CCICovCiAgICBzdXNwZW5kIGZ1biB1cHNlcnRDb3Vyc2UoY291cnNlOiBDb3Vyc2UsIHNlc3Npb25zOiBMaXN0PENvdXJzZVNlc3Npb24+KQoKICAgIHN1c3BlbmQgZnVuIGRlbGV0ZUNvdXJzZShjb3Vyc2VJZDogU3RyaW5nKQoKICAgIC8qKgogICAgICog5p+Q6Zeo6K++55qE5YWo6YOo5LiK6K++5a6J5o6S77yI57yW6L6R55So77yJ44CCCiAgICAgKgogICAgICog5Li65LuA5LmI57yW6L6R5Zy65pmv5b+F6aG75pyJ5a6D77yadXBzZXJ0Q291cnNlIOaYryLmlbTkvZPmm7/mjaIi4oCU4oCU57yW6L6R6aG15b+F6aG75YWI5Y+W5Yiw6K+l6K++56iLCiAgICAgKiDnmoQqKuWFqOmDqCoq5a6J5o6S77yM5pS55YW25Lit6KKr54K55byA55qE6YKj5p2h44CB5L+d55WZ5YW25L2Z77yM5YaN5pW05L2T5YaZ5Zue77yb5ZCm5YiZ5Y+q5YaZ5LiA5p2h5Lya5oqKCiAgICAgKiDov5npl6jor77nmoTlhbblroPlronmjpLvvIjlpoLlkajkuIkgMS0yIOiKgiArIOWRqOS6lCAzLTQg6IqC5Lik5aSE77yJ6Z2Z6buY5Lii5o6J44CCCiAgICAgKi8KICAgIHN1c3BlbmQgZnVuIGdldFNlc3Npb25zQnlDb3Vyc2VJZChjb3Vyc2VJZDogU3RyaW5nKTogTGlzdDxDb3Vyc2VTZXNzaW9uPgoKICAgIC8qKgogICAgICog56Gu5L+d5L2c5oGv6KGo5pyJ6aKE572u5pWw5o2u77yI5bmC562J77ya5bey5pyJ5L2c5oGv5YiZ5LiN5YaZ5YWl77yJ44CCCiAgICAgKgogICAgICog55So6YCU77ya6aaW5qyh5a6J6KOF5oiW5riF5bqT5ZCO56uL5Y2z6KGl6b2Q6KW/5bel56iL5aSn5qCH5YeG5L2c5oGv77yM6YG/5YWNIuaXtumXtOi9tOepuueZvSArIOaPkOmGkuawuOi/nOaOkuS4jeWHuiLjgIIKICAgICAqIOeUqOaIt+WQjue7reWPr+WcqOiuvue9rumhteS/ruaUue+8jOS/ruaUueWQjuacrOaWueazleS4jeS8muWGjeimhueblu+8iOWboOS4uuihqOS4jeS4uuepuu+8ieOAggogICAgICovCiAgICBzdXNwZW5kIGZ1biBlbnN1cmVEZWZhdWx0VGltZVNsb3RzKCkKCiAgICAvKiog5oyJIGlkIOWPluivvueoi++8iOe8lui+kemhteWbnuWhq+ihqOWNleeUqO+8ieOAgiAqLwogICAgc3VzcGVuZCBmdW4gZ2V0Q291cnNlQnlJZChjb3Vyc2VJZDogU3RyaW5nKTogQ291cnNlPwoKICAgIC8qKgogICAgICog5omA5pyJ5a+85YWl6YCa6YGT55qE57uf5LiA5YWl5bqT5YWl5Y+j44CC5LqL5Yqh5YaZ5YWl5bm26K6w5b2VIGltcG9ydF9sb2dz44CCCiAgICAgKgogICAgICogW21vZGVdIOWGs+WumuWmguS9leWvueW+heW6k+mHjOW3suacieeahOivvueoi++8iE03IOmcgOaxgiAx77yJ77yaCiAgICAgKiAgIC0gW0ltcG9ydE1vZGUuUkVQTEFDRV3vvIjpu5jorqTvvInvvJrlhYjmuIXmjonlvZPliY3lrabmnJ8qKuWFqOmDqOmdnuaJi+WKqCoq5p2l5rqQ55qE6K++56iL77yM5YaN5YaZ5YWl5pys5qyh5YaF5a654oCU4oCUCiAgICAgKiAgICAg6K++6KGo5Y+Y5oiQ44CM5pys5qyh5a+85YWl55qE5YaF5a65ICsg5omL5Yqo5re75Yqg55qE6K++56iL44CN77ybCiAgICAgKiAgIC0gW0ltcG9ydE1vZGUuQVBQRU5EXe+8muS4jea4heS7u+S9leS4nOilv++8jOacrOasoeivvueoi+i/veWKoOi/m+eOsOacieivvuihqOKAlOKAlAogICAgICogICAgIOivvuihqOWPmOaIkOOAjOWOn+acieWGheWuuSArIOacrOasoeWvvOWFpeeahOWGheWuueOAje+8jOS7o+S7t+aYr+mHjeWkjeWvvOWFpeS8muS6p+eUn+mHjeWkjeivvueoi+OAggogICAgICoKICAgICAqIOS4pOenjeaooeW8j+S4iyBNQU5VQUwg5p2l5rqQ55qE6K++56iL6YO95rC45LiN5Yig6Zmk77yIQUMtMjAg5Y+M6Ziy57q/5LiN6ZqPIG1vZGUg5pS55Y+Y77yJ44CCCiAgICAgKi8KICAgIHN1c3BlbmQgZnVuIGFwcGx5SW1wb3J0KAogICAgICAgIHNjaGVkdWxlOiBQYXJzZWRTY2hlZHVsZSwKICAgICAgICBtb2RlOiBJbXBvcnRNb2RlID0gSW1wb3J0TW9kZS5SRVBMQUNFLAogICAgKTogSW1wb3J0U3VtbWFyeQoKICAgIC8qKgogICAgICog5p+Q5a2m5pyf5p+Q5p2l5rqQ55qE546w5pyJ6K++56iL77yITTItQSDlop7ooaXvvIzlr7zlhaXpooTop4jpobXkuJPnlKjvvInjgIIKICAgICAqCiAgICAgKiDnlKjpgJTvvJrpooTop4jpobXlnKjnlKjmiLfnoa7orqQqKuS5i+WJjSoq5bCx6KaB5bGV56S66KaG55uW6IyD5Zu05LiO55aR5Ly86YeN5aSN77yIQUMtMTMvQUMtMjHvvInvvJoKICAgICAqICAgLSBzb3VyY2UgPSBXQUtFVVBfQ1NWIOKGkiDorqHmlbDjgIzlsIbmm7/mjaIgTiDpl6jlkIzmnaXmupDor77nqIvjgI3vvJsKICAgICAqICAgLSBzb3VyY2UgPSBNQU5VQUwg4oaSIOWQjOWQjeavlOWvueOAjOeWkeS8vOmHjeWkjSBOIOmXqOOAjeOAggogICAgICog5a6e546w5L6n5Y+q6K+777yIY291cnNlRGFvLmdldEFsbCDov4fmu6TvvInvvIzkuI3lhpnlupPjgIHkuI3mlrDliqAgREFPIOaWueazleOAggogICAgICovCiAgICBzdXNwZW5kIGZ1biBnZXRDb3Vyc2VzQnlUZXJtQW5kU291cmNlKHRlcm1JZDogTG9uZywgc291cmNlOiBTdHJpbmcpOiBMaXN0PENvdXJzZT4KCiAgICAvKioKICAgICAqIOWIoOmZpOafkOWtpuacn+afkOadpea6kOeahOivvueoi++8jOi/lOWbnuWIoOmZpOaVsOmHj++8iE0yLUPvvIxBQy0yNOOAjOaMieadpea6kOa4heeQhuOAje+8ieOAggogICAgICoKICAgICAqIOeUqOmAlO+8muWvvOWFpeS4reW/g+aPkOS+m+OAjOa4heeQhuWvvOWFpeeahOivvueoi+OAjeWFpeWPo++8jOa4heaOieivr+WvvOWFpeaIlua1i+ivleaVsOaNrgogICAgICog77yI55yf5a6e5Zy65pmv77ya5a+86ZSZ5a2m5pyf44CB5a+86ZSZ5paH5Lu277yJ44CCCiAgICAgKgogICAgICog5a6J5YWo5LiN5Y+Y6YeP77yaTUFOVUFMIOawuOS4jeWIoOmZpOKAlOKAlOS7o+eggeWxguebtOaOpeaLkue7ne+8iHNvdXJjZSA9PSBNQU5VQUwg6L+U5ZueIDDvvInvvIwKICAgICAqIERBTyDlsYIgU1FMIOi/mOaciSBgc291cmNlICE9ICdNQU5VQUwnYCDnoazlhZzlupXvvIjkuI4gYXBwbHlJbXBvcnQg55qE5Y+M6Ziy57q/5LiA6Ie077yMQUMtMjDvvInjgIIKICAgICAqIOWuieaOkueUsSBjb3Vyc2Vfc2Vzc2lvbnMg55qEIE9OIERFTEVURSBDQVNDQURFIOe6p+iBlOa4heeQhuOAggogICAgICovCiAgICBzdXNwZW5kIGZ1biBkZWxldGVDb3Vyc2VzQnlUZXJtQW5kU291cmNlKHRlcm1JZDogTG9uZywgc291cmNlOiBTdHJpbmcpOiBJbnQKCiAgICAvKioKICAgICAqIOWvvOWHuuW9k+WJjea/gOa0u+Wtpuacn+eahOWujOaVtOivvuihqOW/q+eFp++8iE02IOmcgOaxgiA277yM5paH5Lu25LiO5LqM57u056CB5YWx55So77yJ44CCCiAgICAgKiDml6Dmv4DmtLvlrabmnJ8g4oaSIOi/lOWbniBudWxs77yIVUkg5o+Q56S6Iui/mOayoeacieivvuihqCLvvInjgIIKICAgICAqIOacieWtpuacn+S9huaXoOivvueoiyDihpIg6L+U5Zue56m65b+r54Wn77yIY291cnNlcyDkuLrnqbrliJfooajvvInvvIwqKuS4jeimgSoq6L+U5ZueIG51bGzvvIjlj6/lr7zlh7rvvIzkvr/kuo7muIXnqbrlkI7lkIzmraXvvInjgIIKICAgICAqLwogICAgc3VzcGVuZCBmdW4gZXhwb3J0U25hcHNob3QoKTogU2NoZWR1bGVTbmFwc2hvdER0bz8KfQo=
+/*
+ * TimetableRepository.kt —— 课表数据仓库接口（领域层契约）
+ *
+ * 作用：这是 UI / ViewModel 与数据层之间唯一的"门面"接口。上层只通过它拿数据、
+ * 改数据，绝不直接碰 Room / DAO。这样数据层（Room、SQLite）的替换或重构不会
+ * 波及界面层。
+ *
+ * 签名来源：严格取自架构文档 §8.1 / Spec §5.1，改动等同破坏性 API 变更，
+ * 必须先改文档再改代码（活规格纪律）。
+ *
+ * 实现归属：本文件只声明接口，实现位于 data/repository/TimetableRepositoryImpl.kt。
+ * 本接口引用的 ParsedSchedule / ImportSummary 见 domain/model/ImportTypes.kt
+ * 的占位定义（导入阶段会以 parser/api 的正式定义替换）。
+ *
+ * 几个返回类型说明：
+ *   - 观察类方法返回 Flow<T>：数据流，数据库变化会主动推送给订阅者，周视图/小组件据此自动刷新；
+ *   - 写操作是 suspend：在协程里同步等待落库完成。
+ */
+package com.gould.xputimetable.domain.repository
+
+import com.gould.xputimetable.domain.model.Course
+import com.gould.xputimetable.domain.model.CourseSession
+import com.gould.xputimetable.domain.model.ImportMode
+import com.gould.xputimetable.domain.model.ImportSummary
+import com.gould.xputimetable.domain.model.ParsedSchedule
+import com.gould.xputimetable.domain.model.Term
+import com.gould.xputimetable.domain.model.TimeSlot
+import com.gould.xputimetable.domain.model.WeekSchedule
+import com.gould.xputimetable.data.transfer.ScheduleSnapshotDto
+import kotlinx.coroutines.flow.Flow
+
+/**
+ * 课表数据访问的统一契约。上层（UI / ViewModel）只依赖此接口。
+ */
+interface TimetableRepository {
+    /** 周视图数据源：给定学期与周次，观察该周全部课程安排。 */
+    fun observeWeek(termId: Long, week: Int): Flow<WeekSchedule>
+
+    /** 当前激活学期（无则 null，UI 显示引导页）。 */
+    fun observeActiveTerm(): Flow<Term?>
+
+    fun observeTimeSlots(): Flow<List<TimeSlot>>
+    suspend fun updateTimeSlot(slot: TimeSlot)
+
+    /**
+     * 新增/更新学期，返回学期 id。
+     *
+     * 阶段限制：MVP 采用"单一激活学期"模型，因此当库中**还没有任何激活学期**时，
+     * 本方法会把传入学期强制置为激活（保证首次使用能直接开始）；多学期管理属 Out-of-Scope
+     * （见 Spec §3），届时需在设置页提供显式的"切换/停用"操作并补对应的 DAO 方法。
+     */
+    suspend fun upsertTerm(term: Term): Long
+
+    /** 手动添加/编辑课程（含其全部上课安排，整体替换）。 */
+    suspend fun upsertCourse(course: Course, sessions: List<CourseSession>)
+
+    suspend fun deleteCourse(courseId: String)
+
+    /**
+     * 某门课的全部上课安排（编辑用）。
+     *
+     * 为什么编辑场景必须有它：upsertCourse 是"整体替换"——编辑页必须先取到该课程
+     * 的**全部**安排，改其中被点开的那条、保留其余，再整体写回；否则只写一条会把
+     * 这门课的其它安排（如周三 1-2 节 + 周五 3-4 节两处）静默丢掉。
+     */
+    suspend fun getSessionsByCourseId(courseId: String): List<CourseSession>
+
+    /**
+     * 确保作息表有预置数据（幂等：已有作息则不写入）。
+     *
+     * 用途：首次安装或清库后立即补齐西工程大标准作息，避免"时间轴空白 + 提醒永远排不出"。
+     * 用户后续可在设置页修改，修改后本方法不会再覆盖（因为表不为空）。
+     */
+    suspend fun ensureDefaultTimeSlots()
+
+    /** 按 id 取课程（编辑页回填表单用）。 */
+    suspend fun getCourseById(courseId: String): Course?
+
+    /**
+     * 所有导入通道的统一入库入口。事务写入并记录 import_logs。
+     *
+     * [mode] 决定如何对待库里已有的课程（M7 需求 1）：
+     *   - [ImportMode.REPLACE]（默认）：先清掉当前学期**全部非手动**来源的课程，再写入本次内容——
+     *     课表变成「本次导入的内容 + 手动添加的课程」；
+     *   - [ImportMode.APPEND]：不清任何东西，本次课程追加进现有课表——
+     *     课表变成「原有内容 + 本次导入的内容」，代价是重复导入会产生重复课程。
+     *
+     * 两种模式下 MANUAL 来源的课程都永不删除（AC-20 双防线不随 mode 改变）。
+     */
+    suspend fun applyImport(
+        schedule: ParsedSchedule,
+        mode: ImportMode = ImportMode.REPLACE,
+    ): ImportSummary
+
+    /**
+     * 某学期某来源的现有课程（M2-A 增补，导入预览页专用）。
+     *
+     * 用途：预览页在用户确认**之前**就要展示覆盖范围与疑似重复（AC-13/AC-21）：
+     *   - source = WAKEUP_CSV → 计数「将替换 N 门同来源课程」；
+     *   - source = MANUAL → 同名比对「疑似重复 N 门」。
+     * 实现侧只读（courseDao.getAll 过滤），不写库、不新加 DAO 方法。
+     */
+    suspend fun getCoursesByTermAndSource(termId: Long, source: String): List<Course>
+
+    /**
+     * 删除某学期某来源的课程，返回删除数量（M2-C，AC-24「按来源清理」）。
+     *
+     * 用途：导入中心提供「清理导入的课程」入口，清掉误导入或测试数据
+     * （真实场景：导错学期、导错文件）。
+     *
+     * 安全不变量：MANUAL 永不删除——代码层直接拒绝（source == MANUAL 返回 0），
+     * DAO 层 SQL 还有 `source != 'MANUAL'` 硬兜底（与 applyImport 的双防线一致，AC-20）。
+     * 安排由 course_sessions 的 ON DELETE CASCADE 级联清理。
+     */
+    suspend fun deleteCoursesByTermAndSource(termId: Long, source: String): Int
+
+    /**
+     * 导出当前激活学期的完整课表快照（M6 需求 6，文件与二维码共用）。
+     * 无激活学期 → 返回 null（UI 提示"还没有课表"）。
+     * 有学期但无课程 → 返回空快照（courses 为空列表），**不要**返回 null（可导出，便于清空后同步）。
+     */
+    suspend fun exportSnapshot(): ScheduleSnapshotDto?
+}

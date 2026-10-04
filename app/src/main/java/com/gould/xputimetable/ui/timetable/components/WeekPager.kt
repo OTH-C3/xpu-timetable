@@ -1,1 +1,131 @@
-LyoKICogV2Vla1BhZ2VyLmt0IOKAlOKAlCDmu5HliqjliIflkajlrrnlmajvvIjoh6ogVGltZXRhYmxlU2NyZWVuLmt0IOaQrOWHuu+8jE02IOS4uuihjOaVsOmXqOemgeaLhuWIhu+8iQogKgogKiBSNSDmu5HliqjliIflkajvvJrmr4/pobUgPSBEYXlIZWFkZXIgKyBXZWVrR3JpZO+8jEhvcml6b250YWxQYWdlciDkuIDmrKHmiYvlir/mnIDlpJrnv7vkuIDlkagKICog77yIUGFnZXJTbmFwRGlzdGFuY2UuYXRNb3N0KDEp77yJ77yM6KGo5aS06ZqP6aG15ruR5Yqo77yb56uW55u05rua5Yqo5L2N572u5o+Q5Y2H5YiwIHBhZ2VyIOWxguWFseS6q++8jAogKiDliIflkajlkI7kv53mjIHjgILnm7jpgrvlkajpooTlj5bvvIhNNC1VSS1maXjvvInvvJpWTSDorqLpmIXlvZPliY3lkaggwrEx77yM5ruR5Yqo6L+H56iL5Lit6YK76aG15Y2z5pyJ6K++56iL5pWw5o2u44CCCiAqIOWbnuWGmeWuiOWNq++8iE00LVVJLWZpeO+8ie+8mnBhZ2VyIOmmluasoeWPkeWwhOS4jueoi+W6j+WMluWKqOeUu+acn+mXtOS4jeWGmSB3ZWVrT3ZlcnJpZGXvvIwKICog5ZCv5Yqo5LiN5YaN6KKr6ZKJ5Zyo6KaG55uW54q25oCB77yM44CM6L+U5Zue5pys5ZGo44CN56aB55So5oCB5oGi5aSN5q2j5bi444CCCiAqCiAqIE03IOKRoO+8muenu+mZpCBFbnRlclJpc2Ug5riQ5YWl5Yqo55S744CC5a6D55SoIExhdW5jaGVkRWZmZWN0ICsgYW5pbWF0ZUZsb2F0QXNTdGF0ZSDljIXoo7nmlbTpobUKICogICDvvIjooajlpLTkuI7nvZHmoLzplJnls7AgMTIwbXPvvInvvIzmr4/mrKHov5vlhaXpg73op6blj5HkuIDova7mlbTpobUgZ3JhcGhpY3NMYXllciDliqjnlLvvvIhhbHBoYSArIHRyYW5zbGF0aW9uWe+8ie+8jAogKiAgIOWcqOS9juerr+acui/lhrflkK/liqjml7bogonnnLzlj6/op4HmjonluKfvvIzmlLbnm4rljbTlj6rmmK8i5aW955yL5LiA5LiLIuOAguWIoOaOieWQjuebtOaOpeaYvuekuu+8jOaXoOWKqOeUu+aIkOacrOOAggogKiBNNyDikaHvvJpiZXlvbmRWaWV3cG9ydFBhZ2VDb3VudCAwIOKGkiAx44CC5Y6f5YWI5Li6IDAg5pe26YK76aG15LiN5Y+C5LiO57uE5ZCI77yM57+75ZGo556s6Ze06KaBKirnjrDlnLrnu4TlkIgqKgogKiAgIOaVtOmhte+8iERheUhlYWRlciArIFdlZWtHcmlkICsg5YWo6YOo6K++56iL5Y2h54mH77yJ77yM5piv5ruR5Yqo5Y2h6aG/55qE5Li76KaB5p2l5rqQ44CC5pS55Li6IDEg5ZCO5YmN5ZCO5ZCE6aKE57uE5ZCICiAqICAg5LiA6aG177yM57+75ZGo5pe255u05o6l5aSN55So77yb5Luj5Lu35piv5aSa5L+d55WZIDIg6aG155qE57uE5ZCI57uT5p6c77yI5YaF5a2Y5o2i5rWB55WF77yM5pys6aG555uu6aG15YaF5YWD57Sg6YeP5b6I5bCP77yJ44CCCiAqIE03IOKRou+8mmNvdXJzZUNsaWNrIOeUqCByZW1lbWJlciDnvJPlrZjkuLrnqLPlrprlvJXnlKjjgILljp/lhYjlnKggcGFnZSBsYW1iZGEg5YaF5YaZ5YaF6IGUIGxhbWJkYe+8jAogKiAgIOavj+asoemHjee7hOmDveaWsOW7uuWunuS+i++8iOS4jeeos+WumuWPguaVsO+8ie+8jOS9vyBXZWVrR3JpZCDml6Dms5Xot7Pov4fph43nu4TigJTigJTogIwgbm93TWludXRlIOavj+WIhumSn+WPmOWMluS4gOasoe+8jAogKiAgIOetieS6juavj+WIhumSn+iuqeaVtOW8oOe9keagvOWFqOmHj+mHjeeul+OAggogKi8KcGFja2FnZSBjb20uZ291bGQueHB1dGltZXRhYmxlLnVpLnRpbWV0YWJsZS5jb21wb25lbnRzCgppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5hbmltYXRpb24uY29yZS50d2VlbgppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC5Db2x1bW4KaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5sYXlvdXQuZmlsbE1heFNpemUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5wYWdlci5Ib3Jpem9udGFsUGFnZXIKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5wYWdlci5QYWdlckRlZmF1bHRzCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLmZvdW5kYXRpb24ucGFnZXIuUGFnZXJTbmFwRGlzdGFuY2UKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5wYWdlci5yZW1lbWJlclBhZ2VyU3RhdGUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UuZm91bmRhdGlvbi5yZW1lbWJlclNjcm9sbFN0YXRlCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnJ1bnRpbWUuQ29tcG9zYWJsZQppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5ydW50aW1lLkxhdW5jaGVkRWZmZWN0CmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnJ1bnRpbWUuZ2V0VmFsdWUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UucnVudGltZS5tdXRhYmxlU3RhdGVPZgppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5ydW50aW1lLnJlbWVtYmVyCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnJ1bnRpbWUuc2V0VmFsdWUKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UucnVudGltZS5zbmFwc2hvdEZsb3cKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuTW9kaWZpZXIKaW1wb3J0IGNvbS5nb3VsZC54cHV0aW1ldGFibGUuZG9tYWluLm1vZGVsLlNlc3Npb25XaXRoQ291cnNlCmltcG9ydCBjb20uZ291bGQueHB1dGltZXRhYmxlLnVpLmNvbXBvbmVudHMuRW1wdHlTdGF0ZQppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS50aGVtZS5Nb3Rpb24KaW1wb3J0IGNvbS5nb3VsZC54cHV0aW1ldGFibGUudWkudGltZXRhYmxlLlRpbWV0YWJsZVZpZXdNb2RlbAppbXBvcnQgY29tLmdvdWxkLnhwdXRpbWV0YWJsZS51aS50aW1ldGFibGUuVGltZXRhYmxlVWlTdGF0ZQppbXBvcnQgamF2YS50aW1lLkxvY2FsRGF0ZQoKLyoqIOa7keWKqOWIh+WRqOWuueWZqO+8iFI177yJ77ya5q+P6aG1ID0gRGF5SGVhZGVyICsgV2Vla0dyaWTvvJvokL3lrprlkI7lm57lhpkgVk0g5ZGo5qyh44CCICovCkBDb21wb3NhYmxlCmludGVybmFsIGZ1biBXZWVrUGFnZXIoCiAgICBzdGF0ZTogVGltZXRhYmxlVWlTdGF0ZSwKICAgIHZpZXdNb2RlbDogVGltZXRhYmxlVmlld01vZGVsLAogICAgdG9kYXk6IExvY2FsRGF0ZSwKICAgIG5vd01pbnV0ZTogSW50LAogICAgLyoqIE0xMe+8muOAjOaYvuekuuiAgeW4iOWnk+WQjeOAjeW8gOWFs++8iOmAj+S8oOWIsCBXZWVrR3JpZCDihpIgQ291cnNlQ2FyZO+8ieOAgiAqLwogICAgc2hvd1RlYWNoZXI6IEJvb2xlYW4gPSB0cnVlLAogICAgb25BZGRDb3Vyc2U6ICgpIC0+IFVuaXQsCiAgICBvbk9wZW5JbXBvcnQ6ICgpIC0+IFVuaXQsCiAgICAvKioKICAgICAqIE0xMS3nrKzkuInmibnvvJrngrnor77nqIvljaEg4oCU4oCUIOS6pOWHuuaVtOihjCBbU2Vzc2lvbldpdGhDb3Vyc2Vd77yI5LiN5YaN5Y+q5oql5Lik5LiqIGlk77yJ44CCCiAgICAgKiDljp/mnaXov5nph4znm7TlpZQgYG9uRWRpdENvdXJzZShjb3Vyc2VJZCwgc2Vzc2lvbklkKWAg6L+b57yW6L6R6aG177ybCiAgICAgKiDmlLnkuqTmlbTooYzmmK/lm6DkuLror6bmg4XlvLnlsYLopoHnlLvoibLmnaEv5pWZ5a6kL+Wkh+azqO+8jOWFieaciSBpZCDkuI3lpJ/vvIwKICAgICAqIOiAjCLov5vnvJbovpHpobUi6L+Z5Lu25LqL5bey5LiK56e75Yiw6LCD55So5pa577yIVGltZXRhYmxlU2NyZWVuIOaUtuWIsOihjOWQjuWGjeWGs+WumuW8ueWxgui/mOaYr+i3s+i9rO+8ieOAggogICAgICovCiAgICBvbkNvdXJzZUNsaWNrOiAoU2Vzc2lvbldpdGhDb3Vyc2UpIC0+IFVuaXQsCikgewogICAgLy8g56uW55u05rua5Yqo5L2N572u5o+Q5Y2H5YiwIHBhZ2VyIOWxgu+8muWIh+WRqOWQjuS/neaMge+8iOinhOagvCDCpzQgUjXvvIkKICAgIHZhbCBzY3JvbGxTdGF0ZSA9IHJlbWVtYmVyU2Nyb2xsU3RhdGUoKQogICAgdmFsIHBhZ2VyU3RhdGUgPSByZW1lbWJlclBhZ2VyU3RhdGUoaW5pdGlhbFBhZ2UgPSBzdGF0ZS53ZWVrIC0gMSwgcGFnZUNvdW50ID0geyBzdGF0ZS50b3RhbFdlZWtzIH0pCgogICAgLy8g5Y+M5ZCR5ZCM5q2l77yI6Ziy5oqW77yJ77ya5omL5Yq/L+iQveWumiDihpIgVk3vvJvlpJbpg6jlj5jljJbvvIjlj4zlh7vlm57mnKzlkajvvInihpIg56iL5bqP5YyW5Yqo55S777yMCiAgICAvLyDliqjnlLvmnJ/pl7TnmoQgY3VycmVudFBhZ2Ug5Y+Y5YyW5LiN5Zue5YaZ77yI5ZCm5YiZ5Lya5oqK6KaG55uW5ZGo5YaZ5q2744CB5LiO5Zue5pys5ZGo5LqS5oqi77yJCiAgICB2YXIgcHJvZ3JhbW1hdGljVGFyZ2V0IGJ5IHJlbWVtYmVyIHsgbXV0YWJsZVN0YXRlT2Y8SW50Pz4obnVsbCkgfQogICAgTGF1bmNoZWRFZmZlY3QocGFnZXJTdGF0ZSkgewogICAgICAgIHNuYXBzaG90RmxvdyB7IHBhZ2VyU3RhdGUuY3VycmVudFBhZ2UgfS5jb2xsZWN0IHsgcGFnZSAtPgogICAgICAgICAgICB2YWwgdGFyZ2V0ID0gcGFnZSArIDEKICAgICAgICAgICAgLy8g5a6I5Y2r77yI57y66Zm3IDLvvInvvJrlj6rmjqXlj5ci5LiOIFZNIOW9k+WJjeWRqOS4jeS4gOiHtCLnmoTlj5jljJbigJTigJTml6Lot7Pov4fpppbmrKHlj5HlsIQKICAgICAgICAgICAgLy8g77yI5ZCm5YiZ5ZCv5Yqo5Y2z5YaZ5oiQIHdlZWtPdmVycmlkZe+8jOaMiemSruemgeeUqOaAgeawuOi/nOS4jeWHuueOsOOAgeWRqOasoeiiq+mSieatu++8ie+8jAogICAgICAgICAgICAvLyDkuZ/ot7Pov4fnqIvluo/ljJbmu5rliqjmnJ/pl7TnmoTkuK3pl7TluKcKICAgICAgICAgICAgaWYgKHByb2dyYW1tYXRpY1RhcmdldCA9PSBudWxsICYmIHRhcmdldCAhPSB2aWV3TW9kZWwudWlTdGF0ZS52YWx1ZS53ZWVrKSB7CiAgICAgICAgICAgICAgICB2aWV3TW9kZWwuc2V0V2Vlayh0YXJnZXQpCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiAgICBMYXVuY2hlZEVmZmVjdChzdGF0ZS53ZWVrKSB7CiAgICAgICAgdmFsIHRhcmdldCA9IHN0YXRlLndlZWsgLSAxCiAgICAgICAgaWYgKHBhZ2VyU3RhdGUuY3VycmVudFBhZ2UgIT0gdGFyZ2V0KSB7CiAgICAgICAgICAgIHByb2dyYW1tYXRpY1RhcmdldCA9IHRhcmdldAogICAgICAgICAgICBydW5DYXRjaGluZyB7IHBhZ2VyU3RhdGUuYW5pbWF0ZVNjcm9sbFRvUGFnZSh0YXJnZXQpIH0KICAgICAgICAgICAgcHJvZ3JhbW1hdGljVGFyZ2V0ID0gbnVsbAogICAgICAgIH0KICAgIH0KCiAgICBIb3Jpem9udGFsUGFnZXIoCiAgICAgICAgc3RhdGUgPSBwYWdlclN0YXRlLAogICAgICAgIC8vIE03IOKRoe+8muWJjeWQjuWQhOmihOe7hOWQiOS4gOmhteKAlOKAlOe/u+WRqOaXtumCu+mhteW3suWwsee7qu+8jOS4jeWGjeeOsOWcuue7hOWQiOaVtOmhte+8iOWOn+S4uiAw77yJCiAgICAgICAgYmV5b25kVmlld3BvcnRQYWdlQ291bnQgPSAxLAogICAgICAgIGtleSA9IHsgaXQgfSwKICAgICAgICBmbGluZ0JlaGF2aW9yID0gUGFnZXJEZWZhdWx0cy5mbGluZ0JlaGF2aW9yKAogICAgICAgICAgICBzdGF0ZSA9IHBhZ2VyU3RhdGUsCiAgICAgICAgICAgIHBhZ2VyU25hcERpc3RhbmNlID0gUGFnZXJTbmFwRGlzdGFuY2UuYXRNb3N0KDEpLCAgIC8vIOS4gOasoeaJi+WKv+acgOWkmue/u+S4gOWRqAogICAgICAgICAgICBzbmFwQW5pbWF0aW9uU3BlYyA9IHR3ZWVuKE1vdGlvbi5CYXNlTWlsbGlzLCBlYXNpbmcgPSBNb3Rpb24uRWFzZU91dFN0YW5kYXJkKSwKICAgICAgICApLAogICAgKSB7IHBhZ2UgLT4KICAgICAgICB2YWwgd2VlayA9IHBhZ2UgKyAxCiAgICAgICAgdmFsIGlzQ3VycmVudFdlZWsgPSB3ZWVrID09IHN0YXRlLndlZWsKICAgICAgICAvLyDnvLrpmbcgMSDkv67lpI3vvJrmjInlkajmrKHku47pooTlj5bnvJPlrZjlj5bmlbDvvIzmu5HliqjkuK3pgrvpobXljbPmnInmlbDmja7vvIzkuI3lho3kvp3otZYgaXNDdXJyZW50V2VlawogICAgICAgIHZhbCBwYWdlSXRlbXMgPSBzdGF0ZS53ZWVrSXRlbXNbd2Vla10ub3JFbXB0eSgpCiAgICAgICAgQ29sdW1uKE1vZGlmaWVyLmZpbGxNYXhTaXplKCkpIHsKICAgICAgICAgICAgRGF5SGVhZGVyKHN0YXJ0RGF0ZSA9IHN0YXRlLnRlcm0/LnN0YXJ0RGF0ZSwgd2VlayA9IHdlZWssIHRvZGF5ID0gdG9kYXkpCiAgICAgICAgICAgIC8vIOepuuaAgeS7hemZkCLor6XpobXlsLHmmK/lvZPliY3lkajkuJTor6Xlkajnoa7lrp7kuLrnqboi77yI6YK76aG15pWw5o2u5pyq5Yiw5LiN6K+v5pi+56S656m65oCB77yJCiAgICAgICAgICAgIGlmIChpc0N1cnJlbnRXZWVrICYmIHBhZ2VJdGVtcy5pc0VtcHR5KCkpIHsKICAgICAgICAgICAgICAgIEVtcHR5U3RhdGUoCiAgICAgICAgICAgICAgICAgICAgb25BZGRNYW51YWxseSA9IG9uQWRkQ291cnNlLAogICAgICAgICAgICAgICAgICAgIG9uSW1wb3J0ID0gb25PcGVuSW1wb3J0LAogICAgICAgICAgICAgICAgICAgIG1vZGlmaWVyID0gTW9kaWZpZXIuZmlsbE1heFNpemUoKSwKICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgIFdlZWtHcmlkKAogICAgICAgICAgICAgICAgICAgIGl0ZW1zID0gcGFnZUl0ZW1zLAogICAgICAgICAgICAgICAgICAgIHRpbWVTbG90cyA9IHN0YXRlLnRpbWVTbG90cywKICAgICAgICAgICAgICAgICAgICB3ZWVrID0gd2VlaywKICAgICAgICAgICAgICAgICAgICBzdGFydERhdGUgPSBzdGF0ZS50ZXJtPy5zdGFydERhdGUsCiAgICAgICAgICAgICAgICAgICAgdG9kYXkgPSB0b2RheSwKICAgICAgICAgICAgICAgICAgICBub3dNaW51dGUgPSBub3dNaW51dGUsCiAgICAgICAgICAgICAgICAgICAgc2hvd1RlYWNoZXIgPSBzaG93VGVhY2hlciwKICAgICAgICAgICAgICAgICAgICBzY3JvbGxTdGF0ZSA9IHNjcm9sbFN0YXRlLAogICAgICAgICAgICAgICAgICAgIG1vZGlmaWVyID0gTW9kaWZpZXIuZmlsbE1heFNpemUoKSwKICAgICAgICAgICAgICAgICAgICBvbkNvdXJzZUNsaWNrID0gb25Db3Vyc2VDbGljaywKICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KfQo=
+/*
+ * WeekPager.kt —— 滑动切周容器（自 TimetableScreen.kt 搬出，M6 为行数门禁拆分）
+ *
+ * R5 滑动切周：每页 = DayHeader + WeekGrid，HorizontalPager 一次手势最多翻一周
+ * （PagerSnapDistance.atMost(1)），表头随页滑动；竖直滚动位置提升到 pager 层共享，
+ * 切周后保持。相邻周预取（M4-UI-fix）：VM 订阅当前周 ±1，滑动过程中邻页即有课程数据。
+ * 回写守卫（M4-UI-fix）：pager 首次发射与程序化动画期间不写 weekOverride，
+ * 启动不再被钉在覆盖状态，「返回本周」禁用态恢复正常。
+ *
+ * M7 ①：移除 EnterRise 渐入动画。它用 LaunchedEffect + animateFloatAsState 包裹整页
+ *   （表头与网格错峰 120ms），每次进入都触发一轮整页 graphicsLayer 动画（alpha + translationY），
+ *   在低端机/冷启动时肉眼可见掉帧，收益却只是"好看一下"。删掉后直接显示，无动画成本。
+ * M7 ②：beyondViewportPageCount 0 → 1。原先为 0 时邻页不参与组合，翻周瞬间要**现场组合**
+ *   整页（DayHeader + WeekGrid + 全部课程卡片），是滑动卡顿的主要来源。改为 1 后前后各预组合
+ *   一页，翻周时直接复用；代价是多保留 2 页的组合结果（内存换流畅，本项目页内元素量很小）。
+ * M7 ③：courseClick 用 remember 缓存为稳定引用。原先在 page lambda 内写内联 lambda，
+ *   每次重组都新建实例（不稳定参数），使 WeekGrid 无法跳过重组——而 nowMinute 每分钟变化一次，
+ *   等于每分钟让整张网格全量重算。
+ */
+package com.gould.xputimetable.ui.timetable.components
+
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerDefaults
+import androidx.compose.foundation.pager.PagerSnapDistance
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.Modifier
+import com.gould.xputimetable.domain.model.SessionWithCourse
+import com.gould.xputimetable.ui.components.EmptyState
+import com.gould.xputimetable.ui.theme.Motion
+import com.gould.xputimetable.ui.timetable.TimetableViewModel
+import com.gould.xputimetable.ui.timetable.TimetableUiState
+import java.time.LocalDate
+
+/** 滑动切周容器（R5）：每页 = DayHeader + WeekGrid；落定后回写 VM 周次。 */
+@Composable
+internal fun WeekPager(
+    state: TimetableUiState,
+    viewModel: TimetableViewModel,
+    today: LocalDate,
+    nowMinute: Int,
+    /** M11：「显示老师姓名」开关（透传到 WeekGrid → CourseCard）。 */
+    showTeacher: Boolean = true,
+    onAddCourse: () -> Unit,
+    onOpenImport: () -> Unit,
+    /**
+     * M11-第三批：点课程卡 —— 交出整行 [SessionWithCourse]（不再只报两个 id）。
+     * 原来这里直奔 `onEditCourse(courseId, sessionId)` 进编辑页；
+     * 改交整行是因为详情弹层要画色条/教室/备注，光有 id 不够，
+     * 而"进编辑页"这件事已上移到调用方（TimetableScreen 收到行后再决定弹层还是跳转）。
+     */
+    onCourseClick: (SessionWithCourse) -> Unit,
+) {
+    // 竖直滚动位置提升到 pager 层：切周后保持（规格 §4 R5）
+    val scrollState = rememberScrollState()
+    val pagerState = rememberPagerState(initialPage = state.week - 1, pageCount = { state.totalWeeks })
+
+    // 双向同步（防抖）：手势/落定 → VM；外部变化（双击回本周）→ 程序化动画，
+    // 动画期间的 currentPage 变化不回写（否则会把覆盖周写死、与回本周互抢）
+    var programmaticTarget by remember { mutableStateOf<Int?>(null) }
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }.collect { page ->
+            val target = page + 1
+            // 守卫（缺陷 2）：只接受"与 VM 当前周不一致"的变化——既跳过首次发射
+            // （否则启动即写成 weekOverride，按钮禁用态永远不出现、周次被钉死），
+            // 也跳过程序化滚动期间的中间帧
+            if (programmaticTarget == null && target != viewModel.uiState.value.week) {
+                viewModel.setWeek(target)
+            }
+        }
+    }
+    LaunchedEffect(state.week) {
+        val target = state.week - 1
+        if (pagerState.currentPage != target) {
+            programmaticTarget = target
+            runCatching { pagerState.animateScrollToPage(target) }
+            programmaticTarget = null
+        }
+    }
+
+    HorizontalPager(
+        state = pagerState,
+        // M7 ②：前后各预组合一页——翻周时邻页已就绪，不再现场组合整页（原为 0）
+        beyondViewportPageCount = 1,
+        key = { it },
+        flingBehavior = PagerDefaults.flingBehavior(
+            state = pagerState,
+            pagerSnapDistance = PagerSnapDistance.atMost(1),   // 一次手势最多翻一周
+            snapAnimationSpec = tween(Motion.BaseMillis, easing = Motion.EaseOutStandard),
+        ),
+    ) { page ->
+        val week = page + 1
+        val isCurrentWeek = week == state.week
+        // 缺陷 1 修复：按周次从预取缓存取数，滑动中邻页即有数据，不再依赖 isCurrentWeek
+        val pageItems = state.weekItems[week].orEmpty()
+        Column(Modifier.fillMaxSize()) {
+            DayHeader(startDate = state.term?.startDate, week = week, today = today)
+            // 空态仅限"该页就是当前周且该周确实为空"（邻页数据未到不误显示空态）
+            if (isCurrentWeek && pageItems.isEmpty()) {
+                EmptyState(
+                    onAddManually = onAddCourse,
+                    onImport = onOpenImport,
+                    modifier = Modifier.fillMaxSize(),
+                )
+            } else {
+                WeekGrid(
+                    items = pageItems,
+                    timeSlots = state.timeSlots,
+                    week = week,
+                    startDate = state.term?.startDate,
+                    today = today,
+                    nowMinute = nowMinute,
+                    showTeacher = showTeacher,
+                    scrollState = scrollState,
+                    modifier = Modifier.fillMaxSize(),
+                    onCourseClick = onCourseClick,
+                )
+            }
+        }
+    }
+}

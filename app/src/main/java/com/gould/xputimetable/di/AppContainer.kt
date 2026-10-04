@@ -22,11 +22,15 @@ import android.content.Context
 import androidx.room3.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.gould.xputimetable.data.db.AppDatabase
+import com.gould.xputimetable.data.prefs.BackgroundPrefs
 import com.gould.xputimetable.data.prefs.UiPrefs
 import com.gould.xputimetable.data.db.MIGRATION_1_2
+import com.gould.xputimetable.data.db.MIGRATION_2_3
 import com.gould.xputimetable.data.repository.RoomTransactionRunner
 import com.gould.xputimetable.data.repository.TimetableRepositoryImpl
+import com.gould.xputimetable.data.repository.TodoRepositoryImpl
 import com.gould.xputimetable.domain.repository.TimetableRepository
+import com.gould.xputimetable.domain.repository.TodoRepository
 import com.gould.xputimetable.importer.file.JsonFileImporter
 import com.gould.xputimetable.importer.xpu.XpuWebImporter
 import com.gould.xputimetable.widget.DailyRefreshScheduler
@@ -50,7 +54,7 @@ class AppContainer(context: Context) {
             "xpu_timetable.db",
         )
             .setDriver(BundledSQLiteDriver())
-            .addMigrations(MIGRATION_1_2)   // 显式迁移优先于破坏性迁移，保留用户数据
+            .addMigrations(MIGRATION_1_2, MIGRATION_2_3)   // 显式迁移优先于破坏性迁移，保留用户数据
             .fallbackToDestructiveMigration()
             .build()
     }
@@ -79,6 +83,12 @@ class AppContainer(context: Context) {
 
     /** 界面偏好（M11：「显示老师姓名」等与课程数据无关的展示开关）。 */
     val uiPrefs: UiPrefs by lazy { UiPrefs.create(appContext) }
+
+    /** 背景偏好（M12 需求二：图片 URI / 不透明度 / 作用范围）。 */
+    val backgroundPrefs: BackgroundPrefs by lazy { BackgroundPrefs.create(appContext) }
+
+    /** 待办仓库（M12 需求五）。与课表仓库并列，ViewModel 只认接口。 */
+    val todoRepository: TodoRepository by lazy { TodoRepositoryImpl(database.todoDao()) }
 
     /** 教务直连通道（M2-B）：semesterId 由拦截到的 URL 决定，importer 本身无状态。 */
     val xpuWebImporter: XpuWebImporter by lazy {
