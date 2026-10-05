@@ -5,7 +5,10 @@
  *   1. 「支持选择或上传图片并设为全局背景」→ SAF 选图（OpenDocument，MIME 传 image/ 加通配符）；
  *   2. 「提供透明度调节滑块；拖动滑块时全屏实时预览课表主页（只显示课表主页内容和透明度条），
  *      松手即应用当前透明度」→ [BackgroundOpacitySheet] 这条全屏覆盖层；
- *   3. 「可以选择自定义背景应用在哪个页面，便签，课表，我的，全局」→ 四选一的作用范围。
+ *   3. 「可以选择自定义背景应用在哪个页面，便签，课表，我的，全局」→ [BackgroundScopeSection]
+ *      这一栏：四项都可勾选（原先是四选一），且「全局」是与其他档位并列的一条普通选项；
+ *   4. M13「为白色UI方框增加透明度调节」→ 卡片不透明度，与上面第 2 条那档背景图不透明度
+ *      是两码事（图有多淡 / 方框有多透），故单独一条入口，共用同一套全屏预览壳。
  *
  * ⚠️ 选图后必须取持久化读权限（takePersistableUriPermission）：
  *   SAF 返回的是临时授权，进程被杀后就读不到图，表现为"重启后背景图消失"。
@@ -18,63 +21,43 @@ package com.gould.xputimetable.ui.settings
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Slider
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.gould.xputimetable.data.prefs.BackgroundPrefs
 import com.gould.xputimetable.data.prefs.DEFAULT_BACKGROUND_SETTINGS
 import com.gould.xputimetable.data.prefs.UiPrefs
 import com.gould.xputimetable.domain.repository.TimetableRepository
-import com.gould.xputimetable.ui.background.BackgroundScope
-import com.gould.xputimetable.ui.background.label
-import com.gould.xputimetable.ui.components.AppIcons
 import com.gould.xputimetable.ui.components.GroupCard
 import com.gould.xputimetable.ui.components.GroupHeader
-import com.gould.xputimetable.ui.theme.ListRow
 import kotlinx.coroutines.launch
 
 // ---------- 文件级文案常量 ----------
+// 「作用范围」的标题与提示语在 BackgroundScopeSection.kt（那一栏自带文案）
 private const val TITLE = "自定义背景"
 private const val GROUP_IMAGE = "背景图片"
 private const val ROW_PICK = "选择图片"
 private const val ROW_CLEAR = "恢复默认"
-private const val GROUP_SCOPE = "作用范围"
 private const val GROUP_OPACITY = "不透明度"
+private const val GROUP_CARD = "卡片"
 private const val OPACITY_VALUE = "%.0f%%"
+private const val CARD_VALUE = "%.0f%%"
 private const val HINT_NONE = "还没有选择图片，页面使用默认底色。"
 private const val IMAGE_CHOSEN = "已选择"
-private const val HINT_SCOPE = "背景图会显示在下面选中的页面上。"
 private const val OPACITY_SUBTITLE = "点此全屏预览并实时调节"
 private const val OPACITY_SUBTITLE_NO_IMAGE = "先在上面选一张图片"
 private const val HINT_NO_IMAGE = "还没有背景图片，先在上面选一张"
+private const val CARD_SUBTITLE = "白色方框能透出多少背景"
 
 @Composable
 internal fun BackgroundScreen(
@@ -89,6 +72,7 @@ internal fun BackgroundScreen(
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     var previewing by remember { mutableStateOf(false) }
+    var previewingCard by remember { mutableStateOf(false) }
     val hasImage = !settings.imageUri.isNullOrBlank()
 
     // SAF 选图：必须取持久化授权，否则重启后读不到图
@@ -133,39 +117,18 @@ internal fun BackgroundScreen(
             }
         }
 
-        // ---------- 作用范围（需求二.3）----------
-        GroupHeader(GROUP_SCOPE)
-        GroupCard {
-            ScopeOption(
-                label = BackgroundScope.GLOBAL.label,
-                selected = settings.scope == BackgroundScope.GLOBAL,
-                showDivider = true,
-                onSelect = { scope.launch { backgroundPrefs.setScope(BackgroundScope.GLOBAL) } },
-            )
-            ScopeOption(
-                label = BackgroundScope.TIMETABLE.label,
-                selected = settings.scope == BackgroundScope.TIMETABLE,
-                showDivider = true,
-                onSelect = { scope.launch { backgroundPrefs.setScope(BackgroundScope.TIMETABLE) } },
-            )
-            ScopeOption(
-                label = BackgroundScope.PROFILE.label,
-                selected = settings.scope == BackgroundScope.PROFILE,
-                showDivider = true,
-                onSelect = { scope.launch { backgroundPrefs.setScope(BackgroundScope.PROFILE) } },
-            )
-            ScopeOption(
-                label = BackgroundScope.NOTE.label,
-                selected = settings.scope == BackgroundScope.NOTE,
-                showDivider = false,
-                onSelect = { scope.launch { backgroundPrefs.setScope(BackgroundScope.NOTE) } },
-            )
-        }
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text = HINT_SCOPE,
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        // ---------- 作用范围（多选，见 BackgroundScopeSection）----------
+        BackgroundScopeSection(
+            scopes = settings.scopes,
+            // 勾选语义放在调用方算：拿到旧集合才知道这一行点完之后是勾上还是取消。
+            onToggle = { toggled ->
+                val next = if (settings.scopes.contains(toggled)) {
+                    settings.scopes - toggled
+                } else {
+                    settings.scopes + toggled
+                }
+                scope.launch { backgroundPrefs.setScopes(next) }
+            },
         )
 
         // ---------- 不透明度（点进去才是全屏实时预览）----------
@@ -179,6 +142,19 @@ internal fun BackgroundScreen(
                 onClick = {
                     if (hasImage) previewing = true else onShowHint(HINT_NO_IMAGE)
                 },
+                showDivider = false,
+            )
+        }
+
+        // ---------- 卡片不透明度（M13）----------
+        // 卡片这一项**不要求先选背景图**：透不透是卡片自己的事，
+        // 纯色背景下照样看得见差别，拦在门口会让一半的入口进不去。
+        GroupHeader(GROUP_CARD)
+        GroupCard {
+            SettingsActionRow(
+                title = CARD_VALUE.format(settings.cardAlpha * 100),
+                subtitle = CARD_SUBTITLE,
+                onClick = { previewingCard = true },
                 showDivider = false,
             )
         }
@@ -197,53 +173,13 @@ internal fun BackgroundScreen(
             onNoTerm = { onShowHint("还没有学期，先去「我的 → 学期设置」创建") },
         )
     }
-}
 
-/** 作用范围的一个选项：单选圆点 + 名称。 */
-@Composable
-private fun ScopeOption(
-    label: String,
-    selected: Boolean,
-    showDivider: Boolean,
-    onSelect: () -> Unit,
-) {
-    Column {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(min = ListRow.MinHeight)
-                .clickable(onClick = onSelect)
-                .padding(horizontal = ListRow.HorizontalPadding, vertical = ListRow.VerticalPadding),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            // 选中态一律黑字（项目口径：不用 primary 蓝），靠字重区分
-            Text(
-                text = label,
-                style = MaterialTheme.typography.bodyLarge,
-                fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
-                color = MaterialTheme.colorScheme.onSurface,
-            )
-            Spacer(Modifier.weight(1f))
-            if (selected) {
-                Icon(
-                    painter = painterResource(AppIcons.check),
-                    contentDescription = "已选择",
-                    tint = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.size(ListRow.ChevronSize),
-                )
-            }
-        }
-        if (showDivider) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = ListRow.DividerInset)
-                    .height(1.dp)
-                    .background(
-                        MaterialTheme.colorScheme.outlineVariant
-                            .copy(alpha = ListRow.DividerAlpha),
-                    ),
-            )
-        }
+    // ---------- 卡片不透明度的全屏实时预览 ----------
+    if (previewingCard) {
+        CardAlphaSheet(
+            current = settings,
+            onApply = { value -> scope.launch { backgroundPrefs.setCardAlpha(value) } },
+            onDismiss = { previewingCard = false },
+        )
     }
 }

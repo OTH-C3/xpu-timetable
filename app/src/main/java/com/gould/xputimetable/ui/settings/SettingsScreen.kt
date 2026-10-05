@@ -39,6 +39,7 @@ import com.gould.xputimetable.data.prefs.BackgroundPrefs
 import com.gould.xputimetable.data.prefs.DEFAULT_BACKGROUND_SETTINGS
 import com.gould.xputimetable.domain.repository.TimetableRepository
 import com.gould.xputimetable.ui.background.label
+import com.gould.xputimetable.ui.background.scopeSummary
 import com.gould.xputimetable.ui.transfer.ExportSection
 
 // ---------- 文件级文案常量 ----------
@@ -94,7 +95,7 @@ fun SettingsScreen(
     val backgroundSummary = if (background.imageUri.isNullOrBlank()) {
         BG_NONE
     } else {
-        BG_SET.format(background.scope.label)
+        BG_SET.format(scopeSummary(background.scopes))
     }
 
     Scaffold(

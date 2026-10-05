@@ -15,20 +15,29 @@
  */
 package com.gould.xputimetable.ui.note
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.AlertDialog
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -36,13 +45,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.gould.xputimetable.domain.model.TodoList
+import com.gould.xputimetable.ui.background.glassEdgeBottom
+import com.gould.xputimetable.ui.background.glassEdgeTop
+import com.gould.xputimetable.ui.background.glassSurfaceColor
+import com.gould.xputimetable.ui.background.glassTint
 import com.gould.xputimetable.ui.components.AppIcons
 import com.gould.xputimetable.ui.theme.Note
 
@@ -50,17 +67,9 @@ import com.gould.xputimetable.ui.theme.Note
 private const val TITLE = "待办"
 private const val FAB_TEXT = "新建清单"
 private const val CD_FAB = "新建待办清单"
-private const val DELETE_LIST_TITLE = "删除这份清单？"
-private const val DELETE_ITEM_TITLE = "删除这条待办？"
-private const val DELETE_TEXT = "「%s」和它下面的待办都会被删除，不可撤销。"
-private const val DELETE_CONFIRM = "删除"
-private const val CANCEL = "取消"
 
-/** 删除确认的目标（整张清单 / 单条待办）。 */
-private sealed interface DeleteTarget {
-    data class List(val list: TodoList) : DeleteTarget
-    data class Item(val itemId: Long, val text: String) : DeleteTarget
-}
+/** FAB 的圆角：M3 ExtendedFloatingActionButton 默认 16dp，这里显式声明以便描边形状对齐。 */
+private val FAB_CORNER = 16.dp
 
 @Composable
 internal fun NoteScreen(
@@ -73,8 +82,13 @@ internal fun NoteScreen(
 
     // 手动折叠覆盖表：只记"用户明确点过"的清单（判定见 isExpanded）
     var expandedOverrides by remember { mutableStateOf<Map<Long, Boolean>>(emptyMap()) }
-    var doneGroupExpanded by remember { mutableStateOf(false) }
     var pendingDelete by remember { mutableStateOf<DeleteTarget?>(null) }
+    // 「已完成」分组的展开态放 ViewModel（需求 4）：remember 活不过页面切换，
+    // 退出再进来就丢，用户每次都要重新点开。屏幕上只留一份真值，别在本地再抄一份。
+    val doneGroupExpanded = ui.doneGroupExpanded
+    // 需求 5：点过「添加待办」输入框后，键盘挡着列表，用户点不到别处。
+    // 焦点状态提到页面级，才能在点别处时统一清掉（单靠输入框自己收不到"外部点击"）。
+    val focusManager = LocalFocusManager.current
 
     // 写操作的错误统一走导航层的底部提示（页面级 SnackbarHost 是项目已知的缺陷源）
     LaunchedEffect(ui.error) {
@@ -86,18 +100,63 @@ internal fun NoteScreen(
 
     val total = sections.active.size + sections.completed.size
 
-    Scaffold(
-        // M12 需求一.2：底色交给导航根的 PageBackground，这里必须透明
-        containerColor = Color.Transparent,
+    // 庆祝状态（彩带 + 已完成首次滑入）：整条时间线收在 NoteCelebration.kt，
+    // 这里只创建它并接线，不持有具体状态。
+    val celebration = rememberCelebrationState()
+    NoteCelebrationEffects(sections = sections, state = celebration)
+
+    // 彩带 Overlay：**放在 Scaffold 之外**（与它同级的 Box 根）。
+    // 因为卡片用 positionInRoot() 上报的是**窗口根坐标**；如果 Overlay 放在
+    // Scaffold 的 padding 内部，两者原点差一个状态栏 + topBar 高度，
+    // 彩带会整体下移一截。放同级 Box 才能保证坐标系完全一致。
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            // 需求 5：点页面空白处收起键盘 / 退出输入态。
+            // 为什么必须用可聚焦的 clickable 而不是别的：`clickableNoIndication`
+            // 不可聚焦时收不到焦点，键盘不会退。用 `clickable`（无 indication）
+            // 才既能吃掉点击又能清焦点。
+            //
+            // ⚠️ 这里不能用 clickableNoRipple：它带 indication = null，
+            // 那种节点在组合里**不可聚焦**，focusManager.clearFocus() 收不到它，
+            // 键盘会一直挂着（2026-10-04 真机实测：点输入框后再点别处，
+            // 键盘不落、输入框也退不出去）。
+            //
+            // 用 noIndication 而非 ripple：页面主体已经有大量可点元素，
+            // 再叠一层水波纹会让"点空白"也泛一片色。
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+            ) {
+                focusManager.clearFocus(force = true)
+            },
+    ) {
+        Scaffold(
+            // M12 需求一.2：底色交给导航根的 PageBackground，这里必须透明
+            containerColor = Color.Transparent,
         // FAB **无条件**显示（原先写成 total > 0 才显示，是个死锁：
         // 空态时用户唯一的入口就是这个按钮，藏起来就永远建不了第一条清单，
         // 页面成了无法自救的空壳。参考图的空态里同样有右下角黄色按钮）。
         floatingActionButton = {
+            // 需求 6：FAB 原来用 M3 默认的 containerColor（不透明），
+            // 换自定义背景时它就是一块**实心**色块压在照片上 —— 卡片都透明了，
+            // 唯独这个按钮不透明，最扎眼。
+            // 改成与卡片同一套玻璃面：不透明底 + 上亮下暗的渐变描边 + 极轻投影。
             ExtendedFloatingActionButton(
                 onClick = viewModel::createList,
+                containerColor = glassSurfaceColor(glassTint()),
+                contentColor = MaterialTheme.colorScheme.onSurface,
                 icon = { Icon(painterResource(AppIcons.plus), contentDescription = null) },
                 text = { Text(FAB_TEXT) },
-                modifier = Modifier.semantics { contentDescription = CD_FAB },
+                modifier = Modifier
+                    .border(
+                        width = 1.dp,
+                        brush = Brush.verticalGradient(
+                            listOf(glassEdgeTop(), glassEdgeBottom()),
+                        ),
+                        shape = RoundedCornerShape(FAB_CORNER),
+                    )
+                    .semantics { contentDescription = CD_FAB },
             )
         },
     ) { padding ->
@@ -132,6 +191,12 @@ internal fun NoteScreen(
                         },
                         onTitleDraftChange = viewModel::setTitleDraft,
                         onCommitTitle = viewModel::commitTitle,
+                        // 卡片只负责"报告勾选框在哪"，彩带由页面级 Overlay 画（见上方注释）
+                        onBurstOrigin = { origin -> celebration.burstOrigin = origin },
+                        // 需求 2：只有刚新建的那张播入场动效（单值，见 NoteUiState.newListId）
+                        enterFromBottom = ui.newListId == list.id,
+                        // 播完清标记，否则每次重组都会重播一遍
+                        onEnterAnimationDone = viewModel::consumeNewListAnimation,
                     )
                 }
                 LazyColumn(
@@ -146,14 +211,51 @@ internal fun NoteScreen(
                     // ---- 已完成分区（需求 3）----
                     if (sections.completed.isNotEmpty()) {
                         item(key = "done-header") {
+                            // 需求二：「已完成」**第一次**出现时从上方滑入，之后就位不再动。
+                            //
+                            // ⚠️ 为什么不用 AnimatedVisibility：LazyColumn 的 item 滚出
+                            // 视口会被 dispose，滚回来时重新进组合 → enter 动画**重播**，
+                            // 用户上下滑几次就看到「已完成」反复往下跳，很廉价。
+                            // 这里改用一次性 Animatable：首次出现把它从 -offset 弹到 0，
+                            // 之后无论重组多少次值都是 0，等价于静态就位。
                             CompletedHeader(
                                 count = sections.completed.size,
                                 expanded = doneGroupExpanded,
-                                onToggle = { doneGroupExpanded = !doneGroupExpanded },
+                                onToggle = {
+                                    // 需求 4：写回 ViewModel，下次进页面保持
+                                    viewModel.setDoneGroupExpanded(!doneGroupExpanded)
+                                },
+                                modifier = Modifier.graphicsLayer {
+                                    translationY = celebration.doneGroupSlide.value
+                                },
                             )
                         }
-                        if (doneGroupExpanded) {
-                            items(sections.completed, key = { it.id }) { card(it) }
+                        // 需求 1：展开时下面这叠清单要有动效（撑开 / 缩回，而不是凭空出现）。
+                        //
+                        // ⚠️ 为什么整叠塞进**一个** item，而不是给 AnimatedVisibility
+                        // 里套 `items(...)`：`items()` 是 LazyListScope 的扩展函数，
+                        // 不是 Composable，编译器直接拒绝（"@Composable invocations can
+                        // only happen from the context of a @Composable function"）。
+                        //
+                        // 代价：这一叠清单失去 LazyColumn 的逐项回收（全部一起进组合）。
+                        // 权衡后认为可接受 —— 「已完成」默认是收起的，且这个区本来就是
+                        // 收尾信息（用户勾完的），条目数少；换成"能编译 + 有动效"更值。
+                        item(key = "done-items") {
+                            AnimatedVisibility(
+                                visible = doneGroupExpanded,
+                                enter = expandVertically(
+                                    animationSpec = tween(Note.DoneGroupToggleMillis),
+                                    expandFrom = Alignment.Top,
+                                ) + fadeIn(tween(Note.DoneGroupToggleMillis)),
+                                exit = shrinkVertically(
+                                    animationSpec = tween(Note.DoneGroupToggleMillis),
+                                    shrinkTowards = Alignment.Top,
+                                ) + fadeOut(tween(Note.DoneGroupToggleMillis)),
+                            ) {
+                                Column {
+                                    sections.completed.forEach { card(it) }
+                                }
+                            }
                         }
                     }
                 }
@@ -161,34 +263,24 @@ internal fun NoteScreen(
         }
     }
 
-    // 删除是不可撤销的 → 二次确认（与项目既有 AC-06 一致）
-    pendingDelete?.let { target ->
-        val name = when (target) {
-            is DeleteTarget.List -> target.list.title
-            is DeleteTarget.Item -> target.text
-        }
-        AlertDialog(
-            onDismissRequest = { pendingDelete = null },
-            title = {
-                Text(if (target is DeleteTarget.List) DELETE_LIST_TITLE else DELETE_ITEM_TITLE)
-            },
-            text = { Text(DELETE_TEXT.format(name)) },
-            confirmButton = {
-                TextButton(onClick = {
-                    when (target) {
-                        is DeleteTarget.List -> viewModel.deleteList(target.list.id)
-                        is DeleteTarget.Item -> viewModel.deleteItem(target.itemId)
-                    }
-                    // 删掉的若是正在改标题的那张，必须把编辑态一并清掉：
-                    // 否则 ui.editingTitleOf 仍指向一个已不存在的 id，
-                    // 再新建一张清单时它的标题会莫名其妙进入编辑态。
-                    if (target is DeleteTarget.List) viewModel.cancelEditingTitle()
-                    pendingDelete = null
-                }) { Text(DELETE_CONFIRM) }
-            },
-            dismissButton = {
-                TextButton(onClick = { pendingDelete = null }) { Text(CANCEL) }
-            },
-        )
+        // 彩带：页面级 Overlay，画在 Scaffold **之上**。
+        // 需求原话是"从方框后面蹦出"，但那张清单完成瞬间就移进折叠的已完成分区、
+        // 卡片当场不存在了 —— 任何"画在卡片里"的方案都会一帧都画不出来
+        //（2026-10-04 真机首次实测：只看到清单消失，零彩带）。
+        // 所以盖在整页之上、从方框那个坐标喷出，视觉上仍是"从方框那儿蹦出来"。
+        ConfettiOverlay(state = celebration)
     }
+
+    // 删除是不可撤销的 → 二次确认（弹窗本体在 NoteDeleteDialog.kt，主文件要守 300 行门禁）
+    NoteDeleteDialog(
+        target = pendingDelete,
+        onDelete = { target ->
+            when (target) {
+                is DeleteTarget.List -> viewModel.deleteList(target.list.id)
+                is DeleteTarget.Item -> viewModel.deleteItem(target.itemId)
+            }
+        },
+        onCancel = { pendingDelete = null },
+        onDeletedListExtra = viewModel::cancelEditingTitle,
+    )
 }

@@ -24,6 +24,7 @@ import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.produceState
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
@@ -118,4 +119,48 @@ fun decodeSampleSize(width: Int, height: Int, maxPixels: Int): Int {
         sample *= 2
     }
     return sample
+}
+
+/**
+ * 从已解码的背景图里取主色（需求四：卡片色要跟着背景图走）。
+ *
+ * 为什么只取"平均色"而不是做 K-means 聚类：卡片是**一块一整片**半透明底，
+ * 需要的恰恰是整张图的整体色调倾向，而不是局部主题色。聚类反而会让卡片
+ * 颜色在图的不同区域之间跳变（用户一滚动就换色），比统一色更糟。
+ *
+ * 采样策略：最多取 32×32 = 1024 个点均匀铺满。为什么不是全图遍历：
+ * 一张 2000×1500 的图逐像素 getPixel 要 300 万次 JNI 调用，主线程上直接卡顿。
+ *
+ * @return 平均色（alpha 恒为 1）；图为空返回 null
+ */
+fun dominantColor(bitmap: android.graphics.Bitmap): Color? {
+    val w = bitmap.width
+    val h = bitmap.height
+    if (w <= 0 || h <= 0) return null
+    val stepX = (w / 32).coerceAtLeast(1)
+    val stepY = (h / 32).coerceAtLeast(1)
+    var r = 0L
+    var g = 0L
+    var b = 0L
+    var n = 0L
+    var y = 0
+    while (y < h) {
+        var x = 0
+        while (x < w) {
+            val p = bitmap.getPixel(x, y)
+            r += (p shr 16) and 0xFF
+            g += (p shr 8) and 0xFF
+            b += p and 0xFF
+            n++
+            x += stepX
+        }
+        y += stepY
+    }
+    if (n == 0L) return null
+    return Color(
+        red = r.toFloat() / n / 255f,
+        green = g.toFloat() / n / 255f,
+        blue = b.toFloat() / n / 255f,
+        alpha = 1f,
+    )
 }

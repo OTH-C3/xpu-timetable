@@ -15,7 +15,6 @@
  */
 package com.gould.xputimetable.ui.navigation
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -35,6 +34,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gould.xputimetable.ui.components.clickableNoRipple
 
 private const val LABEL_TIMETABLE = "课表"
 /** M12 需求五：待办（对应「便签」那一档背景作用域）。 */
@@ -116,7 +116,12 @@ private fun BottomBarLabel(
     Box(
         modifier = modifier
             .fillMaxHeight()
-            .clickable(onClick = onClick)
+            // M12 需求一：不能用 clickable —— 它默认带 indication（Material 水波纹），
+            // 而底栏按 M10 的决定**没有自己的背景**（要透出页面底色），
+            // 于是水波纹直接画在透明底上：按下时整块 40dp × 1/3 屏宽泛出深色方块，
+            // 看起来就是"点文字闪一个黑框"。水波纹的语义是"这块浮在内容之上"，
+            // 而底栏是贴在背景上的一层，不该有。
+            .clickableNoRipple(role = Role.Tab, onClick = onClick)
             .semantics {
                 role = Role.Tab           // 无障碍：告诉读屏这是 tab
                 selected = isSelected     // 无障碍：暴露选中态（替代原 M3 底栏条目项的语义）

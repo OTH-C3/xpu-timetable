@@ -16,6 +16,7 @@ import androidx.lifecycle.viewModelScope
 import com.gould.xputimetable.domain.model.TodoSections
 import com.gould.xputimetable.domain.model.groupTodoLists
 import com.gould.xputimetable.domain.repository.TodoRepository
+import com.gould.xputimetable.ui.theme.Note
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -40,6 +41,21 @@ data class NoteUiState(
     val itemDrafts: Map<Long, String> = emptyMap(),
     /** 一次性错误（展示后由界面消费）。 */
     val error: String? = null,
+    /**
+     * 「已完成」分组下次进页面时是否展开（M13 需求 4：记住上次的选择）。
+     *
+     * 为什么存在 ViewModel 而不是 `remember`：`remember` 活不过"离开页面"，
+     * 退出再进来就回到默认收起，用户每次都要重新点开。
+     * ViewModel 活过页面切换，所以"上次我展开过"这件事能保住。
+     */
+    val doneGroupExpanded: Boolean = false,
+    /**
+     * 刚新建出来的清单 id（M13 需求 2：让它播一次入场动效）。
+     *
+     * 单值而非集合：连续点三次"新建"时，只有最后一张该播动效 —— 前两张的入场
+     * 动画用户根本没看见（列表瞬间就被推下去了），播了反而像卡顿。
+     */
+    val newListId: Long? = null,
 )
 
 class NoteViewModel(private val repository: TodoRepository) : ViewModel() {
@@ -63,9 +79,18 @@ class NoteViewModel(private val repository: TodoRepository) : ViewModel() {
     fun createList() {
         viewModelScope.launch {
             runCatching { repository.createList(DEFAULT_TITLE, nextListOrder()) }
+                .onSuccess { id -> _ui.update { it.copy(newListId = id) } }
                 .onFailure { fail("新建清单", it) }
         }
     }
+
+    /** 动画播完（或页面重建）后清掉 newListId，避免入场动效重播。 */
+    fun consumeNewListAnimation() = _ui.update { it.copy(newListId = null) }
+
+    // ---------- 已完成分组的展开态（M13 需求 4）----------
+
+    fun setDoneGroupExpanded(expanded: Boolean) =
+        _ui.update { it.copy(doneGroupExpanded = expanded) }
 
     /** 追加一条待办到指定清单（回车触发，支持连续添加）。 */
     fun addItem(listId: Long) {
@@ -91,9 +116,25 @@ class NoteViewModel(private val repository: TodoRepository) : ViewModel() {
      * 勾选 / 取消勾选（需求 2：划掉但**不删除、不移位**）。
      *
      * 不清草稿、不动排序 —— 顺序完全由 sortOrder 决定，勾选只改 done 位。
+     *
+     * ## ⚠️ M13 需求 3：勾完最后一个时**推迟落库**
+     *
+     * 需求原话：「答完后先出现彩带，然后再进入已完成」。
+     * 问题在于落库即分组：`sections` 是从库推出来的，一落库这张清单立刻被
+     * `groupTodoLists` 划进"已完成"区 → 卡片离开"进行中" → 彩带还没播完就没了。
+     *
+     * 所以勾选**不是完成整组**时立即写库，而是先等 [Note.DoneMoveDelayMillis]
+     * （彩带"喷出→翻飞"这段看清的时间）再写。划线动画本身走 UI 层的 progress，
+     * 不依赖这次写库，所以延迟期间划线照常播完，观感上是"先划掉 → 彩带 → 收进已完成"。
+     *
+     * 只对"即将整组完成"延迟：取消勾选、以及没勾满时立即写，
+     * 否则用户连续操作会感觉到明显的粘滞。
      */
     fun toggleItem(itemId: Long, done: Boolean) {
+        val list = sections.value.active + sections.value.completed
+        val delay = if (done && wouldCompleteGroup(list, itemId)) Note.DoneMoveDelayMillis else 0L
         viewModelScope.launch {
+            if (delay > 0L) kotlinx.coroutines.delay(delay)
             runCatching { repository.setItemDone(itemId, done) }
                 .onFailure { fail("更新待办", it) }
         }

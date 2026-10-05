@@ -117,3 +117,27 @@ fun isExpanded(list: TodoList, overrides: Map<Long, Boolean>): Boolean =
  */
 fun Map<Long, Boolean>.toggle(id: Long, currentExpanded: Boolean): Map<Long, Boolean> =
     this + (id to !currentExpanded)
+
+/**
+ * 勾上这一条之后，它所在的清单会不会变成「整组已完成」（M13 需求 3 的判定，纯函数）。
+ *
+ * 需求是「答完后先出彩带，再进入已完成」，而落库即分组 —— 一写库这张清单就被
+ * 划进已完成区，卡片当场离开屏幕，彩带还没播完就没了。所以要在这里先算出
+ * "这次勾选是否会让整组完成"，让调用方决定要不要推迟落库。
+ *
+ * 判据：除当前这条外，其余条目**此刻都已完成**（当前这条的旧值必然是未完成，
+ * 否则这次勾选就不是"完成"而只是"再勾一次已完成的东西"）。
+ *
+ * 放在这里而不是 ViewModel 私有方法：ViewModel 依赖 repository 与 viewModelScope，
+ * 纯 JVM 单测跑不起来；提成顶层纯函数后这条时序规则能被单测钉住。
+ *
+ * @param lists 当前全部清单（进行中 + 已完成）
+ * @param itemId 本次要勾的条目
+ * @return true = 勾完就整组完成 → 该推迟落库等彩带
+ */
+fun wouldCompleteGroup(lists: List<TodoList>, itemId: Long): Boolean {
+    val list = lists.firstOrNull { l -> l.items.any { it.id == itemId } } ?: return false
+    // 空清单：勾任何东西都谈不上"整组完成"（与 allDone 判空的口径一致）
+    if (list.items.isEmpty()) return false
+    return list.items.all { it.id == itemId || it.done }
+}

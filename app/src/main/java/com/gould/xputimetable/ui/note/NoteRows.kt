@@ -28,11 +28,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -212,13 +209,15 @@ internal fun AddItemField(
     onSubmit: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    OutlinedTextField(
+    // M13 需求 7/8：原来的 OutlinedTextField 是 56dp 高的黑框，在 52dp 行高的
+    // 列表里比一整行还高（老大截图指出的大方框之一）。换矮档自绘框。
+    CompactTextField(
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text(HINT_ADD_ITEM, style = MaterialTheme.typography.bodyMedium) },
-        singleLine = true,
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-        keyboardActions = KeyboardActions(onDone = { onSubmit() }),
-        modifier = modifier.fillMaxWidth().padding(start = Note.ItemIndent, top = Note.GapSmall),
+        placeholder = HINT_ADD_ITEM,
+        onSubmit = onSubmit,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(start = Note.ItemIndent, top = Note.GapSmall),
     )
 }

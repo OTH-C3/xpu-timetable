@@ -100,7 +100,11 @@ internal fun BackgroundOpacitySheet(
         //   预览里根本不画图，拖滑块毫无反应，用户以为功能坏了。
         // 强制成课表后，无论作用范围选哪一项，这里的预览都是有效的效果演示。
         PageBackground(
-            settings = current.copy(opacity = live, scope = BackgroundScope.TIMETABLE),
+            settings = current.copy(
+                opacity = live,
+                // M13 起作用范围是集合（多选），这里强制补上课表档保证预览有图
+                scopes = current.scopes + BackgroundScope.TIMETABLE,
+            ),
             scope = BackgroundScope.TIMETABLE,
             maxPixels = screenPx,
         ) {
