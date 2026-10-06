@@ -37,8 +37,8 @@ android {
         applicationId = "com.gould.xputimetable"
         minSdk = 26                        // ADR-009：Android 8.0
         targetSdk = 36                     // ADR-009：Android 16
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

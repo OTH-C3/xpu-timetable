@@ -38,8 +38,13 @@ import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
@@ -61,7 +66,31 @@ internal fun CompactTextField(
     placeholder: String,
     onSubmit: () -> Unit,
     modifier: Modifier = Modifier,
+    /**
+     * 出现时是否自动聚焦并弹出键盘。
+     *
+     * M14 修 BUG「清单昵称不可修改」：点标题 → 标题换成输入框 → 但**键盘不弹、
+     * 光标不在框里**。用户接着一下键盘，字符全被别的控件吃掉，看起来就是
+     * "改不了名字"。根因就是这里少了自动聚焦：`BasicTextField` 换成输入框
+     * 只是"看起来能编辑"，并不会自己拿到焦点。
+     *
+     * 底部补充面板传 false —— 它是用户主动点开按钮才出现的，
+     * 焦点与面板弹出是同一次点击，键盘由系统自然带起。
+     */
+    autoFocus: Boolean = false,
 ) {
+    val focusRequester = remember { FocusRequester() }
+    // 只在"刚出现且要求聚焦"时请求一次。放在 LaunchedEffect(autoFocus) 里而
+    // 不是 LaunchedEffect(Unit)：面板收起又打开时 autoFocus 不变，
+    // 但上一个焦点已经失效，需要在每次 autoFocus 由 false→true 时再要一次。
+    LaunchedEffect(autoFocus) {
+        if (autoFocus) {
+            // 等一帧再请求：刚进组合的节点还没挂上，immediate 请求会落空
+            withFrameNanos { }
+            focusRequester.requestFocus()
+        }
+    }
+
     Box(
         modifier = modifier
             .height(Note.FieldHeightCompact)
@@ -88,7 +117,10 @@ internal fun CompactTextField(
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
             keyboardActions = KeyboardActions(onDone = { onSubmit() }),
             // 内容内边距：左右各 10dp，让文字不贴边；这 10dp 也把可点区域撑到 ≥44dp
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 0.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .focusRequester(focusRequester)
+                .padding(horizontal = 10.dp, vertical = 0.dp),
             decorationBox = { inner ->
                 Box(contentAlignment = Alignment.CenterStart) {
                     if (value.isEmpty()) {

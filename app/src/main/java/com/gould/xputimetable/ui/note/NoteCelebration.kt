@@ -1,10 +1,10 @@
 /*
- * NoteCelebration.kt —— 待办页的庆祝状态与一次性动效（M12/M13 需求二、三）
+ * NoteCelebration.kt —— 待办页的庆祝状态与一次性动效（M12/M13/M14 需求二、三）
  *
- * 为什么单独成文件：这三段状态（彩带触发、已完成分区首次滑入、彩带 Overlay）
- * 是**同一条时间线**上的东西 —— "勾完最后一项 → 彩带 → 卡片移进已完成"，
- * 拆散到页面文件里会让人看不出它们的先后顺序。收在一起，注释放得下，
- * 页面文件也守得住 300 行门禁（M13 加动效时 NoteScreen 一度超到 367 行）。
+ * 为什么单独成文件：这几段状态（彩带触发、已完成分区首次滑入、彩带 Overlay）
+ * 是**同一条时间线**上的东西 —— "勾完全部待办 → 彩带 → 清单收进已完成"，
+ * 拆散到页面文件里会看不出它们的先后顺序。收在一起，注释放得下，
+ * 页面文件也守得住 300 行门禁。
  */
 package com.gould.xputimetable.ui.note
 
@@ -33,7 +33,31 @@ class NoteCelebrationState {
     /** 彩带播放序号：单调递增，每次 +1 触发一次重播。 */
     var confettiSeq: Long by mutableStateOf(0L)
 
-    /** 彩带发射点（页面根坐标，由卡片 onGloballyPositioned 上报）。 */
+    /**
+     * 彩带**已经播完**的序号。
+     *
+     * ⚠️ 这个字段是修 BUG「新建清单后彩带重播」的关键（M14）。
+     * 现象：喷一次彩带后，新建清单或添加待办 → 列表重排 → 卡片的
+     * `onGloballyPositioned` 再次上报发射点 → 彩带又喷一次。
+     *
+     * 根因不在上报，而在**Overlay 的挂载条件**：原先是
+     * `if (burstOrigin != null) { ConfettiBurst(...) }`，
+     * 而 `ConfettiBurst` 播完（alpha 归 0）会 `return` 离开组合；
+     * 此时 `burstOrigin` 仍是上次的值，只要它被重新赋值，
+     * 就会"重新进组合" → `remember(trigger)` 重新初始化 → 从头再播一次。
+     *
+     * 现在改成显式记账：播过的序号记在这里，条件里比对，
+     * 同一个序号**永远不再进组合**，与 `burstOrigin` 被重新上报无关。
+     */
+    var playedSeq: Long by mutableStateOf(0L)
+
+    /**
+     * 彩带发射点（页面根坐标，由卡片 `onGloballyPositioned` 上报）。
+     *
+     * M14：需求改为"从屏幕顶部一整条线撒落"（见小米便签参考截图），
+     * 所以这里存的**不再是某个勾选框的中心**，而是一整条横向区间的取样点 ——
+     * 真正怎么撒是 `Confetti.kt` 的事，这里只负责给出"顶部那条线在哪"。
+     */
     var burstOrigin: Offset? by mutableStateOf(null)
 
     /** 「已完成」分区是否已经出现过 —— 决定要不要播"从上往下挪"的那一次。 */
@@ -50,8 +74,18 @@ class NoteCelebrationState {
      */
     val doneGroupSlide = Animatable(0f)
 
-    /** 上一轮每张清单是否全部完成（首轮为空表 → 进页面不会误喷）。 */
-    var prevAllDone: Map<Long, Boolean> by mutableStateOf(emptyMap())
+    /**
+     * 上一轮「**所有**待办是否都完成了」。
+     *
+     * M14 需求：彩带只在**页面里再没有任何未完成的清单**时才喷
+     * （原实现是"任意一张清单完成就喷"，于是勾一张喷一次，清单多了就乱）。
+     * 存 Boolean 而非 Map：判据从"逐张比对"简化成"整页比对"，
+     * 顺带消掉了"Map 里漏掉新建清单的 id"这类边界。
+     */
+    var prevAllSettled: Boolean by mutableStateOf(false)
+
+    /** 上一轮清单数（首轮为 0 → 进页面不会误喷）。 */
+    var prevListCount: Int by mutableStateOf(0)
 }
 
 /** 记住一个庆祝状态持有者。 */
@@ -71,26 +105,35 @@ internal fun NoteCelebrationEffects(
 ) {
     // ---- 彩带触发 ----
     //
-    // ⚠️ 关键设计：彩带**不能**挂在卡片里。清单一旦整组完成就会（延迟彩带播完后）
-    // 从"进行中"移进"已完成"，而后者默认是折叠的 —— 卡片当场离开组合，
-    // 挂在它身上的彩带一帧都画不出来就消失了（2026-10-04 真机实测：
-    // 勾完只看到清单消失，完全没有彩带）。
-    // 所以改成：卡片把自己的中心**报上来**，彩带由页面级 Overlay 统一画，
-    // 与卡片的存亡无关。
+    // M14 需求：「**所有**未完成代办全部完成才能喷彩带」。
+    // 判据是整页：**一张"进行中"的清单都不剩**，才算全部完成。
+    // 空清单不算（与 `allDone` 判空一致）—— 否则刚建一张空清单就喷彩带。
+    //
+    // ⚠️ 同时必须挡掉「刚进页面时页面本来就是空的」：进页面时 active 为空，
+    // `settled` 为 true，但那时并没有"刚刚完成"这件事。所以要求
+    // **上一轮有清单**（prevListCount > 0）且**这一轮有变化**。
     LaunchedEffect(sections) {
         val all = sections.active + sections.completed
-        val newlyDone = all.filter { list ->
-            val was = state.prevAllDone[list.id]
-            was == false && list.allDone    // was 存在且为 false 才是"刚刚完成"
+        val settled = sections.active.isEmpty()
+        val changed = state.prevListCount != all.size || state.prevAllSettled != settled
+        if (shouldBurstConfetti(
+                hadListsBefore = state.prevListCount > 0,
+                wasSettled = state.prevAllSettled,
+                settledNow = settled,
+                allChanged = changed,
+            )
+        ) {
+            state.confettiSeq += 1
         }
-        state.prevAllDone = all.associate { it.id to it.allDone }
-        if (newlyDone.isNotEmpty()) state.confettiSeq += 1
+        state.prevListCount = all.size
+        state.prevAllSettled = settled
     }
 
-    // 彩带播完就清空发射点，避免之后的每次重组都重新喷一遍
+    // 彩带播完就记账：同一个序号不再进组合（BUG「新建后重播」的修法，见 playedSeq 注释）
     LaunchedEffect(state.confettiSeq) {
         if (state.confettiSeq > 0L) {
             delay(Note.ConfettiMillis.toLong() + 200L)
+            state.playedSeq = state.confettiSeq
             state.burstOrigin = null
         }
     }
@@ -117,16 +160,26 @@ internal fun NoteCelebrationEffects(
  * 因为卡片用 `positionInRoot()` 上报的是**窗口根坐标**；若 Overlay 放在
  * Scaffold 的 padding 内部，两者原点差一个状态栏 + topBar 高度，
  * 彩带会整体下移一截。放同级 Box 才能保证坐标系完全一致。
+ *
+ * @param topLineY 页面根坐标下"屏幕顶部那条撒落线"的 y。
+ *                 页面级才知道状态栏有多高，所以由调用方算好传进来。
  */
 @Composable
 internal fun ConfettiOverlay(
     state: NoteCelebrationState,
+    topLineY: Float,
     modifier: Modifier = Modifier,
 ) {
-    val origin = state.burstOrigin ?: return
+    val seq = state.confettiSeq
+    // ⚠️ 三个条件缺一不可，顺序也有讲究：
+    //   ① seq > 0        —— 没触发过就不画
+    //   ② seq != played  —— 播过就**永远不再进组合**（这是 BUG 重播的修法）
+    //   ③ burstOrigin    —— 等卡片报上来发射点
+    // ② 必须在 ③ 之前：否则 origin 后到时仍会因 ① 通过而重播。
+    if (seq <= 0L || seq == state.playedSeq) return
     ConfettiBurst(
-        trigger = state.confettiSeq,
-        origin = origin,
+        trigger = seq,
+        topLineY = topLineY,
         modifier = modifier.fillMaxSize(),
     )
 }

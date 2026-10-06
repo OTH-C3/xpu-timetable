@@ -48,10 +48,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -78,7 +75,8 @@ import com.gould.xputimetable.ui.theme.Note
  * @param onStartEditTitle 点击标题进入编辑
  * @param onTitleDraftChange 标题输入回调
  * @param onCommitTitle 提交标题（回车或失焦）
- * @param onBurstOrigin 上报"整组勾选方框中心"的**页面根坐标**，供页面层画彩带
+ * @param onOpenCompose 打开底部输入面板，往这张清单补充待办
+ * @param optimisticDone 条目勾选态（乐观优先，绕开落库延迟）
  */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -90,44 +88,18 @@ internal fun NoteListCard(
     onDeleteList: () -> Unit,
     onDeleteItem: (itemId: Long, text: String) -> Unit,
     onAddItem: (listId: Long) -> Unit,
-    itemDraft: String,
-    onItemDraftChange: (String) -> Unit,
     editingTitle: Boolean,
     titleDraft: String,
     onStartEditTitle: () -> Unit,
     onTitleDraftChange: (String) -> Unit,
     onCommitTitle: () -> Unit,
-    onBurstOrigin: (Offset) -> Unit,
+    onOpenCompose: () -> Unit,
+    /** 条目当前应显示的勾选态（乐观值优先，见 resolvedDone）。 */
+    optimisticDone: (itemId: Long) -> Boolean,
     enterFromBottom: Boolean,
     onEnterAnimationDone: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    // 把"整张卡片中心"换算成**页面根坐标**报给页面层 ——
-    // 彩带由 NoteScreen 的 Overlay 统一画（原因见那里的注释：卡片完成瞬间就
-    // 离开组合，彩带挂在自己身上会一帧都画不出来）。
-    //
-    // ⚠️ 必须用 positionInRoot() 而不是 positionInParent()：卡片在 LazyColumn 里，
-    // positionInParent 给的是**相对列表**的坐标，而 Overlay 铺的是整个页面，
-    // 两者原点不同，直接用会让彩带从"列表上方"偏出去。
-    //
-    // 发射点是**整张卡片的中线**，不是勾选框中心（老大要求）：
-    // 「一勾完整个白色方框从中间出来」—— 方框指的是整张卡片。
-    // 原先从左边角那个小勾选框喷出，既不对称又不像"从卡片里出来"。
-    //
-    // y 取整卡高度的一半（用 coords.size，不受折叠影响；折叠时卡片很矮，
-    // 中线就落在仅剩的那条头部上，喷出点仍在可见带里）。
-    //
-    // 纯几何换算，一个 dp 令牌都不需要：只用 coords.size（已经是像素），
-    // 所以这里不需要 LocalDensity —— 也不该引入，那是"以为要转 dp"的信号。
-    val reportOrigin = Modifier.onGloballyPositioned { coords ->
-        val topLeftInRoot = coords.positionInRoot()
-        onBurstOrigin(
-            Offset(
-                x = topLeftInRoot.x + coords.size.width / 2f,
-                y = topLeftInRoot.y + coords.size.height / 2f,
-            ),
-        )
-    }
     // 需求 2：新清单从下方滑入 + 淡入。
     //
     // ⚠️ 为什么用 `graphicsLayer.translationY` 而不是 AnimatedVisibility：
@@ -148,7 +120,7 @@ internal fun NoteListCard(
         Modifier
     }
 
-    GroupCard(modifier = modifier.then(reportOrigin).then(enterModifier)) {
+    GroupCard(modifier = modifier.then(enterModifier)) {
         // ---------- 头部：整组勾选 + 标题 + 进度 + 折叠 ----------
         Row(
             modifier = Modifier
@@ -197,6 +169,8 @@ internal fun NoteListCard(
                     // 正好压在 "0 / 0" 进度文字上（2026-10-05 真机实测）。
                     // 不用 weight —— weight 会把剩余宽度全吃掉，右边框必然贴到进度。
                     modifier = Modifier.weight(1f).padding(end = Note.Gap),
+                    // 改名是"点了标题就要能打字"，不聚焦等于让用户再点一次
+                    autoFocus = true,
                 )
             } else {
                 Text(
@@ -222,6 +196,12 @@ internal fun NoteListCard(
                             onLongClick = onDeleteList,
                         ),
                 )
+            }
+            // M14：标题右侧的「补充待办」小按钮。
+            // 整组已完成时不给 —— 收工了的清单不该再往里加。
+            if (!list.allDone) {
+                ComposeButton(onClick = onOpenCompose)
+                Spacer(Modifier.width(Note.GapSmall))
             }
             Text(
                 text = "${list.doneCount} / ${list.items.size}",
@@ -251,25 +231,44 @@ internal fun NoteListCard(
         ) {
             Column {
                 list.items.forEach { item ->
+                    val shown = optimisticDone(item.id)
                     TodoItemRow(
                         text = item.text,
-                        done = item.done,
-                        onToggle = { onToggleItem(item.id, !item.done) },
+                        done = shown,
+                        // 取反的是**当前显示**的态，不是库里的态 ——
+                        // 否则乐观期再点一下会算成同一个目标值（点了没反应）。
+                        onToggle = { onToggleItem(item.id, !shown) },
                         onLongPress = { onDeleteItem(item.id, item.text) },
                     )
                 }
-                // 已完成且折叠中时不显示输入框：这一组已经收工，不该再往里加东西
-                if (!list.allDone) {
-                    AddItemField(
-                        value = itemDraft,
-                        onValueChange = onItemDraftChange,
-                        onSubmit = { onAddItem(list.id) },
-                    )
-                }
+                // M14：卡片内**不再常驻**「添加待办」输入框。
+                // 需求原话：「删除清单下面的添加待办，改为点击新建清单直接弹出这个」。
+                // 补充入口改成头部标题右侧那个小按钮（见 ComposeButton），
+                // 面板由页面底部的 NoteComposeSheet 承载。
             }
         }
         Spacer(Modifier.height(Note.GapSmall))
     }
+}
+
+/**
+ * 头部的「补充待办」小按钮（M14）。
+ *
+ * 为什么是加号而不是"文字按钮"：头部已经有勾选框、标题、进度、折叠箭头，
+ * 再塞一个带文字的按钮会把这一行挤满。加号是"往里添东西"的世界通用符号，
+ * 且 24dp 就够，比文字按钮省下约 40dp 宽度。
+ */
+@Composable
+private fun ComposeButton(onClick: () -> Unit) {
+    Icon(
+        painter = painterResource(AppIcons.plus),
+        contentDescription = CD_COMPOSE,
+        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier
+            .size(Note.ComposeTouchTarget)
+            .clickableNoRipple(onClick = onClick)
+            .padding(Note.ComposeIconInset),
+    )
 }
 
 /** 头部的折叠箭头（参考图里是浅灰圆底的小箭头）。 */
@@ -286,3 +285,6 @@ private fun ExpandButton(expanded: Boolean, onClick: () -> Unit) {
             .padding(Note.ExpandIconInset),
     )
 }
+
+/** 头部「补充待办」按钮的无障碍文案（图标按钮必须有，否则读屏只会念"按钮"）。 */
+private const val CD_COMPOSE = "往这张清单补充待办"

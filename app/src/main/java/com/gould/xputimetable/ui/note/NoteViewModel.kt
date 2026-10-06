@@ -39,6 +39,22 @@ data class NoteUiState(
      * 回车还会把文字加到 B 去 —— 这是很容易发生且很难自查的串数据。
      */
     val itemDrafts: Map<Long, String> = emptyMap(),
+    /**
+     * **乐观**勾选态：条目 id → 目标 done。写库还没落地的那些条目用这个值渲染。
+     *
+     * ## 为什么需要它（M14 修 BUG「点最后一项没划线动效」）
+     *
+     * 勾完一张清单的最后一项时，`toggleItem` 会**推迟 660ms 才落库**（为了让彩带
+     * 播完再把清单收进「已完成」）。而划线动画由 `animateFloatAsState` 驱动，
+     * 它读的 `done` 来自 **库里的值** —— 于是顺序变成：
+     * `点勾选 → 等 660ms → 落库 → done 变化 → 划线才开始`，
+     * 660ms 之后清单已经被收走，用户根本看不到那条线。
+     *
+     * 这个表把"用户刚点的那个状态"立刻暴露给 UI，划线**立即**开始；
+     * 落库后库里的值与它一致，这个条目就从表里移除（见 [reconcileOptimistic]）。
+     * 于是观感是"划线 → 彩带 → 收进已完成"，三段都看得见。
+     */
+    val optimisticDone: Map<Long, Boolean> = emptyMap(),
     /** 一次性错误（展示后由界面消费）。 */
     val error: String? = null,
     /**
@@ -56,6 +72,13 @@ data class NoteUiState(
      * 动画用户根本没看见（列表瞬间就被推下去了），播了反而像卡顿。
      */
     val newListId: Long? = null,
+    /**
+     * 底部输入面板正在往哪张清单里加待办（M14）。null = 面板收起。
+     *
+     * 放 ViewModel 而不是 `remember`：旋转屏幕时面板不该消失；且它与
+     * [itemDrafts] 是同一份草稿的生命周期，拆开会出现"面板在但草稿没了"。
+     */
+    val composingListOf: Long? = null,
 )
 
 class NoteViewModel(private val repository: TodoRepository) : ViewModel() {
@@ -75,14 +98,28 @@ class NoteViewModel(private val repository: TodoRepository) : ViewModel() {
 
     // ---------- 新建 ----------
 
-    /** 新建清单：标题先给默认名，用户可在卡片上改名（对齐参考图"先建后命名"）。 */
+    /**
+     * 新建清单：标题先给默认名，用户可在卡片上改名（对齐参考图"先建后命名"）。
+     *
+     * M14：建完直接把 [composingListOf] 设成它 —— 点「+」就要能**立刻**输入，
+     * 而不是"先看到一张空卡片，再自己找地方点"。这个 id 同时驱动
+     * 入场动效（[newListId]）与底部面板（[composingListOf]），两者必须同源。
+     */
     fun createList() {
         viewModelScope.launch {
             runCatching { repository.createList(DEFAULT_TITLE, nextListOrder()) }
-                .onSuccess { id -> _ui.update { it.copy(newListId = id) } }
+                .onSuccess { id ->
+                    _ui.update { it.copy(newListId = id, composingListOf = id) }
+                }
                 .onFailure { fail("新建清单", it) }
         }
     }
+
+    /** 打开底部输入面板，往 [listId] 这张清单里补待办。 */
+    fun openCompose(listId: Long) = _ui.update { it.copy(composingListOf = listId) }
+
+    /** 收起底部输入面板（点「完成」或点页面别处）。 */
+    fun closeCompose() = _ui.update { it.copy(composingListOf = null) }
 
     /** 动画播完（或页面重建）后清掉 newListId，避免入场动效重播。 */
     fun consumeNewListAnimation() = _ui.update { it.copy(newListId = null) }
@@ -133,10 +170,36 @@ class NoteViewModel(private val repository: TodoRepository) : ViewModel() {
     fun toggleItem(itemId: Long, done: Boolean) {
         val list = sections.value.active + sections.value.completed
         val delay = if (done && wouldCompleteGroup(list, itemId)) Note.DoneMoveDelayMillis else 0L
+        // 乐观值先写：划线动画不等落库就开始
+        // （否则点最后一项时，那条线要等 660ms 才开始，而清单已被收走 —— 用户根本看不到）
+        _ui.update { it.copy(optimisticDone = it.optimisticDone + (itemId to done)) }
         viewModelScope.launch {
             if (delay > 0L) kotlinx.coroutines.delay(delay)
             runCatching { repository.setItemDone(itemId, done) }
-                .onFailure { fail("更新待办", it) }
+                .onSuccess { reconcileOptimistic(itemId) }
+                .onFailure {
+                    // 写失败要撤掉乐观值，否则 UI 会一直显示一个库里根本没有的状态
+                    _ui.update { it.copy(optimisticDone = it.optimisticDone - itemId) }
+                    fail("更新待办", it)
+                }
+        }
+    }
+
+    /**
+     * 落库成功后清掉该条目的乐观值（此后库里的值就是权威的）。
+     *
+     * ⚠️ 只在**值一致**时才清：若用户在这 660ms 里又点了同一个条目，
+     * 新的乐观值与刚落库的值不同，贸然清掉会让 UI 闪回旧状态。
+     */
+    private fun reconcileOptimistic(itemId: Long) {
+        val real = (sections.value.active + sections.value.completed)
+            .firstNotNullOfOrNull { list -> list.items.firstOrNull { it.id == itemId } }?.done
+        _ui.update { s ->
+            if (real != null && s.optimisticDone[itemId] == real) {
+                s.copy(optimisticDone = s.optimisticDone - itemId)
+            } else {
+                s
+            }
         }
     }
 

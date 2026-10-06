@@ -141,3 +141,81 @@ fun wouldCompleteGroup(lists: List<TodoList>, itemId: Long): Boolean {
     if (list.items.isEmpty()) return false
     return list.items.all { it.id == itemId || it.done }
 }
+
+/**
+ * 条目在**当前这一刻**的勾选态（乐观值优先，纯函数）。
+ *
+ * M14 修 BUG「点最后一项没划线动效」：勾完整组的最后一项时落库被推迟 660ms
+ * （让彩带先播），而划线动画读的是这个值。若只读库里的 `done`，
+ * 划线要等 660ms 才开始，那时清单已经被收进「已完成」—— 用户看不到那条线。
+ *
+ * @param itemDone   库里的值（权威，只是有延迟）
+ * @param optimistic 乐观值（用户刚点的状态）；null = 没有待落库的改动
+ */
+fun resolvedDone(itemDone: Boolean, optimistic: Boolean?): Boolean = optimistic ?: itemDone
+
+/**
+ * 彩带该不该在**这一轮**喷（纯函数，M14 需求「所有未完成代办全部完成才能喷」）。
+ *
+ * 四个条件缺一不可：
+ *  1. `hadListsBefore` —— 上一轮页面有清单。挡掉"进页面时本来就全空"，
+ *     那时并没有"刚刚完成"这件事，不该喷。
+ *  2. `!wasSettled`   —— 上一轮**还有**未完成的清单。否则空页面刷新也会喷。
+ *  3. `settledNow`    —— 这一轮一张"进行中"的清单都不剩。
+ *  4. `allChanged`    —— 清单内容确实变了。
+ *     挡掉"数据没变但重组了"（例如 Room 推送了等值结果）。
+ *
+ * @param hadListsBefore 上一轮清单数 > 0
+ * @param wasSettled     上一轮是否已全部完成
+ * @param settledNow     这一轮是否已全部完成
+ * @param allChanged     这一轮清单内容是否变化过
+ */
+fun shouldBurstConfetti(
+    hadListsBefore: Boolean,
+    wasSettled: Boolean,
+    settledNow: Boolean,
+    allChanged: Boolean,
+): Boolean = hadListsBefore && !wasSettled && settledNow && allChanged
+
+/**
+ * 组装一张清单卡片的全套接线（NoteScreen 用）。
+ *
+ * 为什么把这一大段从 NoteScreen 搬出来：那些参数本质上是**卡片的接线**
+ * （卡片要的每一项都从哪来），跟着卡片走更自然；页面只留"把两段清单喂进去"。
+ *
+ * 回调一律方法引用、不内联 lambda：项目既有纪律（避免整页重组）。
+ *
+ * @param onToggleExpanded 折叠态切换 —— 必须由页面写回 state，所以是回调而非读值
+ */
+@Composable
+internal fun noteCardFor(
+    ui: NoteUiState,
+    viewModel: NoteViewModel,
+    isExpandedNow: (TodoList) -> Boolean,
+    onToggleExpanded: (TodoList) -> Unit,
+    onDeleteList: (TodoList) -> Unit,
+    onDeleteItem: (Long, String) -> Unit,
+): @Composable (TodoList) -> Unit = { list ->
+    NoteListCard(
+        list = list,
+        expanded = isExpandedNow(list),
+        onToggleExpand = { onToggleExpanded(list) },
+        onToggleItem = viewModel::toggleItem,
+        onDeleteList = { onDeleteList(list) },
+        onDeleteItem = onDeleteItem,
+        onAddItem = { listId -> viewModel.addItem(listId) },
+        // 乐观勾选态：整组最后一项的落库被推迟 660ms 让彩点先撒，
+        // 划线动画读这个值才能**立刻**开始（否则线永远看不到）
+        optimisticDone = { itemId ->
+            resolvedDone(list.items.first { it.id == itemId }.done, ui.optimisticDone[itemId])
+        },
+        editingTitle = ui.editingTitleOf == list.id,
+        titleDraft = ui.titleDraft,
+        onStartEditTitle = { viewModel.startEditingTitle(list.id, list.title) },
+        onTitleDraftChange = viewModel::setTitleDraft,
+        onCommitTitle = viewModel::commitTitle,
+        onOpenCompose = { viewModel.openCompose(list.id) },
+        enterFromBottom = ui.newListId == list.id,
+        onEnterAnimationDone = viewModel::consumeNewListAnimation,
+    )
+}

@@ -67,3 +67,31 @@ internal fun NoteDeleteDialog(
         },
     )
 }
+
+/**
+ * 接好 ViewModel 的删除确认弹窗（NoteScreen 用这个薄包装）。
+ *
+ * 为什么把 `when` 那几行搬进来：NoteScreen 要守 300 行门禁，而"要删哪个 →
+ * 调哪个 ViewModel 方法"这件事只属于弹窗本身。它跟着弹窗走才自然。
+ */
+@Composable
+internal fun NoteDeleteDialogFor(
+    target: DeleteTarget?,
+    viewModel: NoteViewModel,
+    onDismiss: () -> Unit,
+) {
+    NoteDeleteDialog(
+        target = target,
+        onDelete = { t ->
+            when (t) {
+                is DeleteTarget.List -> viewModel.deleteList(t.list.id)
+                is DeleteTarget.Item -> viewModel.deleteItem(t.itemId)
+            }
+        },
+        onCancel = onDismiss,
+        // 删掉正在改标题的那张时，编辑态必须一并清掉：
+        // 否则 editingTitleOf 仍指向一个已不存在的 id，
+        // 再新建一张清单时它的标题会莫名其妙进入编辑态。
+        onDeletedListExtra = viewModel::cancelEditingTitle,
+    )
+}

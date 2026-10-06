@@ -1,17 +1,16 @@
 /*
- * NoteScreen.kt —— 待办清单页（M12 需求五，底栏第三项）
+ * NoteScreen.kt —— 待办清单页（底栏第三项）。本文件只做**装配**。
  *
- * 版式对照小米便签「待办」页（参考截图）：
- *   标题「待办」→ 空态（清单图标 + "没有待办"）或清单卡片列表 → 右下角浮动新建按钮
- *   整组完成的清单自动收进「已完成 N」分区（可展开查看）
+ * 版式对照小米便签「待办」页：标题 → 清单卡片列表 → 右下角浮动新建按钮；
+ * 整组完成的清单自动收进「已完成 N」分区。
  *
- * 三条需求的落点：
- *   - 需求 1（新建 + 勾选框）与需求 2（划线）在 NoteViewModel / NoteRows；
- *   - 需求 3 的"自动折叠 + 归类到已完成"由 [expandedOverrides] 这一层决定：
- *     用户**手动**点过折叠的清单以手动状态为准，没点过的才跟随"整组是否完成"自动折叠。
- *     两者混在一起会出现"清单刚自动折叠，用户点开，再勾一项又自动折叠"的抖动。
+ * 相关实现各在其位：
+ *   - 卡片与折叠：NoteListCard；条目与划线：NoteRows
+ *   - 彩点与已完成分区动效：NoteCelebration（庆祝状态整体收在那里）
+ *   - 底部补充面板：NoteComposeSheet；删除确认：NoteDeleteDialog
+ *   - 落库时机与乐观态：NoteViewModel / NoteScreenParts
  *
- * 背景层：Scaffold 一律透明（需求一.2），底色与背景图由导航根的 PageBackground 提供。
+ * 背景层：Scaffold 一律透明，底色与背景图由导航根的 PageBackground 提供。
  */
 package com.gould.xputimetable.ui.note
 
@@ -29,10 +28,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -50,6 +53,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
@@ -142,10 +146,18 @@ internal fun NoteScreen(
             // 换自定义背景时它就是一块**实心**色块压在照片上 —— 卡片都透明了，
             // 唯独这个按钮不透明，最扎眼。
             // 改成与卡片同一套玻璃面：不透明底 + 上亮下暗的渐变描边 + 极轻投影。
+            //
+            // M14 修 BUG「新建菜单下面有一层白」：那层白是 M3 FAB **默认 elevation
+            // 阴影**画出来的高光 —— 玻璃面本来就有 1dp 描边 + 极轻投影，
+            // 再叠一层 M3 阴影就变成"按钮下面垫了张白纸"。
+            // 解法：elevation 显式给 0，投影由玻璃面自己的 clip+shadow 提供。
             ExtendedFloatingActionButton(
+                // 建完清单 ViewModel 会自动把底部面板打开（见 NoteViewModel.createList），
+                // 这里不要另外开面板 —— 那会出现"面板开了两次"的状态竞争。
                 onClick = viewModel::createList,
                 containerColor = glassSurfaceColor(glassTint()),
                 contentColor = MaterialTheme.colorScheme.onSurface,
+                elevation = FloatingActionButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp),
                 icon = { Icon(painterResource(AppIcons.plus), contentDescription = null) },
                 text = { Text(FAB_TEXT) },
                 modifier = Modifier
@@ -169,36 +181,17 @@ internal fun NoteScreen(
             if (total == 0) {
                 NoteEmptyState()
             } else {
-                val card: @Composable (TodoList) -> Unit = { list ->
-                    NoteListCard(
-                        list = list,
-                        expanded = isExpanded(list, expandedOverrides),
-                        onToggleExpand = {
-                            expandedOverrides =
-                                expandedOverrides.toggle(list.id, isExpanded(list, expandedOverrides))
-                        },
-                        onToggleItem = viewModel::toggleItem,
-                        onDeleteList = { pendingDelete = DeleteTarget.List(list) },
-                        onDeleteItem = { id, text -> pendingDelete = DeleteTarget.Item(id, text) },
-                        onAddItem = viewModel::addItem,
-                        itemDraft = ui.itemDrafts[list.id].orEmpty(),
-                        onItemDraftChange = { text -> viewModel.setItemDraft(list.id, text) },
-                        // 标题就地编辑：同一时刻只编一张（editingTitleOf 是单值）
-                        editingTitle = ui.editingTitleOf == list.id,
-                        titleDraft = ui.titleDraft,
-                        onStartEditTitle = {
-                            viewModel.startEditingTitle(list.id, list.title)
-                        },
-                        onTitleDraftChange = viewModel::setTitleDraft,
-                        onCommitTitle = viewModel::commitTitle,
-                        // 卡片只负责"报告勾选框在哪"，彩带由页面级 Overlay 画（见上方注释）
-                        onBurstOrigin = { origin -> celebration.burstOrigin = origin },
-                        // 需求 2：只有刚新建的那张播入场动效（单值，见 NoteUiState.newListId）
-                        enterFromBottom = ui.newListId == list.id,
-                        // 播完清标记，否则每次重组都会重播一遍
-                        onEnterAnimationDone = viewModel::consumeNewListAnimation,
-                    )
-                }
+                val card = noteCardFor(
+                    ui = ui,
+                    viewModel = viewModel,
+                    isExpandedNow = { list -> isExpanded(list, expandedOverrides) },
+                    onToggleExpanded = { list ->
+                        expandedOverrides =
+                            expandedOverrides.toggle(list.id, isExpanded(list, expandedOverrides))
+                    },
+                    onDeleteList = { pendingDelete = DeleteTarget.List(it) },
+                    onDeleteItem = { id, text -> pendingDelete = DeleteTarget.Item(id, text) },
+                )
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     // 底部多留 88dp：给 FAB 让位，否则最后一张卡片被按钮压住
@@ -268,19 +261,27 @@ internal fun NoteScreen(
         // 卡片当场不存在了 —— 任何"画在卡片里"的方案都会一帧都画不出来
         //（2026-10-04 真机首次实测：只看到清单消失，零彩带）。
         // 所以盖在整页之上、从方框那个坐标喷出，视觉上仍是"从方框那儿蹦出来"。
-        ConfettiOverlay(state = celebration)
+        // 撒落线取状态栏底部：彩点从可见区顶部落，不在状态栏里浪费高度。
+        // 用 WindowInsets 而不是写死 24dp —— 不同设备状态栏高度不同。
+        val topLineYPx = with(LocalDensity.current) {
+            WindowInsets.statusBars.asPaddingValues().calculateTopPadding().toPx()
+        }
+        ConfettiOverlay(state = celebration, topLineY = topLineYPx)
+
+        // M14：底部「补充待办」输入面板。
+        // 叠在 Scaffold **之外**、Box 之内 —— 与彩点同一层 z 序，
+        // 保证它盖在底栏之上（参考图里面板是浮在最上面的）。
+        ui.composingListOf?.let { targetId ->
+            NoteComposeSheet(
+                draft = ui.itemDrafts[targetId].orEmpty(),
+                onDraftChange = { viewModel.setItemDraft(targetId, it) },
+                onSubmit = { viewModel.addItem(targetId) },
+                onDismiss = viewModel::closeCompose,
+                modifier = Modifier.align(Alignment.BottomCenter),
+            )
+        }
     }
 
-    // 删除是不可撤销的 → 二次确认（弹窗本体在 NoteDeleteDialog.kt，主文件要守 300 行门禁）
-    NoteDeleteDialog(
-        target = pendingDelete,
-        onDelete = { target ->
-            when (target) {
-                is DeleteTarget.List -> viewModel.deleteList(target.list.id)
-                is DeleteTarget.Item -> viewModel.deleteItem(target.itemId)
-            }
-        },
-        onCancel = { pendingDelete = null },
-        onDeletedListExtra = viewModel::cancelEditingTitle,
-    )
+    // 删除是不可撤销的 → 二次确认（接线在 NoteDeleteDialogFor，主文件要守 300 行门禁）
+    NoteDeleteDialogFor(target = pendingDelete, viewModel = viewModel, onDismiss = { pendingDelete = null })
 }
