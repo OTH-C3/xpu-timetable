@@ -79,6 +79,83 @@ class XpuRequestPolicyTest {
     }
 
     @Test
+    fun `顶层文档请求一律不拦`() {
+        // 2026-11-05 真机事故：放宽路径匹配后，课表页这次导航被拦下来代发，
+        // 响应头丢失 → 整页 HTML 被当纯文本渲染成源码，页面 JS 不执行，
+        // 结果比"抓不到"更糟：用户屏幕上是源代码。
+        val page = "https://jwglxt.xpu.edu.cn/student/for-std/course-table"
+        assertFalse("顶层导航不能代发", shouldInspect(page, "GET", isForMainFrame = true))
+        // 页面自己发起的 XHR 才算
+        assertTrue("子资源数据请求照常放行", shouldInspect(oldUrl, "GET", isForMainFrame = false))
+    }
+
+    @Test
+    fun `iframe 里的文档同样不拦`() {
+        // isForMainFrame 只覆盖地址栏那一次导航。教务系统常把课表塞进 iframe，
+        // 那里的文档 isForMainFrame = false，照样会丢 Content-Type 变成源码。
+        // 兜底依据是 Accept：要文档的一定含 text/html。
+        val page = "https://jwglxt.xpu.edu.cn/student/for-std/course-table"
+        assertFalse(
+            "iframe 文档不能代发",
+            shouldInspect(page, "GET", isForMainFrame = false, acceptHeader = "text/html,application/xhtml+xml,*/*"),
+        )
+        assertFalse(
+            "只要 xhtml 也算文档",
+            shouldInspect(page, "GET", acceptHeader = "application/xhtml+xml"),
+        )
+        expectLooseness(
+            url = page,
+            accept = "application/json, text/plain, */*",
+            shouldPass = true,
+            label = "XHR 的 json Accept 要放行",
+        )
+        expectLooseness(
+            url = page,
+            accept = "*/*",
+            shouldPass = true,
+            label = "fetch 默认 */* 要放行",
+        )
+        expectLooseness(
+            url = page,
+            accept = "",
+            shouldPass = true,
+            label = "拿不到 Accept 时保持宽松",
+        )
+    }
+
+    private fun expectLooseness(url: String, accept: String, shouldPass: Boolean, label: String) {
+        val got = shouldInspect(url, "GET", isForMainFrame = false, acceptHeader = accept)
+        assertEquals(label, shouldPass, got)
+    }
+
+    @Test
+    fun `服务器没给 Content-Type 时按响应体形状兜底`() {
+        // 事故根因：兜底写死 application/json，导致整页 HTML 以源码形式铺满屏幕。
+        assertTrue(
+            "HTML 必须判成能渲染的类型",
+            responseContentType(null, "  <!DOCTYPE html><html>...").startsWith("text/html"),
+        )
+        assertTrue(
+            "JSON 仍然判成 json",
+            responseContentType(null, """{"studentTableVms":[]}""").startsWith("application/json"),
+        )
+        assertTrue(
+            "其他文本兜底成 text/plain",
+            responseContentType(null, "ok").startsWith("text/plain"),
+        )
+        assertEquals(
+            "服务器给了就照抄，不猜",
+            "application/json;charset=UTF-8",
+            responseContentType("application/json;charset=UTF-8", "<html>"),
+        )
+        assertEquals(
+            "空白头按没给处理",
+            "text/html; charset=utf-8",
+            responseContentType("   ", "<html>"),
+        )
+    }
+
+    @Test
     fun `课表响应按结构认出来`() {
         val body = """{"studentTableVms":[{"id":1,"activities":[{"courseName":"高数"}]}]}"""
         assertTrue(looksLikeScheduleJson(body))

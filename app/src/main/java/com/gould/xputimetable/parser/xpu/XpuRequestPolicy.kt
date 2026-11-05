@@ -30,8 +30,25 @@ private val STATIC_SUFFIX = listOf(".js", ".css", ".png", ".jpg", ".jpeg", ".gif
  *
  * @param url  完整请求 URL
  * @param method HTTP 方法（只代发 GET；POST 往往带副作用，重复发会出事）
+ * @param isForMainFrame 是否是顶层文档请求（地址栏那一次导航）
+ * @param acceptHeader 请求的 Accept 头（用来识别"这是不是要一份文档"）
  */
-fun shouldInspect(url: String, method: String = "GET"): Boolean {
+fun shouldInspect(
+    url: String,
+    method: String = "GET",
+    isForMainFrame: Boolean = false,
+    acceptHeader: String = "",
+): Boolean {
+    // 顶层文档一律不碰。代发会丢掉原响应头（Content-Type / 编码等），
+    // 2026-11-05 真机实测：拦住 `/student/for-std/course-table` 这一次导航后，
+    // 整页 HTML 被当纯文本渲染成源码、页面 JS 不执行，结果什么都抓不到。
+    // 我们要的只是页面自己发的数据请求（XHR/fetch），那些不是顶层文档。
+    if (isForMainFrame) return false
+    // 同一条道理再兜一层：**iframe 里的文档**不是顶层导航，isForMainFrame 为 false，
+    // 但它仍然是一份要渲染的 HTML。浏览器给文档发的 Accept 一定含 text/html，
+    // 给 XHR/fetch 发的通常是 application/json 或 */*，据此就能分开。
+    // 只认 text/html 这一条：宁可漏拦（诊断卡片会留痕），也不能把页面拦成源码。
+    if (wantsDocument(acceptHeader)) return false
     if (!method.equals("GET", ignoreCase = true)) return false
     val host = runCatching { java.net.URL(url).host }.getOrDefault("")
     if (!isCampusHost(host)) return false
@@ -60,6 +77,46 @@ private const val CAMPUS_DOMAIN = "xpu.edu.cn"
 
 /** 课表相关路径关键字；新增候选只改这里，不动拦截逻辑。 */
 private val KEYWORDS = listOf("course-table", "print-data", "get-data", "semester", "lesson", "kb")
+
+/**
+ * 这个请求是不是在要一份**可渲染的文档**（页面 / iframe 页面）。
+ *
+ * 依据是 Accept 头：文档导航由浏览器自动带 `text/html`，而脚本发的数据请求
+ * 要么是 application/json，要么是通配的星号斜杠。**只认 text/html 与 xhtml**，
+ * 空 Accept（拿不到头）按「不是文档」处理，保持宽松。
+ *
+ * 【写法约束】本段是块注释，里面绝不能出现「斜杠 + 星号」连写——Kotlin 的块注释
+ * 可以嵌套，那两个字符会把注释又开一层，整文件从这一行起全部报「Expecting a
+ * top level declaration」，且真正的错因被埋在几百条假错误里。
+ */
+fun wantsDocument(acceptHeader: String): Boolean {
+    val a = acceptHeader.lowercase()
+    return a.contains("text/html") || a.contains("application/xhtml")
+}
+
+/**
+ * 代发回来的响应该用什么 Content-Type 交给 WebView。
+ *
+ * 服务器给了就用服务器的；没给才猜。**为什么必须猜**：`WebResourceResponse`
+ * 的 MIME 决定 WebView 是"渲染"还是"当文本显示"。2026-11-05 的故障就是
+ * 服务器没带 Content-Type、代码兜底成 `application/json`，于是整页 HTML
+ * 被当 JSON 源码铺在屏幕上。猜错方向的代价不对称：把 JSON 当 text/plain
+ * 顶多是一段文本，把 HTML 当 json 就是白屏般的源码——所以这里对 `<` 开头
+ * 一律判 text/html。
+ *
+ * @param serverType `HttpURLConnection.contentType`（可能为 null）
+ * @param body 响应体（只看开头几个字符）
+ */
+fun responseContentType(serverType: String?, body: String): String {
+    val given = serverType?.trim().orEmpty()
+    if (given.isNotEmpty()) return given
+    val head = body.trimStart()
+    return when {
+        head.startsWith("<") -> "text/html; charset=utf-8"
+        head.startsWith("{") || head.startsWith("[") -> "application/json; charset=utf-8"
+        else -> "text/plain; charset=utf-8"
+    }
+}
 
 /**
  * 响应体是不是我们要的课表 JSON。

@@ -33,6 +33,7 @@ import com.gould.xputimetable.parser.xpu.isPortalAfterLogin
 import com.gould.xputimetable.parser.xpu.diagnosticPage
 import com.gould.xputimetable.parser.xpu.looksLikeKbList
 import com.gould.xputimetable.parser.xpu.looksLikeScheduleJson
+import com.gould.xputimetable.parser.xpu.responseContentType
 import com.gould.xputimetable.parser.xpu.shouldInspect
 import com.gould.xputimetable.parser.xpu.structuralSignature
 import java.io.ByteArrayInputStream
@@ -75,7 +76,12 @@ class CaptureWebViewClient(
         request: WebResourceRequest,
     ): WebResourceResponse? {
         val url = request.url.toString()
-        if (!shouldInspect(url, request.method)) return null
+        // 顶层导航必须交回 WebView：代发会丢响应头，整页会被当纯文本渲染成源码。
+        // iframe 里的文档同理，靠 Accept 头认出来（见 shouldInspect 注释）。
+        val accept = request.requestHeaders.entries
+            .firstOrNull { it.key.equals("Accept", ignoreCase = true) }
+            ?.value.orEmpty()
+        if (!shouldInspect(url, request.method, request.isForMainFrame, accept)) return null
         onDiagnostic(diagnosticPath(url))
         return runCatching { fetchAndDispatch(url) }
             .getOrElse { e ->
@@ -107,7 +113,8 @@ class CaptureWebViewClient(
                 else -> onDiagnostic("未识别 ${diagnosticPath(url)}  ${structuralSignature(body)}")
             }
             return WebResourceResponse(
-                connection.contentType ?: "application/json",
+                // 服务器没给 Content-Type 时按响应体形状猜（见 responseContentType 注释）。
+                responseContentType(connection.contentType, body),
                 "utf-8",
                 ByteArrayInputStream(body.toByteArray(Charsets.UTF_8)),
             )
