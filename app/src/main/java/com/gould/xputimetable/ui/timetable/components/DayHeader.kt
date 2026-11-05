@@ -154,7 +154,7 @@ private fun TodayDateBlock(date: LocalDate) {
     val text = date.format(dayFormatter)
     Box(
         modifier = Modifier
-            // ⚠️ 原来是 `.size(28.dp)` 固定正方形：日期一长（"12/31"）或系统字体一放大，
+            // 注意 原来是 `.size(28.dp)` 固定正方形：日期一长（"12/31"）或系统字体一放大，
             // Text 就会折成两行，方块被撑高、表头跟着歪。
             // 改成"高度固定、宽度只给下限"：内容能撑宽但不会撑高，形状仍是圆角小方块。
             .height(todayBlockSize)
@@ -168,7 +168,7 @@ private fun TodayDateBlock(date: LocalDate) {
         Text(
             text = text,
             // 字号与周围 6 天**完全一致**（labelMedium），不再缩放 ——
-            // 老大明确要"之前的效果"：选中那天不该比周围小。
+            // 需求明确要"之前的效果"：选中那天不该比周围小。
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.surface,
             fontWeight = FontWeight.SemiBold,

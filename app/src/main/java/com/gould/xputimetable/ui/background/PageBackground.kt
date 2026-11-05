@@ -74,7 +74,7 @@ fun PageBackground(
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit,
 ) {
-    // 需求四：背景主色，卡片色跟着它走（否则一律死白 = 老大手里的"贴纸感"）
+    // 需求四：背景主色，卡片色跟着它走（否则一律死白 = 贴纸感）
     var dominant by remember { mutableStateOf<Color?>(null) }
     // M13：卡片不透明度。读在组合期（settings 由上层订阅），不额外开 Flow
     val cardAlpha = settings?.cardAlpha?.coerceIn(0f, 1f) ?: DEFAULT_CARD_ALPHA

@@ -14,7 +14,7 @@
  * （设置页的方框、清单卡），等于给他看一个不会动的参照物。
  * 这里直接摆一组真实的 GroupCard —— 底色与色相仍由 PageBackground 下发，仍所见即所得。
  *
- * ⚠️ 全屏覆盖层没有 Scaffold 帮它吃系统栏内边距，顶栏自己 statusBarsPadding()、
+ * 注意 全屏覆盖层没有 Scaffold 帮它吃系统栏内边距，顶栏自己 statusBarsPadding()、
  *   滑块条自己 navigationBarsPadding()，否则顶栏压在状态栏下、三按钮导航盖住滑块。
  */
 package com.gould.xputimetable.ui.settings
@@ -96,7 +96,7 @@ internal fun CardAlphaSheet(
 
     Box(modifier = Modifier.fillMaxSize()) {
         PageBackground(
-            // ⚠️ 作用范围必须强制成"含课表"：沿用用户勾的那几档时，若他没勾课表，
+            // 注意 作用范围必须强制成"含课表"：沿用用户勾的那几档时，若他没勾课表，
             // 这里的背景图压根不画 → 卡片退到"没图"那档，拖滑块画面纹丝不动。
             // M13 起 scope 是集合（多选），所以是 setOf 而不是单值。
             settings = current.copy(

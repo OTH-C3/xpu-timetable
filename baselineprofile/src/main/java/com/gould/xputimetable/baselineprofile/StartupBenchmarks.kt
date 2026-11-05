@@ -12,7 +12,7 @@
  *   - Partial(BaselineProfileMode.Require) 强制使用 APK 内 profile；
  *     None() 明确不使用任何 profile/AOT（每次重置 ART 状态）。
  *
- * ⚠️ 请在**真机**上跑（这是权威做法）。模拟器上 benchmark 库会判为无效环境，
+ * 注意 请在**真机**上跑（这是权威做法）。模拟器上 benchmark 库会判为无效环境，
  *    需要 `-e androidx.benchmark.suppressErrors=EMULATOR` 才能强行运行，结果仅供参考。
  *
  * 运行方式：

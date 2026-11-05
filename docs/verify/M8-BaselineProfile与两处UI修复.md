@@ -72,7 +72,7 @@ Comparison with previous profile:   18019 旧规则 → 25861 新规则
 393 ms vs 382 ms（测不出差异）。原因是 `am start -W` 只覆盖首帧、抖动 ±10%、5 次样本不够，
 且模拟器软件渲染把启动耗时压在图形初始化上。**结论：这类收益必须用 Macrobenchmark 在真机测。**
 
-### ⚠️ 过程中踩到的四个坑（都会让测量"看起来成功但其实是空的"）
+### 注意 过程中踩到的四个坑（都会让测量"看起来成功但其实是空的"）
 
 **坑 1：`includeInStartupProfile` 默认 false（见上）**
 不显式传 `true`，启动路径的 AOT 规则整段丢失，插件只给一行警告，构建照常成功。
@@ -197,24 +197,15 @@ AGP 的 connected test 任务在结束时（**无论用例是否被执行**）�
 
 ---
 
-## 四、顺带完成：容器内 git 可用（详见 `~/文档/沙箱环境修复记录/2026-09-30 容器内从零启用git/`）
+## 四、仓库与样本脱敏
 
-容器内无系统 git 且无法编译；同时 GitHub 存在**按 IP 的间歇性拦截**。
-方案：**JGit（Eclipse 官方 Java 实现）+ 本地 CONNECT 转发代理**（把 `github.com:443`
-中继到可达机房 IP；只监听 127.0.0.1，纯 TCP 中继）。
-
-- `git clone` 公开仓库实测通过（历史完整）；`git-receive-pack` 返回 401 = **push 通路已通、只差凭据**
-- 本项目仓库已建立：分支 `main`，两次提交（`ec4f5fe` 初始化 / `f7e37c8` M8）
-- 提交前做了隐私扫描：抓包样本（含 Cookie）与签名密钥按 `.gitignore` 排除；
-  发现**教务解析测试夹具里残留真实学号**（10 位，`code` 字段），已脱敏为同形状假值并跑测试确认无破坏
-- 同一份夹具里的**教师姓名**（9 个 `teachers[]` + 10 个 `teacherAssignmentString`）一并脱敏：
-  测试文件头本就声明"已脱敏"，且测试只断言内联假名（张三/李四），不依赖夹具真值。
-  做法保守：**只替换 2–5 字的独立姓名 token 为同长度假名**（保留 `（R）` 标记与分隔符，
-  解析覆盖度不变），并加两道自检 —— ① 教师字段内不允许残留假名池之外的汉字串（实测 0）；
-  ② 逐路径审计，改动只落在 `person.nameZh` / `dateTimePlacePersonText` / `teachers[]` /
-  `teacherAssignmentString`，课程名与教室等零改动。单测 237 用例仍全绿。
-- 修正 `.gitignore` 缺陷：原 `/build` 只匹配根目录，会漏掉 `app/build`（344 MB / 4341 文件）
-  与 `baselineprofile/build`（178 MB）→ 改为 `build/`
+- 提交前做隐私扫描：抓包样本（含 Cookie）与签名密钥按 `.gitignore` 排除
+- 发现教务解析测试夹具里残留真实学号，已脱敏为同形状假值，测试通过
+- 同一份夹具里的教师姓名一并脱敏为同长度假名（保留 `（R）` 标记与分隔符），
+  改动只落在 `person.nameZh` / `dateTimePlacePersonText` / `teachers[]` / `teacherAssignmentString`，
+  课程名与教室零改动，单测全绿
+- 修正 `.gitignore` 缺陷：原 `/build` 只匹配根目录，会漏掉 `app/build` 与 `baselineprofile/build`
+  → 改为 `build/`
 
 ---
 
@@ -222,18 +213,15 @@ AGP 的 connected test 任务在结束时（**无论用例是否被执行**）�
 
 | 需求 | 状态 |
 |---|---|
-| 加上 Baseline Profile | ✅ 已接入、已打包；**真机 A/B 实测 median TTID −30.9 ms（−9.6%）** |
-| 退出提示现代化 + 全局顶置 | ✅ 顶置胶囊 + 自动消失 + 切页不重放（像素级验证） |
-| 「回到本周」长亮修复 | ✅ 像素级验证全流程通过（含旧缺陷的重现场景） |
-| （老大追加）把 git 搞定 | ✅ 本地 git 全功能可用；push 仅差凭据 |
+| 加上 Baseline Profile | 已接入、已打包；**真机 A/B 实测 median TTID −30.9 ms（−9.6%）** |
+| 退出提示现代化 + 全局顶置 | 顶置胶囊 + 自动消失 + 切页不重放（像素级验证） |
+| 「回到本周」长亮修复 | 像素级验证全流程通过（含旧缺陷的重现场景） |
 
 **遗留**
-1. **push 只差凭据**：网络通路已验证（`git-receive-pack` 返回 401 而非超时），
-   仓库名与公开性属产品决定；
-2. **发布前换正式 keystore**（现用 debug 密钥签名 release）；
-3. **每次改动热点代码后需重采 profile**：`ANDROID_SERIAL=<serial> gradle :app:generateBaselineProfile`
+1. **发布前换正式 keystore**（现用 debug 密钥签名 release）；
+2. **每次改动热点代码后需重采 profile**：`ANDROID_SERIAL=<serial> gradle :app:generateBaselineProfile`
    （流程已固化，采完记得用 `scripts/measure-startup-ab.sh` 复测）；
-4. **真机上 App 数据目前为空**：见下面「真机数据被清空」一节，需重新走一次教务导入恢复。
+3. **真机上 App 数据目前为空**：见下面「真机数据被清空」一节，需重新走一次教务导入恢复。
 
 ---
 

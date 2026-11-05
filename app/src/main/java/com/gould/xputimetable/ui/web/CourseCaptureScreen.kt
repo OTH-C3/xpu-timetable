@@ -202,7 +202,7 @@ fun CourseCaptureScreen(
                 Spacer(Modifier.height(8.dp))
             }
 
-            // ⚠️ weight(1f) 而不是 fillMaxSize()：上面有提示/诊断卡片，
+            // 注意 weight(1f) 而不是 fillMaxSize()：上面有提示/诊断卡片，
             // 用 fillMaxSize 会按整屏高度测量，把页面底部挤出可视区（"显示不全"的另一半原因）。
             AndroidView(
                 modifier = Modifier

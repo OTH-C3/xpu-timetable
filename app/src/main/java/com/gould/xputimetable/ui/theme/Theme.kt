@@ -6,7 +6,7 @@
  * - 第二层「课程色」：固定 12 色调色板，绝不跟随动态取色 —— 具体见 CoursePalette。
  * - 亮/暗双轨跟随系统（深色是同等公民）。
  *
- * 本文件在 Phase 2 之前是骨架实现，仅覆盖 M3 必要色槽；design-tokens.json 到位后整体替换。
+ * 本文件只覆盖 M3 必要色槽；接入完整设计令牌时整体替换。
  */
 package com.gould.xputimetable.ui.theme
 

@@ -5,7 +5,7 @@
  * 这个设计决策毫无关系。混在一起时，想调 SAT_CAP 之类的观感参数要翻过一大段
  * 与本题无关的三角函数推导。
  *
- * ⚠️ 为什么不用 `android.graphics.Color.colorToHSL` / `HSVToColor`：
+ * 注意 为什么不用 `android.graphics.Color.colorToHSL` / `HSVToColor`：
  *   那是 Android framework 的 API，在**纯 JVM 单元测试**里会抛
  *   "Method ... not mocked"（项目无 Robolectric）。而这几组函数正是要被单测精确
  *   断言的（色相是否保得住、饱和度上限是否生效），必须能脱离设备跑。
@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Color
 
 // ---------- 下面三个是标准 RGB↔HSL 换算，纯 Kotlin 实现 ----------
 //
-// ⚠️ 为什么不用 `android.graphics.Color.colorToHSL` / `HSVToColor`：
+// 注意 为什么不用 `android.graphics.Color.colorToHSL` / `HSVToColor`：
 // 它们是 framework 方法，纯 JVM 单元测试里会抛 "not mocked"（项目明确不引 Robolectric，
 // 范式是"纯函数 + 单测"）。自己写换算换来的是这条规则能被 10+ 个单测钉住。
 

@@ -44,7 +44,7 @@ private val BarHeight = 40.dp
 
 /**
  * M6-fix：无图标后文字是唯一元素，10sp 偏小 → 12sp；M10 产品要求再加大一号 → 13sp；
- * M11-第三批：老大要求"主页最下面的文字加大一个字好" → 14sp。
+ * M11-第三批：按需求把主页底部文字加大一号 → 14sp。
  * 只动字号，高度仍是 BarHeight(40dp)：加大后靠 Box 居中，不会挤压触摸目标宽度。
  */
 private val LabelFontSize = 14.sp
@@ -68,7 +68,7 @@ internal fun AppBottomBar(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-    // 顺序：**课表 / 我的**（M12 曾加过「待办」，M16 老大要求整个移除）。
+    // 顺序：**课表 / 我的**（M12 曾加过「待办」，M16 按需求整个移除）。
     // 两项各占一半，课表是主页面放左侧，拇指最易够到的位置仍是它。
     BottomBarLabel(
         label = LABEL_TIMETABLE,

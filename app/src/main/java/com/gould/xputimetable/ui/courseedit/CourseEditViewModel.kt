@@ -102,7 +102,7 @@ class CourseEditViewModel(
     fun setWeekType(type: WeekType) = editField { it.copy(weekType = type) }
 
     fun setColorTag(tag: Int) {
-        // ⚠️ 不能写 `if (tag < 0) return`：满不透明的 ARGB（0xFFRRGGBB）在 Int 里是**负数**，
+        // 注意 不能写 `if (tag < 0) return`：满不透明的 ARGB（0xFFRRGGBB）在 Int 里是**负数**，
         // 这行守卫会把取色器自取的每一个颜色都静默丢掉——面板关了、颜色没变、表单还停在旧色
         // （2026-10-02 模拟器实测复现）。色板索引和 ARGB 都是合法值，只拦两者都不是的脏数据。
         if (!isValidColorTag(tag)) return
@@ -134,7 +134,7 @@ class CourseEditViewModel(
     /**
      * 准备新增（带当前学期与周次范围）。
      *
-     * ⚠️ 这里的守卫条件是本项目修过的一个真实缺陷的根因：
+     * 注意 这里的守卫条件是本项目修过的一个真实缺陷的根因：
      * 原写法 `if (_draft.value.courseId != null) return` 只判断"有没有 courseId"，
      * 而上一轮编辑过的课程会留下 courseId → 从"编辑课程"返回后再点"添加课程"，
      * 本方法**直接早退、什么都不重置**，于是表单里显示的是上一门课的数据。

@@ -29,7 +29,7 @@ val MIGRATION_1_2: Migration = Migration(1, 2) { connection ->
  * 建表语句必须与 TodoEntities.kt 的实体定义逐字对应（列名、类型、外键、索引），
  * 否则真机启动会命中 `Room cannot verify the data integrity`（构建与单测都是绿的）。
  *
- * ⚠️ 外键顺序：先建 todo_lists 再建 todo_items（被引用方必须先存在），
+ * 注意 外键顺序：先建 todo_lists 再建 todo_items（被引用方必须先存在），
  * 且 todo_items 的外键在 SQLite 里是「表存在时才校验」，但保持正确顺序更利于排查。
  */
 val MIGRATION_2_3: Migration = Migration(2, 3) { connection ->

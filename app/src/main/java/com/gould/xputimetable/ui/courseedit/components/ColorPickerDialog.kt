@@ -106,10 +106,10 @@ internal fun ColorPickerDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        // ⚠️ 必须关掉"点外面就关"：取色盘本身就是一大片可点区域，用户每次点盘子取色
+        // 注意 必须关掉"点外面就关"：取色盘本身就是一大片可点区域，用户每次点盘子取色
         // 都会被当成"点外部"把面板关掉，取色器等于没法用（2026-10-02 真机/模拟器实测复现）。
         // 只有「取消」「保存」两个按钮能关面板，中途点空处不该丢进度。
-        // ⚠️ 本版本 material3 的 AlertDialog 没有 dismissOnClickOutside / dismissOnBackPress
+        // 注意 本版本 material3 的 AlertDialog 没有 dismissOnClickOutside / dismissOnBackPress
         // 这两个具名参数，两个开关都挂在 DialogProperties 上（写成具名参数会整片编译失败）。
         properties = DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false),
         title = { Text("课程颜色") },
@@ -172,7 +172,7 @@ internal fun ColorPickerDialog(
 /**
  * 「按下就取色 + 跟着手指走」的手势，**点按和拖动都生效**。
  *
- * ⚠️ 不能用 `detectDragGestures`：它内部要等越过 touchSlop 才进 Dragging 状态（本版本是
+ * 注意 不能用 `detectDragGestures`：它内部要等越过 touchSlop 才进 Dragging 状态（本版本是
  * AwaitDown → AwaitTouchSlop → Dragging 状态机），**不动手点一下根本不会触发 onDragStart**。
  * 而"点一下选个颜色"恰恰是取色器最常用的操作——2026-10-02 模拟器实测：点平面 hex 纹丝不动，
  * 得拖一下才变；右侧色相条点色带同样没反应（同一处毛病）。
@@ -212,10 +212,10 @@ private fun HueCanvas(
     Box(
         modifier = modifier
             .border(1.dp, MaterialTheme.colorScheme.outlineVariant, shape)
-            // ⚠️ clip 必须加：drawRect 铺的是**直角**，而 border 画的是**圆角**，两者形状不齐，
+            // 注意 clip 必须加：drawRect 铺的是**直角**，而 border 画的是**圆角**，两者形状不齐，
             // 渐变会从圆角弧外面戳出去，四个角各漏一块黑色/深红的小三角（底下两角最明显）。
             // clip 之后填充跟着同一个 shape 走，角就干净了。这条孤立地看不出毛病，
-            // 是 2026-10-02 老大问"为什么四个角有三角形"才揪出来的。
+            // 是 2026-10-02 排查"为什么四个角有三角形"时揪出来的。
             .clip(shape)
             .pointerInput(Unit) { pickGesture { offset -> pick(offset.x, offset.y) } },
     ) {
@@ -266,7 +266,7 @@ private fun HueSlider(
         Canvas(modifier = Modifier.matchParentSize()) {
             // 一条纵向渐变把 7 个停靠点插值开：红→黄→绿→青→蓝→洋红→红，
             // 段与段之间不再有硬边（之前是 6 段纯色方块，看着就是"只有这几档颜色"）。
-            // ⚠️ 带停靠点的重载是 vararg，调用必须写具名参数 + 展开符，位置传参会匹配到 List<Color> 那个重载上
+            // 注意 带停靠点的重载是 vararg，调用必须写具名参数 + 展开符，位置传参会匹配到 List<Color> 那个重载上
             drawRect(brush = Brush.verticalGradient(*HUE_STOPS.toTypedArray(), startY = 0f, endY = size.height))
         }
         Canvas(modifier = Modifier.matchParentSize()) {

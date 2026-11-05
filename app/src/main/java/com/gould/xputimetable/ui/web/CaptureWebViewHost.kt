@@ -74,7 +74,7 @@ internal fun buildCaptureWebView(
         javaScriptEnabled = true          // 强智前端是 SPA，无 JS 课表页不出数据
         domStorageEnabled = true          // 现代 SPA 把鉴权态放 localStorage/sessionStorage
         databaseEnabled = true
-        // ⚠️ 不覆盖 User-Agent。门户抓包里有 auth2/img/android.png、ios.png，
+        // 注意 不覆盖 User-Agent。门户抓包里有 auth2/img/android.png、ios.png，
         // 说明学校登录页**自带移动端适配**；强行设桌面 UA 会拿回 PC 固定宽布局，
         // 在手机上右侧留白边（2026-11-05 模拟器实测：内容止于 890/1080px）。
         // 用默认移动 UA + wide viewport，让响应式页面按 device-width 铺满。
@@ -90,7 +90,7 @@ internal fun buildCaptureWebView(
 
     val cookies = CookieManager.getInstance()
     cookies.setAcceptCookie(true)
-    // ⚠️ 跨域 SSO 的关键：门户与教务是不同子域，不开这个 CAS 换票后的会话带不过去
+    // 注意 跨域 SSO 的关键：门户与教务是不同子域，不开这个 CAS 换票后的会话带不过去
     cookies.setAcceptThirdPartyCookies(this, true)
 
     webChromeClient = object : WebChromeClient() {

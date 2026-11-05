@@ -2,7 +2,7 @@
 
 > 生成日期：2026-09-16
 > 基于：PRD v1.0 + 技术架构文档 v1.0 + UIUX 设计文档 v1.0
-> 状态：**待发起人确认**（确认后即锁定，开发以本文档为唯一依据）
+> 状态：**待项目维护者确认**（确认后即锁定，开发以本文档为唯一依据）
 > 上游文档：`docs/02-PRD产品需求文档.md`、`docs/03-技术架构文档.md`、`docs/04-UIUX设计文档.md`、`docs/decisions/ADR-001~009`、`docs/decisions/OPEN-DECISIONS.md`
 
 ---
@@ -10,7 +10,7 @@
 ## 1. 产品定义
 
 - **一句话描述**：西安工程大学学生专属的极简安卓课表 App——教务一键导入、打开即见本周课表、课前提醒、桌面小组件；无广告、无账号、无后端，全部数据只留在本机。
-- **目标用户**：西安工程大学在校本科生（金花 / 临潼两校区），以及发起人本人（开发者兼用户）。
+- **目标用户**：西安工程大学在校本科生（金花 / 临潼两校区），以及项目维护者本人（开发者兼用户）。
 - **核心问题**：学校官方「西工程大」App 课表加载不稳定（应用商店评分 1.3–1.7，差评高频词「课表加载不出来 / 登录不上 / 白屏」，见 PRD §3.2）；商业课表 App 广告重、隐私存疑、且普遍不认学校升级后的新教务平台（见 PRD §3.3）。
 
 ---
@@ -69,7 +69,7 @@
 | 架构形态 | 单模块 + 分层分包 | — | ADR-007（拒绝多模块 Clean Architecture） |
 | 小组件 / 提醒 | Glance **1.2.0** / AlarmManager + WorkManager | — | 架构 §8.4/§9.3/§9.4 |
 | 分发 | GitHub Releases + Actions CI | — | 仅 Releases，不上市场 |
-| 协议 | **GPL-3.0** | — | 发起人 2026-09-16 决策；`LICENSE` 已入库 |
+| 协议 | **GPL-3.0** | — | 项目维护者 2026-09-16 决策；`LICENSE` 已入库 |
 
 **待核对项（首次构建时按 Gradle 报错修正并回写架构 §4.1）**：KSP 构建号、Navigation 3 最新 patch、Glance 1.2.0、coroutines patch —— 见 `OPEN-DECISIONS.md` #4。
 **2026-09-17 状态**：Glance 1.2.0 与 WorkManager 2.11.2 已实测核对通过（见架构 §4.1 回写记录）；KSP 已在 M1 落实 2.3.12；Navigation 3 暂不引入。
@@ -190,7 +190,7 @@ class WebImportCoordinator(jsonParser: XpuJsonParser, domParser: XpuDomParser) {
 
 ## 8. 设计 Token（锁定项 — 完整 tokens 于 Phase 2 交付）
 
-> Phase 2 由设计师产出 `design-tokens.json` + `design-tokens.css`（四层 Token），本节锁定的是**不可漂移的决策**（依据：UIUX 文档 §4/§5/§6）。
+> 设计令牌（`design-tokens.json` / `design-tokens.css`，四层 Token）为后续可迭代项，本节锁定的是**不可漂移的决策**（依据：UIUX 文档 §4/§5/§6）。
 
 | Token 项 | 锁定值 / 规则 |
 |----------|----------------|
@@ -328,22 +328,22 @@ apkanalyzer apk file-size app/build/outputs/apk/release/app-release.apk   # 断�
 |------|----------|------|----------|
 <!-- 按日期**倒序**（新的在最前）；同一批次的改动**合并成一行**，
      它的「变更内容」单元格内按 ①②③ 列出各条。 -->
-| 2026-11-05 | **教务直连改版适配（M17）**：① 请求判定由"一条精确 URL 正则"改为「URL 宽匹配 + 响应体按内容确认」——新增 `XpuRequestPolicy.kt` 纯函数，学校改路径不再静默失效；② 新版强智 `kbList` 结构单独识别并给出明确提示（解析器暂不支持，不硬塞给旧 DTO）；③ WebView 会话保持：`setAcceptThirdPartyCookies` + `flush()` 落盘 + 不主动清 Cookie，登录态跨启动保留，**不存账号密码/不导出 Cookie/不上传**（AC-09 红线）；④ 登录完成自动跳课表页，不再要求手点；⑤ 手机端显示修复：去掉桌面 UA 让学校返回移动版，`useWideViewPort` + `loadWithOverviewMode`，WebView 在 Column 里改用 `weight(1f)`；⑥ 新增诊断卡片，显示当前页面 URL 与学校实际请求的数据接口路径（脱敏，不含 token/Cookie/响应体） | 老大反馈「学校更新后登录课表不会自动读取」「记住登录状态」「登录后不要学生手点」「手机页面显示不全」 | `parser/xpu/XpuRequestPolicy.kt`(新)、`ui/web/*`（重构拆出 CaptureWebViewHost / CaptureDiagnostics）、`XpuRequestPolicyTest.kt`(新) |
-| 2026-11-05 | **M16 移除待办清单 + 日期黑块修正**：① 整个「待办清单」功能移除 —— `ui/note/` 全包、`domain/model/TodoList`、`domain/repository/TodoRepository`、`data/repository/TodoRepositoryImpl`、装配层与导航项全部删除；底栏由三项收为「课表 / 我的」两项；`BackgroundScope.NOTE`（便签）档一并移除，设置页作用范围变为三项；② **保留 Room 两张待办表与 MIGRATION_2_3**（不删用户数据、不写破坏性迁移），老偏好里存过 "NOTE" 的由 `parseScopes` 静默丢弃并有单测钉住；③ 日期黑块：撤销 M16 早前的字号缩放（老大要求"之前的效果"，选中那天不该比周围小），改为字号与其余六天一致、由方块横向伸展承担长日期，`maxLines=1` + `softWrap=false` 仍保证单行；④ 版本号 0.2.0 → 0.3.0 | 老大明确「App 里的待办清单功能整个不要了」，并指出选中日期字号比周围小需要恢复 | `ui/note/*`（删）、`ui/navigation/*`、`ui/theme/Tokens.kt`、`ui/background/BackgroundScope.kt`、`ui/settings/BackgroundScopeSection.kt`、`ui/timetable/components/DayHeader.kt`、`README.md` |
+| 2026-11-05 | **教务直连改版适配（M17）**：① 请求判定由"一条精确 URL 正则"改为「URL 宽匹配 + 响应体按内容确认」——新增 `XpuRequestPolicy.kt` 纯函数，学校改路径不再静默失效；② 新版强智 `kbList` 结构单独识别并给出明确提示（解析器暂不支持，不硬塞给旧 DTO）；③ WebView 会话保持：`setAcceptThirdPartyCookies` + `flush()` 落盘 + 不主动清 Cookie，登录态跨启动保留，**不存账号密码/不导出 Cookie/不上传**（AC-09 红线）；④ 登录完成自动跳课表页，不再要求手点；⑤ 手机端显示修复：去掉桌面 UA 让学校返回移动版，`useWideViewPort` + `loadWithOverviewMode`，WebView 在 Column 里改用 `weight(1f)`；⑥ 新增诊断卡片，显示当前页面 URL 与学校实际请求的数据接口路径（脱敏，不含 token/Cookie/响应体） | 用户反馈「学校更新后登录课表不会自动读取」「记住登录状态」「登录后不要学生手点」「手机页面显示不全」 | `parser/xpu/XpuRequestPolicy.kt`(新)、`ui/web/*`（重构拆出 CaptureWebViewHost / CaptureDiagnostics）、`XpuRequestPolicyTest.kt`(新) |
+| 2026-11-05 | **M16 移除待办清单 + 日期黑块修正**：① 整个「待办清单」功能移除 —— `ui/note/` 全包、`domain/model/TodoList`、`domain/repository/TodoRepository`、`data/repository/TodoRepositoryImpl`、装配层与导航项全部删除；底栏由三项收为「课表 / 我的」两项；`BackgroundScope.NOTE`（便签）档一并移除，设置页作用范围变为三项；② **保留 Room 两张待办表与 MIGRATION_2_3**（不删用户数据、不写破坏性迁移），老偏好里存过 "NOTE" 的由 `parseScopes` 静默丢弃并有单测钉住；③ 日期黑块：撤销 M16 早前的字号缩放（需求方要求恢复"之前的效果"，选中那天不该比周围小），改为字号与其余六天一致、由方块横向伸展承担长日期，`maxLines=1` + `softWrap=false` 仍保证单行；④ 版本号 0.2.0 → 0.3.0 | 用户明确「App 里的待办清单功能整个不要了」，并指出选中日期字号比周围小需要恢复 | `ui/note/*`（删）、`ui/navigation/*`、`ui/theme/Tokens.kt`、`ui/background/BackgroundScope.kt`、`ui/settings/BackgroundScopeSection.kt`、`ui/timetable/components/DayHeader.kt`、`README.md` |
 | 2026-10-05 | **M13 界面批次（待办清单页）**：① 待办清单卡片（`GroupCard` 玻璃面 + 整组勾选 + 折叠）；② 勾选划线改为**从左到右**动画（`StrikeGeometry` 纯函数，11 个单测钉住逐行几何）；③ 整组完成自动折叠并归入「已完成」（`groupTodoLists` 纯函数）；④ **纸片庆祝彩带**（`Confetti` 纯函数 + 页面级 Overlay，零新依赖、禁 emoji）；⑤ 勾完最后一项先出彩带、**延迟 660ms** 再移进已完成；⑥ 新建清单滑入、「已完成」展开动效；⑦ 记住「已完成」展开态（搬进 ViewModel，`remember` 活不过页面切换）；⑧ 点空白收键盘（**不能用 `clickableNoRipple`** —— indication=null 意味节点不可聚焦，`clearFocus()` 收不到）；⑨ 长按标题/头部删除（**标题带 `weight(1f)` 会吃掉整行长按事件，必须自己也 `combinedClickable`**）；⑩ 勾选框 20→16dp、输入框 56→40dp（`CompactTextField`，M3 `OutlinedTextField` 的 `minHeight` 写死在 `TextFieldDefaults`，改它会波及全项目输入框） | 用户分三批提出 10+ 条界面需求；其中「改名时去掉勾选框」实现后被判定为缺陷并**撤销**（编辑态隐藏控件会让头部布局两态不一致，用户以为功能坏了） | `ui/note/*`（新增 `NoteCelebration.kt`/`NoteDeleteDialog.kt`/`CompactTextField.kt`/`DoneMoveDelayTest.kt`）、`ui/theme/Tokens.kt` |
 | 2026-10-04 | **M12 背景与底栏批次**：① 新增**待办清单**作为底栏第三项；② 全局自定义背景图（DataStore `background_prefs`），底色与背景图**唯一来源 = 导航根 `PageBackground`**（各页 `Scaffold` 一律 `containerColor = Color.Transparent`，谁自己涂色就重现「多一层白底」）；③ 图片加载**零新依赖**：自写 `ContentResolver` + `BitmapFactory` 两遍解码（`decodeSampleSize` **刻意偏离**官方公式：用「超过就减半」而非「减半后仍 ≥ 目标才减」，否则 4000×3000 返 1 = 原样解码 24MB → OOM）；④ 底栏点击无黑方框（`clickable` 默认带 Material 水波纹，底栏无背景 → 水波纹画在透明底上）；⑤ **玻璃质感**（`GlassPalette`，联网调研后不引库：`Modifier.blur` 官方标注 API 31+ 且低版本静默忽略、RenderScript 只剩 CPU 实现、`Haze` 在 API≤30 默认就是 scrim、`AndroidLiquidGlass` 依赖 AGSL=API 33+；本项目 minSdk 26 → 真模糊做不到） | 用户要求「让白色 UI 方框和背景融洽一点，现在对比高了有点突兀」 | `ui/background/*`（新增 `PageBackground.kt`/`GlassPalette.kt`）、`ui/note/*`、`ui/navigation/AppBottomBar` |
 | 2026-10-02 | **M9 界面与导入批次**：① AC-08 通道调整为「教务直连 / 从文件导入 / 扫二维码 / 手动添加」并**删除 WakeUp CSV 路径**；② 导入/清理/分享页界面；③ 划线位置校正（`STRIKE_Y_RATIO` 0.42→0.5，0.42 是凭感觉猜的，落在行盒上沿而 M3 bodyLarge 的 leading 主要加在上面） | 用户实机使用反馈 | `ui/import/*`、`ui/share/*`、`ui/clean/*` |
-| 2026-09-30（补记） | **移除课前提醒功能**（M7 产品决策）：`reminder/` 整包、`NextClass`/`findNextClass`、偏好层 `data/prefs/`、设置项全部删除。⚠️ 保留 `MY_PACKAGE_REPLACED` 接收器与 `work-runtime-ktx` 依赖（Glance 需要） | 提醒误报率高，且与「不打扰」的定位冲突 | 全项目（减少约 1/4 代码量） |
+| 2026-09-30（补记） | **移除课前提醒功能**（M7 产品决策）：`reminder/` 整包、`NextClass`/`findNextClass`、偏好层 `data/prefs/`、设置项全部删除。注意 保留 `MY_PACKAGE_REPLACED` 接收器与 `work-runtime-ktx` 依赖（Glance 需要） | 提醒误报率高，且与「不打扰」的定位冲突 | 全项目（减少约 1/4 代码量） |
 | 2026-09-30（补记） | **修订 AC-13 的覆盖语义**：`ImportMode.REPLACE`（覆盖原课表）= 清空本学期**全部非手动来源**后写入本次数据，而不再是只清同来源 | 覆盖两课表时旧课残留，用户手动编辑的课会被连带清掉 | `data/repository/*`、`ui/import/*` |
 | 2026-09-17 | 新增 **AC-23（同格多课必须全部可见，P0）** 与 **AC-24（按来源清理课程，P1）**；并由真机数据确认「同格多课重叠」为真实缺陷（周一 1-2 节 3 门课只显示 1 门，全学期 6 处） | 教务直连真机导入真实课表后截图暴露：绝对定位下同格卡片互相覆盖，课程静默不可见；按来源清理是「按来源替换」的自然补充 | §9 验收标准（+2 条）；实现落在 `ui/timetable/components/WeekGrid.kt`、`data/repository/*`、`ui/import/*` |
 | 2026-09-17 | 新增两条界面实现约束（避让系统栏 / Compose 表单重组范围收敛）与对应代码重构：编辑页改 Scaffold + statusBarsPadding + imePadding；表单拆为稳定参数小组件 + 方法引用回调；数据层补输入校验（课程名/学期归属/courseId 一致性/星期/节次/周次区间、节次号与分钟数）；WeekCalc 补脏数据边界（作息越界、星期越界、矛盾区间、超大周次上限）；VM 补异常兜底（学期日期解析失败不崩溃、写操作失败转 Snackbar 提示） | 用户报告两个真实缺陷（状态栏遮挡按钮、标签动画卡顿）并要求整体健壮性优化 | §10 边界与约束；`ui/courseedit/*`、`ui/timetable/*`、`data/repository/*`、`domain/WeekCalc.kt`；新增两个测试文件（RepositoryValidationTest 10 例、WeekCalcEdgeCaseTest 6 例） |
 | 2026-09-17 | 新增 **AC-25（未授权精确闹钟时设置页必须如实标注延迟量级并提供授权入口；授权返回后状态刷新且闹钟变精确，P1）**；真机实测：`SCHEDULE_EXACT_ALARM` 本机默认未授权 → 提醒走降级路径，系统投递窗口 **1 小时**（`window=+1h0m0s0ms`，与同 dump 平台常量 `allow_while_idle_window` 一致；同 dump 内精确闹钟为 `window=0`），设置页原文案称「可能延后几分钟」→ **低估一个数量级**；代码核查：ON_RESUME 状态刷新**已实现**（`ui/settings/SettingsScreen.kt:101-103`，非缺陷），但**授权后不重排**（未处理系统广播 `ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED`）→ 已挂的非精确闹钟会留到下次自然重排 | 真机 `dumpsys alarm` A/B 对照 + 源码核查 | §9 验收标准（+1 条）；实现落在 `ui/settings/SettingsScreen.kt`、`reminder/SystemEventReceiver.kt` |
 | 2026-09-17 | 新增 **AC-26（首页二次返回退出，P0）、AC-27（非首页返回=回上一页，P0）、AC-28（弹窗优先关闭，P1）**；现状核查：全项目**零** `BackHandler`/`onBackPressed`，`AppNav` 为单 `mutableStateOf` 状态机**无返回栈**，各屏仅写死 `onBack` → 系统返回键在任何页面都直接退出应用（真机复现）；且真机为 Android 16/API 36 + targetSdk 36 → 预测式返回默认开启，**必须**用 `OnBackPressedCallback`，`onBackPressed()` 重写不会被调用 | 用户明确要求（导航行为缺陷） | §9 验收标准（+3 条）；实现落在 `ui/navigation/AppNav.kt`、`ui/timetable/TimetableScreen.kt`、`ui/web/CourseCaptureScreen.kt`、`navigation/BackPolicy.kt`（新增纯函数） |
-| 2026-09-17 | 新增 **AC-29（点击提醒通知必须呈现周视图，P1）**；真机实测发现保真缺口：点击通知能把 App 拉回前台，但 Activity 复用（standard 启动模式）→ 呈现的是**离开时的页面**（实测停在设置页），非周视图 | 真机 `dumpsys` + UI 树取证 | §9 验收标准（+1）；实现落在 `MainActivity.kt`（singleTop + onNewIntent）+ `ui/navigation/AppNav.kt`（popToRoot）；已并入 `docs/tasks/M2-D-fix-提醒延迟文案与授权引导.md` 任务 3 |
+| 2026-09-17 | 新增 **AC-29（点击提醒通知必须呈现周视图，P1）**；真机实测发现保真缺口：点击通知能把 App 拉回前台，但 Activity 复用（standard 启动模式）→ 呈现的是**离开时的页面**（实测停在设置页），非周视图 | 真机 `dumpsys` + UI 树取证 | §9 验收标准（+1）；实现落在 `MainActivity.kt`（singleTop + onNewIntent）+ `ui/navigation/AppNav.kt`（popToRoot）；已并入 「M2-D-fix-提醒延迟文案与授权引导」 任务 3 |
 | 2026-09-17 | 回写版本核对结果（Glance 1.2.0 / WorkManager 2.11.2 实测通过，架构 §4.1）；并**订正 M3 规格中「glance 不传递引入 WorkManager」的错误结论**——实测传递带入 `work-runtime:2.7.1`，由显式声明的 2.11.2 统一裁决 | M3 落地时 `:app:dependencies` 实测 | §3 依赖表注记（+1 行） |
-| 2026-09-17 | 新增 **AC-30 ~ AC-35**（表头信息增强 / 滑动切周与零误触入口 / 底部导航与「我的」页 / UI 规范基线）；来源：产品负责人提供的竞品截图标注与 5 组需求；产出规格 `docs/tasks/M4-UI-表头增强-滑动切周-底部导航.md` | 产品需求（UI 打磨批次，MVP 之后） | §9 验收标准（+6 条）；实现落在 `ui/timetable/*`、`ui/navigation/AppNav.kt`、新 `ui/profile/`、`ui/theme/Tokens.kt` |
-| 2026-09-17 | 新增 **AC-36 ~ AC-39**（小组件圆角卡片 / 头部与右上信息 / 剩余课程列表与逐节推进 / 交替行底色）；**本规格取代 M3 §4.2 的小组件空态文案**（AC-19 的行为要求不变，空态文案由统一空态承接）；新增「课程结束时刻精确刷新」机制 | 产品负责人提供的两小组件对比截图与 4 组需求 | 产出规格 `docs/tasks/M4-W-小组件圆角与信息改版.md`；实现落在 `widget/*` 与小组件资源 |
-| 2026-09-17 | 新增 **AC-40 ~ AC-42**（动效放慢与零 IO、主页与底栏配色、顶部按钮位置、小组件尺寸与文字统一）；**确认 2026-08-24 为真实开学日**，数据保持现状 | 产品需求（UI 打磨批次） | 产出规格 `docs/tasks/M5-UI-动效与配色调整.md` |
+| 2026-09-17 | 新增 **AC-30 ~ AC-35**（表头信息增强 / 滑动切周与零误触入口 / 底部导航与「我的」页 / UI 规范基线）；来源：产品负责人提供的竞品截图标注与 5 组需求；产出规格 「M4-UI-表头增强-滑动切周-底部导航」 | 产品需求（UI 打磨批次，MVP 之后） | §9 验收标准（+6 条）；实现落在 `ui/timetable/*`、`ui/navigation/AppNav.kt`、新 `ui/profile/`、`ui/theme/Tokens.kt` |
+| 2026-09-17 | 新增 **AC-36 ~ AC-39**（小组件圆角卡片 / 头部与右上信息 / 剩余课程列表与逐节推进 / 交替行底色）；**本规格取代 M3 §4.2 的小组件空态文案**（AC-19 的行为要求不变，空态文案由统一空态承接）；新增「课程结束时刻精确刷新」机制 | 产品负责人提供的两小组件对比截图与 4 组需求 | 产出规格 「M4-W-小组件圆角与信息改版」；实现落在 `widget/*` 与小组件资源 |
+| 2026-09-17 | 新增 **AC-40 ~ AC-42**（动效放慢与零 IO、主页与底栏配色、顶部按钮位置、小组件尺寸与文字统一）；**确认 2026-08-24 为真实开学日**，数据保持现状 | 产品需求（UI 打磨批次） | 产出规格 「M5-UI-动效与配色调整」 |
 | 2026-09-16 | 首版生成（基于 PRD/架构/UIUX v1.0 + ADR-001~009 + GPL-3.0 决策） | Phase 1.5 规格契约 | 全项目 |
 | 2026-09-16 | 补入 6 条 Room 3 实测坑位（转换器改名 / 必须 setDriver / builder 签名 / DAO 禁同步 / KSP 版本规则 / week_type 解析安全）；确认 `week_type` 以 TEXT 存储，枚举转换置于仓库边界 | M1 数据层实施中由 worker 实测发现，经团队领导独立复核 | §11 已知坑、§6 表清单 |
 | 2026-09-16 | **`courses` 增补 `term_id`（FK→terms，CASCADE，带索引）**；周次查询改 `UPPER(week_type)` 大小写不敏感 + 写入侧统一存大写 | ① 无学期归属则 AC-13「覆盖本学期数据」无法实现，下学期导入会与旧课混显 ② SQL 字面比较漏掉小写 token 的行，课程会在周视图静默消失（经真实 SQLite 夹具实测） | §6 表清单、§9 验收 AC-13、架构 §7.2 |

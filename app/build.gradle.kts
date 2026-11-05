@@ -30,7 +30,7 @@ room3 {
 }
 
 android {
-    namespace = "com.gould.xputimetable"   // 默认假设：以发起人常用昵称命名；首次发布前可改（改名需全局重构）
+    namespace = "com.gould.xputimetable"   // 默认假设：以维护者常用昵称命名；首次发布前可改（改名需全局重构）
     compileSdk = 37                        // ADR-009：Compose 1.12 / BOM 2026.08 强制
 
     defaultConfig {
@@ -57,7 +57,7 @@ android {
             // M7：release 暂用 debug 密钥签名。
             // 两个原因：① baselineProfile 插件会派生 nonMinifiedRelease 变体并安装到真机采集，
             // 未签名的 APK 装不上；② 与本机既有安装同签名 → 覆盖安装可保留数据。
-            // ⚠️ 发布到 GitHub Releases 前必须换成正式 keystore（换签名会导致无法覆盖安装、需卸载重装）。
+            // 注意 发布到 GitHub Releases 前必须换成正式 keystore（换签名会导致无法覆盖安装、需卸载重装）。
             // 用 getByName("debug") 而不是硬编码路径：AGP 会在缺失时自动生成 ~/.android/debug.keystore，
             // 换机器也能构建。
             signingConfig = signingConfigs.getByName("debug")

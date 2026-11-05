@@ -2,7 +2,7 @@
 <!--
   today_widget_preview.xml —— 系统小组件选择器里的静态预览（API 31+ previewLayout）。
 
-  ⚠️ 两条硬约束（2026-10-02 实测踩坑）：
+  注意 两条硬约束（2026-10-02 实测踩坑）：
   1. **禁止使用裸 `<View>`**：启动器的预览 inflater 是受限的，会抛
      `InflateException: Class not allowed to be inflated android.view.View`
      → 整个预览变成「Can't load widget」。占位请用 `<TextView>`（已验证可 inflate）。

@@ -95,7 +95,7 @@ internal fun BackgroundOpacitySheet(
         // ---------- 背景 + 真实课表主页 ----------
         // 预览的是「这张图 + 这个不透明度，铺在课表主页上是什么效果」。
         //
-        // ⚠️ 所以 settings 与 scope **都**要强制成 TIMETABLE，不能沿用用户选的作用范围：
+        // 注意 所以 settings 与 scope **都**要强制成 TIMETABLE，不能沿用用户选的作用范围：
         //   若沿用（用户只选「我的」），shouldDrawBackground(PROFILE 集合, TIMETABLE) = false →
         //   预览里根本不画图，拖滑块毫无反应，用户以为功能坏了。
         // 强制成课表后，无论作用范围选哪一项，这里的预览都是有效的效果演示。
@@ -159,7 +159,7 @@ internal fun BackgroundOpacitySheet(
                 onApply(live)
                 onDismiss()
             },
-            // ⚠️ 这一层是全屏覆盖，没有 Scaffold 帮它吃系统栏内边距 →
+            // 注意 这一层是全屏覆盖，没有 Scaffold 帮它吃系统栏内边距 →
             // 必须自己 navigationBarsPadding()，否则三按钮导航下整条滑块被压住。
             modifier = Modifier.align(Alignment.BottomCenter).navigationBarsPadding(),
         )

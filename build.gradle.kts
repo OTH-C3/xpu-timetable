@@ -6,7 +6,7 @@
 //   导致 Release 构建的 :app:produceReleaseComposeMapping 任务无法解析依赖而失败。
 //   显式把 KGP 提到项目 Kotlin 版本（2.3.21，其映射构件已发布）即可修复。
 //   依据：AGP 9.0 发布说明「升级到更高版本的 KGP」章节 + 本机实测（404 vs 200）。
-//   ⚠️ 版本号须与 gradle/libs.versions.toml 的 kotlin 保持一致（buildscript 块内无法读取版本目录，故此处字面量）。
+//   注意 版本号须与 gradle/libs.versions.toml 的 kotlin 保持一致（buildscript 块内无法读取版本目录，故此处字面量）。
 buildscript {
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.21")

@@ -25,8 +25,8 @@ keystore.properties
 *.aab
 *.log
 
-# --- 本机工具 / 智能体工作目录 ---
-# .workbuddy/ 是本地协作与记忆目录（含个人备注与决策记录），公开仓库不入库；
+# --- 本机工具 / 本地工作目录 ---
+# .workbuddy/ 是本地工作目录（含个人备注与过程记录），公开仓库不入库；
 # .mimosa / .video_agent 为本机工具产生的缓存目录，与工程无关。
 .workbuddy/
 .mimosa/
@@ -40,3 +40,6 @@ keystore.properties
 docs/fixtures/capture/*.har
 docs/fixtures/capture/*.json
 docs/fixtures/capture/*.png
+
+# 开发过程的任务单（内部工作稿，不对外发布）
+docs/tasks/

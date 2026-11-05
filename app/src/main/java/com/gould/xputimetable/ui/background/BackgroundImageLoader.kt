@@ -101,7 +101,7 @@ suspend fun loadBackgroundBitmap(
  * 规则：只要**最长边**超过 maxPixels 就减半，直到不超过 —— 即结果长边 ≤ maxPixels。
  * 必须取 2 的幂 —— BitmapFactory 对非 2 幂的 inSampleSize 解码结果不可预期。
  *
- * ⚠️ 这里刻意用"超过就减半"而不是 Android 官方 calculateInSampleSize 的
+ * 注意 这里刻意用"超过就减半"而不是 Android 官方 calculateInSampleSize 的
  * "减半后仍 ≥ 目标才减"（那套会把结果长边放到目标的 2 倍以内）。
  * 差别在 4000×3000 的手机照片上很致命：官方写法在目标 2400 时返回 1，
  * 于是 4000×3000 按 RGB_565 **原样解码 = 24MB**，高分屏再叠加就是 OOM。

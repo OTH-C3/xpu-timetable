@@ -10,7 +10,7 @@
  *   4. M13「为白色UI方框增加透明度调节」→ 卡片不透明度，与上面第 2 条那档背景图不透明度
  *      是两码事（图有多淡 / 方框有多透），故单独一条入口，共用同一套全屏预览壳。
  *
- * ⚠️ 选图后必须取持久化读权限（takePersistableUriPermission）：
+ * 注意 选图后必须取持久化读权限（takePersistableUriPermission）：
  *   SAF 返回的是临时授权，进程被杀后就读不到图，表现为"重启后背景图消失"。
  *   ACTION_OPEN_DOCUMENT 明确支持 persistable grant，这是唯一能长期读到的办法。
  *
@@ -78,7 +78,7 @@ internal fun BackgroundScreen(
     // SAF 选图：必须取持久化授权，否则重启后读不到图
     val picker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri == null) return@rememberLauncherForActivityResult
-        // ⚠️ takePersistableUriPermission 会抛 SecurityException（若文件提供方不支持持久授权），
+        // 注意 takePersistableUriPermission 会抛 SecurityException（若文件提供方不支持持久授权），
         // 所以 runCatching 收口：拿不到授权也要把 URI 存下来，至少本次进程内能看。
         runCatching {
             val resolver = context.contentResolver
@@ -89,7 +89,7 @@ internal fun BackgroundScreen(
         }.onFailure {
             onShowHint("这张图片只在本页有效，重启后可能不显示")
         }
-        // ⚠️ setImageUri 是 suspend（DataStore 的 edit 会挂起等磁盘），
+        // 注意 setImageUri 是 suspend（DataStore 的 edit 会挂起等磁盘），
         // 不能塞进 runCatching 的同步块里——必须先 launch 进协程，再在里面 try。
         scope.launch {
             runCatching { backgroundPrefs.setImageUri(uri.toString()) }

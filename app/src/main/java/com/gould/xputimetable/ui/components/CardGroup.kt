@@ -9,7 +9,7 @@
  *
  * ## 需求四：从"白面 + 描边"改成"玻璃面"（2026-10-04）
  *
- * 起因：老大的反馈「白色的ui方框和背景很违和 / 对比高了有点突兀」。
+ * 起因：用户反馈「白色的 UI 方框和背景很违和 / 对比高了有点突兀」。
  * 根因不是"白"，而是白卡片**完全不透明** —— 用户换成背景图后，卡片就成了
  * 一块块贴在照片上的白色纸片，与背景没有任何光影关系。
  *
@@ -77,7 +77,7 @@ internal fun GroupCard(
     }
     // 上沿亮、下沿暗 —— 玻璃边缘的高光。纯色描边会退化成"贴纸边"。
     //
-    // ⚠️ 两个颜色**必须在 remember 之外**求值：glassEdgeTop/Bottom 现在是
+    // 注意 两个颜色**必须在 remember 之外**求值：glassEdgeTop/Bottom 现在是
     // @Composable（要读 glassTint()），而 remember 的计算 lambda 不是 Composable
     // 上下文，在里面调会编译失败（2026-10-06 实测）。
     val edgeTop = glassEdgeTop(tint)

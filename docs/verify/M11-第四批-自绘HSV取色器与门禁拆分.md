@@ -42,7 +42,7 @@
 ### Bug 1：点面板任意位置都会把面板关掉
 material3 的 `AlertDialog` 默认 `dismissOnClickOutside = true`。取色盘本身就是一大片可点区域，
 用户每点一下取色盘 = 点外部 → 面板关掉、进度全丢。
-⚠️ 本版本 **没有** `dismissOnClickOutside` / `dismissOnBackPress` 这两个具名参数，
+注意 本版本 **没有** `dismissOnClickOutside` / `dismissOnBackPress` 这两个具名参数，
 两个开关都挂在 `androidx.compose.ui.window.DialogProperties` 上，写成具名参数会整片编译失败。
 
 ### Bug 2：点一下不取色，只有拖动才取

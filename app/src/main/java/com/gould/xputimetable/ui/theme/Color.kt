@@ -2,7 +2,7 @@
  * Color.kt —— 主题颜色定义（骨架阶段的最小占位实现）
  *
  * 说明（重要）：
- * - 这些是 M3 主题的基础色槽；Phase 2 会由设计师产出的 design-tokens.json 生成并替换本文件。
+ * - 这些是 M3 主题的基础色槽；如需接入设计令牌，替换本文件取值即可。
  *   界面代码只引用 MaterialTheme.colorScheme，不直接引用这里的常量（Spec §8 红线：禁硬编码颜色）。
  * - fallback 主色取 Google Blue 体系（≈#0B57D0 档位），刻意避开被滥用的 Indigo #6366F1（UIUX 文档 §4.2）。
  * - Android 12+ 优先使用系统动态取色（见 Theme.kt）。
