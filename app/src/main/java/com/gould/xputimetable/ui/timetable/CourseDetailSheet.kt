@@ -155,7 +155,10 @@ private fun CourseDetailBody(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 20.dp, vertical = 12.dp),
+            // M12 需求四：竖向内边距 12 → 8。原先底部三组动作整体偏下，
+            // 小屏机型上几乎贴到 ModalBottomSheet 的下沿。
+            // ModalBottomSheet 自己已经吃掉导航栏 insets，这里再留 12dp 就是双重留白。
+            .padding(horizontal = 20.dp, vertical = 8.dp),
     ) {
         // ---------- 头：课程色竖条 + 课名 + 周次 ----------
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -231,6 +234,8 @@ private fun CourseDetailBody(
             )
         }
 
+        // M12 需求四：分隔线之上留 8dp（原 12dp），让三组动作与上方明细保持均匀呼吸感，
+        // 整体视觉重心上移，不再压在小屏下沿。
         Spacer(Modifier.height(8.dp))
         HorizontalDivider(color = outlineDivider())
         Spacer(Modifier.height(4.dp))
@@ -244,7 +249,7 @@ private fun CourseDetailBody(
             DetailAction(text = ACTION_COPY, onClick = onDuplicate)
             DetailAction(text = ACTION_DELETE, onClick = onDeleteRequest, danger = true)
         }
-        // 底部留白：让出手势条 / 系统导航栏的视觉重心
-        Spacer(Modifier.height(12.dp))
+        // 末尾不再留 Spacer：ModalBottomSheet 的下沿自带系统栏安全区，
+        // 这里再补一段空白只会让动作行显得更靠下（正是需求四要治的毛病）。
     }
 }

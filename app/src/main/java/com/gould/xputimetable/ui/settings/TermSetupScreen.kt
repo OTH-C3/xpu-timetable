@@ -10,8 +10,7 @@
  * 「已自动保存」短暂反馈（不弹提示，避免每改一次就打扰）；失败才走全局底部提示。
  *
  * 界面铁律：Scaffold + 自绘顶栏 statusBarsPadding；文案文件级常量；图标只经 AppIcons。
- */
-package com.gould.xputimetable.ui.settings
+ */package com.gould.xputimetable.ui.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -47,6 +46,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -126,7 +126,11 @@ internal fun TermSetupScreen(
         }
     }
 
-    Scaffold(modifier = modifier.fillMaxSize()) { padding ->
+    Scaffold(
+        // M12 需求一.2：底色与背景图由导航根的 PageBackground 统一提供，这里必须透明
+        containerColor = Color.Transparent,
+        modifier = modifier.fillMaxSize(),
+    ) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()

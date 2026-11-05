@@ -55,6 +55,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -124,6 +125,8 @@ internal fun QrShareScreen(
     }
 
     Scaffold(
+        // M12 需求一.2：底色与背景图由导航根的 PageBackground 统一提供，这里必须透明
+        containerColor = Color.Transparent,
         modifier = modifier.fillMaxSize(),
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = { QrTopBar(onBack = onBack, modifier = Modifier.statusBarsPadding()) },

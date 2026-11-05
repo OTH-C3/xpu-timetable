@@ -18,8 +18,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -151,9 +151,14 @@ private fun MonthBadge(month: Int?) {
 /** R3 今天日期块：黑底（onSurface）圆角方块 + 镂空数字（surface），无阴影。 */
 @Composable
 private fun TodayDateBlock(date: LocalDate) {
+    val text = date.format(dayFormatter)
     Box(
         modifier = Modifier
-            .size(todayBlockSize)
+            // ⚠️ 原来是 `.size(28.dp)` 固定正方形：日期一长（"12/31"）或系统字体一放大，
+            // Text 就会折成两行，方块被撑高、表头跟着歪。
+            // 改成"高度固定、宽度只给下限"：内容能撑宽但不会撑高，形状仍是圆角小方块。
+            .height(todayBlockSize)
+            .widthIn(min = todayBlockSize)
             .background(
                 MaterialTheme.colorScheme.onSurface,
                 RoundedCornerShape(Corners.TodayMark),
@@ -161,10 +166,19 @@ private fun TodayDateBlock(date: LocalDate) {
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = date.format(dayFormatter),
+            text = text,
+            // 字号与周围 6 天**完全一致**（labelMedium），不再缩放 ——
+            // 老大明确要"之前的效果"：选中那天不该比周围小。
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.surface,
             fontWeight = FontWeight.SemiBold,
+            // 不折行的代价由**方块变宽**承担，不由字号承担：
+            // widthIn(min) 只给下限，长日期/大字体时方块横向伸展，文字始终单行完整。
+            // 只写 maxLines=1 会把第二行裁成半截日期，所以必须配 softWrap=false。
+            maxLines = 1,
+            softWrap = false,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(horizontal = 2.dp),
         )
     }
 }

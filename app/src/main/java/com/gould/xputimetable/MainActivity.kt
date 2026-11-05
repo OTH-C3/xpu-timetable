@@ -36,6 +36,7 @@ class MainActivity : ComponentActivity() {
                     xpuImporter = container.xpuWebImporter,
                     canScheduleExact = container::canScheduleExactAlarms,
                     uiPrefs = container.uiPrefs,
+                    backgroundPrefs = container.backgroundPrefs,
                     onDataChanged = container.onDataChanged,
                 )
             }

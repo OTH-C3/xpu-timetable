@@ -31,6 +31,19 @@ data class CourseCaptureUiState(
     val pending: ImportResult.NeedsConfirm? = null,
     /** 失败提示（解析失败 = AC-11；网络不通 = AC-12）。 */
     val failure: String? = null,
+    /**
+     * 学校实际请求过的数据接口路径（诊断用）。
+     *
+     * 2026-11-05 改版反馈后加：旧实现在"没抓到课表"时什么都不说，用户只看到
+     * 一个正常显示的网页和永远不出现的导入结果，完全无从判断是登录没成、
+     * 接口改名还是网络不通。把路径列出来，一眼能看出学校现在发的是什么。
+     * 只存路径，不存响应体、不存 Cookie、不上传。
+     */
+    val diagnosticPaths: List<String> = emptyList(),
+    /** 登录完成后需要自动跳到课表页（一次性事件，界面消费后清除）。 */
+    val autoOpenCourseTable: Boolean = false,
+    /** 抓到了新版 kbList 结构：解析器暂不支持，需要明确告知而不是干等。 */
+    val unsupportedFormat: Boolean = false,
 )
 
 class CourseCaptureViewModel(
@@ -66,6 +79,27 @@ class CourseCaptureViewModel(
     /** 界面已消费 pending（已导航到预览页）。 */
     fun consumePending() = _state.update { it.copy(pending = null) }
 
+    /** 记录学校实际请求的数据接口路径；去重、只留最近若干条，避免无限增长。 */
+    fun onDiagnostic(path: String) {
+        if (path.isBlank()) return
+        _state.update { s ->
+            val next = (s.diagnosticPaths + path).distinct().takeLast(DIAGNOSTIC_LIMIT)
+            s.copy(diagnosticPaths = next)
+        }
+    }
+
+    /** 登录完成 → 界面自动把 WebView 导航到课表页（不再让学生手点）。 */
+    fun onLoginFinished() = _state.update { it.copy(autoOpenCourseTable = true) }
+
+    /** 界面已执行自动跳转。 */
+    fun consumeAutoOpen() = _state.update { it.copy(autoOpenCourseTable = false) }
+
+    /** 学校已换成新版强智结构。只提示一次，避免每个请求都刷同一句话。 */
+    fun onUnsupportedFormat() {
+        if (_state.value.unsupportedFormat) return
+        _state.update { it.copy(unsupportedFormat = true) }
+    }
+
     private fun submit() {
         val body = retainedBody ?: return
         val url = retainedUrl
@@ -100,3 +134,6 @@ class CourseCaptureViewModel(
 }
 
 private const val NETWORK_FAILURE = "无法连接学校服务器，请在校园网环境下重试或使用文件导入"
+
+/** 诊断列表上限：够看出接口形态即可，多了反而刷屏。 */
+private const val DIAGNOSTIC_LIMIT = 8

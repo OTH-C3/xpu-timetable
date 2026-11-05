@@ -101,4 +101,14 @@ object AppIcons {
     /** 自取色入口（打开 HSV 取色面板；课程色板之外的"自定义"按钮） */
     @DrawableRes
     val palette: Int = R.drawable.lucide_ic_palette
+
+    // ---------- 自定义背景（M12 需求二）----------
+
+    /** 选择背景图（设置页「选择图片」按钮） */
+    @DrawableRes
+    val image: Int = R.drawable.lucide_ic_image
+
+    /** 移除背景（清除已选的图） */
+    @DrawableRes
+    val imageOff: Int = R.drawable.lucide_ic_image_off
 }

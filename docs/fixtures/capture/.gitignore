@@ -1,10 +1,11 @@
-# 抓包数据文件：含学号/姓名/Cookie，禁止提交
-*.har
-*.json
-*.png
-*.jpg
-*.txt
-
-# 只保留说明文件
-!README.md
+# 抓包原始数据：含真实学号、姓名、会话 Cookie、Authorization 头、登录表单。
+#
+# ⚠️ 2026-11-05 事故：这些文件曾被误推到**公开** GitHub 仓库。
+# 根因是推送脚本按「扩展名白名单」遍历文件，绕过了 .gitignore。
+# 教训：推送白名单必须**显式排除本目录**，不能只靠 .gitignore 兜底。
+#
+# 抓包一律不入库。需要样本时用 app/src/test/resources/parser/xpu/fixtures/
+# 下那份**已脱敏**的金样本。
+*
 !.gitignore
+!README.md

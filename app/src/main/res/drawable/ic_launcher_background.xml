@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  启动图标背景层：纯品牌 fallback 色（UIUX 文档 §4.2 的 Google Blue 体系，避开被滥用的 Indigo）。
-  说明：这是「品牌资产」，不属于 UI 功能图标，不受 ADR-002 的单图标库约束（ADR-002 规则 4 同类豁免）。
-  设计里程碑（Phase 2）会由设计师出正式图标规范，届时替换本文件。
+  启动图标背景层：**纯白**。
+
+  与旧版的差别：旧版是 `#0B57D0` 满蓝底 + 白日历；新版设计是「白卡片浮在白底上」，
+  靠极淡蓝投影和 #EDF3F9 描边把卡片从背景里托起来。所以背景层必须留白 ——
+  换成任何有色底，卡片的白就失去意义，那道投影也会脏。
+
+  留白还有一个附带好处：Android 13+ 的主题化图标会取背景层做基色，
+  白色基色在浅色/深色壁纸下都不会突兀。
+
+  这是「品牌资产」，不属于 UI 功能图标，不受 ADR-002 的单图标库约束。
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
@@ -10,6 +17,6 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
     <path
-        android:fillColor="#0B57D0"
+        android:fillColor="#FFFFFF"
         android:pathData="M0,0h108v108h-108z" />
 </vector>

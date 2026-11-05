@@ -31,21 +31,27 @@ import com.gould.xputimetable.data.db.dao.CourseSessionDao
 import com.gould.xputimetable.data.db.dao.ImportLogDao
 import com.gould.xputimetable.data.db.dao.TermDao
 import com.gould.xputimetable.data.db.dao.TimeSlotDao
+import com.gould.xputimetable.data.db.dao.TodoDao
 import com.gould.xputimetable.data.db.entity.CourseEntity
 import com.gould.xputimetable.data.db.entity.CourseSessionEntity
 import com.gould.xputimetable.data.db.entity.ImportLogEntity
 import com.gould.xputimetable.data.db.entity.TermEntity
 import com.gould.xputimetable.data.db.entity.TimeSlotEntity
+import com.gould.xputimetable.data.db.entity.TodoItemEntity
+import com.gould.xputimetable.data.db.entity.TodoListEntity
 
 @Database(
-    // 版本历史：1 = M1 初版；2 = course_sessions 新增 week_list（显式周次，2026-09-17，脚本见 Migrations.kt）
-    version = 2,
+    // 版本历史：1 = M1 初版；2 = course_sessions 新增 week_list（2026-09-17）；
+    //            3 = 新增 todo_lists / todo_items 待办两表（M12 需求五，脚本见 Migrations.kt）
+    version = 3,
     entities = [
         CourseEntity::class,
         CourseSessionEntity::class,
         TermEntity::class,
         TimeSlotEntity::class,
         ImportLogEntity::class,
+        TodoListEntity::class,
+        TodoItemEntity::class,
     ],
     exportSchema = true,
 )
@@ -60,4 +66,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun timeSlotDao(): TimeSlotDao
 
     abstract fun importLogDao(): ImportLogDao
+
+    /** M12 需求五：待办清单 + 条目（同一个 DAO，两张表都是它的入口）。 */
+    abstract fun todoDao(): TodoDao
 }

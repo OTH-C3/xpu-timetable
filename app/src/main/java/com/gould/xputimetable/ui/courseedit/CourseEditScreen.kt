@@ -50,6 +50,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.toArgb
@@ -75,13 +76,14 @@ fun CourseEditScreen(
     }
 
     Scaffold(
+        // M12 需求一.2：底色与背景图由导航根的 PageBackground 统一提供，这里必须透明
+        containerColor = Color.Transparent,
         modifier = modifier.fillMaxSize(),
         topBar = {
             // statusBarsPadding：edge-to-edge 下顶栏必须自己吃状态栏内边距，否则按钮被状态栏压住
             EditTopBar(
                 title = title,
-                onBack = onBack,
-                onSave = viewModel::save,
+                onDone = viewModel::save,
                 modifier = Modifier.statusBarsPadding(),
             )
         },
@@ -99,6 +101,7 @@ fun CourseEditScreen(
                 onNameChange = viewModel::setName,
                 onTeacherChange = viewModel::setTeacher,
                 onClassroomChange = viewModel::setClassroom,
+                onNoteChange = viewModel::setNote, // M12 需求三：备注输入
                 onDayOfWeekChange = viewModel::setDayOfWeek,
                 onStartSectionChange = viewModel::setStartSection,
                 onEndSectionChange = viewModel::setEndSection,
@@ -153,12 +156,17 @@ fun CourseEditScreen(
 private fun currentColorArgb(colorTag: Int): Int =
     if (isArgbColorTag(colorTag)) colorTag else CoursePalette.base(colorTag).toArgb()
 
-/** 顶栏：取消（关闭）/ 标题 / 保存。 */
+/**
+ * 顶栏：标题 / 完成。
+ *
+ * 编辑改动在停顿后已即时落库，所以这里不再有"保存"按钮，也不再需要"取消"（取消=丢弃，
+ * 与"编辑直接生效"相悖）。保留一个"完成"按钮：它先把 debounce 窗口内还没落库的最后一笔刷进库，
+ * 再返回。AppNav 是单状态机、无返回栈，这是离开本页唯一安全的出口，删掉会丢改动。
+ */
 @Composable
 private fun EditTopBar(
     title: String,
-    onBack: () -> Unit,
-    onSave: () -> Unit,
+    onDone: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -167,18 +175,11 @@ private fun EditTopBar(
             .padding(horizontal = 4.dp, vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconButton(onClick = onBack) {
-            Icon(
-                painter = painterResource(AppIcons.close),
-                contentDescription = "取消",
-                modifier = Modifier.size(IconSize.Medium),
-            )
-        }
         Text(text = title, style = MaterialTheme.typography.titleLarge, modifier = Modifier.weight(1f))
-        IconButton(onClick = onSave) {
+        IconButton(onClick = onDone) {
             Icon(
                 painter = painterResource(AppIcons.check),
-                contentDescription = "保存",
+                contentDescription = "完成",
                 modifier = Modifier.size(IconSize.Large),
                 tint = MaterialTheme.colorScheme.onSurface,
             )

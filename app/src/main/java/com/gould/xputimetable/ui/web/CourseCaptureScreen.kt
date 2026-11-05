@@ -1,24 +1,20 @@
 /*
- * CourseCaptureScreen.kt —— 教务直连捕获页（M2-B §4.4，策略 A 的界面壳）
+ * CourseCaptureScreen.kt —— 教务直连捕获页
  *
- * 内置 WebView 加载 jwglxt 课表页；未登录时页面自行跳登录页，**由用户在
- * WebView 内完成登录（含滑块）**——App 对凭据零接触零存储（AC-09 隐私红线，
- * 本页没有任何读取密码框 / 注入 JS 的代码）。
+ * 内置 WebView 走一网通办统一身份认证，登录完成后**自动**跳到课表页并抓取数据，
+ * 不再要求学生手动点「服务篇 → 我的课表」。App 对凭据零接触零存储（AC-09 隐私红线）：
+ * Cookie 由系统 WebView 自己持有，这里只决定"不清掉它、并 flush 落盘"。
  *
- * 命中 print-data 后：解析中覆盖提示 → 成功经 onParsed 跳预览（AC-10）；
- * 失败原地展示（AC-11/AC-12），已拦截数据保留可重试。
+ * 2026-11-05 改版适配：
+ *   - 请求判定放宽 + 按响应内容认课表（见 XpuRequestPolicy / CaptureWebViewClient）
+ *   - 抓不到时显示学校实际请求的接口路径（CaptureDiagnostics），便于定位改版
+ *   - WebView 宿主拆到 CaptureWebViewHost.kt（桌面视口、第三方 Cookie、会话持久化）
  *
  * 界面铁律：Scaffold + 自绘顶栏 statusBarsPadding；文案文件级常量；回调方法引用。
  */
 package com.gould.xputimetable.ui.web
 
-import android.os.Message
-import android.view.ViewGroup
-import android.webkit.CookieManager
-import android.webkit.WebChromeClient
-import android.webkit.WebResourceRequest
-import android.webkit.WebViewClient
-import android.webkit.WebView
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -27,7 +23,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -39,14 +34,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -58,10 +54,13 @@ import com.gould.xputimetable.ui.theme.IconSize
 // ---------- 文件级文案常量 ----------
 
 private const val CAPTURE_TITLE = "教务直连"
-private const val CAPTURE_HINT = "请在下方页面完成登录并打开课表，系统会在课表出现时自动识别"
+private const val CAPTURE_HINT = "登录后将自动打开课表并读取，无需手动点击；若长时间无反应请看下方接口提示"
 private const val PARSING_HINT = "已识别到课表数据，正在解析…"
 private const val ACTION_BACK = "返回"
 private const val ACTION_RETRY = "重新解析"
+private const val ACTION_LOGOUT = "退出登录"
+private const val NEW_FORMAT_HINT =
+    "已读到学校新版课表数据，但格式与旧版不同，暂无法解析。请把下方接口路径发给我，我按新格式适配；这期间可用「从文件导入」。"
 
 @Composable
 fun CourseCaptureScreen(
@@ -71,15 +70,31 @@ fun CourseCaptureScreen(
     modifier: Modifier = Modifier,
 ) {
     val state by viewModel.state.collectAsState()
-    val webViewHolder = remember { mutableStateOf<WebView?>(null) }
+    val webViewHolder = remember { mutableStateOf<android.webkit.WebView?>(null) }
+    // 已登录就直接落到课表页，跳过门户里那次多余的手动跳转；没登录才走统一身份认证。
+    // remember 包住：重组时不能重新判定，否则页面会被反复 reload。
+    val startUrl = remember {
+        if (hasJwglxtSession()) XpuEndpoints.COURSE_TABLE_PAGE else XpuEndpoints.PORTAL_HOME
+    }
 
-    // 本屏优先消费返回键：网页有历史先回退网页，否则交给上层栈（子 Composable 回调天然优先于 AppNav 全局回调）
     BackHandler(enabled = true) {
         val view = webViewHolder.value
         if (view != null && view.canGoBack()) view.goBack() else onBack()
     }
 
-    // 解析成功 → 导航到预览页（消费后清除，避免重组重复触发）
+    // 离开页面时把会话 Cookie 落盘 —— 下次进来不必重新登录。
+    DisposableEffect(Unit) {
+        onDispose { persistWebSession() }
+    }
+
+    // 登录完成 → 自动打开课表页（一次性事件，消费后清除，避免反复 loadUrl）
+    LaunchedEffect(state.autoOpenCourseTable) {
+        if (state.autoOpenCourseTable) {
+            webViewHolder.value?.loadUrl(XpuEndpoints.COURSE_TABLE_PAGE)
+            viewModel.consumeAutoOpen()
+        }
+    }
+
     LaunchedEffect(state.pending) {
         state.pending?.let {
             onParsed(it)
@@ -87,11 +102,14 @@ fun CourseCaptureScreen(
         }
     }
 
-    // 拦截回调 hoist 成稳定引用（CaptureWebViewClient 无状态，随 WebView 重建）
     val onCaptured = remember { viewModel::onCaptured }
     val onNetworkError = remember { viewModel::onNetworkError }
+    val onDiagnostic = remember { viewModel::onDiagnostic }
+    val onLoginFinished = remember { viewModel::onLoginFinished }
+    val onUnsupportedFormat = remember { viewModel::onUnsupportedFormat }
 
     Scaffold(
+        containerColor = Color.Transparent,
         modifier = modifier.fillMaxSize(),
         topBar = {
             Row(
@@ -109,6 +127,12 @@ fun CourseCaptureScreen(
                     )
                 }
                 Text(text = CAPTURE_TITLE, style = MaterialTheme.typography.titleLarge)
+                Spacer(Modifier.weight(1f))
+                // 换账号 / 会话失效时手动清一次；平时用不到，但缺了它用户就被锁死在旧会话里
+                Button(onClick = {
+                    clearWebSession()
+                    webViewHolder.value?.loadUrl(XpuEndpoints.PORTAL_HOME)
+                }) { Text(text = ACTION_LOGOUT) }
             }
         },
     ) { padding ->
@@ -133,6 +157,21 @@ fun CourseCaptureScreen(
                         Text(text = PARSING_HINT, style = MaterialTheme.typography.bodyMedium)
                     }
                 }
+                if (state.unsupportedFormat) {
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                        ),
+                        modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                    ) {
+                        Text(
+                            text = NEW_FORMAT_HINT,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onTertiaryContainer,
+                            modifier = Modifier.padding(12.dp),
+                        )
+                    }
+                }
                 state.failure?.let { reason ->
                     Card(
                         colors = CardDefaults.cardColors(
@@ -153,79 +192,40 @@ fun CourseCaptureScreen(
                         }
                     }
                 }
+                // 只在"还没抓到课表"时显示诊断，抓到了就是噪音
+                if (!state.parsing && state.pending == null) {
+                    CaptureDiagnostics(
+                        paths = state.diagnosticPaths,
+                        modifier = Modifier.padding(top = 8.dp),
+                    )
+                }
                 Spacer(Modifier.height(8.dp))
             }
-            WebViewSection(
-                startUrl = XpuEndpoints.PORTAL_HOME,
-                onCaptured = onCaptured,
-                onNetworkError = onNetworkError,
-                webViewHolder = webViewHolder,
+
+            // ⚠️ weight(1f) 而不是 fillMaxSize()：上面有提示/诊断卡片，
+            // 用 fillMaxSize 会按整屏高度测量，把页面底部挤出可视区（"显示不全"的另一半原因）。
+            AndroidView(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .padding(bottom = 4.dp),
+                factory = { context ->
+                    buildCaptureWebView(
+                        context = context,
+                        startUrl = startUrl,
+                        onCaptured = onCaptured,
+                        onNetworkError = onNetworkError,
+                        onDiagnostic = onDiagnostic,
+                        onLoginFinished = onLoginFinished,
+                        onUnsupportedFormat = onUnsupportedFormat,
+                    ).also { webViewHolder.value = it }
+                },
+                onRelease = { wv ->
+                    persistWebSession()
+                    wv.destroy()
+                    webViewHolder.value = null
+                },
             )
         }
     }
-}
-
-/** WebView 宿主：AndroidView 包 WebView；DisposableEffect 负责销毁，防泄漏。 */
-@Composable
-private fun WebViewSection(
-    startUrl: String,
-    onCaptured: (String, String) -> Unit,
-    onNetworkError: () -> Unit,
-    webViewHolder: MutableState<WebView?>,
-) {
-    AndroidView(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(bottom = 4.dp),
-        factory = { context ->
-            WebView(context).apply {
-                layoutParams = ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                )
-                settings.javaScriptEnabled = true   // 强智系前端是 SPA，无 JS 课表页不出数据
-                settings.domStorageEnabled = true
-                // 「服务篇 → 我的课表」是以**新标签页**打开的：默认行为下新窗口要么被忽略、
-                // 要么行为不一致，课表页就不会经过本 WebView，print-data 也就永远捕获不到。
-                // 这里显式接管：把新窗口的 URL 在**同一个 WebView** 里打开（用户无感）。
-                settings.setSupportMultipleWindows(true)
-                webChromeClient = object : WebChromeClient() {
-                    override fun onCreateWindow(
-                        view: WebView?,
-                        isDialog: Boolean,
-                        isUserGesture: Boolean,
-                        resultMsg: Message?,
-                    ): Boolean {
-                        val parent = view ?: return false
-                        val transport = resultMsg?.obj as? WebView.WebViewTransport ?: return false
-                        // 用一个临时 WebView 接住 URL，再交给主 WebView 加载
-                        val bridge = WebView(parent.context)
-                        bridge.webViewClient = object : WebViewClient() {
-                            override fun shouldOverrideUrlLoading(
-                                v: WebView?,
-                                request: WebResourceRequest?,
-                            ): Boolean {
-                                val url = request?.url?.toString() ?: return false
-                                parent.loadUrl(url)
-                                v?.destroy()
-                                return true
-                            }
-                        }
-                        transport.webView = bridge
-                        resultMsg?.sendToTarget()
-                        return true
-                    }
-                }
-                // 不注入任何 JS 去读凭据（AC-09 隐私红线）
-                webViewClient = CaptureWebViewClient(
-                    onCaptured = onCaptured,
-                    onError = { onNetworkError() },
-                )
-                CookieManager.getInstance().setAcceptCookie(true)
-                loadUrl(startUrl)
-            }
-        },
-        update = { wv -> webViewHolder.value = wv },
-        onRelease = { it.destroy() },
-    )
 }
