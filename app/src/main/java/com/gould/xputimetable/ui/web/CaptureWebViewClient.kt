@@ -26,16 +26,19 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.gould.xputimetable.parser.xpu.XpuEndpoints
-import com.gould.xputimetable.parser.xpu.diagnosticPath
-import com.gould.xputimetable.parser.xpu.isLoginPage
-import com.gould.xputimetable.parser.xpu.isPortalAfterLogin
+import com.gould.xputimetable.parser.xpu.courseTableUrl
 import com.gould.xputimetable.parser.xpu.diagnosticPage
+import com.gould.xputimetable.parser.xpu.diagnosticPath
+import com.gould.xputimetable.parser.xpu.isCourseTablePage
+import com.gould.xputimetable.parser.xpu.isInsideJwglxt
+import com.gould.xputimetable.parser.xpu.isLoginDone
+import com.gould.xputimetable.parser.xpu.isLoginPage
 import com.gould.xputimetable.parser.xpu.looksLikeKbList
 import com.gould.xputimetable.parser.xpu.looksLikeScheduleJson
 import com.gould.xputimetable.parser.xpu.responseContentType
 import com.gould.xputimetable.parser.xpu.shouldInspect
 import com.gould.xputimetable.parser.xpu.structuralSignature
+import com.gould.xputimetable.parser.xpu.webVpnPrefixOf
 import java.io.ByteArrayInputStream
 import java.net.HttpURLConnection
 import java.net.URL
@@ -47,10 +50,27 @@ class CaptureWebViewClient(
     private val onError: (reason: String) -> Unit = {},
     /** 学校实际请求的数据接口路径（诊断用，不含 Cookie / token）。 */
     private val onDiagnostic: (path: String) -> Unit = {},
-    /** 观察到页面离开登录页、回到门户首页 → 通知界面自动跳课表页。 */
-    private val onLoginFinished: () -> Unit = {},
+    /**
+     * 观察到页面离开登录页、落到学校页面 → 通知界面自动跳课表页。
+     *
+     * 参数是**算好的目标地址**：走 WebVPN 时要带上从当前页面抄来的前缀，
+     * 否则会跳到只在校园网可达的直连地址，校外直接打不开。
+     */
+    private val onLoginFinished: (targetUrl: String) -> Unit = {},
     /** 抓到了新版 kbList 结构（解析器暂不支持）→ 给出明确提示，而不是静默无反应。 */
     private val onUnsupportedFormat: () -> Unit = {},
+    /**
+     * 顶层页面加载失败（打不开 / 超时）。
+     *
+     * 校外直连 `jwglxt.xpu.edu.cn` 一定失败——那是内网地址。此时界面要自动退回
+     * 门户首页，让学校自己的入口把我们送去 WebVPN，而不是把用户留在错误页上。
+     */
+    private val onMainFrameFailed: () -> Unit = {},
+    /**
+     * 课表页真的打开了（含 WebVPN 包裹形态）→ 把这个地址记下来当下次的入口。
+     * 记的是**实际走通的 URL**，密钥段才不会被我们猜错。
+     */
+    private val onCourseTableShown: (url: String) -> Unit = {},
 ) : WebViewClient() {
 
     private var sawLoginPage = false
@@ -59,16 +79,30 @@ class CaptureWebViewClient(
         super.onPageFinished(view, url)
         val u = url ?: return
         onDiagnostic(diagnosticPage(u))
+        // 课表页打开成功就记下入口（含 WebVPN 前缀），下次直接进，不用再走门户
+        if (isCourseTablePage(u)) onCourseTableShown(u)
         if (isLoginPage(u)) {
             sawLoginPage = true
             return
         }
-        // 只有当"确实经历过登录页"才自动跳 —— 否则用户第一次打开门户首页
-        // （还没登录）就会被硬拽到课表页、又被弹回登录，来回抖。
-        if (sawLoginPage && isPortalAfterLogin(u)) {
+        // 两个放行条件：
+        //   ① 确实经历过登录页（正常手动登录）
+        //   ② 已经进到教务站内（SSO 静默换票时一路看不到登录页）
+        // 只靠 ① 会把静默换票的人卡在教务首页上，又变成"得自己再进一次"。
+        if (isLoginDone(u) && (sawLoginPage || isInsideJwglxt(u))) {
             sawLoginPage = false       // 只触发一次，避免重定向链反复回调
-            onLoginFinished()
+            onLoginFinished(courseTableUrl(webVpnPrefixOf(u)))
         }
+    }
+
+    override fun onReceivedError(
+        view: WebView?,
+        request: WebResourceRequest?,
+        error: android.webkit.WebResourceError?,
+    ) {
+        super.onReceivedError(view, request, error)
+        // 只关心顶层文档：子资源失败（图片、字体）不该弹提示，更不该触发兜底跳转
+        if (request?.isForMainFrame == true) onMainFrameFailed()
     }
 
     override fun shouldInterceptRequest(
@@ -100,7 +134,9 @@ class CaptureWebViewClient(
                 setRequestProperty("Cookie", cookie)
             }
             setRequestProperty("X-Requested-With", "XMLHttpRequest")
-            setRequestProperty("Referer", XpuEndpoints.COURSE_TABLE_PAGE)
+            // Referer 跟着请求自己走：走 WebVPN 时如果硬写直连地址，网关会认为
+            // 来源页面不匹配（跨站），轻则判非法请求、重则回登录页。
+            setRequestProperty("Referer", courseTableUrl(webVpnPrefixOf(url)))
         }
         try {
             val body = connection.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }

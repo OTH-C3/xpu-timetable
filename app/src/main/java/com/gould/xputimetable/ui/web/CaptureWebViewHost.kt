@@ -63,8 +63,9 @@ internal fun buildCaptureWebView(
     onCaptured: (String, String) -> Unit,
     onNetworkError: () -> Unit,
     onDiagnostic: (String) -> Unit,
-    onLoginFinished: () -> Unit,
+    onLoginFinished: (String) -> Unit,
     onUnsupportedFormat: () -> Unit,
+    onMainFrameFailed: () -> Unit,
 ): WebView = WebView(context).apply {
     layoutParams = ViewGroup.LayoutParams(
         ViewGroup.LayoutParams.MATCH_PARENT,
@@ -126,6 +127,8 @@ internal fun buildCaptureWebView(
         onDiagnostic = onDiagnostic,
         onLoginFinished = onLoginFinished,
         onUnsupportedFormat = onUnsupportedFormat,
+        onMainFrameFailed = onMainFrameFailed,
+        onCourseTableShown = { url -> CapturePrefs.rememberCourseTableUrl(context, url) },
     )
     loadUrl(startUrl)
 }

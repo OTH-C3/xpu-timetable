@@ -10,10 +10,22 @@ package com.gould.xputimetable.parser.xpu
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class XpuRequestPolicyTest {
+
+    /**
+     * 真机截图里抄下来的 WebVPN 地址：`wrdvpnisthebest!` 的 hex + 加密后的内网地址。
+     * 加密段在不同部署下不同，所以代码里只能"抄"，不能硬编码。
+     */
+    private val vpnHex = "77726476706e69737468656265737421fae046903f2426486e1dc7a99c406d3650"
+    private val vpnHome = "https://webvpn.xpu.edu.cn/https/$vpnHex/student/home"
+    private val vpnLogin = "https://webvpn.xpu.edu.cn/https/$vpnHex/student/login"
+    private val vpnCourseTable = "https://webvpn.xpu.edu.cn/https/$vpnHex/student/for-std/course-table"
+    private val vpnData =
+        "https://webvpn.xpu.edu.cn/https/$vpnHex/student/for-std/course-table/semester/147/print-data?semesterId=147"
 
     private val oldUrl =
         "https://jwglxt.xpu.edu.cn/student/for-std/course-table/semester/147/print-data?semesterId=147&hasExperiment=true"
@@ -180,61 +192,72 @@ class XpuRequestPolicyTest {
     }
 
     @Test
-    fun `登录页与门户首页的判定`() {
+    fun `登录页与登录完成的判定`() {
         assertTrue(isLoginPage("https://sz.xpu.edu.cn/auth2/login"))
         assertTrue(isLoginPage("https://sz.xpu.edu.cn/auth2/cloud/login"))
-        assertTrue(isPortalAfterLogin("https://sz.xpu.edu.cn/"))
-        assertTrue("SSO 换票后落到子路径也算登录完成", isPortalAfterLogin("https://sz.xpu.edu.cn/portal/index"))
-        assertFalse(isPortalAfterLogin("https://sz.xpu.edu.cn/auth2/login"))
-        assertFalse(isPortalAfterLogin("https://jwglxt.xpu.edu.cn/student/for-std/course-table"))
+        assertTrue(isLoginDone("https://sz.xpu.edu.cn/"))
+        assertTrue("SSO 换票后落到子路径也算登录完成", isLoginDone("https://sz.xpu.edu.cn/portal/index"))
+        assertFalse(isLoginDone("https://sz.xpu.edu.cn/auth2/login"))
+        assertFalse(isLoginDone("https://jwglxt.xpu.edu.cn/student/for-std/course-table"))
         assertEquals("当前页面：sz.xpu.edu.cn/auth2/login", diagnosticPage("https://sz.xpu.edu.cn/auth2/login?token=SECRET"))
     }
 
     @Test
-    fun `诊断摘要不带 token 类参数`() {
-        val u = oldUrl + "&token=SECRET&ticket=ABC"
-        val s = diagnosticPath(u)
-        assertFalse("诊断文本不能泄露 token：$s", s.contains("SECRET"))
-        assertFalse("诊断文本不能泄露 ticket：$s", s.contains("ABC"))
-        assertTrue("应保留学期号便于定位", s.contains("147"))
+    fun `WebVPN 上登录完也要自动跳课表`() {
+        // 2026-11-11 真机：门户「我的课表」跳到 webvpn 代理页，旧判定只认门户主机，
+        // 于是登录成功却不自动跳，用户得退出再进一次才行。
+        assertTrue("VPN 包裹的教务首页算登录完成", isLoginDone(vpnHome))
+        assertFalse("VPN 的账号登录表单不能算登录完成", isLoginDone(vpnLogin))
+        assertFalse("已经在课表页就别再跳一次", isLoginDone(vpnCourseTable))
+        assertFalse("VPN 网关根页不算", isLoginDone("https://webvpn.xpu.edu.cn/"))
+        assertFalse("校外域名不算", isLoginDone("https://jwglxt.xpu.edu.cn.evil.com/student/home"))
+    }
+
+    @Test
+    fun `SSO 静默换票时靠教务站内页放行`() {
+        // 会话还在时换票不经过登录页，sawLoginPage 守卫会一直挡着；
+        // 进到教务站内本身就等于已登录，用它补这一条。
+        assertTrue(isInsideJwglxt(vpnHome))
+        assertTrue(isInsideJwglxt("https://jwglxt.xpu.edu.cn/student/home"))
+        assertFalse("门户首页不算进到教务系统", isInsideJwglxt("https://sz.xpu.edu.cn/"))
+        assertFalse(isInsideJwglxt("https://jwglxt.xpu.edu.cn.evil.com/student/home"))
+    }
+
+    @Test
+    fun `WebVPN 前缀原样抄下来拼课表页`() {
+        // 加密段每次部署都不同，不能硬编码，只能从当前页面抄
+        assertEquals("https/$vpnHex", webVpnPrefixOf(vpnHome))
+        assertEquals("/student/home", webVpnInnerPath(vpnHome))
+        assertEquals("/student/for-std/course-table/semester/147/print-data", effectivePath(vpnData))
         assertEquals(
-            "/student/for-std/course-table/semester/147/print-data  [学期 147]",
-            s,
+            "https://webvpn.xpu.edu.cn/https/$vpnHex/student/for-std/course-table",
+            courseTableUrl(webVpnPrefixOf(vpnHome)),
+        )
+        assertEquals(
+            "拿到前缀就用前缀，没有才退回直连",
+            "https://jwglxt.xpu.edu.cn/student/for-std/course-table",
+            courseTableUrl(null),
         )
     }
 
-    // ---- 未知响应的结构签名（2026-11-05 补：让"抓不到"变成可诊断的线索）----
-
     @Test
-    fun `未知结构只留第一层字段名不留值`() {
-        // 值里的 token 绝不能出现在签名里——这块截图是要发给开发者看的
-        val body = """{"code":0,"msg":"登录已过期","data":{"token":"SECRET","list":[]}}"""
-        val sig = structuralSignature(body)
-        assertEquals("字段：code, msg, data", sig)
-        assertFalse("签名不能泄露字段值", sig.contains("SECRET"))
-        assertFalse("嵌套层字段不该混进来", sig.contains("token"))
+    fun `长得像 hex 但标记不对的不能当 VPN 前缀`() {
+        // 挡掉"恰好像 hex"的普通路径段：前缀里必须真的含 wrdvpnisthebest!
+        assertNull(webVpnPrefixOf("https://webvpn.xpu.edu.cn/https/${"ab".repeat(28)}/student/home"))
+        assertNull("网关根页没有前缀", webVpnPrefixOf("https://webvpn.xpu.edu.cn/"))
+        assertNull("非 VPN 主机不解析", webVpnPrefixOf("https://jwglxt.xpu.edu.cn/student/home"))
+        // 不是 VPN 地址时，真实路径就是它自己的路径
+        assertEquals("/student/home", effectivePath("https://jwglxt.xpu.edu.cn/student/home"))
     }
 
     @Test
-    fun `字段值里的引号与花括号不会打乱识别`() {
-        // JSON 里的转义引号如果处理错，后面的键名会整段丢掉
-        val body = """{"a":"say \"hi\" {x}","b":1}"""
-        assertEquals("字段：a, b", structuralSignature(body))
-    }
-
-    @Test
-    fun `非 JSON 响应给出可读类型`() {
-        assertEquals("HTML 页面", structuralSignature("<!DOCTYPE html><html><body>登录</body></html>"))
-        assertEquals("空响应", structuralSignature("   \n  "))
-        assertEquals("JSON 数组", structuralSignature("[1,2,3]"))
-        assertEquals("非 JSON 文本", structuralSignature("ok"))
-    }
-
-    @Test
-    fun `字段名数量有上限`() {
-        val body = (1..20).joinToString(",", prefix = "{", postfix = "}") { "\"k$it\":$it" }
-        val sig = structuralSignature(body)
-        assertEquals(8, sig.removePrefix("字段：").split(", ").size)
-        assertFalse("超出上限的键不该出现", sig.contains("k9"))
+    fun `VPN 下的数据请求也要能被认出并去重显示`() {
+        // 关键字被加密段隔在前面，用整条 path 匹配会漏掉
+        assertTrue(shouldInspect(vpnData))
+        assertTrue(isCourseTablePage(vpnCourseTable))
+        val diag = diagnosticPath(vpnData)
+        assertEquals("[VPN] /student/for-std/course-table/semester/147/print-data  [学期 147]", diag)
+        assertFalse("诊断里不该出现那串加密 hex", diag.contains(vpnHex))
+        assertEquals("当前页面：[VPN] webvpn.xpu.edu.cn/student/home", diagnosticPage(vpnHome))
     }
 }

@@ -20,9 +20,13 @@ object XpuEndpoints {
      */
     const val PORTAL_HOME = "https://sz.xpu.edu.cn/"
     const val COURSE_TABLE_PAGE = "https://jwglxt.xpu.edu.cn/student/for-std/course-table"
-    /** 课表数据接口（GET，鉴权仅靠 Cookie）：semester/{id}/print-data */
-    val PRINT_DATA_REGEX = Regex(
-        """https://jwglxt\.xpu\.edu\.cn/student/for-std/course-table/semester/(\d+)/print-data.*"""
-    )
+    /**
+     * 课表数据接口（GET，鉴权仅靠 Cookie）：semester/{id}/print-data
+     *
+     * 只匹配路径、不锚定主机：走 WebVPN 时同一条请求会被包成
+     * `https://webvpn.xpu.edu.cn/https/<hex>/student/for-std/course-table/semester/...`，
+     * 锚了主机就提取不到 semesterId（只影响稳定 id 的种子，不影响解析）。
+     */
+    val PRINT_DATA_REGEX = Regex("""/semester/(\d+)/print-data""")
     fun semesterIdOf(url: String): String? = PRINT_DATA_REGEX.find(url)?.groupValues?.get(1)
 }

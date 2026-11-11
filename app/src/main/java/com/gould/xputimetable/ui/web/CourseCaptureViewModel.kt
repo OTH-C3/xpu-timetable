@@ -18,6 +18,7 @@ import com.gould.xputimetable.importer.api.ImportPayload
 import com.gould.xputimetable.importer.api.ImportResult
 import com.gould.xputimetable.importer.api.ScheduleImporter
 import com.gould.xputimetable.parser.api.ParseError
+import com.gould.xputimetable.parser.xpu.XpuEndpoints
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -40,8 +41,20 @@ data class CourseCaptureUiState(
      * 只存路径，不存响应体、不存 Cookie、不上传。
      */
     val diagnosticPaths: List<String> = emptyList(),
-    /** 登录完成后需要自动跳到课表页（一次性事件，界面消费后清除）。 */
-    val autoOpenCourseTable: Boolean = false,
+    /**
+     * 登录完成后要自动打开的课表页地址（一次性事件，界面消费后清除）。
+     *
+     * 存的是**完整 URL** 而不是一个布尔：走 WebVPN 时目标地址要带上从当前页面
+     * 抄来的 `https/<hex>` 前缀，直连地址在校外根本打不开。
+     */
+    val autoOpenUrl: String? = null,
+    /**
+     * 顶层页面打不开时退回门户（一次性事件）。
+     *
+     * 校外直连 jwglxt 必然失败，退到门户后学校自己的入口会把我们送进 WebVPN。
+     * 只兜底一次：门户也打不开说明是真没网，再跳就是死循环。
+     */
+    val fallbackUrl: String? = null,
     /** 抓到了新版 kbList 结构：解析器暂不支持，需要明确告知而不是干等。 */
     val unsupportedFormat: Boolean = false,
 )
@@ -56,6 +69,9 @@ class CourseCaptureViewModel(
     /** AC-11：失败不丢已拦截数据，保留原始响应体字符串供重试。 */
     private var retainedBody: String? = null
     private var retainedUrl: String? = null
+
+    /** 退回门户只做一次，避免门户也打不开时来回跳。 */
+    private var fallbackUsed = false
 
     /** CaptureWebViewClient 命中课表数据接口（后台线程回调，线程安全）。 */
     fun onCaptured(body: String, url: String) {
@@ -89,10 +105,23 @@ class CourseCaptureViewModel(
     }
 
     /** 登录完成 → 界面自动把 WebView 导航到课表页（不再让学生手点）。 */
-    fun onLoginFinished() = _state.update { it.copy(autoOpenCourseTable = true) }
+    fun onLoginFinished(targetUrl: String) = _state.update { it.copy(autoOpenUrl = targetUrl) }
 
     /** 界面已执行自动跳转。 */
-    fun consumeAutoOpen() = _state.update { it.copy(autoOpenCourseTable = false) }
+    fun consumeAutoOpen() = _state.update { it.copy(autoOpenUrl = null) }
+
+    /** 顶层页面打不开：第一次退回门户，第二次才报"连不上"。 */
+    fun onMainFrameFailed() {
+        if (fallbackUsed) {
+            _state.update { it.copy(failure = NETWORK_FAILURE) }
+            return
+        }
+        fallbackUsed = true
+        _state.update { it.copy(fallbackUrl = XpuEndpoints.PORTAL_HOME) }
+    }
+
+    /** 界面已执行退回门户。 */
+    fun consumeFallback() = _state.update { it.copy(fallbackUrl = null) }
 
     /** 学校已换成新版强智结构。只提示一次，避免每个请求都刷同一句话。 */
     fun onUnsupportedFormat() {
@@ -133,7 +162,8 @@ class CourseCaptureViewModel(
     }
 }
 
-private const val NETWORK_FAILURE = "无法连接学校服务器，请在校园网环境下重试或使用文件导入"
+private const val NETWORK_FAILURE =
+    "连不上学校服务器。校外需先连校园网；也可用「从文件导入」。"
 
 /** 诊断列表上限：够看出接口形态即可，多了反而刷屏。 */
 private const val DIAGNOSTIC_LIMIT = 8

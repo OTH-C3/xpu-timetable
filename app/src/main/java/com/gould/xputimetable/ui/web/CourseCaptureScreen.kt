@@ -43,6 +43,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -71,10 +72,14 @@ fun CourseCaptureScreen(
 ) {
     val state by viewModel.state.collectAsState()
     val webViewHolder = remember { mutableStateOf<android.webkit.WebView?>(null) }
-    // 已登录就直接落到课表页，跳过门户里那次多余的手动跳转；没登录才走统一身份认证。
+    val context = LocalContext.current
+    // 起始页优先级：上次走通的入口（可能是 WebVPN 地址）→ 直连课表页（有会话时）→ 门户首页。
+    // 记住入口是为了省掉每次「门户 → 服务篇 → 我的课表」那串点击；
+    // 入口过期时页面会加载失败，由兜底逻辑退回门户重走一次。
     // remember 包住：重组时不能重新判定，否则页面会被反复 reload。
     val startUrl = remember {
-        if (hasJwglxtSession()) XpuEndpoints.COURSE_TABLE_PAGE else XpuEndpoints.PORTAL_HOME
+        CapturePrefs.lastCourseTableUrl(context)
+            ?: if (hasJwglxtSession()) XpuEndpoints.COURSE_TABLE_PAGE else XpuEndpoints.PORTAL_HOME
     }
 
     BackHandler(enabled = true) {
@@ -88,11 +93,17 @@ fun CourseCaptureScreen(
     }
 
     // 登录完成 → 自动打开课表页（一次性事件，消费后清除，避免反复 loadUrl）
-    LaunchedEffect(state.autoOpenCourseTable) {
-        if (state.autoOpenCourseTable) {
-            webViewHolder.value?.loadUrl(XpuEndpoints.COURSE_TABLE_PAGE)
-            viewModel.consumeAutoOpen()
-        }
+    LaunchedEffect(state.autoOpenUrl) {
+        val target = state.autoOpenUrl ?: return@LaunchedEffect
+        webViewHolder.value?.loadUrl(target)
+        viewModel.consumeAutoOpen()
+    }
+
+    // 顶层页面打不开（多半年校外直连内网地址）→ 退回门户，让学校入口带去 WebVPN
+    LaunchedEffect(state.fallbackUrl) {
+        val target = state.fallbackUrl ?: return@LaunchedEffect
+        webViewHolder.value?.loadUrl(target)
+        viewModel.consumeFallback()
     }
 
     LaunchedEffect(state.pending) {
@@ -106,6 +117,7 @@ fun CourseCaptureScreen(
     val onNetworkError = remember { viewModel::onNetworkError }
     val onDiagnostic = remember { viewModel::onDiagnostic }
     val onLoginFinished = remember { viewModel::onLoginFinished }
+    val onMainFrameFailed = remember { viewModel::onMainFrameFailed }
     val onUnsupportedFormat = remember { viewModel::onUnsupportedFormat }
 
     Scaffold(
@@ -218,6 +230,7 @@ fun CourseCaptureScreen(
                         onDiagnostic = onDiagnostic,
                         onLoginFinished = onLoginFinished,
                         onUnsupportedFormat = onUnsupportedFormat,
+                        onMainFrameFailed = onMainFrameFailed,
                     ).also { webViewHolder.value = it }
                 },
                 onRelease = { wv ->

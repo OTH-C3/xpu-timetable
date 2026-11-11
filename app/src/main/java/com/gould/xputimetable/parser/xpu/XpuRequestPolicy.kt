@@ -52,7 +52,10 @@ fun shouldInspect(
     if (!method.equals("GET", ignoreCase = true)) return false
     val host = runCatching { java.net.URL(url).host }.getOrDefault("")
     if (!isCampusHost(host)) return false
-    val path = runCatching { java.net.URL(url).path }.getOrDefault("").lowercase()
+    // 用**真实路径**判定：走 WebVPN 时 URL 是
+    // `https://webvpn.xpu.edu.cn/https/<hex>/student/for-std/course-table/...`，
+    // 关键字被加密段隔在前面，直接看整条 path 会把它们漏掉。
+    val path = effectivePath(url).lowercase()
     if (STATIC_SUFFIX.any { path.endsWith(it) }) return false
     return KEYWORDS.any { path.contains(it) }
 }
@@ -150,119 +153,55 @@ fun looksLikeKbList(body: String): Boolean =
     body.contains("\"kbList\"") || (body.contains("\"kcmc\"") && body.contains("\"kcsj\""))
 
 /**
- * 这个 URL 是不是统一身份认证的登录页。
+ * 这个 URL 是不是登录页。
  * 用于判断"用户刚刚从登录页出来了没"——出来了就自动跳课表页，不再让人手点。
+ *
+ * 2026-11-11 补：走 WebVPN 时登录页长成 `webvpn.xpu.edu.cn/https/<hex>/student/login`，
+ * 它既不是 `/auth2/login` 也不含 `login?`，旧判定会把它当成"已登录的门户页"，
+ * 于是用户还停在账号密码表单上就被 App 拽走了。所以再认一条：路径以 `/login` 结尾。
  */
 fun isLoginPage(url: String): Boolean {
+    val path = effectivePath(url).lowercase()
+    if (path.endsWith("/login") || path.contains("/login/")) return true
     val lower = url.lowercase()
     return lower.contains("/auth2/login") || lower.contains("/auth2/cloud/login") ||
         lower.contains("cas/login") || lower.contains("/login?")
 }
 
 /**
- * 是不是"已经登录、回到门户"的页面。
+ * 是不是已经进到**教务系统内部**的页面（如 `/student/home`）。
  *
- * 只认根路径太窄：SSO 换票后可能落到 `/portal`、`/index`、`/#/` 之类，
- * 那样自动跳转就永远不触发，用户又得手点一次。放宽成"门户域 + 不是登录页"，
- * 配合 sawLoginPage 守卫（确实经历过登录页）就不会误触发。
+ * 为什么要单独判：`sawLoginPage` 守卫只在"确实看见过登录页"时放行自动跳转，
+ * 目的是防止刚打开门户还没登录就被拽走。但 SSO 会话还在时换票是**静默**的，
+ * 一路看不到登录页就落到教务首页 —— 那种场景下守卫会一直挡着，用户又得手点。
+ * 进到教务站内本身就说明已登录，用它来补这一条。
  */
-fun isPortalAfterLogin(url: String): Boolean {
+fun isInsideJwglxt(url: String): Boolean {
+    val host = runCatching { java.net.URL(url).host }.getOrDefault("")
+    if (!isCampusHost(host)) return false
+    val path = effectivePath(url).lowercase()
+    return path.contains("/student/") || path.endsWith("/student")
+}
+
+/**
+ * 是不是"已经登录、落到学校页面"了。登录完成就自动跳课表页，不再让人手点。
+ *
+ * 判定口径（2026-11-11 重写，原实现只认门户主机 `sz.xpu.edu.cn`）：
+ *   - 必须是我校域名（含任意子域）
+ *   - 不能是登录页
+ *   - 不能已经就是课表页（否则会白跳一次、还可能触发重复请求）
+ *   - WebVPN 网关自己的根页不算（那里没有包裹前缀，拼不出教务地址）
+ *
+ * 为什么放宽到任意子域：门户点「我的课表」会跳到
+ * `webvpn.xpu.edu.cn/https/<hex>/student/home`，主机既不是门户也不是 jwglxt，
+ * 旧判定在这里返回 false，于是**登录成功却没有自动跳转**，用户只能自己退出再进一次。
+ * 配合 `sawLoginPage` 守卫（确实经历过登录页）不会误触发。
+ */
+fun isLoginDone(url: String): Boolean {
     val u = runCatching { java.net.URL(url) }.getOrNull() ?: return false
-    return u.host == XpuEndpoints.HOST_PORTAL && !isLoginPage(url)
+    if (!isCampusHost(u.host)) return false
+    if (isLoginPage(url)) return false
+    if (isCourseTablePage(url)) return false
+    if (u.host.equals(HOST_WEBVPN, ignoreCase = true) && webVpnPrefixOf(url) == null) return false
+    return effectivePath(url).isNotBlank()
 }
-
-/** 当前页面的一句话诊断（只留主机+路径，丢掉全部 query 参数）。 */
-fun diagnosticPage(url: String): String {
-    val u = runCatching { java.net.URL(url) }.getOrNull() ?: return "(无法解析的页面)"
-    return "当前页面：${u.host}${u.path}"
-}
-
-/**
- * 给界面看的诊断摘要：把学校实际请求的数据接口路径留下来。
- *
- * 为什么需要：学校改版时我们无从得知新路径（进不了校园网、也没账号），
- * 与其猜，不如把**它自己发出来的请求**显示给用户，一眼就能看出该改哪个关键字。
- * 只保留路径与 semesterId 这类非敏感参数，**丢掉全部 query 里可能带 token 的部分**，
- * 也不记录响应体、不记录 Cookie。
- */
-fun diagnosticPath(url: String): String {
-    val u = runCatching { java.net.URL(url) }.getOrNull() ?: return url.take(120)
-    val semester = Regex("semester/(\\d+)").find(u.path)?.groupValues?.get(1)
-    return buildString {
-        append(u.path)
-        if (semester != null) append("  [学期 ").append(semester).append("]")
-    }
-}
-
-/**
- * 未知响应的**结构签名**：只留字段名，绝不留字段值。
- *
- * 为什么需要：宽匹配能保证"请求被看见"，但如果学校换了一套我们完全不认识的结构
- * （既不是 studentTableVms，也不是 kbList），现在的代码只会**什么都不做**——
- * 用户在真机上永远等不到结果，我们在本地也永远猜不到该适配什么。
- *
- * 把响应里第一层的字段名（如 `code, msg, data`）显示到诊断卡片上，下一次失败
- * 就能直接看出学校实际返回的是什么形状，**不需要账号、不需要抓包**。
- *
- * 隐私边界：仅提取**键名**。值、Cookie、token 一律不进入返回值，也不落盘。
- * 因此这块截图可以安全地发给开发者。
- *
- * 只扫前 [SCAN_LIMIT] 个字符：这一层跑在 WebView 拦截线程上，可能一秒调几十次；
- * 键名都在开头，没必要为诊断遍历几十 MB。
- *
- * @param body 响应体
- * @param limit 最多列几个键（默认 8，够看出形状又不刷屏）
- */
-fun structuralSignature(body: String, limit: Int = SIGNATURE_KEY_LIMIT): String {
-    val head = body.trimStart()
-    if (head.isEmpty()) return "空响应"
-    if (head.startsWith("<")) return "HTML 页面"
-    if (!head.startsWith("{")) return if (head.startsWith("[")) "JSON 数组" else "非 JSON 文本"
-
-    val text = if (head.length > SCAN_LIMIT) head.take(SCAN_LIMIT) else head
-    val keys = ArrayList<String>(limit)
-    var depth = 0
-    var inString = false
-    var escaped = false
-    val buffer = StringBuilder()
-    var i = 0
-    while (i < text.length && keys.size < limit) {
-        val c = text[i]
-        if (inString) {
-            when {
-                escaped -> escaped = false
-                c == '\\' -> escaped = true
-                c == '"' -> {
-                    inString = false
-                    // 字符串结束：只有"第 1 层 + 紧跟冒号"才是键名，嵌套层的字段不要
-                    var j = i + 1
-                    while (j < text.length && text[j].isWhitespace()) j++
-                    val key = buffer.toString()
-                    if (depth == 1 && j < text.length && text[j] == ':' &&
-                        key.isNotEmpty() && key.length <= SIGNATURE_KEY_MAX && key !in keys
-                    ) {
-                        keys.add(key)
-                    }
-                }
-                else -> buffer.append(c)
-            }
-        } else {
-            when (c) {
-                '"' -> { inString = true; buffer.setLength(0) }
-                '{', '[' -> depth++
-                '}', ']' -> if (depth > 0) depth--
-            }
-        }
-        i++
-    }
-    return if (keys.isEmpty()) "JSON 对象（未取到字段名）" else "字段：" + keys.joinToString(", ")
-}
-
-/** 诊断只扫开头这么多字符：键名都在最前面，扫全文纯属浪费。 */
-private const val SCAN_LIMIT = 4096
-
-/** 最多显示几个键名。 */
-private const val SIGNATURE_KEY_LIMIT = 8
-
-/** 单个键名长度上限：防御畸形响应里塞超长字符串。 */
-private const val SIGNATURE_KEY_MAX = 32
